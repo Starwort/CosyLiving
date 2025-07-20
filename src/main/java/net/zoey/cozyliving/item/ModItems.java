@@ -77,13 +77,13 @@ public class ModItems {
     public static final Item WATERMELON_POPSICLE = registerItem("watermelon_popsicle",
             new FreezingItem(new Item.Settings().food(ModFoodComponents.WATERMELON_POPSICLE).recipeRemainder(STICK), "watermelon_popsicle", Items.STICK.getDefaultStack()));
     public static final Item HONEYCOMB_ICE_CREAM = registerItem("honeycomb_ice_cream",
-            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM).recipeRemainder(BOWL), "honeycomb_ice_cream", BOWL.getDefaultStack()));
+            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM), "honeycomb_ice_cream", BOWL.getDefaultStack()));
     public static final Item COCONUT_ICE_CREAM = registerItem("coconut_ice_cream",
-            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM).recipeRemainder(BOWL), "coconut_ice_cream", BOWL.getDefaultStack()));
+            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM), "coconut_ice_cream", BOWL.getDefaultStack()));
     public static final Item RASPBERRY_ICE_CREAM = registerItem("raspberry_ice_cream",
-            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM).recipeRemainder(BOWL), "raspberry_ice_cream", BOWL.getDefaultStack()));
+            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM), "raspberry_ice_cream", BOWL.getDefaultStack()));
     public static final Item TRIPLE_ICE_CREAM = registerItem("triple_ice_cream",
-            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM).recipeRemainder(BOWL), "triple_ice_cream", BOWL.getDefaultStack()));
+            new FreezingItem(new Item.Settings().food(ModFoodComponents.ICE_CREAM), "triple_ice_cream", BOWL.getDefaultStack()));
 
     public static final Item VILLAGER_STEW = registerItem("villager_stew",
             new ContainerItem(new Item.Settings().food(ModFoodComponents.VILLAGER_STEW).recipeRemainder(BOWL), "villager_stew", BOWL.getDefaultStack()));
