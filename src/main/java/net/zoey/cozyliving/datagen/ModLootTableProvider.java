@@ -61,6 +61,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RASPBERRY_RHODOLITE_BLOCK);
         addDrop(ModBlocks.TEST_BLOCK);
         addDrop(ModBlocks.COTTON_BALE, ModItems.COTTON_BALE);
+        addDrop(ModBlocks.RASPBERRY_CRATE, ModItems.RASPBERRY_CRATE);
+        addDrop(ModBlocks.COCONUT_CRATE, ModItems.COCONUT_CRATE);
 
         //PIES
         //addDrop(ModBlocks.CINNAMON_PIE); //
