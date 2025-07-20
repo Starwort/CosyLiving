@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "cozyliving:coconut_button"
+    }
+  ],
+  "result": {
+    "item": "cozyliving:coconut_planks"
+  }
+}

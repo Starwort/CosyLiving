@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "cozyliving:block/coconut_wood/stripped_coconut_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "cozyliving:block/coconut_wood/stripped_coconut_wood"
+    },
+    "axis=z": {
+      "model": "cozyliving:block/coconut_wood/stripped_coconut_wood",
+      "x": 90
+    }
+  }
+}

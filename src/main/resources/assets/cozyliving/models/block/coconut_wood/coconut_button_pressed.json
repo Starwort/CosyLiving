@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "cozyliving:block/coconut_wood/coconut_planks"
+  }
+}

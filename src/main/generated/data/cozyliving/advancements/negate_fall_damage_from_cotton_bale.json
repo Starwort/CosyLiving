@@ -1,0 +1,21 @@
+{
+  "parent": "cozyliving:get_cotton",
+  "criteria": {},
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cozyliving.negate_fall_damage_from_cotton_bale.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:cotton_bale"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cozyliving.negate_fall_damage_from_cotton_bale.title"
+    }
+  },
+  "requirements": [],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "cozyliving:block/crate/crate_bottom",
+    "side": "cozyliving:block/crate/coconut_crate_side",
+    "top": "cozyliving:block/crate/coconut_crate_top"
+  }
+}

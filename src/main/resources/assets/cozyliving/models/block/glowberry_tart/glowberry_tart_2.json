@@ -1,0 +1,9 @@
+{
+    "parent": "cozyliving:block/generic_sliceable/generic_sliceable_2",
+    "textures": {
+      "top": "cozyliving:block/glowberry_tart/top",
+	  "bottom": "cozyliving:block/glowberry_tart/bottom",
+	  "inside": "cozyliving:block/glowberry_tart/inside",
+      "outside": "cozyliving:block/glowberry_tart/outside"
+    }
+  }

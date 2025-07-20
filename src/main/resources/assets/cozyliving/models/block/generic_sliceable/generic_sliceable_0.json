@@ -1,0 +1,24 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"bottom": "#bottom",
+		"outside": "#outside",
+		"top": "#top",
+		"particle": "#top"
+	},
+	"elements": [
+		{
+			"name": "generic_sliceable",
+			"from": [2, 0, 2],
+			"to": [14, 4, 14],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 4], "texture": "#outside"},
+				"east": {"uv": [2, 4, 14, 8], "texture": "#outside"},
+				"south": {"uv": [2, 8, 14, 12], "texture": "#outside"},
+				"west": {"uv": [2, 12, 14, 16], "texture": "#outside"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#top"},
+				"down": {"uv": [2, 1, 14, 13], "texture": "#bottom"}
+			}
+		}
+	]
+}

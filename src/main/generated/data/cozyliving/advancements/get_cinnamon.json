@@ -1,0 +1,38 @@
+{
+  "parent": "cozyliving:root",
+  "criteria": {
+    "got_cinnamon_stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:cinnamon_stick"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cozyliving.get_cinnamon.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:cinnamon_stick"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cozyliving.get_cinnamon.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_cinnamon_stick"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

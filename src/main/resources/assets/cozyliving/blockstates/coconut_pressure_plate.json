@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "cozyliving:block/coconut_wood/coconut_pressure_plate"
+    },
+    "powered=true": {
+      "model": "cozyliving:block/coconut_wood/coconut_pressure_plate_down"
+    }
+  }
+}

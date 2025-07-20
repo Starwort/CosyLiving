@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "cozyliving:block/benitoite_ore"
+  }
+}

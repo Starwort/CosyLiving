@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "cozyliving:block/coconut_wood/coconut_slab"
+    },
+    "type=double": {
+      "model": "cozyliving:block/coconut_wood/coconut_planks"
+    },
+    "type=top": {
+      "model": "cozyliving:block/coconut_wood/coconut_slab_top"
+    }
+  }
+}

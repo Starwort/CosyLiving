@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 15.0,
+  "group": "raspberry_rhodolite",
+  "ingredient": {
+    "item": "cozyliving:deepslate_raspberry_rhodolite_ore"
+  },
+  "result": "cozyliving:raspberry_rhodolite"
+}

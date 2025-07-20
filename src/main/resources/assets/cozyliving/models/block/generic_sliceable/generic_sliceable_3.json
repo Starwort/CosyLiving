@@ -1,0 +1,25 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"bottom": "#bottom",
+		"inside": "#inside",
+		"outside": "#outside",
+		"top": "#top",
+		"particle": "#top"
+	},
+	"elements": [
+		{
+			"name": "quarter_slice",
+			"from": [2, 0, 2],
+			"to": [8, 4, 8],
+			"faces": {
+				"north": {"uv": [8, 0, 14, 4], "texture": "#outside"},
+				"east": {"uv": [8, 9, 14, 13], "texture": "#inside"},
+				"south": {"uv": [2, 9, 8, 13], "texture": "#inside"},
+				"west": {"uv": [2, 12, 8, 16], "texture": "#outside"},
+				"up": {"uv": [2, 2, 8, 8], "texture": "#top"},
+				"down": {"uv": [2, 1, 8, 7], "texture": "#bottom"}
+			}
+		}
+	]
+}

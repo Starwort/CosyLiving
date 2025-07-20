@@ -1,0 +1,38 @@
+{
+  "parent": "cozyliving:root",
+  "criteria": {
+    "got_raspberry": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:raspberry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cozyliving.get_raspberry.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:raspberry"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cozyliving.get_raspberry.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_raspberry"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

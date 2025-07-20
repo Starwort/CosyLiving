@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 15.0,
+  "group": "raspberry_rhodolite",
+  "ingredient": {
+    "item": "cozyliving:raspberry_rhodolite_ore"
+  },
+  "result": "cozyliving:raspberry_rhodolite"
+}

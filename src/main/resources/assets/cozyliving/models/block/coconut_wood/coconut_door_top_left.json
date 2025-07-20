@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "cozyliving:block/coconut_wood/coconut_door_bottom",
+    "top": "cozyliving:block/coconut_wood/coconut_door_top"
+  }
+}

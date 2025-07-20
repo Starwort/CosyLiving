@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_trap_doors",
+  "key": {
+    "A": {
+      "item": "cozyliving:coconut_planks"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "item": "cozyliving:coconut_trapdoor"
+  },
+  "show_notification": true
+}

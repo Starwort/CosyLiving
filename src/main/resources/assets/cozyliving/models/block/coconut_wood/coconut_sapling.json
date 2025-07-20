@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "cozyliving:block/coconut_wood/coconut_sapling"
+  }
+}

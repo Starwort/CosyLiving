@@ -1,0 +1,46 @@
+{
+  "coconut_bonk": {
+    "subtitle": "sounds.cozyliving.coconut_bonk",
+    "sounds": [
+      "cozyliving:coconut_bonk"
+    ]
+  },
+  "leaves_rustle": {
+    "subtitle": "sounds.cozyliving.leaves_rustle",
+    "sounds": [
+      "cozyliving:leaves_rustle"
+    ]
+  },
+  "jam_smear": {
+    "subtitle": "sounds.cozyliving.jam_smear",
+    "sounds": [
+      "item/ink_sac/ink_sac1",
+      {
+        "name": "item/ink_sac/ink_sac1",
+        "pitch": 0.95
+      },
+      {
+        "name": "item/ink_sac/ink_sac1",
+        "pitch": 1.05
+      },
+      "item/ink_sac/ink_sac2",
+      {
+        "name": "item/ink_sac/ink_sac2",
+        "pitch": 0.95
+      },
+      {
+        "name": "item/ink_sac/ink_sac2",
+        "pitch": 1.05
+      },
+      "item/ink_sac/ink_sac3",
+      {
+        "name": "item/ink_sac/ink_sac3",
+        "pitch": 0.95
+      },
+      {
+        "name": "item/ink_sac/ink_sac3",
+        "pitch": 1.05
+      }
+    ]
+  }
+}

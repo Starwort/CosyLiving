@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "cozyliving",
+	"version": "${version}",
+	"name": "Cozy Living 1.20.1",
+	"description": "Adds a bunch of fun quality of life improvements and cute foodstuffs",
+	"authors": [
+		"Zoey, aka Azophyte"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/Azophyte/Cozy_Living-1.20.1"
+	},
+	"license": "MIT",
+	"icon": "assets/cozy_living/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "net.zoey.cozyliving.CozyLiving"
+		],
+		"client": [
+			"net.zoey.cozyliving.CozyLivingClient"
+		],
+		"fabric-datagen": [
+			"net.zoey.cozyliving.CozyLivingDataGenerator"
+		]
+	},
+	"mixins": [
+		"cozyliving.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

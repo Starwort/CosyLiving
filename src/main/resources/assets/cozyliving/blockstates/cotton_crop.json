@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "cozyliving:block/cotton/cotton_crop_0"
+    },
+    "age=1": {
+      "model": "cozyliving:block/cotton/cotton_crop_1"
+    },
+    "age=2": {
+      "model": "cozyliving:block/cotton/cotton_crop_2"
+    },
+    "age=3": {
+      "model": "cozyliving:block/cotton/cotton_crop_3"
+    },
+    "age=4": {
+      "model": "cozyliving:block/cotton/cotton_crop_4"
+    },
+    "age=5": {
+      "model": "cozyliving:block/cotton/cotton_crop_5"
+    },
+    "age=6": {
+      "model": "cozyliving:block/cotton/cotton_crop_6"
+    },
+    "age=7": {
+      "model": "cozyliving:block/cotton/cotton_crop_7"
+    }
+  }
+}
