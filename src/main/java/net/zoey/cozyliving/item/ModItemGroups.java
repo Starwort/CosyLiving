@@ -64,6 +64,8 @@ public class ModItemGroups {
                         entries.add(ModItems.COTTON_BOLL);
                         entries.add(ModItems.COTTON_SHRUB);
                         entries.add(ModItems.COTTON_BALE);
+                        entries.add(ModItems.COCONUT_CRATE);
+                        entries.add(ModItems.RASPBERRY_CRATE);
 
                         //WEARABLE ITEMS
                         entries.add(ModItems.FLOWER_CROWN);

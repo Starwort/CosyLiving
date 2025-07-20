@@ -9,5 +9,6 @@ public class ModFuelRegistry {
         FuelRegistry.INSTANCE.add(ModItems.FLOWER_CROWN, 100);
         FuelRegistry.INSTANCE.add(ModItems.COTTON_SHRUB, 100);
         FuelRegistry.INSTANCE.add(ModItems.COTTON_BOLL, 33);
+        FuelRegistry.INSTANCE.add(ModItems.COTTON_BALE, 300);
     }
 }

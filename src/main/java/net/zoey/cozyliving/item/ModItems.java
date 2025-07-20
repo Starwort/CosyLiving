@@ -137,6 +137,10 @@ public class ModItems {
 
     public static final Item COTTON_BALE = registerItem("cotton_bale", new TooltipBlockItem(ModBlocks.COTTON_BALE, new FabricItemSettings(), "cotton_bale"));
 
+    public static final Item COCONUT_CRATE = registerItem("coconut_crate", new TooltipBlockItem(ModBlocks.COCONUT_CRATE, new FabricItemSettings(), "coconut_crate"));
+
+    public static final Item RASPBERRY_CRATE = registerItem("raspberry_crate", new TooltipBlockItem(ModBlocks.RASPBERRY_CRATE, new FabricItemSettings(), "raspberry_crate"));
+
 
     //SIGN ITEMS
     public static final Item COCONUT_SIGN = registerItem("coconut_sign",

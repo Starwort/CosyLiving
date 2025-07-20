@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-19T17:05:10.9824555	Cozy Living 1.20.1/Tags for minecraft:block
+// 1.20.1	2025-07-20T11:46:28.2566252	Cozy Living 1.20.1/Tags for minecraft:block
 bf4fdff97ca7757f31f42cd7bc1bd1724aa32d79 data\cozyliving\tags\blocks\coconut_logs.json
 af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\blocks\wooden_pressure_plates.json
 2ee586956853982a8f1484cabd6f19d108b48b96 data\minecraft\tags\blocks\standing_signs.json
@@ -8,8 +8,8 @@ af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\blocks\wooden_press
 5ef1a8bea4d1ee88e8d17beeac15f272c096359e data\minecraft\tags\blocks\wooden_fences.json
 b5ffcc526c8306c044fafea064a21d3191470779 data\minecraft\tags\blocks\wall_hanging_signs.json
 1b55f3212454bc6ff08da36c8199b44931daa5f2 data\minecraft\tags\blocks\leaves.json
-8d22f5e469af6389f0a19f2f65754d625da480fa data\minecraft\tags\blocks\beacon_base_blocks.json
 0096e40948e5696815703b1fdfec45b1a916480a data\minecraft\tags\blocks\needs_iron_tool.json
+8d22f5e469af6389f0a19f2f65754d625da480fa data\minecraft\tags\blocks\beacon_base_blocks.json
 0096e40948e5696815703b1fdfec45b1a916480a data\minecraft\tags\blocks\mineable\pickaxe.json
 de78e30b49f40044b72a657c4b7ec48cef67b5c4 data\minecraft\tags\blocks\wall_signs.json
 0073eea6ebddae3b2bfe5f6c78317997a8e706d7 data\minecraft\tags\blocks\fence_gates.json

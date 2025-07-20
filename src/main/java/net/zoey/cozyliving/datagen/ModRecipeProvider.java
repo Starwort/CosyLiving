@@ -475,6 +475,34 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.COTTON_BALE), conditionsFromItem(ModItems.COTTON_BALE))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.COTTON_BOLL) + "_from_block"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModItems.COCONUT_CRATE, 1)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .input('a', ModBlocks.COCONUT)
+                .criterion(hasItem(ModBlocks.COCONUT), conditionsFromItem(ModBlocks.COCONUT))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModBlocks.COCONUT_CRATE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.COCONUT, 9)
+                .input(ModItems.COCONUT_CRATE)
+                .criterion(hasItem(ModItems.COCONUT_CRATE), conditionsFromItem(ModBlocks.COCONUT))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModBlocks.COCONUT) + "_from_block"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModItems.RASPBERRY_CRATE, 1)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .input('a', ModItems.RASPBERRY)
+                .criterion(hasItem(ModItems.RASPBERRY), conditionsFromItem(ModItems.RASPBERRY))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.RASPBERRY_CRATE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RASPBERRY, 9)
+                .input(ModItems.RASPBERRY_CRATE)
+                .criterion(hasItem(ModItems.RASPBERRY_CRATE), conditionsFromItem(ModItems.RASPBERRY_CRATE))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.RASPBERRY) + "_from_block"));
+
+
+
         //ALTERNATE RECIPES
         ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.STICKY_PISTON, 1)
                 .input(ModTags.Items.JAMS)

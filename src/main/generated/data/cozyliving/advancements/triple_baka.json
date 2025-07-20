@@ -1,5 +1,5 @@
 {
-  "parent": "cozyliving:root",
+  "parent": "cozyliving:get_coconut",
   "criteria": {
     "eaten_triple_ice_cream": {
       "conditions": {

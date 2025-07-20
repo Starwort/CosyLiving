@@ -78,8 +78,14 @@ public class ModBlocks {
                     .breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).burnable()));
 
     public static final Block COTTON_BALE = registerBlockWithoutItem("cotton_bale",
-            new CottonBaleBlock(FabricBlockSettings.create().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.WOOL).burnable().strength(0.25F).instrument(Instrument.FLUTE)));
+            new CottonBaleBlock(FabricBlockSettings.create().mapColor(MapColor.OFF_WHITE).sounds(BlockSoundGroup.WOOL).burnable().strength(0.25F).instrument(Instrument.FLUTE).burnable()));
 
+    //CRATE BLOCKS
+    public static final Block COCONUT_CRATE = registerBlockWithoutItem("coconut_crate",
+            new Block(FabricBlockSettings.create().mapColor(MapColor.BROWN).sounds(BlockSoundGroup.WOOD).burnable().strength(1F)));
+
+    public static final Block RASPBERRY_CRATE = registerBlockWithoutItem("raspberry_crate",
+            new Block(FabricBlockSettings.create().mapColor(MapColor.BRIGHT_RED).sounds(BlockSoundGroup.WOOD).burnable().strength(1F)));
 
 
     //Sliceable blocks
