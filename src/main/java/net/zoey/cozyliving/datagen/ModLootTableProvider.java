@@ -2,32 +2,21 @@ package net.zoey.cozyliving.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.block.Block;
-import net.minecraft.block.CaveVines;
-import net.minecraft.data.server.loottable.BlockLootTableGenerator;
 import net.minecraft.enchantment.Enchantments;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.condition.LootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.entry.LootPoolEntry;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
-import net.minecraft.state.property.Properties;
-import net.minecraft.state.property.Property;
 import net.zoey.cozyliving.block.ModBlocks;
-import net.zoey.cozyliving.block.custom.CoconutSaplingBlock;
 import net.zoey.cozyliving.block.custom.CottonCropBlock;
 import net.zoey.cozyliving.block.custom.RaspberryBushBlock;
 import net.zoey.cozyliving.item.ModItems;
-
-import static net.minecraft.state.property.Properties.AGE_4;
 
 
 
