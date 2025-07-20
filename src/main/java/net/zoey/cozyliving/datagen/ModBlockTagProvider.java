@@ -43,7 +43,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider{
                 .add(ModBlocks.COCONUT_SIGN)
                 .add(ModBlocks.COCONUT_HANGING_SIGN)
                 .add(ModBlocks.COCONUT_WALL_SIGN)
-                .add(ModBlocks.COCONUT_WALL_HANGING_SIGN);
+                .add(ModBlocks.COCONUT_WALL_HANGING_SIGN)
+                .add(ModBlocks.COCONUT_CRATE)
+                .add(ModBlocks.RASPBERRY_CRATE);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.BENITOITE_BLOCK)
@@ -52,6 +54,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider{
                 .add(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE)
                 .add(ModBlocks.RASPBERRY_RHODOLITE_BLOCK)
                 .add(ModBlocks.RASPBERRY_RHODOLITE_ORE);
+
+        getOrCreateTagBuilder(BlockTags.HOE_MINEABLE)
+                .add(ModBlocks.COCONUT_LEAVES)
+                .add(ModBlocks.COCONUT_LEAVES_CORNER)
+                .add(ModBlocks.COTTON_BALE)
+                .add(ModBlocks.COCONUT_CRATE)
+                .add(ModBlocks.RASPBERRY_CRATE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
                 .add(ModBlocks.BENITOITE_BLOCK)
