@@ -6,6 +6,8 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementCriterion;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.criterion.ConsumeItemCriterion;
+import net.minecraft.advancement.criterion.Criterion;
+import net.minecraft.advancement.criterion.ImpossibleCriterion;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -135,6 +137,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         false // Hide it in the advancement tab until it's achieved
                 )
                 //.criterion("land_on_cotton_bale", AdvancementCriterion.fromJson())
+                //.criterion("land_on_cotton_bale", conditionsFromStatistic)
                 .parent(get_cotton)
                 .build(consumer, CozyLiving.MOD_ID + ":negate_fall_damage_from_cotton_bale");
 

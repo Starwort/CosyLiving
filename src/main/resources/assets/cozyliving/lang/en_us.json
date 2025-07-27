@@ -115,6 +115,9 @@
   "item.cozyliving.lady_beetle_spawn_egg": "Lady Beetle Spawn Egg",
   "item.cozyliving.coconut_crate": "Coconut Crate",
   "item.cozyliving.raspberry_crate": "Raspberry Crate",
+  "item.cozyliving.chocolate_bar": "Chocolate Bar",
+  "item.cozyliving.red_sugar": "Red Sugar",
+
 
 
   "itemgroup.cozyliving.itemgroup": "Cozy Living",
@@ -122,6 +125,8 @@
   "sounds.cozyliving.coconut_bonk": "Bonk!",
   "sounds.cozyliving.leaves_rustle": "Leaves rustle",
   "sounds.cozyliving.jam_smear": "Glowberry Jam smears",
+
+  "stat.cozyliving.land_on_cotton_bale": "Soft landings on Cotton Bales",
 
   "tooltip.cozyliving.goopy_chorus": "§7I would think §dthrice §7about eating this...",
   "tooltip.cozyliving.invisible_armor": "§7For use with the armor vanity slot",
@@ -170,6 +175,9 @@
   "tooltip.cozyliving.apple_jam": "§7Gooey and rich",
   "tooltip.cozyliving.coconut_crate": "§7Where did the frame come from?",
   "tooltip.cozyliving.raspberry_crate": "§7So much berry",
+  "tooltip.cozyliving.chocolate_bar": "§7It's raining somewhere",
+  "tooltip.cozyliving.red_sugar": "§7Did I hear a \"rock and stone\"?",
+
 
 
   "whisper.cozyliving.i_see_everything": "I!!! See!!!! Ebverything!!!!!!!",

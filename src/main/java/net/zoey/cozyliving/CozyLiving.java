@@ -3,13 +3,8 @@ package net.zoey.cozyliving;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistry;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.Potions;
-import net.minecraft.recipe.BrewingRecipeRegistry;
 //import net.zoey.cozyliving.BrewingStandItems.ModBrewingStandItems;
 import net.zoey.cozyliving.block.ModBlocks;
-import net.zoey.cozyliving.datagen.ModWorldGenerator;
 import net.zoey.cozyliving.effect.ModEffects;
 import net.zoey.cozyliving.entity.ModBoats;
 import net.zoey.cozyliving.entity.ModEntities;
@@ -18,6 +13,7 @@ import net.zoey.cozyliving.foodComponents.ModFoodComponents;
 import net.zoey.cozyliving.item.ModItemGroups;
 import net.zoey.cozyliving.item.ModItems;
 import net.zoey.cozyliving.sound.ModSounds;
+import net.zoey.cozyliving.statistic.ModStatistics;
 import net.zoey.cozyliving.util.ModDamageTypes;
 import net.zoey.cozyliving.util.ModLootTableModifiers;
 import net.zoey.cozyliving.util.ModTags;
@@ -44,6 +40,8 @@ public class CozyLiving implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Cozy Living Initializing!");
+
+		ModStatistics.registerModStatistics();
 		ModItems.registerModItems();
 
 

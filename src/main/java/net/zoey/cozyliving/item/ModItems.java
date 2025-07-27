@@ -118,6 +118,11 @@ public class ModItems {
     public static final Item GLOWBERRY_JAM = registerItem("glowberry_jam",
             new GlowberryJamItem(new Item.Settings().food(ModFoodComponents.JAM).recipeRemainder(GLASS_BOTTLE),"glowberry_jam"));
 
+    public static final Item CHOCOLATE_BAR = registerItem("chocolate_bar",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.CHOCOLATE_BAR), "chocolate_bar"));
+
+    public static final Item RED_SUGAR = registerItem("red_sugar",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.RED_SUGAR), "red_sugar"));
 
     //BLOCK ITEMS (MUST BE CALLED LAST, ELSE REQUIRED ITEMS MAY NOT BE REGISTERED
 

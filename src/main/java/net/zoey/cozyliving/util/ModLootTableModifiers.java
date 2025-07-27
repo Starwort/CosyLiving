@@ -60,4 +60,28 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
         });
+
+        //MAKE REDSTONE ORE OCCASIONALLY DROP RED SUGAR
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if(Blocks.REDSTONE_ORE.getLootTableId().equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.035f)) //Drops from roughly one in 30 blocks
+                        .with(ItemEntry.builder(ModItems.RED_SUGAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+        });
+
+        //MAKE DEEPSLATE REDSTONE ORE OCCASIONALLY DROP RED SUGAR
+        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
+            if(Blocks.DEEPSLATE_REDSTONE_ORE.getLootTableId().equals(id)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.035f)) //Drops from roughly one in 30 blocks
+                        .with(ItemEntry.builder(ModItems.RED_SUGAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+        });
     }}

@@ -13,6 +13,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.zoey.cozyliving.datagen.ModAdvancementProvider;
+import net.zoey.cozyliving.statistic.ModStatistics;
 
 public class CottonBaleBlock extends PillarBlock {
     public CottonBaleBlock(Settings settings) {
@@ -24,6 +25,11 @@ public class CottonBaleBlock extends PillarBlock {
         entity.handleFallDamage(fallDistance, 0F, world.getDamageSources().fall());
         if (fallDistance >= 4){
             world.playSound(null, pos, SoundEvents.BLOCK_WOOL_FALL, SoundCategory.BLOCKS);
+            if (entity.isPlayer()){
+                PlayerEntity playerEntity = (PlayerEntity) entity;
+                playerEntity.incrementStat(ModStatistics.LAND_ON_COTTON_BALE);
+
+            }
         }
 
     }
