@@ -296,6 +296,21 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.MELON_SLICE), conditionsFromItem(Items.MELON_SLICE))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.WATERMELON_POPSICLE)));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHOCOLATE_BAR, 1)
+                .input(Items.COCOA_BEANS)
+                .input(Items.SUGAR)
+                .input(Items.PAPER)
+                .input(ModItems.COCONUT_MILK)
+                .criterion(hasItem(Items.COCOA_BEANS), conditionsFromItem(Items.COCOA_BEANS))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.CHOCOLATE_BAR)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.RED_SUGAR, 1)
+                .input(Items.REDSTONE)
+                .input(Items.SUGAR)
+                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.RED_SUGAR)));
+
+
         //JAMS
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.RASPBERRY_JAM, 1)
                 .input(Items.SUGAR)
@@ -516,6 +531,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group("pink_dye")
                 .criterion(hasItem(ModItems.RASPBERRY), conditionsFromItem(ModItems.RASPBERRY))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "pink_dye_from_raspberry"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.MILK_BUCKET, 1)
+                .input(Items.BUCKET)
+                .input(ModItems.COCONUT_MILK, 3)
+                .group("milk_bucket")
+                .criterion(hasItem(ModItems.COCONUT_MILK), conditionsFromItem(ModItems.COCONUT_MILK))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "milk_bucket_from_coconut_milk"));
 
         //MISC
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.FLOWER_CROWN, 1)

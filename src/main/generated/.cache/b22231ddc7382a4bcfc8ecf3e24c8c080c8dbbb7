@@ -1,4 +1,4 @@
-// 1.20.1	2025-07-20T11:46:28.2486467	Cozy Living 1.20.1/Block Loot Tables
+// 1.20.1	2025-07-27T09:07:07.2189484	Cozy Living 1.20.1/Block Loot Tables
 835dd9835606b4dd75f2476c600bfa1019b3cd5c data\cozyliving\loot_tables\blocks\coconut_leaves_corner.json
 ce2d4dd128225deb623a4d45fb30e9d3292e388a data\cozyliving\loot_tables\blocks\raspberry_rhodolite_block.json
 6deb41847e1007425a74d991d90b0625cd6a16ea data\cozyliving\loot_tables\blocks\coconut_log.json
@@ -10,6 +10,7 @@ ea1ba8018eb234dce739225f3641c971f4a20f18 data\cozyliving\loot_tables\blocks\test
 39f9f5c140ad65ff9b327ef52b046d6409645904 data\cozyliving\loot_tables\blocks\cotton_bale.json
 1ffa604a585248c5cc692cd34d15458d42593618 data\cozyliving\loot_tables\blocks\deepslate_benitoite_ore.json
 381da6601f9e71e90dddae094e5e65b750e99808 data\cozyliving\loot_tables\blocks\stripped_coconut_log.json
+86f488d20390042d1410eea35b32ac3546372098 data\cozyliving\loot_tables\blocks\coconut_crate.json
 3fe7869079696006dbb5676f89ff7ab61ef71589 data\cozyliving\loot_tables\blocks\coconut.json
 835dd9835606b4dd75f2476c600bfa1019b3cd5c data\cozyliving\loot_tables\blocks\coconut_leaves.json
 0d46ecc9f34351727cee0d9a53744574e28b720e data\cozyliving\loot_tables\blocks\raspberry_bush.json
@@ -25,6 +26,7 @@ de0faac3a3d2fab131e605982a8e5b186e6f5489 data\cozyliving\loot_tables\blocks\cott
 e1ce0b1a82ff79abdc47bcfe5d9f2a81d6813479 data\cozyliving\loot_tables\blocks\coconut_fence.json
 e01db4dac7ba60ce74a0a07ac85183bfffa048d7 data\cozyliving\loot_tables\blocks\raspberry_rhodolite_ore.json
 b846fee79b53fd05379891b6e48cad810a58917d data\cozyliving\loot_tables\blocks\coconut_pressure_plate.json
+e9f0f23f9b651d156f265f3618d48d127df8936c data\cozyliving\loot_tables\blocks\raspberry_crate.json
 a585b68394365e0fe24cdef675b5e6f4f6364113 data\cozyliving\loot_tables\blocks\benitoite_block.json
 423d85eb304fabf47e07d674236dff5c7b432d9a data\cozyliving\loot_tables\blocks\cotton_crop.json
 fb5c35474cbec4c7dbe8ef9321e1db6b94570304 data\cozyliving\loot_tables\blocks\potted_coconut_sapling.json

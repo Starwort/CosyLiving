@@ -1,24 +1,25 @@
-// 1.20.1	2025-07-20T11:46:28.2566252	Cozy Living 1.20.1/Tags for minecraft:block
+// 1.20.1	2025-07-27T09:07:07.2309168	Cozy Living 1.20.1/Tags for minecraft:block
 bf4fdff97ca7757f31f42cd7bc1bd1724aa32d79 data\cozyliving\tags\blocks\coconut_logs.json
 af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\blocks\wooden_pressure_plates.json
-2ee586956853982a8f1484cabd6f19d108b48b96 data\minecraft\tags\blocks\standing_signs.json
 570b370465a14204ae260c0db562050eb5eb2ea5 data\minecraft\tags\blocks\saplings.json
-9855fc039f2a9e55a3e691b3299de3372c6e0755 data\minecraft\tags\blocks\wooden_slabs.json
-6b7b168c22d819906f110175e151154453347aea data\minecraft\tags\blocks\wooden_buttons.json
 5ef1a8bea4d1ee88e8d17beeac15f272c096359e data\minecraft\tags\blocks\wooden_fences.json
-b5ffcc526c8306c044fafea064a21d3191470779 data\minecraft\tags\blocks\wall_hanging_signs.json
-1b55f3212454bc6ff08da36c8199b44931daa5f2 data\minecraft\tags\blocks\leaves.json
-0096e40948e5696815703b1fdfec45b1a916480a data\minecraft\tags\blocks\needs_iron_tool.json
 8d22f5e469af6389f0a19f2f65754d625da480fa data\minecraft\tags\blocks\beacon_base_blocks.json
 0096e40948e5696815703b1fdfec45b1a916480a data\minecraft\tags\blocks\mineable\pickaxe.json
 de78e30b49f40044b72a657c4b7ec48cef67b5c4 data\minecraft\tags\blocks\wall_signs.json
 0073eea6ebddae3b2bfe5f6c78317997a8e706d7 data\minecraft\tags\blocks\fence_gates.json
-667258d9d6fc55a08b7331e1907e9839a3426ecb data\minecraft\tags\blocks\mineable\axe.json
+40f153ff8c27c51af9ad121f090b5429a5b5ad45 data\minecraft\tags\blocks\mineable\hoe.json
+f9f106b9ce452f33aa8050c5085c6350496fdf40 data\minecraft\tags\blocks\crops.json
+e91164279f2c5509e4ee0036586964d73d1a8a88 data\minecraft\tags\blocks\logs_that_burn.json
+c4e64f34cc5a08fa3429e82158751e6b7ab1f265 data\minecraft\tags\blocks\wooden_doors.json
+2ee586956853982a8f1484cabd6f19d108b48b96 data\minecraft\tags\blocks\standing_signs.json
+9855fc039f2a9e55a3e691b3299de3372c6e0755 data\minecraft\tags\blocks\wooden_slabs.json
+6b7b168c22d819906f110175e151154453347aea data\minecraft\tags\blocks\wooden_buttons.json
+b5ffcc526c8306c044fafea064a21d3191470779 data\minecraft\tags\blocks\wall_hanging_signs.json
+1b55f3212454bc6ff08da36c8199b44931daa5f2 data\minecraft\tags\blocks\leaves.json
+0096e40948e5696815703b1fdfec45b1a916480a data\minecraft\tags\blocks\needs_iron_tool.json
+3e324a62b97a0ad3183840ec72cb5ae6c932490b data\minecraft\tags\blocks\mineable\axe.json
 d18d374f6227485b69c6cc7dfb3960c4b8c8aa10 data\minecraft\tags\blocks\wooden_stairs.json
 727d5b2035a103d0ed64d68fc05a232d8b39c9fb data\minecraft\tags\blocks\planks.json
 964cce4f3addbd2ae3215f3dd10ea1a3cd48194f data\minecraft\tags\blocks\ceiling_hanging_signs.json
-f9f106b9ce452f33aa8050c5085c6350496fdf40 data\minecraft\tags\blocks\crops.json
-e91164279f2c5509e4ee0036586964d73d1a8a88 data\minecraft\tags\blocks\logs_that_burn.json
 1ea49d0cf0687a7822570a4a0bc45f35575441b7 data\minecraft\tags\blocks\wooden_trapdoors.json
-c4e64f34cc5a08fa3429e82158751e6b7ab1f265 data\minecraft\tags\blocks\wooden_doors.json
 7d4b014d498162561e0aa1dfce424685d9d8861d data\minecraft\tags\blocks\flower_pots.json

@@ -20,34 +20,36 @@ public class ModItemGroups {
                     .entries((displayContext, entries) -> {
 
                         //EDIBLE ITEMS
+                        entries.add(ModItems.APPLE_JAM);
                         entries.add(ModItems.APPLE_SAUCE);
+                        entries.add(ModItems.BERRY_BLEND_SMOOTHIE);
                         entries.add(ModItems.CANDY_APPLE);
+                        entries.add(ModItems.CHOCOLATE_BAR);
                         entries.add(ModItems.CINNAMON_BUN);
+                        entries.add(ModItems.COCONUT_ICE_CREAM);
                         entries.add(ModItems.COCONUT_MILK);
+                        entries.add(ModItems.GILDED_TEA);
+                        entries.add(ModItems.GLOWBERRY_JAM);
+                        entries.add(ModItems.GOOPY_CHORUS);
                         entries.add(ModItems.HEAVY_CREAM);
+                        entries.add(ModItems.HERBAL_TEA);
+                        entries.add(ModItems.HONEYCOMB_ICE_CREAM);
+                        entries.add(ModItems.HOTTER_CHOCOLATE);
+                        entries.add(ModItems.HOT_CHOCOLATE);
+                        entries.add(ModItems.MYCO_MEDLEY);
+                        entries.add(ModItems.PINA_GLOWADA);
                         entries.add(ModItems.RASPBERRY);
+                        entries.add(ModItems.RASPBERRY_ICE_CREAM);
+                        entries.add(ModItems.RASPBERRY_JAM);
+                        entries.add(ModItems.RASPBERRY_TEA);
+                        entries.add(ModItems.RED_SUGAR);
                         entries.add(ModItems.ROASTED_MELON_SEEDS);
                         entries.add(ModItems.ROASTED_PUMPKIN_SEEDS);
-                        entries.add(ModItems.WATERMELON_POPSICLE);
-                        entries.add(ModItems.COCONUT_ICE_CREAM);
-                        entries.add(ModItems.HONEYCOMB_ICE_CREAM);
-                        entries.add(ModItems.RASPBERRY_ICE_CREAM);
+                        entries.add(ModItems.SLEEPY_TEA);
+                        entries.add(ModItems.SWEETBERRY_JAM);
                         entries.add(ModItems.TRIPLE_ICE_CREAM);
                         entries.add(ModItems.VILLAGER_STEW);
-                        entries.add(ModItems.RASPBERRY_TEA);
-                        entries.add(ModItems.HERBAL_TEA);
-                        entries.add(ModItems.GILDED_TEA);
-                        entries.add(ModItems.HOT_CHOCOLATE);
-                        entries.add(ModItems.HOTTER_CHOCOLATE);
-                        entries.add(ModItems.BERRY_BLEND_SMOOTHIE);
-                        entries.add(ModItems.MYCO_MEDLEY);
-                        entries.add(ModItems.SLEEPY_TEA);
-                        entries.add(ModItems.GOOPY_CHORUS);
-                        entries.add(ModItems.PINA_GLOWADA);
-                        entries.add(ModItems.APPLE_JAM);
-                        entries.add(ModItems.RASPBERRY_JAM);
-                        entries.add(ModItems.SWEETBERRY_JAM);
-                        entries.add(ModItems.GLOWBERRY_JAM);
+                        entries.add(ModItems.WATERMELON_POPSICLE);
 
                         //EDIBLE BLOCK ITEMS AND THEIR SLICES
                         entries.add(ModItems.GLOWBERRY_TART);

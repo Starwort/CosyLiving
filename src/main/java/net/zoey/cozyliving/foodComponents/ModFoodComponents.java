@@ -127,6 +127,19 @@ public class ModFoodComponents {
             .saturationModifier(0.75f)
             .build();
 
+    public static final FoodComponent CHOCOLATE_BAR = new FoodComponent.Builder()
+            .hunger(5)
+            .saturationModifier(0.75f)
+            .build();
+
+    public static final FoodComponent RED_SUGAR = new FoodComponent.Builder()
+            .hunger(1)
+            .saturationModifier(0.5f)
+            .statusEffect(new StatusEffectInstance(REGENERATION, 40, 2), 100)
+            .statusEffect(new StatusEffectInstance(HASTE, 120, 1), 100)
+            .alwaysEdible()
+            .build();
+
     public static void registerModFoodComponents() {
         CozyLiving.LOGGER.info("Registering Mod Food Components for " + CozyLiving.MOD_ID);
     }
