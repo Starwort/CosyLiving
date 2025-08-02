@@ -18,7 +18,8 @@ public class CozyLivingDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModRecipeProvider::new);
 		pack.addProvider(ModAdvancementProvider::new);
-
+		pack.addProvider(ModBiomeTagProvider::new);
+		pack.addProvider(ModWorldGenerator::new);
 	}
 
 	public void buildRegistry(RegistryBuilder registryBuilder){

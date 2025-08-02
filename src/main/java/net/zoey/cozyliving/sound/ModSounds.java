@@ -12,6 +12,7 @@ public class ModSounds {
     public static final SoundEvent COCONUT_BONK = registerSoundEvent("coconut_bonk");
     public static final SoundEvent LEAVES_RUSTLE = registerSoundEvent("leaves_rustle");
     public static final SoundEvent JAM_SMEAR = registerSoundEvent("jam_smear");
+    public static final SoundEvent INK_SMEAR = registerSoundEvent("ink_smear");
 
     public static final BlockSoundGroup COCONUT_SOUNDS = new BlockSoundGroup(1f, 1f,
             BlockSoundGroup.BAMBOO.getBreakSound(),

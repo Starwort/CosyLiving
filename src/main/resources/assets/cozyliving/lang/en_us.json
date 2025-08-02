@@ -117,6 +117,9 @@
   "item.cozyliving.raspberry_crate": "Raspberry Crate",
   "item.cozyliving.chocolate_bar": "Chocolate Bar",
   "item.cozyliving.red_sugar": "Red Sugar",
+  "item.cozyliving.buckram": "Buckram",
+  "item.cozyliving.charcoal_ink": "Charcoal Ink",
+
 
 
 
@@ -125,6 +128,8 @@
   "sounds.cozyliving.coconut_bonk": "Bonk!",
   "sounds.cozyliving.leaves_rustle": "Leaves rustle",
   "sounds.cozyliving.jam_smear": "Glowberry Jam smears",
+  "sounds.cozyliving.ink_smear": "Charcoal Ink smears",
+
 
   "stat.cozyliving.land_on_cotton_bale": "Soft landings on Cotton Bales",
 
@@ -177,6 +182,8 @@
   "tooltip.cozyliving.raspberry_crate": "§7So much berry",
   "tooltip.cozyliving.chocolate_bar": "§7It's raining somewhere",
   "tooltip.cozyliving.red_sugar": "§7Did I hear a \"rock and stone\"?",
+  "tooltip.cozyliving.buckram": "§7Leather alternative",
+  "tooltip.cozyliving.charcoal_ink": "§7Ink sac alternative",
 
 
 

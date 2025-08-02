@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.world;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -8,6 +9,7 @@ import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.block.ModBlocks;
 import net.zoey.cozyliving.world.gen.coconut_tree.CoconutTreeFeature;
@@ -21,6 +23,10 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> RASPBERRY_RHODOLITE_ORE_KEY = registerKey("raspberry_rhodolite_ore");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> PATCH_RASPBERRIES_KEY = registerKey("patch_raspberries");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PATCH_COTTON_SHRUB_KEY = registerKey("patch_cotton_shrub");
+
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PATCH_LUSH_COTTON_SHRUB_KEY = registerKey("patch_lush_cotton_shrub");
 
     public static final RegistryKey<ConfiguredFeature<?, ?>> COCONUT_TREE_KEY = registerKey("coconut_tree");
 
@@ -47,6 +53,15 @@ public class ModConfiguredFeatures {
         //RASPBERRY PATCH STUFF
 
         register(context, PATCH_RASPBERRIES_KEY, RaspberryBushesFeature.RASPBERRY_BUSHES, new DefaultFeatureConfig());
+
+        //COTTON PATCH STUFF
+
+        register(context, PATCH_COTTON_SHRUB_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
+                new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.COTTON_SHRUB.getDefaultState())), List.of(Blocks.GRASS_BLOCK, Blocks.MOSS_BLOCK)));
+
+        register(context, PATCH_LUSH_COTTON_SHRUB_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK,
+                new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.COTTON_SHRUB.getDefaultState())), List.of(Blocks.GRASS_BLOCK, Blocks.MOSS_BLOCK)));
+
 
         /*register(context, COCONUT_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(ModBlocks.COCONUT_LOG),

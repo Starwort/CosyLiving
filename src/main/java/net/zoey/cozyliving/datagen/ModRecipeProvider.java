@@ -7,12 +7,10 @@ import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
@@ -21,15 +19,9 @@ import net.zoey.cozyliving.block.ModBlocks;
 import net.zoey.cozyliving.item.ModItems;
 import net.zoey.cozyliving.util.ModTags;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-    private static final List<ItemConvertible> RASPBERRY_RHODOLITE_SMELTABLES =
-            List.of(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE, ModBlocks.RASPBERRY_RHODOLITE_ORE);
-    private static final List<ItemConvertible> BENITOITE_SMELTABLES =
-            List.of(ModBlocks.DEEPSLATE_BENITOITE_ORE, ModBlocks.BENITOITE_ORE);
-    private static final List<ItemConvertible> CHORUS_FLOWER = List.of(Items.CHORUS_FLOWER);
 
     public ModRecipeProvider(FabricDataOutput output) {
         super(output);
@@ -45,6 +37,20 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     offerReversibleCompactingRecipes(consumer, RecipeCategory.BUILDING_BLOCKS, ModItems.RASPBERRY_RHODOLITE, RecipeCategory.DECORATIONS, ModBlocks.RASPBERRY_RHODOLITE_BLOCK);
     offerReversibleCompactingRecipes(consumer, RecipeCategory.BUILDING_BLOCKS, ModItems.BENITOITE, RecipeCategory.DECORATIONS, ModBlocks.BENITOITE_BLOCK);*/
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHARCOAL_INK, 3)
+                .input(Items.CHARCOAL)
+                .input(Items.GLASS_BOTTLE, 3)
+                .criterion(hasItem(Items.CHARCOAL), conditionsFromItem(Items.CHARCOAL))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.CHARCOAL_INK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BUCKRAM, 2)
+                .pattern("ab")
+                .pattern("ba")
+                .input('a', ModItems.COTTON_BOLL)
+                .input('b', Items.STRING)
+                .criterion(hasItem(ModItems.COTTON_BOLL), conditionsFromItem(ModItems.COTTON_BOLL))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.BUCKRAM)));
 
     ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BENITOITE, 9)
             .input(ModBlocks.BENITOITE_BLOCK)
@@ -539,6 +545,41 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.COCONUT_MILK), conditionsFromItem(ModItems.COCONUT_MILK))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "milk_bucket_from_coconut_milk"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.ITEM_FRAME, 1)
+                .pattern("aaa")
+                .pattern("aba")
+                .pattern("aaa")
+                .input('a', Items.STICK)
+                .input('b', ModItems.BUCKRAM)
+                .criterion(hasItem(ModItems.BUCKRAM), conditionsFromItem(ModItems.BUCKRAM))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "item_frame_from_buckram"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.GLOW_ITEM_FRAME, 1)
+                .input(ModItems.GLOWBERRY_JAM)
+                .input(Items.ITEM_FRAME, 1)
+                .criterion(hasItem(Items.GLOW_ITEM_FRAME), conditionsFromItem(Items.GLOW_ITEM_FRAME))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "glow_item_frame_from_glowberry_jam"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BOOK, 1)
+                .input(Items.PAPER, 3)
+                .input(ModItems.BUCKRAM)
+                .criterion(hasItem(ModItems.BUCKRAM), conditionsFromItem(ModItems.BUCKRAM))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "book_from_buckram"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLACK_DYE, 2)
+                .input(ModItems.CHARCOAL_INK)
+                .criterion(hasItem(ModItems.CHARCOAL_INK), conditionsFromItem(ModItems.CHARCOAL_INK))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "black_dye_from_charcoal_ink"));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.WRITABLE_BOOK, 1)
+                .input(Items.BOOK)
+                .input(ModItems.CHARCOAL_INK)
+                .input(Items.FEATHER)
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "writable_book_from_charcoal_ink"));
+
+
+
         //MISC
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.FLOWER_CROWN, 1)
                 .pattern("AAA")
@@ -552,14 +593,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     public void createSingleItemRecipe(Consumer<RecipeJsonProvider> consumer, ItemConvertible input, ItemConvertible output, String group, RecipeCategory recipeCategory) {
         ShapelessRecipeJsonBuilder.create(recipeCategory, output, 1)
-                .input(input)
-                .criterion(hasItem(input), conditionsFromItem(input))
-                .group(group)
-                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(input)));
-    }
-
-    public void createSingleItemRecipe(Consumer<RecipeJsonProvider> consumer, ItemConvertible input, ItemConvertible output, String group, RecipeCategory recipeCategory, int count) {
-        ShapelessRecipeJsonBuilder.create(recipeCategory, output, count)
                 .input(input)
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .group(group)

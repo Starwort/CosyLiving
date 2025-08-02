@@ -118,6 +118,12 @@ public class ModItems {
     public static final Item GLOWBERRY_JAM = registerItem("glowberry_jam",
             new GlowberryJamItem(new Item.Settings().food(ModFoodComponents.JAM).recipeRemainder(GLASS_BOTTLE),"glowberry_jam"));
 
+    public static final Item CHARCOAL_INK = registerItem("charcoal_ink",
+            new CharcoalInkItem(new Item.Settings().recipeRemainder(GLASS_BOTTLE), "charcoal_ink"));
+
+    public static final Item BUCKRAM = registerItem("buckram",
+            new ModTooltipItem(new Item.Settings(), "buckram"));
+
     public static final Item CHOCOLATE_BAR = registerItem("chocolate_bar",
             new ModTooltipItem(new Item.Settings().food(ModFoodComponents.CHOCOLATE_BAR), "chocolate_bar"));
 
