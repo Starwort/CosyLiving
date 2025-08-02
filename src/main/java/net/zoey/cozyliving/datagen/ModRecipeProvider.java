@@ -578,6 +578,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "writable_book_from_charcoal_ink"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BUNDLE, 1)
+                .pattern("a")
+                .pattern("b")
+                .input('a', Items.STRING)
+                .input('b', ModItems.BUCKRAM)
+                .criterion(hasItem(ModItems.BUCKRAM), conditionsFromItem(ModItems.BUCKRAM))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, "bundle_from_buckram"));
+
 
 
         //MISC

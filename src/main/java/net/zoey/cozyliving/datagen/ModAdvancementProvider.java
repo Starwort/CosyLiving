@@ -141,6 +141,35 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .parent(get_cotton)
                 .build(consumer, CozyLiving.MOD_ID + ":negate_fall_damage_from_cotton_bale");
 
+        Advancement drink_hotter_chocolate = Advancement.Builder.create()
+                .display(
+                        ModItems.HOTTER_CHOCOLATE, // The display icon
+                        Text.translatable("advancements.cozyliving.drink_hotter_chocolate.title"), // The title
+                        Text.translatable("advancements.cozyliving.drink_hotter_chocolate.description"), // The description
+                        null,
+                        AdvancementFrame.CHALLENGE, // TASK, CHALLENGE, or GOAL
+                        true, // Show the toast when completing it
+                        true, // Announce it to chat
+                        false // Hide it in the advancement tab until it's achieved
+                )
+                .criterion("drank_hotter_chocolate", ConsumeItemCriterion.Conditions.item(ModItems.HOTTER_CHOCOLATE))
+                .parent(get_coconut)
+                .build(consumer, CozyLiving.MOD_ID + ":drink_hotter_chocolate");
+
+        Advancement eat_goopy_chorus = Advancement.Builder.create()
+                .display(
+                        ModItems.HOTTER_CHOCOLATE, // The display icon
+                        Text.translatable("advancements.cozyliving.eat_goopy_chorus.title"), // The title
+                        Text.translatable("advancements.cozyliving.eat_goopy_chorus.description"), // The description
+                        null,
+                        AdvancementFrame.CHALLENGE, // TASK, CHALLENGE, or GOAL
+                        true, // Show the toast when completing it
+                        true, // Announce it to chat
+                        false // Hide it in the advancement tab until it's achieved
+                )
+                .criterion("drank_hotter_chocolate", ConsumeItemCriterion.Conditions.item(ModItems.HOTTER_CHOCOLATE))
+                .parent(get_coconut)
+                .build(consumer, CozyLiving.MOD_ID + ":eat_goopy_chorus");
     }
 
 
