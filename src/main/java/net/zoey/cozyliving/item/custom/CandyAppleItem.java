@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class CandyAppleItem extends Item {
     String translationKey;
@@ -23,6 +24,11 @@ public class CandyAppleItem extends Item {
     public CandyAppleItem(Settings settings, String translationID) {
         super(settings);
         translationKey = translationID;
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        return (Objects.equals(translationKey, "enchanted_golden_candy_apple"));
     }
 
     @Override
@@ -59,9 +65,11 @@ public class CandyAppleItem extends Item {
     }
 
 
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
         return 60;
     }
+
 
     public UseAction getUseAction(ItemStack stack) {
         return UseAction.EAT;

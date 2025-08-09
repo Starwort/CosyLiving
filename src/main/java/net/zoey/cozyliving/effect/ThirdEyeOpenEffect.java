@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.effect;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -7,6 +8,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.PlayerManager;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -32,11 +35,15 @@ public class ThirdEyeOpenEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        //Code somewhat shamelessly stolen from the chorus fruit
+
         final int maxRoll = 33;
         int rollSize = 20 / (amplifier + 1);
         World world = entity.getWorld();
-        int roll = world.getRandom().nextBetween(1, rollSize + 1);
+        int roll = world.getRandom().nextBetween(1, rollSize + 5);
+        CozyLiving.LOGGER.info("Roll = " + roll);
+
+        //DEBUG SHIT
+
         if (!world.isClient){
             switch (roll){ //One of these effects should run at random every ~20 seconds
                 case 1:
@@ -57,10 +64,15 @@ public class ThirdEyeOpenEffect extends StatusEffect {
                 case 4:
                     teleport(world, entity);
                     break;
-                case 5: //Deprecated
+                case 5, 6:
                     Text signature = Text.literal("<").append(entity.getDisplayName()).append("> ");
-                    Text message = (speakNonsense(world, entity));
-                    entity.sendMessage(Text.empty().append(signature).append(message));
+                    Text content = (speakNonsense(world, entity));
+                    Text message = Text.empty().append(signature).append(content);
+
+                    PlayerManager playerManager = MinecraftClient.getInstance().getServer().getPlayerManager();
+                    if (playerManager != null){
+                        playerManager.broadcast(message, false);
+                    }
                     break;
             }
         }
@@ -68,7 +80,7 @@ public class ThirdEyeOpenEffect extends StatusEffect {
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {  //Prevents lag by making it only update every second
-        return duration % 60 == 0;
+        return duration % 30 == 0;
     }
 
     public Text speakNonsense(World world, LivingEntity entity){

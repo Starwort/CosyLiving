@@ -8,6 +8,7 @@ import net.minecraft.util.math.MathHelper;
 import net.zoey.cozyliving.effect.ModEffects;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class ClientPlayerEntitySillyEffectMixin extends AbstractClientPlayerEntity {
 
     @Shadow public float nauseaIntensity;
+    @Unique
     private float sillyIntensity = 0;
 
     public ClientPlayerEntitySillyEffectMixin(ClientWorld world, GameProfile profile) {

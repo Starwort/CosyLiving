@@ -12,6 +12,7 @@ import java.util.List;
 public class ModTooltipItem extends Item {
     String translationKey;
 
+
     public ModTooltipItem(Settings settings, String translationID) {
         super(settings);
         translationKey = translationID;

@@ -2,11 +2,11 @@
   "advancements.cozyliving.root.title": "Cozy Living",
   "advancements.cozyliving.root.description": "Comfort and Confection!",
   "advancements.cozyliving.get_raspberry.title": "Berry Beginnings",
-  "advancements.cozyliving.get_raspberry.description": "Bountiful berry booty beckons",
+  "advancements.cozyliving.get_raspberry.description": "Berry bounty beckons",
   "advancements.cozyliving.get_coconut.title": "Coconutter",
   "advancements.cozyliving.get_coconut.description": "Find coconut trees at the beach",
-  "advancements.cozyliving.get_cotton.title": "Yes It's Spelt Correctly",
-  "advancements.cozyliving.get_cotton.description": "Venture to the savannas for cotton",
+  "advancements.cozyliving.get_cotton.title": "Yes, It's Spelt Correctly",
+  "advancements.cozyliving.get_cotton.description": "Venture to the tropics for cotton",
   "advancements.cozyliving.get_cinnamon.title": "Absolute Cinnamon",
   "advancements.cozyliving.get_cinnamon.description": "Harvest jungle leaves for cinnamon",
   "advancements.cozyliving.negate_fall_damage_from_cotton_bale.title": "Soft Landing",
@@ -15,8 +15,21 @@
   "advancements.cozyliving.triple_baka.description": "Consume Triple Ice Cream",
   "advancements.cozyliving.drink_hotter_chocolate.title": "Hot Hot!",
   "advancements.cozyliving.drink_hotter_chocolate.description": "Drink Hotter Chocolate",
-  "advancements.cozyliving.eat_goopy_chorus.title": "And I saw, and behold.",
+  "advancements.cozyliving.eat_candy_apple.title": "Ooh, sticky!",
+  "advancements.cozyliving.eat_candy_apple.description": "Indulge in a Candy Apple",
+  "advancements.cozyliving.eat_golden_candy_apple.title": "That's a bit much, no?",
+  "advancements.cozyliving.eat_golden_candy_apple.description": "Pamper yourself with a Golden Candy Apple",
+  "advancements.cozyliving.eat_enchanted_golden_candy_apple.title": "Are you serious!?",
+  "advancements.cozyliving.eat_enchanted_golden_candy_apple.description": "Spoil yourself with an Enchanted Golden Candy Apple",
+  "advancements.cozyliving.eat_goopy_chorus.title": "And I saw, and behold",
   "advancements.cozyliving.eat_goopy_chorus.description": "Open your third eye",
+  "advancements.cozyliving.in_a_jam.title": "In a jam",
+  "advancements.cozyliving.in_a_jam.description": "Craft all four jam types",
+  "advancements.cozyliving.donutter.title": "Donutter",
+  "advancements.cozyliving.donutter.description": "Craft all five donuts",
+
+
+
   "block.cozyliving.potted_coconut_sapling": "Potted Coconut Sapling",
   "block.cozyliving.potted_cotton_shrub": "Potted Cotton Shrub",
   "block.cozyliving.benitoite_block": "Benitoite Block",
@@ -123,7 +136,14 @@
   "item.cozyliving.red_sugar": "Red Sugar",
   "item.cozyliving.buckram": "Buckram",
   "item.cozyliving.charcoal_ink": "Charcoal Ink",
-
+  "item.cozyliving.golden_candy_apple": "Golden Candy Apple",
+  "item.cozyliving.enchanted_golden_candy_apple": "Enchanted Golden Candy Apple",
+  "item.cozyliving.mao_croqui": "Miaou Craqué",
+  "item.cozyliving.raspberry_jam_donut": "Raspberry Jam Donut",
+  "item.cozyliving.glowberry_jam_donut": "Glowberry Jam Donut",
+  "item.cozyliving.apple_jam_donut": "Apple Jam Donut",
+  "item.cozyliving.sweetberry_jam_donut": "Sweetberry Jam Donut",
+  "item.cozyliving.cream_donut": "Cream Donut",
 
 
 
@@ -188,6 +208,17 @@
   "tooltip.cozyliving.red_sugar": "§7Did I hear a \"rock and stone\"?",
   "tooltip.cozyliving.buckram": "§7Leather alternative",
   "tooltip.cozyliving.charcoal_ink": "§7Ink sac alternative",
+  "tooltip.cozyliving.golden_candy_apple": "§7Syrupy decadence",
+  "tooltip.cozyliving.enchanted_golden_candy_apple": "§3Regal Confection",
+  "tooltip.cozyliving.mao_croqui.1": "§7\"Thank you ",
+  "tooltip.cozyliving.mao_croqui.2": "§7thank you for everything\"",
+  "tooltip.cozyliving.mao_croqui.3": "§7\"They're a bunch of candy,",
+  "tooltip.cozyliving.mao_croqui.4": "§7it's so f§kucking§r§7 beautiful\"",
+  "tooltip.cozyliving.raspberry_jam_donut": "§7A favourite of dryads everywhere",
+  "tooltip.cozyliving.glowberry_jam_donut": "§7At night the sugar looks like stars",
+  "tooltip.cozyliving.apple_jam_donut": "§7Simple and delicious",
+  "tooltip.cozyliving.sweetberry_jam_donut": "§7Makes your fingers sticky",
+  "tooltip.cozyliving.cream_donut": "§7Mmmmmm...",
 
 
 
@@ -210,8 +241,8 @@
 
 
 
-
   "item.minecraft.potion.effect.empty": "Water Bottle",
+
 
 
   "trim_material.cozyliving.benitoite": "Benitoite",

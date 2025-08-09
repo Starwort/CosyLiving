@@ -32,5 +32,8 @@
       "eaten_triple_ice_cream"
     ]
   ],
+  "rewards": {
+    "experience": 500
+  },
   "sends_telemetry_event": true
 }

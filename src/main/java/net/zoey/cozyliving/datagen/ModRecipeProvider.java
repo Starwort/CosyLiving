@@ -111,6 +111,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
             .criterion(hasItem(Items.APPLE), conditionsFromItem(Items.APPLE))
             .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.CANDY_APPLE)));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.GOLDEN_CANDY_APPLE, 1)
+                .input(Items.GOLDEN_APPLE)
+                .input(Items.HONEY_BOTTLE)
+                .input(Items.SUGAR)
+                .input(Items.STICK)
+                .criterion(hasItem(Items.GOLDEN_APPLE), conditionsFromItem(Items.GOLDEN_APPLE))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.GOLDEN_CANDY_APPLE)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.ENCHANTED_GOLDEN_CANDY_APPLE, 1)
+                .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .input(Items.HONEY_BOTTLE)
+                .input(Items.SUGAR)
+                .input(Items.STICK)
+                .criterion(hasItem(Items.ENCHANTED_GOLDEN_APPLE), conditionsFromItem(Items.ENCHANTED_GOLDEN_APPLE))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.ENCHANTED_GOLDEN_CANDY_APPLE)));
+
     ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CINNAMON_BUN, 1)
             .input(ModItems.CINNAMON_STICK)
             .input(Items.SUGAR)
@@ -261,7 +277,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         createCookingRecipe(consumer, Items.MELON_SEEDS, ModItems.ROASTED_MELON_SEEDS, 0.1f);
         createCookingRecipe(consumer, Items.PUMPKIN_SEEDS, ModItems.ROASTED_PUMPKIN_SEEDS, 0.1f);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SLEEPY_TEA, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SLEEPY_TEA, 2)
                 .input(Items.HONEY_BOTTLE)
                 .input(Items.ALLIUM)
                 .input(ModItems.COCONUT_MILK)
@@ -316,6 +332,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.RED_SUGAR)));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MAO_CROQUI, 8)
+                .input(ModItems.RASPBERRY)
+                .input(Items.GLOW_BERRIES)
+                .input(Items.APPLE)
+                .input(Items.SWEET_BERRIES)
+                .input(Items.SUGAR)
+                .criterion(hasItem(ModItems.RASPBERRY), conditionsFromItem(ModItems.RASPBERRY))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.MAO_CROQUI)));
+
 
         //JAMS
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.RASPBERRY_JAM, 1)
@@ -345,6 +370,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(Items.APPLE)
                 .criterion(hasItem(Items.APPLE), conditionsFromItem(Items.APPLE))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(ModItems.APPLE_JAM)));
+
+        createDonutRecipe(consumer, ModItems.RASPBERRY_JAM, ModItems.RASPBERRY_JAM_DONUT);
+        createDonutRecipe(consumer, ModItems.GLOWBERRY_JAM, ModItems.GLOWBERRY_JAM_DONUT);
+        createDonutRecipe(consumer, ModItems.APPLE_JAM, ModItems.APPLE_JAM_DONUT);
+        createDonutRecipe(consumer, ModItems.SWEETBERRY_JAM, ModItems.SWEETBERRY_JAM_DONUT);
+        createDonutRecipe(consumer, ModItems.HEAVY_CREAM, ModItems.CREAM_DONUT);
 
         //BUILDING BLOCKS
 
@@ -628,6 +659,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .group(group)
                 .criterion(hasItem(input), conditionsFromItem(input))
                 .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(input) + "_from_blasting"));
+    }
+
+    public void createDonutRecipe(Consumer<RecipeJsonProvider> consumer, ItemConvertible filling, ItemConvertible output){
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output, 1)
+                .pattern(" A ")
+                .pattern("BCB")
+                .pattern(" D ")
+                .input('A', Items.SUGAR)
+                .input('B', Items.WHEAT)
+                .input('C', filling)
+                .input('D', ModItems.COCONUT_MILK)
+                .criterion("has_filling", conditionsFromItem(filling))
+                .offerTo(consumer, new Identifier(CozyLiving.MOD_ID, getRecipeName(output)));
     }
 
 }

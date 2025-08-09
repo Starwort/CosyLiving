@@ -32,7 +32,22 @@ public class ModFoodComponents {
     public static final FoodComponent CANDY_APPLE = new FoodComponent.Builder()
             .hunger(5)
             .saturationModifier(1.5f)
-            .snack()
+            .build();
+    public static final FoodComponent GOLDEN_CANDY_APPLE = new FoodComponent.Builder()
+            .hunger(6)
+            .saturationModifier(3f)
+            .alwaysEdible()
+            .statusEffect(new StatusEffectInstance(ABSORPTION, 3600,0), 100)
+            .statusEffect(new StatusEffectInstance(REGENERATION, 150,1), 100)
+            .build();
+    public static final FoodComponent ENCHANTED_GOLDEN_CANDY_APPLE = new FoodComponent.Builder()
+            .hunger(6)
+            .saturationModifier(3f)
+            .alwaysEdible()
+            .statusEffect(new StatusEffectInstance(ABSORPTION, 3600,3), 100)
+            .statusEffect(new StatusEffectInstance(REGENERATION, 600,1), 100)
+            .statusEffect(new StatusEffectInstance(FIRE_RESISTANCE, 9000), 100)
+            .statusEffect(new StatusEffectInstance(RESISTANCE, 9000), 100)
             .build();
     public static final FoodComponent COCONUT_MILK = new FoodComponent.Builder()
             .hunger(2)
@@ -136,8 +151,19 @@ public class ModFoodComponents {
             .hunger(1)
             .saturationModifier(0.5f)
             .statusEffect(new StatusEffectInstance(REGENERATION, 40, 2), 100)
-            .statusEffect(new StatusEffectInstance(HASTE, 120, 1), 100)
+            .statusEffect(new StatusEffectInstance(HASTE, 600, 1), 100)
             .alwaysEdible()
+            .build();
+
+    public static final FoodComponent MAO_CROQUI = new FoodComponent.Builder()
+            .hunger(1)
+            .saturationModifier(0.5f)
+            .snack()
+            .build();
+
+    public static final FoodComponent DONUT = new FoodComponent.Builder()
+            .hunger(7)
+            .saturationModifier(0.75f)
             .build();
 
     public static void registerModFoodComponents() {

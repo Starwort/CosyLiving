@@ -56,6 +56,12 @@ public class ModItems {
     public static final Item CANDY_APPLE = registerItem("candy_apple",
             new CandyAppleItem(new Item.Settings().food(ModFoodComponents.CANDY_APPLE).recipeRemainder(STICK), "candy_apple"));
 
+    public static final Item GOLDEN_CANDY_APPLE = registerItem("golden_candy_apple",
+            new CandyAppleItem(new Item.Settings().food(ModFoodComponents.GOLDEN_CANDY_APPLE).recipeRemainder(STICK), "golden_candy_apple"));
+
+    public static final Item ENCHANTED_GOLDEN_CANDY_APPLE = registerItem("enchanted_golden_candy_apple",
+            new CandyAppleItem(new Item.Settings().food(ModFoodComponents.ENCHANTED_GOLDEN_CANDY_APPLE).recipeRemainder(STICK).rarity(Rarity.RARE), "enchanted_golden_candy_apple"));
+
     public static final Item ROASTED_PUMPKIN_SEEDS = registerItem("roasted_pumpkin_seeds",
             new ModTooltipItem(new Item.Settings().food(ModFoodComponents.ROASTED_SEEDS), "roasted_pumpkin_seeds"));
 
@@ -118,6 +124,18 @@ public class ModItems {
     public static final Item GLOWBERRY_JAM = registerItem("glowberry_jam",
             new GlowberryJamItem(new Item.Settings().food(ModFoodComponents.JAM).recipeRemainder(GLASS_BOTTLE),"glowberry_jam"));
 
+    public static final Item RASPBERRY_JAM_DONUT = registerItem("raspberry_jam_donut",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.DONUT), "raspberry_jam_donut"));
+    public static final Item GLOWBERRY_JAM_DONUT = registerItem("glowberry_jam_donut",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.DONUT), "glowberry_jam_donut"));
+    public static final Item APPLE_JAM_DONUT = registerItem("apple_jam_donut",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.DONUT), "apple_jam_donut"));
+    public static final Item SWEETBERRY_JAM_DONUT = registerItem("sweetberry_jam_donut",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.DONUT), "sweetberry_jam_donut"));
+    public static final Item CREAM_DONUT = registerItem("cream_donut",
+            new ModTooltipItem(new Item.Settings().food(ModFoodComponents.DONUT), "cream_donut"));
+
+
     public static final Item CHARCOAL_INK = registerItem("charcoal_ink",
             new CharcoalInkItem(new Item.Settings().recipeRemainder(GLASS_BOTTLE), "charcoal_ink"));
 
@@ -129,6 +147,9 @@ public class ModItems {
 
     public static final Item RED_SUGAR = registerItem("red_sugar",
             new ModTooltipItem(new Item.Settings().food(ModFoodComponents.RED_SUGAR), "red_sugar"));
+
+    public static final Item MAO_CROQUI = registerItem("mao_croqui",
+            new ModMaoCroquiItem(new Item.Settings().food(ModFoodComponents.MAO_CROQUI), "mao_croqui"));
 
     //BLOCK ITEMS (MUST BE CALLED LAST, ELSE REQUIRED ITEMS MAY NOT BE REGISTERED
 

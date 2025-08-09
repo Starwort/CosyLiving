@@ -19,6 +19,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BottledItem extends Item {
     String translationKey;
@@ -51,10 +52,15 @@ public class BottledItem extends Item {
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
+        if (Objects.equals(translationKey, "coconut_milk") || Objects.equals(translationKey, "heavy_cream")){
+            if (!world.isClient) {
+                user.clearStatusEffects();
+            }
+        }
         return stack;
     }
-
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
         return drinkingTime;
     }
 
