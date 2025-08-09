@@ -1,0 +1,101 @@
+{
+  "parent": "cozyliving:in_a_jam",
+  "criteria": {
+    "got_apple_jam_donut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:apple_jam_donut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_cream_donut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:cream_donut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_glowberry_jam_donut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:glowberry_jam_donut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_raspberry_jam_donut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:raspberry_jam_donut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "got_sweetberry_jam_donut": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "cozyliving:sweetberry_jam_donut"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cozyliving.donutter.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:raspberry_jam_donut"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cozyliving.donutter.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_apple_jam_donut"
+    ],
+    [
+      "got_glowberry_jam_donut"
+    ],
+    [
+      "got_sweetberry_jam_donut"
+    ],
+    [
+      "got_raspberry_jam_donut"
+    ],
+    [
+      "got_cream_donut"
+    ]
+  ],
+  "rewards": {
+    "experience": 750
+  },
+  "sends_telemetry_event": true
+}
