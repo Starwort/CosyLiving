@@ -64,7 +64,7 @@ public class ThirdEyeOpenEffect extends StatusEffect {
                 case 4:
                     teleport(world, entity);
                     break;
-                case 5, 6:
+                case -1: //TODO: FIX THIS, CRASHES CLIENT ON SERVERS
                     Text signature = Text.literal("<").append(entity.getDisplayName()).append("> ");
                     Text content = (speakNonsense(world, entity));
                     Text message = Text.empty().append(signature).append(content);
