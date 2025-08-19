@@ -68,7 +68,6 @@ public class CozyLiving implements ModInitializer {
 		CompostingTool.addToRegister();
 		StrippableBlocksTool.addToRegister();
 		FlammableBlocksTool.addToRegister();
-		RenderLayerTool.cutOut();
 		ModFuelRegistry.AddItemsToFuelRegistry();
 
 		//Entities

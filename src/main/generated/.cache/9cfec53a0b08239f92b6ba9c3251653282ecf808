@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-02T22:45:11.3778296	Cozy Living 1.20.1/Tags for minecraft:item
+// 1.20.1	2025-08-19T09:15:07.4773554	Cozy Living 1.20.1/Tags for minecraft:item
 0073eea6ebddae3b2bfe5f6c78317997a8e706d7 data\minecraft\tags\items\fence_gates.json
 e91164279f2c5509e4ee0036586964d73d1a8a88 data\minecraft\tags\items\logs_that_burn.json
 5ef1a8bea4d1ee88e8d17beeac15f272c096359e data\minecraft\tags\items\wooden_fences.json
@@ -12,8 +12,8 @@ bf4fdff97ca7757f31f42cd7bc1bd1724aa32d79 data\cozyliving\tags\items\coconut_logs
 b1048f04a84f936de2edac0e3b3ad5065c08f4ee data\cozyliving\tags\items\ice_creams.json
 ba6d62dad332eb4be7ffa085a247ed6954561708 data\cozyliving\tags\items\jams.json
 50256e2271a65b294b85b25e7135bb4e3bceb831 data\cozyliving\tags\items\cotton_items.json
-964cce4f3addbd2ae3215f3dd10ea1a3cd48194f data\minecraft\tags\items\hanging_signs.json
 af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\items\wooden_pressure_plates.json
+964cce4f3addbd2ae3215f3dd10ea1a3cd48194f data\minecraft\tags\items\hanging_signs.json
 d18d374f6227485b69c6cc7dfb3960c4b8c8aa10 data\minecraft\tags\items\wooden_stairs.json
 dec9045bd35568b67d2dc9e092b505716de2b198 data\cozyliving\tags\items\brewing_stand_ingredient_useable.json
 c4e64f34cc5a08fa3429e82158751e6b7ab1f265 data\minecraft\tags\items\wooden_doors.json

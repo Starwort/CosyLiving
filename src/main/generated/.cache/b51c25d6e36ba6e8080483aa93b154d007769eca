@@ -1,4 +1,4 @@
-// 1.20.1	2025-08-02T22:45:11.3970127	Cozy Living 1.20.1/Tags for minecraft:block
+// 1.20.1	2025-08-19T09:15:07.4873286	Cozy Living 1.20.1/Tags for minecraft:block
 bf4fdff97ca7757f31f42cd7bc1bd1724aa32d79 data\cozyliving\tags\blocks\coconut_logs.json
 af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\blocks\wooden_pressure_plates.json
 570b370465a14204ae260c0db562050eb5eb2ea5 data\minecraft\tags\blocks\saplings.json
@@ -8,6 +8,7 @@ af6abe9d4a60f6160be60db2b5a7dae744be2fef data\minecraft\tags\blocks\wooden_press
 de78e30b49f40044b72a657c4b7ec48cef67b5c4 data\minecraft\tags\blocks\wall_signs.json
 0073eea6ebddae3b2bfe5f6c78317997a8e706d7 data\minecraft\tags\blocks\fence_gates.json
 40f153ff8c27c51af9ad121f090b5429a5b5ad45 data\minecraft\tags\blocks\mineable\hoe.json
+866cba8d3f902d073cff1996dabee35465190326 data\minecraft\tags\blocks\occludes_vibration_signals.json
 f9f106b9ce452f33aa8050c5085c6350496fdf40 data\minecraft\tags\blocks\crops.json
 e91164279f2c5509e4ee0036586964d73d1a8a88 data\minecraft\tags\blocks\logs_that_burn.json
 c4e64f34cc5a08fa3429e82158751e6b7ab1f265 data\minecraft\tags\blocks\wooden_doors.json
