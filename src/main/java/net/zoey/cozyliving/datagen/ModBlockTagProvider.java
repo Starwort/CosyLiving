@@ -26,6 +26,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider{
                 .add(ModBlocks.STRIPPED_COCONUT_LOG)
                 .add(ModBlocks.STRIPPED_COCONUT_WOOD);
 
+        getOrCreateTagBuilder(BlockTags.OCCLUDES_VIBRATION_SIGNALS)
+                .add(ModBlocks.COTTON_BALE);
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .addTag(ModTags.Blocks.COCONUT_LOGS)
                 .add(ModBlocks.COCONUT)
