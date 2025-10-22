@@ -1,84 +1,100 @@
 package net.zoey.cozyliving;
 
-import net.fabricmc.api.ModInitializer;
-
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-//import net.zoey.cozyliving.BrewingStandItems.ModBrewingStandItems;
-import net.zoey.cozyliving.block.ModBlocks;
-import net.zoey.cozyliving.effect.ModEffects;
-import net.zoey.cozyliving.entity.ModBoats;
-import net.zoey.cozyliving.entity.ModEntities;
-import net.zoey.cozyliving.entity.custom.LadyBeetleEntity;
-import net.zoey.cozyliving.foodComponents.ModFoodComponents;
-import net.zoey.cozyliving.item.ModItemGroups;
-import net.zoey.cozyliving.item.ModItems;
-import net.zoey.cozyliving.sound.ModSounds;
-import net.zoey.cozyliving.statistic.ModStatistics;
-import net.zoey.cozyliving.util.ModDamageTypes;
-import net.zoey.cozyliving.util.ModLootTableModifiers;
-import net.zoey.cozyliving.util.ModTags;
-import net.zoey.cozyliving.util.tools.*;
-import net.zoey.cozyliving.world.gen.ModFeatureGeneration;
-import net.zoey.cozyliving.world.gen.coconut_tree.CoconutTreeFeature;
-import net.zoey.cozyliving.world.gen.raspberry_bush_patches.RaspberryBushesFeature;
-import net.zoey.cozyliving.world.tree.ModTrunkPlacerTypes;
+import com.mojang.logging.LogUtils;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-public class CozyLiving implements ModInitializer {
-	public static final String MOD_ID = "cozyliving";
+// The value here should match an entry in the META-INF/mods.toml file
+@Mod(CozyLiving.MODID)
+public class CozyLiving
+{
+    // Define mod id in a common place for everything to reference
+    public static final String MODID = "cozyliving";
+    // Directly reference a slf4j logger
+    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public CozyLiving(FMLJavaModLoadingContext context)
+    {
+        IEventBus modEventBus = context.getModEventBus();
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
 
-		LOGGER.info("Cozy Living Initializing!");
+        // Register the Deferred Register to the mod event bus so blocks get registered
+        BLOCKS.register(modEventBus);
+        // Register the Deferred Register to the mod event bus so items get registered
+        ITEMS.register(modEventBus);
+        // Register the Deferred Register to the mod event bus so tabs get registered
+        CREATIVE_MODE_TABS.register(modEventBus);
 
-		ModStatistics.registerModStatistics();
-		ModItems.registerModItems();
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
 
+        // Register the item to a creative tab
+        modEventBus.addListener(this::addCreative);
 
-		ModDamageTypes.registerDamageTypes();
-		ModSounds.registerSounds();
-		ModFoodComponents.registerModFoodComponents();
+        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
+        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+    }
 
-		ModBlocks.registerModBlocks();
-		ModItemGroups.registerItemGroups();
-		ModLootTableModifiers.modifyLootTables();
-		RaspberryBushesFeature.registerRaspberryBushesFeature();
-		CoconutTreeFeature.registerCoconutTreeFeature();
-		ModTrunkPlacerTypes.register();
-		ModTags.registerModTags();
+    private void commonSetup(final FMLCommonSetupEvent event)
+    {
+        // Some common setup code
+        LOGGER.info("HELLO FROM COMMON SETUP");
+    }
 
-		ModFeatureGeneration.generateVegetation();
-		ModFeatureGeneration.generateOres();
-		ModFeatureGeneration.generateTrees();
-		ModBoats.registerBoats();
+    // Add the example block item to the building blocks tab
+    private void addCreative(BuildCreativeModeTabContentsEvent event)
+    {
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
+            event.accept(EXAMPLE_BLOCK_ITEM);
+    }
 
-		ModEffects.registerEffects();
+    // You can use SubscribeEvent and let the Event Bus discover methods to call
+    @SubscribeEvent
+    public void onServerStarting(ServerStartingEvent event)
+    {
+        // Do something when the server starts
+        LOGGER.info("HELLO from server starting");
+    }
 
-		//Tools
-		CompostingTool.addToRegister();
-		StrippableBlocksTool.addToRegister();
-		FlammableBlocksTool.addToRegister();
-		ModFuelRegistry.AddItemsToFuelRegistry();
-
-		//Entities
-		FabricDefaultAttributeRegistry.register(ModEntities.LADYBEETLE, LadyBeetleEntity.createLadyBeetleAttributes());
-
-		//ModBrewingStandItems.registerBrewingStandItems();
-
-		//FabricBrewingRecipeRegistry.registerItemRecipe(Potions.WATER, ModItems.RASPBERRY, ModItems.HERBAL_TEA);
-		//FabricBrewingRecipeRegistry.registerItemRecipe();
-		//BrewingRecipeRegistry.ITEM_RECIPES.add(new BrewingRecipeRegistry.Recipe(input, ingredient, output));
-		//BrewingRecipeRegistry.registerItemRecipe(Potions.WATER, ModItems.RASPBERRY, ModItems.HERBAL_TEA);
-	}
-
+    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event)
+        {
+            // Some client setup code
+            LOGGER.info("HELLO FROM CLIENT SETUP");
+            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+        }
+    }
 }
