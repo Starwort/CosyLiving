@@ -5,6 +5,7 @@ import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.zoey.cozyliving.*;
+import org.jetbrains.annotations.*;
 
 import java.util.function.*;
 
@@ -67,17 +68,17 @@ public enum ArmourMaterials implements ArmorMaterial {
     }
 
     @Override
-    public SoundEvent getEquipSound() {
+    public @NotNull SoundEvent getEquipSound() {
         return equipSound;
     }
 
     @Override
-    public Ingredient getRepairIngredient() {
-        return repairIngredient;
+    public @NotNull Ingredient getRepairIngredient() {
+        return repairIngredient.get();
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return CozyLiving.MODID + ":" + name;
     }
 
