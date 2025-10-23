@@ -1,10 +1,7 @@
 package net.zoey.cozyliving;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -30,9 +27,6 @@ public class CozyLiving {
     public static final String MODID = "cozyliving";
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
-        MODID
-    );
 
     public CozyLiving(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
@@ -42,13 +36,9 @@ public class CozyLiving {
 
         LOGGER.info("Cosy Living starting up.");
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
-        LOGGER.info("Found {} blocks", BLOCKS.getEntries().size());
-        BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
-        LOGGER.info("Found {} items", ModItems.REGISTER.getEntries().size());
+        ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so tabs get registered
         ModCreativeTabs.register(modEventBus);
 
 
