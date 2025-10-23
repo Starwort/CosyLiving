@@ -9,6 +9,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.zoey.cozyliving.content.*;
+import org.jetbrains.annotations.*;
 
 import java.util.function.*;
 
@@ -30,10 +31,10 @@ public class CustomChestBoat extends ChestBoat {
     }
 
     @Override
-    public Item getDropItem() {
+    public @NotNull Item getDropItem() {
         return switch (getModVariant()) {
             case COCONUT ->
-                Items.AMETHYST_BLOCK; // TODO: Implement and use Coconut Chest Boat
+                ModItems.COCONUT_CHEST_BOAT.get(); // TODO: Implement and use Coconut Chest Boat
         };
     }
 

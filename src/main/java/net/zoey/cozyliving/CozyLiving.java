@@ -1,9 +1,10 @@
 package net.zoey.cozyliving;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.entity.*;
-import net.minecraft.world.level.block.Block;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -14,9 +15,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
 import org.slf4j.Logger;
 
@@ -73,6 +73,18 @@ public class CozyLiving {
         modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT
     )
     public static class ClientModEvents {
+        @SubscribeEvent
+        public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(
+                ModModelLayers.COCONUT_BOAT_LAYER,
+                BoatModel::createBodyModel
+            );
+            event.registerLayerDefinition(
+                ModModelLayers.COCONUT_CHEST_BOAT_LAYER,
+                ChestBoatModel::createBodyModel
+            );
+        }
+
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Setting up client...");

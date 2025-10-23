@@ -9,6 +9,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.zoey.cozyliving.content.*;
+import org.jetbrains.annotations.*;
 
 import java.util.function.*;
 
@@ -30,10 +31,10 @@ public class CustomBoat extends Boat {
     }
 
     @Override
-    public Item getDropItem() {
+    public @NotNull Item getDropItem() {
         return switch (getModVariant()) {
             case COCONUT ->
-                Items.AMETHYST_BLOCK; // TODO: Implement and use Coconut Boat
+                ModItems.COCONUT_BOAT.get(); // TODO: Implement and use Coconut Boat
         };
     }
 
@@ -63,7 +64,7 @@ public class CustomBoat extends Boat {
         }
     }
 
-    public static enum Type implements StringRepresentable {
+    public enum Type implements StringRepresentable {
         // TODO: Implement and use Coconut Planks
         COCONUT(Blocks.AMETHYST_BLOCK, "coconut");
 
@@ -77,12 +78,12 @@ public class CustomBoat extends Boat {
             ByIdMap.OutOfBoundsStrategy.ZERO
         );
 
-        private Type(Block p_38427_, String p_38428_) {
-            this.name = p_38428_;
-            this.planks = p_38427_;
+        Type(Block planks, String name) {
+            this.name = name;
+            this.planks = planks;
         }
 
-        public String getSerializedName() {
+        public @NotNull String getSerializedName() {
             return this.name;
         }
 
