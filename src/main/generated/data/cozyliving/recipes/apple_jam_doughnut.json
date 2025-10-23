@@ -9,7 +9,7 @@
       "item": "minecraft:wheat"
     },
     "C": {
-      "item": "cozyliving:raspberry_jam"
+      "item": "cozyliving:apple_jam"
     },
     "D": {
       "item": "cozyliving:coconut_milk"
@@ -21,7 +21,7 @@
     " D "
   ],
   "result": {
-    "item": "cozyliving:raspberry_jam_donut"
+    "item": "cozyliving:apple_jam_doughnut"
   },
   "show_notification": true
 }

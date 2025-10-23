@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "cozyliving:raspberry_jam"
+              "cozyliving:heavy_cream"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "cozyliving:raspberry_jam_donut"
+        "recipe": "cozyliving:cream_doughnut"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "cozyliving:raspberry_jam_donut"
+      "cozyliving:cream_doughnut"
     ]
   },
   "sends_telemetry_event": false

@@ -1,0 +1,29 @@
+package net.zoey.cozyliving.content.item;
+
+import net.minecraft.world.entity.player.*;
+import net.minecraft.world.item.*;
+import net.minecraftforge.registries.*;
+import org.jetbrains.annotations.*;
+
+public class CLItemUtils {
+    public static @NotNull ItemStack createFilledResultWithoutConsuming(
+        @NotNull ItemStack usedStack,
+        @NotNull Player player,
+        @NotNull ItemStack stackToGenerate,
+        boolean vanillaConsumedYet
+    ) {
+        // this is pretty much the contents of `ItemUtils.createFilledResult` but
+        // without the call to `usedStack.shrink()`
+        if (vanillaConsumedYet ? usedStack.isEmpty() : usedStack.getCount() == 1) {
+            return stackToGenerate;
+        } else if (!player.getInventory().add(stackToGenerate)) {
+            player.drop(stackToGenerate, false);
+        }
+        return usedStack;
+    }
+
+    public static String idOf(Item item) {
+        var reflectedPath = ForgeRegistries.ITEMS.getKey(item);
+        return reflectedPath != null ? reflectedPath.getPath() : "unknown";
+    }
+}

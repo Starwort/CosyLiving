@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cozyliving:item/glowberry_jam_donut"
+    "layer0": "cozyliving:item/cream_doughnut"
   }
 }

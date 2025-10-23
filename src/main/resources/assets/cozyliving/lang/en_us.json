@@ -1,5 +1,5 @@
 {
-  "advancements.cozyliving.root.title": "Cozy Living",
+  "advancements.cozyliving.root.title": "Cosy Living",
   "advancements.cozyliving.root.description": "Comfort and Confection!",
   "advancements.cozyliving.get_raspberry.title": "Berry Beginnings",
   "advancements.cozyliving.get_raspberry.description": "Berry bounty beckons",
@@ -25,11 +25,8 @@
   "advancements.cozyliving.eat_goopy_chorus.description": "Open your third eye",
   "advancements.cozyliving.in_a_jam.title": "In a jam",
   "advancements.cozyliving.in_a_jam.description": "Craft all four jam types",
-  "advancements.cozyliving.donutter.title": "Donutter",
-  "advancements.cozyliving.donutter.description": "Craft all five donuts",
-
-
-
+  "advancements.cozyliving.doughnutter.title": "Doughnutter",
+  "advancements.cozyliving.doughnutter.description": "Craft all five doughnuts",
   "block.cozyliving.potted_coconut_sapling": "Potted Coconut Sapling",
   "block.cozyliving.potted_cotton_shrub": "Potted Cotton Shrub",
   "block.cozyliving.benitoite_block": "Benitoite Block",
@@ -69,13 +66,9 @@
   "block.cozyliving.cotton_bale": "Cotton Bale",
   "block.cozyliving.coconut_crate": "Coconut Crate",
   "block.cozyliving.raspberry_crate": "Raspberry Crate",
-
-
   "death.attack.coconut_bonk": "%1$s got dunked on",
   "death.attack.coconut_bonk.player": "%1$s got dunked on while fighting %2$s",
-
   "entity.cozyliving.lady_beetle": "Lady Beetle",
-
   "item.cozyliving.flower_crown": "Flower Crown",
   "item.cozyliving.invisible_helmet": "Invisible Helmet",
   "item.cozyliving.invisible_tunic": "Invisible Tunic",
@@ -139,24 +132,17 @@
   "item.cozyliving.golden_candy_apple": "Golden Candy Apple",
   "item.cozyliving.enchanted_golden_candy_apple": "Enchanted Golden Candy Apple",
   "item.cozyliving.mao_croqui": "Miaou Craqué",
-  "item.cozyliving.raspberry_jam_donut": "Raspberry Jam Donut",
-  "item.cozyliving.glowberry_jam_donut": "Glowberry Jam Donut",
-  "item.cozyliving.apple_jam_donut": "Apple Jam Donut",
-  "item.cozyliving.sweetberry_jam_donut": "Sweetberry Jam Donut",
-  "item.cozyliving.cream_donut": "Cream Donut",
-
-
-
-  "itemgroup.cozyliving.itemgroup": "Cozy Living",
-
+  "item.cozyliving.raspberry_jam_doughnut": "Raspberry Jam Doughnut",
+  "item.cozyliving.glowberry_jam_doughnut": "Glowberry Jam Doughnut",
+  "item.cozyliving.apple_jam_doughnut": "Apple Jam Doughnut",
+  "item.cozyliving.sweetberry_jam_doughnut": "Sweetberry Jam Doughnut",
+  "item.cozyliving.cream_doughnut": "Cream Doughnut",
+  "itemgroup.cozyliving.itemgroup": "Cosy Living",
   "sounds.cozyliving.coconut_bonk": "Bonk!",
   "sounds.cozyliving.leaves_rustle": "Leaves rustle",
   "sounds.cozyliving.jam_smear": "Glowberry Jam smears",
   "sounds.cozyliving.ink_smear": "Charcoal Ink smears",
-
-
   "stat.cozyliving.land_on_cotton_bale": "Soft landings on Cotton Bales",
-
   "tooltip.cozyliving.goopy_chorus": "§7I would think §dthrice §7about eating this...",
   "tooltip.cozyliving.invisible_armor": "§7For use with the armor vanity slot",
   "tooltip.cozyliving.flower_crown": "§7Uplifts your spirit",
@@ -214,37 +200,25 @@
   "tooltip.cozyliving.mao_croqui.2": "§7thank you for everything\"",
   "tooltip.cozyliving.mao_croqui.3": "§7\"They're a bunch of candy,",
   "tooltip.cozyliving.mao_croqui.4": "§7it's so f§kucking§r§7 beautiful\"",
-  "tooltip.cozyliving.raspberry_jam_donut": "§7A favourite of dryads everywhere",
-  "tooltip.cozyliving.glowberry_jam_donut": "§7At night the sugar looks like stars",
-  "tooltip.cozyliving.apple_jam_donut": "§7Simple and delicious",
-  "tooltip.cozyliving.sweetberry_jam_donut": "§7Makes your fingers sticky",
-  "tooltip.cozyliving.cream_donut": "§7Mmmmmm...",
-
-
-
+  "tooltip.cozyliving.raspberry_jam_doughnut": "§7A favourite of dryads everywhere",
+  "tooltip.cozyliving.glowberry_jam_doughnut": "§7At night the sugar looks like stars",
+  "tooltip.cozyliving.apple_jam_doughnut": "§7Simple and delicious",
+  "tooltip.cozyliving.sweetberry_jam_doughnut": "§7Makes your fingers sticky",
+  "tooltip.cozyliving.cream_doughnut": "§7Mmmmmm...",
   "whisper.cozyliving.i_see_everything": "I!!! See!!!! Ebverything!!!!!!!",
   "whisper.cozyliving.i_am_so_zorty": "i am sbo zorty...",
   "whisper.cozyliving.they_are_so_zorty": "s are sso zorty...",
-  "whisper.cozyliving.woah" : "woahhhhhhh...",
-  "whisper.cozyliving.where_am_i" : "wh... where is... me",
-  "whisper.cozyliving.holy_moly" : "hphpholy bmol y",
-  "whisper.cozyliving.i_am_so" : "wwjoah i am so ch ;gigh",
-  "whisper.cozyliving.i_can_see_colours" : "i cand see cldourours",
-  "whisper.cozyliving.insanity" : "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-  "whisper.cozyliving.so_big" : "everyyfing isss s sooooo bgig",
-
-
-
+  "whisper.cozyliving.woah": "woahhhhhhh...",
+  "whisper.cozyliving.where_am_i": "wh... where is... me",
+  "whisper.cozyliving.holy_moly": "hphpholy bmol y",
+  "whisper.cozyliving.i_am_so": "wwjoah i am so ch ;gigh",
+  "whisper.cozyliving.i_can_see_colours": "i cand see cldourours",
+  "whisper.cozyliving.insanity": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+  "whisper.cozyliving.so_big": "everyyfing isss s sooooo bgig",
   "effect.cozyliving.well_rested": "Well Rested",
   "effect.cozyliving.sleepy": "Sleepy",
   "effect.cozyliving.third_eye_open": "Third Eye Open",
-
-
-
   "item.minecraft.potion.effect.empty": "Water Bottle",
-
-
-
   "trim_material.cozyliving.benitoite": "Benitoite",
   "trim_material.cozyliving.raspberry_rhodolite": "Raspberry Rhodolite"
 }
