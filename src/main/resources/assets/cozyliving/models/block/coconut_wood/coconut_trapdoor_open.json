@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_orientable_trapdoor_open",
-  "textures": {
-    "texture": "cozyliving:block/coconut_wood/coconut_trapdoor"
-  }
-}

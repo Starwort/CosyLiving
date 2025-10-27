@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "cozyliving:item/apple_jam_doughnut"
+  }
+}

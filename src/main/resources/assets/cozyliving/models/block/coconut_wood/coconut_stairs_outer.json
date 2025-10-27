@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "cozyliving:block/coconut_wood/coconut_planks",
-    "side": "cozyliving:block/coconut_wood/coconut_planks",
-    "top": "cozyliving:block/coconut_wood/coconut_planks"
-  }
-}

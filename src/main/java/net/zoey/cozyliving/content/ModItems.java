@@ -1,7 +1,9 @@
 package net.zoey.cozyliving.content;
 
 import net.minecraft.sounds.*;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
@@ -320,6 +322,42 @@ public class ModItems {
         );
     }
 
+    public static final RegistryObject<Item> WAND_OF_HUNGER = REGISTER.register(
+        "wand_of_hunger", () -> new TooltipItem(new Item.Properties().stacksTo(1)) {
+            @Override
+            public @NotNull InteractionResultHolder<ItemStack> use(
+                @NotNull Level level,
+                @NotNull Player player,
+                @NotNull InteractionHand hand
+            ) {
+                var foodData = player.getFoodData();
+                foodData.setFoodLevel(1);
+                foodData.setSaturation(1);
+                player.playSound(SoundEvents.AMETHYST_BLOCK_STEP, 1f, 1f);
+                return InteractionResultHolder.success(player.getItemInHand(hand));
+            }
+        }
+    );
+
+    public static final RegistryObject<Item> RASPBERRY_RHODOLITE = REGISTER.register(
+        "raspberry_rhodolite",
+        () -> new TooltipItem(new Item.Properties().fireResistant())
+    );
+
+    public static final RegistryObject<Item> BENITOITE = REGISTER.register(
+        "benitoite",
+        () -> new TooltipItem(new Item.Properties().fireResistant())
+    );
+
+    public static final RegistryObject<Item> CINNAMON_STICK = REGISTER.register("cinnamon_stick",
+        TooltipItem::new
+    );
+
+    public static final RegistryObject<Item> GILDED_CINNAMON_STICK = REGISTER.register(
+        "gilded_cinnamon_stick",
+        () -> new TooltipItem(new Item.Properties().rarity(Rarity.RARE))
+    );
+
     public static final RegistryObject<Item> CHARCOAL_INK = REGISTER.register("charcoal_ink",
         CharcoalInkItem::new
     );
@@ -361,17 +399,17 @@ public class ModItems {
 
     public static final RegistryObject<Item> COCONUT_SIGN = REGISTER.register(
         "coconut_sign", () -> new SignItem(
-            new Item.Properties().stacksTo(16), Blocks.AMETHYST_BLOCK,
-            // TODO: Implement and use Coconut Sign blocks
-            Blocks.AMETHYST_BLOCK
+            new Item.Properties().stacksTo(16),
+            ModBlocks.COCONUT_SIGN.get(),
+            ModBlocks.COCONUT_WALL_SIGN.get()
         )
     );
 
     public static final RegistryObject<Item> COCONUT_HANGING_SIGN = REGISTER.register(
         "coconut_hanging_sign", () -> new HangingSignItem(
-            Blocks.AMETHYST_BLOCK,
-            // TODO: Implement and use Coconut Sign blocks
-            Blocks.AMETHYST_BLOCK, new Item.Properties().stacksTo(16)
+            ModBlocks.COCONUT_HANGING_SIGN.get(),
+            ModBlocks.COCONUT_WALL_HANGING_SIGN.get(),
+            new Item.Properties().stacksTo(16)
         )
     );
 

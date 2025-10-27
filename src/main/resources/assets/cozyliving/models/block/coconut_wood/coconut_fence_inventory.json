@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/fence_inventory",
-  "textures": {
-    "texture": "cozyliving:block/coconut_wood/coconut_planks"
-  }
-}

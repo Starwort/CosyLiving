@@ -1,8 +1,0 @@
-{
-    "parent": "cozyliving:block/generic_sliceable/generic_sliceable_0",
-    "textures": {
-      "top": "cozyliving:block/cinnamon_pie/top",
-	  "bottom": "cozyliving:block/cinnamon_pie/bottom",
-	  "outside": "cozyliving:block/cinnamon_pie/outside"
-    }
-  }

@@ -2,6 +2,8 @@ package net.zoey.cozyliving;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.model.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -95,6 +97,20 @@ public class CozyLiving {
             EntityRenderers.register(
                 ModEntities.CUSTOM_CHEST_BOAT.get(),
                 context -> new CustomBoatRenderer(context, true)
+            );
+
+            Sheets.addWoodType(ModWoodTypes.COCONUT);
+        }
+
+        @SubscribeEvent
+        public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(
+                ModBlocks.Entities.SIGN.get(),
+                SignRenderer::new
+            );
+            event.registerBlockEntityRenderer(
+                ModBlocks.Entities.HANGING_SIGN.get(),
+                HangingSignRenderer::new
             );
         }
     }

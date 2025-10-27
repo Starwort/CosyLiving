@@ -1,7 +1,0 @@
-{
-  "parent": "cozyliving:block/cotton/tinted_shrub",
-  "textures": {
-    "tinted": "cozyliving:block/cotton/cotton_crop_overlay_4",
-    "untinted": "cozyliving:block/cotton/cotton_crop_4"
-  }
-}
