@@ -118,7 +118,7 @@ public enum ModBlocks {
     COCONUT_SIGN(
         "coconut_sign",
         () -> new CustomStandingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.JUNGLE_SIGN),
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -127,7 +127,7 @@ public enum ModBlocks {
     COCONUT_WALL_SIGN(
         "coconut_wall_sign",
         () -> new CustomWallSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.JUNGLE_WALL_SIGN),
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_WALL_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -136,7 +136,7 @@ public enum ModBlocks {
     COCONUT_HANGING_SIGN(
         "coconut_hanging_sign",
         () -> new CustomHangingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.JUNGLE_HANGING_SIGN),
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_HANGING_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -145,7 +145,7 @@ public enum ModBlocks {
     COCONUT_WALL_HANGING_SIGN(
         "coconut_wall_hanging_sign",
         () -> new CustomWallHangingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.JUNGLE_WALL_HANGING_SIGN),
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_WALL_HANGING_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
