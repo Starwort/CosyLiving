@@ -12,6 +12,13 @@ public class CLItemUtils {
         @NotNull ItemStack stackToGenerate,
         boolean vanillaConsumedYet
     ) {
+        if (player.getAbilities().instabuild) {
+            // try to give one if the player doesn't already have one
+            if (!player.getInventory().contains(stackToGenerate)) {
+                player.getInventory().add(stackToGenerate);
+            }
+            return usedStack;
+        }
         // this is pretty much the contents of `ItemUtils.createFilledResult` but
         // without the call to `usedStack.shrink()`
         if (vanillaConsumedYet ? usedStack.isEmpty() : usedStack.getCount() == 1) {
