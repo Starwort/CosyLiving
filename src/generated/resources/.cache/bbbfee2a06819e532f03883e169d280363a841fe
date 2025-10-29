@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-27T16:19:23.499937386	Item Models: cozyliving
+// 1.20.1	2025-10-29T15:40:30.191805031	Item Models: cozyliving
 f48ffa3e7d76b872e2f690d0d96b4e9c9eeb91e5 assets/cozyliving/models/item/apple_jam.json
 024f279cf9c4d2934e1d1df83ce059903140613a assets/cozyliving/models/item/apple_jam_doughnut.json
 7f24edfdd28ab07e7c7cbed053bdca2f3b6f77d8 assets/cozyliving/models/item/apple_sauce.json
@@ -18,8 +18,6 @@ cf90f9e46153026f1e666eb53567bfcefbbb78ab assets/cozyliving/models/item/coconut_h
 6916a204499b6f6ad44d4cc6bc4f84be5768a2c6 assets/cozyliving/models/item/coconut_ice_cream.json
 9b2163e13b953d0ec104f823ea5659a641ad9fd5 assets/cozyliving/models/item/coconut_milk.json
 01b3ad560ef655f1ebe0443d7e3c1cb94fb8f49f assets/cozyliving/models/item/coconut_sign.json
-d977bd686a9f2961e8340910958eae19ce4c612f assets/cozyliving/models/item/cotton_boll.json
-0d1a0c49b2bd13e22feeb30d45dd0a117cbe6c4a assets/cozyliving/models/item/cotton_shrub.json
 9e241262f82974bfd957a16aed67848d55720895 assets/cozyliving/models/item/cream_doughnut.json
 e2c65c845b91a44ef949dd9e3a7fb207c7f3c828 assets/cozyliving/models/item/enchanted_golden_candy_apple.json
 b438663953ce13a46a5a7899e43012553bd668bf assets/cozyliving/models/item/flower_crown.json
@@ -38,7 +36,6 @@ bb8cd75316961bec04a1e7c9bea45b5447b18bb9 assets/cozyliving/models/item/goopy_cho
 34a2f4ca3ff293a0a50e6ce206f2ec58da2478b3 assets/cozyliving/models/item/hotter_chocolate.json
 0594071e7fca3dfc3eaa109a9f79c16730956aa1 assets/cozyliving/models/item/mao_croqui.json
 a9e6242477e063ad8073c4bec414f59a2172a071 assets/cozyliving/models/item/myco_medley.json
-6b385c3a272f71726af998d1295d86e047710ab4 assets/cozyliving/models/item/pina_glowada.json
 ddf40149a157e39a5fcf95f0773daed56b630351 assets/cozyliving/models/item/raspberry.json
 4460c720d50604f60aa25cf686e123cd1bbce65e assets/cozyliving/models/item/raspberry_ice_cream.json
 7897bc7f6196bb2e351a8b44ad3b90bd28f1514d assets/cozyliving/models/item/raspberry_jam.json
