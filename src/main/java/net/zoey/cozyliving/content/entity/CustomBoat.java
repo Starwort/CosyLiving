@@ -34,7 +34,7 @@ public class CustomBoat extends Boat {
     public @NotNull Item getDropItem() {
         return switch (getModVariant()) {
             case COCONUT ->
-                ModItems.COCONUT_BOAT.get(); // TODO: Implement and use Coconut Boat
+                ModItems.COCONUT_BOAT.item(); // TODO: Implement and use Coconut Boat
         };
     }
 

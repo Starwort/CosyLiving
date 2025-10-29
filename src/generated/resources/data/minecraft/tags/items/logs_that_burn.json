@@ -1,8 +1,8 @@
 {
   "values": [
-    "minecraft:air",
-    "minecraft:air",
-    "minecraft:air",
-    "minecraft:air"
+    "cozyliving:coconut_log",
+    "cozyliving:coconut_wood",
+    "cozyliving:stripped_coconut_log",
+    "cozyliving:stripped_coconut_wood"
   ]
 }

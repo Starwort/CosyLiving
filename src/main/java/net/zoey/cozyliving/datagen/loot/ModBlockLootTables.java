@@ -2,10 +2,9 @@ package net.zoey.cozyliving.datagen.loot;
 
 import net.minecraft.data.loot.*;
 import net.minecraft.world.flag.*;
-import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.storage.loot.*;
 import net.minecraftforge.registries.*;
+import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
@@ -18,26 +17,26 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        dropOther(ModBlocks.COCONUT_SIGN.get(), ModItems.COCONUT_SIGN.get());
-        dropOther(ModBlocks.COCONUT_WALL_SIGN.get(), ModItems.COCONUT_SIGN.get());
+        dropOther(ModBlocks.COCONUT_SIGN.block(), ModItems.COCONUT_SIGN.item());
+        dropOther(ModBlocks.COCONUT_WALL_SIGN.block(), ModItems.COCONUT_SIGN.item());
         dropOther(
-            ModBlocks.COCONUT_HANGING_SIGN.get(),
-            ModItems.COCONUT_HANGING_SIGN.get()
+            ModBlocks.COCONUT_HANGING_SIGN.block(),
+            ModItems.COCONUT_HANGING_SIGN.item()
         );
         dropOther(
-            ModBlocks.COCONUT_WALL_HANGING_SIGN.get(),
-            ModItems.COCONUT_HANGING_SIGN.get()
+            ModBlocks.COCONUT_WALL_HANGING_SIGN.block(),
+            ModItems.COCONUT_HANGING_SIGN.item()
         );
 
-        dropSelf(ModBlocks.COCONUT_LOG.get());
-        dropSelf(ModBlocks.COCONUT_WOOD.get());
-        dropSelf(ModBlocks.STRIPPED_COCONUT_LOG.get());
-        dropSelf(ModBlocks.STRIPPED_COCONUT_WOOD.get());
-        dropSelf(ModBlocks.COCONUT_PLANKS.get());
+        dropSelf(ModBlocks.COCONUT_LOG.block());
+        dropSelf(ModBlocks.COCONUT_WOOD.block());
+        dropSelf(ModBlocks.STRIPPED_COCONUT_LOG.block());
+        dropSelf(ModBlocks.STRIPPED_COCONUT_WOOD.block());
+        dropSelf(ModBlocks.COCONUT_PLANKS.block());
 
         add(
-            ModBlocks.COCONUT_LEAVES.get(), createLeavesDrops(
-                ModBlocks.COCONUT_LEAVES.get(),
+            ModBlocks.COCONUT_LEAVES.block(), createLeavesDrops(
+                ModBlocks.COCONUT_LEAVES.block(),
                 // TODO: Implement and use Coconut sapling
                 Blocks.AMETHYST_BLOCK, 0.15f
             )
@@ -48,7 +47,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {
-        return ModBlocks.REGISTER
+        return CozyLiving.BLOCKS
             .getEntries()
             .stream()
             .map(RegistryObject::get)::iterator;

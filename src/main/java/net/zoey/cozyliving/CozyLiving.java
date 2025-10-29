@@ -5,6 +5,9 @@ import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
@@ -17,6 +20,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
@@ -27,6 +31,15 @@ import org.slf4j.Logger;
 public class CozyLiving {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "cozyliving";
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+        MODID
+    );
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB,
+        MODID
+    );
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
+        MODID
+    );
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 

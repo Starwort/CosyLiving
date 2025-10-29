@@ -5,7 +5,6 @@ import net.minecraft.world.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.eventbus.api.*;
@@ -18,141 +17,259 @@ import net.zoey.cozyliving.content.item.BoatItem;
 import net.zoey.cozyliving.content.item.food.*;
 import org.jetbrains.annotations.*;
 
-public class ModItems {
+import java.util.function.*;
+
+public enum ModItems {
+    WAND_OF_HUNGER(
+        "wand_of_hunger", () -> new TooltipItem(new Item.Properties().stacksTo(1)) {
+        @Override
+        public @NotNull InteractionResultHolder<ItemStack> use(
+            @NotNull Level level,
+            @NotNull Player player,
+            @NotNull InteractionHand hand
+        ) {
+            var foodData = player.getFoodData();
+            foodData.setFoodLevel(1);
+            foodData.setSaturation(1);
+            player.playSound(SoundEvents.AMETHYST_BLOCK_STEP, 1f, 1f);
+            return InteractionResultHolder.success(player.getItemInHand(hand));
+        }
+    }
+    ),
+
+    RASPBERRY_RHODOLITE(
+        "raspberry_rhodolite",
+        () -> new TooltipItem(new Item.Properties().fireResistant())
+    ),
+
+    BENITOITE(
+        "benitoite",
+        () -> new TooltipItem(new Item.Properties().fireResistant())
+    ),
+
+    CINNAMON_STICK("cinnamon_stick", TooltipItem::new),
+
+    GILDED_CINNAMON_STICK(
+        "gilded_cinnamon_stick",
+        () -> new TooltipItem(new Item.Properties().rarity(Rarity.RARE))
+    ),
+
+    CHARCOAL_INK("charcoal_ink", CharcoalInkItem::new),
+
+    BUCKRAM("buckram", TooltipItem::new),
+    //
+    //    COTTON_BOLL(
+    //        "cotton_boll", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
+    //        // TODO: Implement and use Cotton
+    //    )
+    //    ),
+    //
+    //    COTTON_SHRUB(
+    //        "cotton_shrub", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
+    //        // TODO: Implement and use Cotton Shrub
+    //    )
+    //    ),
+    //
+    //    COTTON_BALE(
+    //        "cotton_bale", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
+    //        // TODO: Implement and use Cotton Bale
+    //    )
+    //    ),
+    //
+    //    COCONUT_CRATE(
+    //        "coconut_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
+    //        // TODO: Implement and use Coconut Crate
+    //    )
+    //    ),
+    //
+    //    RASPBERRY_CRATE(
+    //        "raspberry_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
+    //        // TODO: Implement and use Raspberry Crate
+    //    )
+    //    ),
+
+    COCONUT_SIGN(
+        "coconut_sign", () -> new SignItem(
+        new Item.Properties().stacksTo(16),
+        ModBlocks.COCONUT_SIGN.block(),
+        ModBlocks.COCONUT_WALL_SIGN.block()
+    )
+    ),
+
+    COCONUT_HANGING_SIGN(
+        "coconut_hanging_sign", () -> new HangingSignItem(
+        ModBlocks.COCONUT_HANGING_SIGN.block(),
+        ModBlocks.COCONUT_WALL_HANGING_SIGN.block(),
+        new Item.Properties().stacksTo(16)
+    )
+    ),
+
+    COCONUT_BOAT(
+        "coconut_boat",
+        () -> new BoatItem(false, CustomBoat.Type.COCONUT, new Item.Properties())
+    ),
+
+    COCONUT_CHEST_BOAT(
+        "coconut_chest_boat",
+        () -> new BoatItem(true, CustomBoat.Type.COCONUT, new Item.Properties())
+    ),
+
+    FLOWER_CROWN(
+        "flower_crown",
+        () -> new TooltipArmourItem(
+            ArmourMaterials.FLOWER_CROWN,
+            ArmorItem.Type.HELMET,
+            new Item.Properties()
+        )
+    ),
+    ;
+
     public static void register(IEventBus modEventBus) {
         Food.register();
-        CozyLiving.LOGGER.info("Found {} items", REGISTER.getEntries().size());
-        REGISTER.register(modEventBus);
+        CozyLiving.LOGGER.info("Found {} items", CozyLiving.ITEMS.getEntries().size());
+        CozyLiving.ITEMS.register(modEventBus);
     }
 
-    public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS,
-        CozyLiving.MODID
-    );
+    private final RegistryObject<Item> myValue;
 
-    public static class Food {
-        public static void register() {
-            // no-op, just forces the class to load
-        }
+    ModItems(String name, Supplier<Item> supplier) {
+        myValue = CozyLiving.ITEMS.register(name, supplier);
+    }
 
-        public static final RegistryObject<Item> CINNAMON_BUN = REGISTER.register(
+    public RegistryObject<Item> registryObject() {
+        return myValue;
+    }
+
+    public Item item() {
+        return myValue.get();
+    }
+
+    public static enum Food {
+        CINNAMON_BUN(
             "cinnamon_bun",
             () -> new TooltipItem(FoodValues.CINNAMON_BUN.intoProperties())
-        );
-        public static final RegistryObject<Item> COCONUT_MILK = REGISTER.register(
+        ),
+
+        COCONUT_MILK(
             "coconut_milk",
             () -> new BottledFoodItem(FoodValues.COCONUT_MILK.intoProperties(), 40)
-        );
-        public static final RegistryObject<Item> HEAVY_CREAM = REGISTER.register(
+        ),
+
+        HEAVY_CREAM(
             "heavy_cream",
             () -> new BottledFoodItem(
                 FoodValues.HEAVY_CREAM.intoProperties(),
                 90,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> CANDY_APPLE = REGISTER.register(
+        CANDY_APPLE(
             "candy_apple",
             () -> new CandyAppleItem(FoodValues.CANDY_APPLE.intoProperties())
-        );
-        public static final RegistryObject<Item> GOLDEN_CANDY_APPLE = REGISTER.register(
+        ),
+
+        GOLDEN_CANDY_APPLE(
             "golden_candy_apple",
             () -> new CandyAppleItem(FoodValues.GOLDEN_CANDY_APPLE.intoProperties())
-        );
-        public static final RegistryObject<Item> ENCHANTED_GOLDEN_CANDY_APPLE = REGISTER.register(
+        ),
+
+        ENCHANTED_GOLDEN_CANDY_APPLE(
             "enchanted_golden_candy_apple",
             () -> new CandyAppleItem(FoodValues.ENCHANTED_GOLDEN_CANDY_APPLE.intoProperties())
-        );
-        public static final RegistryObject<Item> ROASTED_PUMPKIN_SEEDS = REGISTER.register(
+        ),
+
+        ROASTED_PUMPKIN_SEEDS(
             "roasted_pumpkin_seeds",
             () -> new TooltipItem(FoodValues.ROASTED_SEEDS.intoProperties())
-        );
-        public static final RegistryObject<Item> ROASTED_MELON_SEEDS = REGISTER.register(
+        ),
+
+        ROASTED_MELON_SEEDS(
             "roasted_melon_seeds",
             () -> new TooltipItem(FoodValues.ROASTED_SEEDS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> GLOWBERRY_TART_SLICE = REGISTER.register(
+        GLOWBERRY_TART_SLICE(
             "glowberry_tart_slice",
             () -> new TooltipItem(FoodValues.GLOWBERRY_TART.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_PIE_SLICE = REGISTER.register(
+        RASPBERRY_PIE_SLICE(
             "raspberry_pie_slice",
             () -> new TooltipItem(FoodValues.PIES.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> CINNAMON_PIE_SLICE = REGISTER.register(
+        CINNAMON_PIE_SLICE(
             "cinnamon_pie_slice",
             () -> new TooltipItem(FoodValues.PIES.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> APPLE_SAUCE = REGISTER.register(
+        APPLE_SAUCE(
             "apple_sauce",
             () -> new BottledFoodItem(
                 FoodValues.APPLE_SAUCE.intoProperties(),
                 15,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> WATERMELON_POPSICLE = REGISTER.register(
+        WATERMELON_POPSICLE(
             "watermelon_popsicle",
             () -> new FrozenFoodItem(
                 FoodValues.WATERMELON_POPSICLE.intoProperties(),
                 Items.STICK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> HONEYCOMB_ICE_CREAM = REGISTER.register(
+        HONEYCOMB_ICE_CREAM(
             "honeycomb_ice_cream",
             () -> new FrozenFoodItem(FoodValues.ICE_CREAMS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> COCONUT_ICE_CREAM = REGISTER.register(
+        COCONUT_ICE_CREAM(
             "coconut_ice_cream",
             () -> new FrozenFoodItem(FoodValues.ICE_CREAMS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_ICE_CREAM = REGISTER.register(
+        RASPBERRY_ICE_CREAM(
             "raspberry_ice_cream",
             () -> new FrozenFoodItem(FoodValues.ICE_CREAMS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> TRIPLE_ICE_CREAM = REGISTER.register(
+        TRIPLE_ICE_CREAM(
             "triple_ice_cream",
             () -> new FrozenFoodItem(FoodValues.ICE_CREAMS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> VILLAGER_STEW = REGISTER.register(
+        VILLAGER_STEW(
             "villager_stew",
             () -> new ResidueFoodItem.Drink(
                 FoodValues.VILLAGER_STEW.intoProperties(),
                 Items.BOWL
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_TEA = REGISTER.register(
+        RASPBERRY_TEA(
             "raspberry_tea",
             () -> new BottledFoodItem(FoodValues.TEAS.intoProperties(), 40)
-        );
+        ),
 
-        public static final RegistryObject<Item> HERBAL_TEA = REGISTER.register(
+        HERBAL_TEA(
             "herbal_tea",
             () -> new BottledFoodItem(FoodValues.TEAS.intoProperties(), 40)
-        );
+        ),
 
-        public static final RegistryObject<Item> GILDED_TEA = REGISTER.register(
+        GILDED_TEA(
             "gilded_tea",
             () -> new BottledFoodItem(FoodValues.GILDED_TEA.intoProperties(), 40)
-        );
+        ),
 
-        public static final RegistryObject<Item> HOT_CHOCOLATE = REGISTER.register(
+        HOT_CHOCOLATE(
             "hot_chocolate",
             () -> new BottledFoodItem(FoodValues.HOT_CHOCOLATE.intoProperties(), 45)
-        );
+        ),
 
-        public static final RegistryObject<Item> HOTTER_CHOCOLATE = REGISTER.register(
+        HOTTER_CHOCOLATE(
             "hotter_chocolate",
             () -> new BottledFoodItem(
                 FoodValues.HOTTER_CHOCOLATE.intoProperties(),
@@ -173,35 +290,35 @@ public class ModItems {
                     return super.finishUsingItem(stack, level, user);
                 }
             }
-        );
+        ),
 
-        public static final RegistryObject<Item> SLEEPY_TEA = REGISTER.register(
+        SLEEPY_TEA(
             "sleepy_tea",
             () -> new BottledFoodItem(FoodValues.SLEEPY_TEA.intoProperties(), 45)
-        );
+        ),
 
-        public static final RegistryObject<Item> GOOPY_CHORUS = REGISTER.register(
+        GOOPY_CHORUS(
             "goopy_chorus",
             () -> new BottledFoodItem(FoodValues.GOOPY_CHORUS.intoProperties(), 45)
-        );
+        ),
 
-        public static final RegistryObject<Item> MYCO_MEDLEY = REGISTER.register(
+        MYCO_MEDLEY(
             "myco_medley",
             () -> new ResidueFoodItem.Drink(
                 FoodValues.MYCO_MEDLEY.intoProperties(),
                 Items.BOWL
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> BERRY_BLEND_SMOOTHIE = REGISTER.register(
+        BERRY_BLEND_SMOOTHIE(
             "berry_blend_smoothie",
             () -> new BottledFoodItem(
                 FoodValues.BERRY_BLEND_SMOOTHIE.intoProperties(),
                 45
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> PINA_GLOWADA = REGISTER.register(
+        PINA_GLOWADA(
             "pina_glowada",
             () -> new TooltipItem(FoodValues.PINA_GLOWADA.intoProperties()) {
                 @Override
@@ -219,216 +336,126 @@ public class ModItems {
                     return 45;
                 }
             }
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_JAM = REGISTER.register(
+        RASPBERRY_JAM(
             "raspberry_jam",
             () -> new BottledFoodItem(
                 FoodValues.JAMS.intoProperties(),
                 60,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> APPLE_JAM = REGISTER.register(
+        APPLE_JAM(
             "apple_jam",
             () -> new BottledFoodItem(
                 FoodValues.JAMS.intoProperties(),
                 60,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> SWEETBERRY_JAM = REGISTER.register(
+        SWEETBERRY_JAM(
             "sweetberry_jam",
             () -> new BottledFoodItem(
                 FoodValues.JAMS.intoProperties(),
                 60,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> GLOWBERRY_JAM = REGISTER.register(
+        GLOWBERRY_JAM(
             "glowberry_jam",
             () -> new GlowBottledFoodItem(
                 FoodValues.GLOW_JAM.intoProperties(),
                 60,
                 SoundEvents.HONEY_DRINK
             )
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_JAM_DOUGHNUT = REGISTER.register(
+        RASPBERRY_JAM_DOUGHNUT(
             "raspberry_jam_doughnut",
             () -> new TooltipItem(FoodValues.DOUGHNUTS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> GLOWBERRY_JAM_DOUGHNUT = REGISTER.register(
+        GLOWBERRY_JAM_DOUGHNUT(
             "glowberry_jam_doughnut",
             () -> new TooltipItem(FoodValues.GLOWNUTS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> APPLE_JAM_DOUGHNUT = REGISTER.register(
+        APPLE_JAM_DOUGHNUT(
             "apple_jam_doughnut",
             () -> new TooltipItem(FoodValues.DOUGHNUTS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> SWEETBERRY_JAM_DOUGHNUT = REGISTER.register(
+        SWEETBERRY_JAM_DOUGHNUT(
             "sweetberry_jam_doughnut",
             () -> new TooltipItem(FoodValues.DOUGHNUTS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> CREAM_DOUGHNUT = REGISTER.register(
+        CREAM_DOUGHNUT(
             "cream_doughnut",
             () -> new TooltipItem(FoodValues.DOUGHNUTS.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> CHOCOLATE_BAR = REGISTER.register(
+        CHOCOLATE_BAR(
             "chocolate_bar",
             () -> new TooltipItem(FoodValues.CHOCOLATE_BAR.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> RED_SUGAR = REGISTER.register("red_sugar",
+        RED_SUGAR(
+            "red_sugar",
             () -> new TooltipItem(FoodValues.RED_SUGAR.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> MAO_CROQUI = REGISTER.register(
+        MAO_CROQUI(
             "mao_croqui",
             () -> new TooltipItem(FoodValues.MAO_CROQUI.intoProperties())
-        );
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY = REGISTER.register(
+        RASPBERRY(
             "raspberry", () -> new ItemNameTooltipBlockItem(
-                Blocks.AMETHYST_BLOCK, // TODO: Implement and use Raspberry Bush
-                FoodValues.RASPBERRY.intoProperties()
-            )
-        );
+            Blocks.AMETHYST_BLOCK, // TODO: Implement and use Raspberry Bush
+            FoodValues.RASPBERRY.intoProperties()
+        )
+        ),
 
-        public static final RegistryObject<Item> GLOWBERRY_TART = REGISTER.register(
+        GLOWBERRY_TART(
             "glowberry_tart", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-                // TODO: Implement and use Glowberry Tart
-            )
-        );
+            // TODO: Implement and use Glowberry Tart
+        )
+        ),
 
-        public static final RegistryObject<Item> RASPBERRY_PIE = REGISTER.register(
+        RASPBERRY_PIE(
             "raspberry_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-                // TODO: Implement and use Raspberry Pie
-            )
-        );
+            // TODO: Implement and use Raspberry Pie
+        )
+        ),
 
-        public static final RegistryObject<Item> CINNAMON_PIE = REGISTER.register(
+        CINNAMON_PIE(
             "cinnamon_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-                // TODO: Implement and use Cinnamon Pie
-            )
-        );
-    }
+            // TODO: Implement and use Cinnamon Pie
+        )
+        ),
+        ;
 
-    public static final RegistryObject<Item> WAND_OF_HUNGER = REGISTER.register(
-        "wand_of_hunger", () -> new TooltipItem(new Item.Properties().stacksTo(1)) {
-            @Override
-            public @NotNull InteractionResultHolder<ItemStack> use(
-                @NotNull Level level,
-                @NotNull Player player,
-                @NotNull InteractionHand hand
-            ) {
-                var foodData = player.getFoodData();
-                foodData.setFoodLevel(1);
-                foodData.setSaturation(1);
-                player.playSound(SoundEvents.AMETHYST_BLOCK_STEP, 1f, 1f);
-                return InteractionResultHolder.success(player.getItemInHand(hand));
-            }
+        public static void register() {
+            // no-op, just forces the class to load
         }
-    );
 
-    public static final RegistryObject<Item> RASPBERRY_RHODOLITE = REGISTER.register(
-        "raspberry_rhodolite",
-        () -> new TooltipItem(new Item.Properties().fireResistant())
-    );
+        private final RegistryObject<Item> myValue;
 
-    public static final RegistryObject<Item> BENITOITE = REGISTER.register(
-        "benitoite",
-        () -> new TooltipItem(new Item.Properties().fireResistant())
-    );
+        Food(String name, Supplier<Item> supplier) {
+            myValue = CozyLiving.ITEMS.register(name, supplier);
+        }
 
-    public static final RegistryObject<Item> CINNAMON_STICK = REGISTER.register("cinnamon_stick",
-        TooltipItem::new
-    );
+        public RegistryObject<Item> registryObject() {
+            return myValue;
+        }
 
-    public static final RegistryObject<Item> GILDED_CINNAMON_STICK = REGISTER.register(
-        "gilded_cinnamon_stick",
-        () -> new TooltipItem(new Item.Properties().rarity(Rarity.RARE))
-    );
-
-    public static final RegistryObject<Item> CHARCOAL_INK = REGISTER.register("charcoal_ink",
-        CharcoalInkItem::new
-    );
-
-    public static final RegistryObject<Item> BUCKRAM = REGISTER.register(
-        "buckram",
-        TooltipItem::new
-    );
-
-    public static final RegistryObject<Item> COTTON_BOLL = REGISTER.register(
-        "cotton_boll", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Cotton
-        )
-    );
-
-    public static final RegistryObject<Item> COTTON_SHRUB = REGISTER.register(
-        "cotton_shrub", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Cotton Shrub
-        )
-    );
-
-    public static final RegistryObject<Item> COTTON_BALE = REGISTER.register(
-        "cotton_bale", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Cotton Bale
-        )
-    );
-
-    public static final RegistryObject<Item> COCONUT_CRATE = REGISTER.register(
-        "coconut_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Coconut Crate
-        )
-    );
-
-    public static final RegistryObject<Item> RASPBERRY_CRATE = REGISTER.register(
-        "raspberry_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Raspberry Crate
-        )
-    );
-
-    public static final RegistryObject<Item> COCONUT_SIGN = REGISTER.register(
-        "coconut_sign", () -> new SignItem(
-            new Item.Properties().stacksTo(16),
-            ModBlocks.COCONUT_SIGN.get(),
-            ModBlocks.COCONUT_WALL_SIGN.get()
-        )
-    );
-
-    public static final RegistryObject<Item> COCONUT_HANGING_SIGN = REGISTER.register(
-        "coconut_hanging_sign", () -> new HangingSignItem(
-            ModBlocks.COCONUT_HANGING_SIGN.get(),
-            ModBlocks.COCONUT_WALL_HANGING_SIGN.get(),
-            new Item.Properties().stacksTo(16)
-        )
-    );
-
-    public static final RegistryObject<Item> COCONUT_BOAT = REGISTER.register(
-        "coconut_boat",
-        () -> new BoatItem(false, CustomBoat.Type.COCONUT, new Item.Properties())
-    );
-
-    public static final RegistryObject<Item> COCONUT_CHEST_BOAT = REGISTER.register(
-        "coconut_chest_boat",
-        () -> new BoatItem(true, CustomBoat.Type.COCONUT, new Item.Properties())
-    );
-
-    public static final RegistryObject<Item> FLOWER_CROWN = REGISTER.register(
-        "flower_crown",
-        () -> new TooltipArmourItem(
-            ArmourMaterials.FLOWER_CROWN,
-            ArmorItem.Type.HELMET,
-            new Item.Properties()
-        )
-    );
+        public Item item() {
+            return myValue.get();
+        }
+    }
 }

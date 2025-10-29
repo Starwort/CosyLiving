@@ -34,7 +34,7 @@ public class CustomChestBoat extends ChestBoat {
     public @NotNull Item getDropItem() {
         return switch (getModVariant()) {
             case COCONUT ->
-                ModItems.COCONUT_CHEST_BOAT.get(); // TODO: Implement and use Coconut Chest Boat
+                ModItems.COCONUT_CHEST_BOAT.item(); // TODO: Implement and use Coconut Chest Boat
         };
     }
 

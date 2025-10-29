@@ -22,10 +22,10 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
         tag(BlockTags.LOGS_THAT_BURN)
-            .add(ModBlocks.COCONUT_LOG.get())
-            .add(ModBlocks.COCONUT_WOOD.get())
-            .add(ModBlocks.STRIPPED_COCONUT_LOG.get())
-            .add(ModBlocks.STRIPPED_COCONUT_WOOD.get());
-        tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.get());
+            .add(ModBlocks.COCONUT_LOG.block())
+            .add(ModBlocks.COCONUT_WOOD.block())
+            .add(ModBlocks.STRIPPED_COCONUT_LOG.block())
+            .add(ModBlocks.STRIPPED_COCONUT_WOOD.block());
+        tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.block());
     }
 }

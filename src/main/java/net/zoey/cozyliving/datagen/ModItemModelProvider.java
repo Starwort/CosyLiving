@@ -25,13 +25,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.CANDY_APPLE);
         simpleItem(ModItems.Food.GOLDEN_CANDY_APPLE);
         withExistingParent(
-            ModItems.Food.ENCHANTED_GOLDEN_CANDY_APPLE.getId().getPath(),
-            ResourceLocation.parse("item/generated")
+            ModItems.Food.ENCHANTED_GOLDEN_CANDY_APPLE
+                .registryObject()
+                .getId()
+                .getPath(), ResourceLocation.parse("item/generated")
         ).texture(
-            "layer0",
-            ResourceLocation.fromNamespaceAndPath(
+            "layer0", ResourceLocation.fromNamespaceAndPath(
                 CozyLiving.MODID,
-                "item/" + ModItems.Food.GOLDEN_CANDY_APPLE.getId().getPath()
+                "item/" + ModItems.Food.GOLDEN_CANDY_APPLE
+                    .registryObject()
+                    .getId()
+                    .getPath()
             )
         );
         simpleItem(ModItems.Food.ROASTED_PUMPKIN_SEEDS);
@@ -80,13 +84,21 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.GILDED_CINNAMON_STICK);
         simpleItem(ModItems.CHARCOAL_INK);
         simpleItem(ModItems.BUCKRAM);
-        simpleItem(ModItems.COTTON_BOLL);
-        simpleItem(ModItems.COTTON_SHRUB);
+        //        simpleItem(ModItems.COTTON_BOLL);
+        //        simpleItem(ModItems.COTTON_SHRUB);
         simpleItem(ModItems.COCONUT_SIGN);
         simpleItem(ModItems.COCONUT_HANGING_SIGN);
         simpleItem(ModItems.COCONUT_BOAT);
         simpleItem(ModItems.COCONUT_CHEST_BOAT);
         simpleItem(ModItems.FLOWER_CROWN);
+    }
+
+    private ItemModelBuilder simpleItem(ModItems.Food food) {
+        return simpleItem(food.registryObject());
+    }
+
+    private ItemModelBuilder simpleItem(ModItems item) {
+        return simpleItem(item.registryObject());
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

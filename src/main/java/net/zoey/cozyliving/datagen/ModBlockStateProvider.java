@@ -17,34 +17,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         signBlock(
-            (StandingSignBlock) ModBlocks.COCONUT_SIGN.get(),
-            (WallSignBlock) ModBlocks.COCONUT_WALL_SIGN.get(),
-            blockTexture(ModBlocks.COCONUT_PLANKS.get())
+            (StandingSignBlock) ModBlocks.COCONUT_SIGN.block(),
+            (WallSignBlock) ModBlocks.COCONUT_WALL_SIGN.block(),
+            blockTexture(ModBlocks.COCONUT_PLANKS.block())
         );
         hangingSignBlock(
-            ModBlocks.COCONUT_HANGING_SIGN.get(),
-            ModBlocks.COCONUT_WALL_HANGING_SIGN.get(),
-            blockTexture(ModBlocks.COCONUT_PLANKS.get())
+            ModBlocks.COCONUT_HANGING_SIGN.block(),
+            ModBlocks.COCONUT_WALL_HANGING_SIGN.block(),
+            blockTexture(ModBlocks.COCONUT_PLANKS.block())
         );
 
-        logBlock((RotatedPillarBlock) ModBlocks.COCONUT_LOG.get());
+        logBlock((RotatedPillarBlock) ModBlocks.COCONUT_LOG.block());
         axisBlock(
-            (RotatedPillarBlock) ModBlocks.COCONUT_WOOD.get(),
-            blockTexture(ModBlocks.COCONUT_LOG.get()),
-            blockTexture(ModBlocks.COCONUT_LOG.get())
+            (RotatedPillarBlock) ModBlocks.COCONUT_WOOD.block(),
+            blockTexture(ModBlocks.COCONUT_LOG.block()),
+            blockTexture(ModBlocks.COCONUT_LOG.block())
         );
         axisBlock(
-            (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_LOG.get(),
-            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.get()),
+            (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_LOG.block(),
+            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.block()),
             ResourceLocation.fromNamespaceAndPath(
                 CozyLiving.MODID,
                 "block/stripped_coconut_log_top"
             )
         );
         axisBlock(
-            (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_WOOD.get(),
-            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.get()),
-            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.get())
+            (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_WOOD.block(),
+            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.block()),
+            blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.block())
         );
 
         blockItem(ModBlocks.COCONUT_LOG);
@@ -54,7 +54,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.COCONUT_PLANKS);
 
-        leavesBlock(ModBlocks.COCONUT_LEAVES);
+        leavesBlock(ModBlocks.COCONUT_LEAVES.registryObject());
     }
 
     public void hangingSignBlock(
@@ -90,12 +90,20 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
     }
 
+    private void blockItem(ModBlocks block) {
+        blockItem(block.registryObject());
+    }
+
     private void blockItem(RegistryObject<Block> block) {
         simpleBlockItem(
             block.get(),
             new ModelFile.UncheckedModelFile(
                 CozyLiving.MODID + ":block/" + name(block.get()))
         );
+    }
+
+    private void blockWithItem(ModBlocks block) {
+        blockWithItem(block.registryObject());
     }
 
     private void blockWithItem(RegistryObject<Block> block) {

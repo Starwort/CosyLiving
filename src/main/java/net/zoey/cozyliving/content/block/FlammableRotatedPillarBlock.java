@@ -53,16 +53,16 @@ public class FlammableRotatedPillarBlock extends RotatedPillarBlock {
         boolean simulate
     ) {
         if (context.getItemInHand().getItem() instanceof AxeItem) {
-            if (state.is(ModBlocks.COCONUT_LOG.get())) {
+            if (state.is(ModBlocks.COCONUT_LOG.block())) {
                 return ModBlocks.STRIPPED_COCONUT_LOG
-                    .get()
+                    .block()
                     .defaultBlockState()
                     .setValue(AXIS, state.getValue(AXIS));
             }
 
-            if (state.is(ModBlocks.COCONUT_WOOD.get())) {
+            if (state.is(ModBlocks.COCONUT_WOOD.block())) {
                 return ModBlocks.STRIPPED_COCONUT_WOOD
-                    .get()
+                    .block()
                     .defaultBlockState()
                     .setValue(AXIS, state.getValue(AXIS));
             }
