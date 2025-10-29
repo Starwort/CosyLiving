@@ -59,7 +59,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.GOOPY_CHORUS);
         simpleItem(ModItems.Food.MYCO_MEDLEY);
         simpleItem(ModItems.Food.BERRY_BLEND_SMOOTHIE);
-        simpleItem(ModItems.Food.PINA_GLOWADA);
         simpleItem(ModItems.Food.RASPBERRY_JAM);
         simpleItem(ModItems.Food.APPLE_JAM);
         simpleItem(ModItems.Food.SWEETBERRY_JAM);
