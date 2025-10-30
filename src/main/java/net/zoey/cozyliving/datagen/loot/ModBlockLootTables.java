@@ -52,8 +52,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.RASPBERRY_BUSH.block(), raspberryBushDrops());
 
         add(ModBlocks.COCONUT_PLANT.block(), noDrop());
-        
+
         dropSelf(ModBlocks.COCONUT.block());
+
+        add(ModBlocks.GLOWBERRY_TART.block(), noDrop());
+        add(ModBlocks.RASPBERRY_PIE.block(), noDrop());
+        add(ModBlocks.CINNAMON_PIE.block(), noDrop());
     }
 
     public static LootTable.Builder raspberryBushDrops() {

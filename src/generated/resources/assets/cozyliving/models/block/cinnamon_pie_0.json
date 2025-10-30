@@ -1,0 +1,10 @@
+{
+  "parent": "cozyliving:block/generic_sliceable_0",
+  "textures": {
+    "bottom": "cozyliving:block/cinnamon_pie/bottom",
+    "inside": "cozyliving:block/cinnamon_pie/inside",
+    "outside": "cozyliving:block/cinnamon_pie/outside",
+    "particle": "cozyliving:block/cinnamon_pie/top",
+    "top": "cozyliving:block/cinnamon_pie/top"
+  }
+}

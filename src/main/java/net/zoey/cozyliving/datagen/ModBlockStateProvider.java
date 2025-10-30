@@ -69,6 +69,27 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
 
         simpleBlockWithItem(ModBlocks.COCONUT.block(), modelFile("block/coconut"));
+
+        genericSliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie");
+        genericSliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie");
+        genericSliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart");
+    }
+
+    public void genericSliceableBlock(Block block, String name) {
+        // TODO: Rotate the model based on FACING
+        getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
+            new ConfiguredModel(models()
+                .withExistingParent(
+                    name + "_" + state.getValue(SliceableFoodBlock.BITES),
+                    modLoc("block/generic_sliceable_" + state.getValue(
+                        SliceableFoodBlock.BITES))
+                )
+                .texture("inside", modLoc("block/" + name + "/inside"))
+                .texture("outside", modLoc("block/" + name + "/outside"))
+                .texture("top", modLoc("block/" + name + "/top"))
+                .texture("bottom", modLoc("block/" + name + "/bottom"))
+                .texture("particle", modLoc("block/" + name + "/top")))
+        });
     }
 
     public ModelFile modelFile(String id) {

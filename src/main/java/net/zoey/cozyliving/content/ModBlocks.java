@@ -157,6 +157,33 @@ public enum ModBlocks {
     COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
 
     COCONUT("coconut", CoconutBlock::new, TooltipBlockItem::new),
+
+    GLOWBERRY_TART(
+        "glowberry_tart",
+        () -> new SliceableFoodBlock(
+            ModItems.Food.GLOWBERRY_TART_SLICE::item,
+            BlockBehaviour.Properties.copy(Blocks.CAKE)
+        ),
+        ItemNameTooltipBlockItem::new
+    ),
+
+    RASPBERRY_PIE(
+        "raspberry_pie",
+        () -> new SliceableFoodBlock(
+            ModItems.Food.RASPBERRY_PIE_SLICE::item,
+            BlockBehaviour.Properties.copy(Blocks.CAKE)
+        ),
+        ItemNameTooltipBlockItem::new
+    ),
+
+    CINNAMON_PIE(
+        "cinnamon_pie",
+        () -> new SliceableFoodBlock(
+            ModItems.Food.CINNAMON_PIE_SLICE::item,
+            BlockBehaviour.Properties.copy(Blocks.CAKE)
+        ),
+        ItemNameTooltipBlockItem::new
+    ),
     ;
 
     public static void register(IEventBus modEventBus) {

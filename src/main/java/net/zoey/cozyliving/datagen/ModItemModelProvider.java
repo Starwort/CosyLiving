@@ -72,9 +72,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.RED_SUGAR);
         simpleItem(ModItems.Food.MAO_CROQUI);
         simpleItem(ModItems.Food.RASPBERRY);
-        simpleItem(ModItems.Food.GLOWBERRY_TART);
-        simpleItem(ModItems.Food.RASPBERRY_PIE);
-        simpleItem(ModItems.Food.CINNAMON_PIE);
+        simpleItem(ModBlocks.GLOWBERRY_TART.itemRegistryObject());
+        simpleItem(ModBlocks.RASPBERRY_PIE.itemRegistryObject());
+        simpleItem(ModBlocks.CINNAMON_PIE.itemRegistryObject());
 
         simpleItem(ModItems.WAND_OF_HUNGER);
         simpleItem(ModItems.RASPBERRY_RHODOLITE);

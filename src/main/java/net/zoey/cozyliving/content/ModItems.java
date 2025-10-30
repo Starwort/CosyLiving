@@ -415,29 +415,30 @@ public enum ModItems {
         ),
 
         RASPBERRY(
-            "raspberry", () -> new ItemNameTooltipBlockItem(
-            ModBlocks.RASPBERRY_BUSH.block(), // TODO: Implement and use Raspberry Bush
-            FoodValues.RASPBERRY.intoProperties()
-        )
+            "raspberry",
+            () -> new ItemNameTooltipBlockItem(
+                ModBlocks.RASPBERRY_BUSH.block(),
+                FoodValues.RASPBERRY.intoProperties()
+            )
         ),
-
-        GLOWBERRY_TART(
-            "glowberry_tart", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Glowberry Tart
-        )
-        ),
-
-        RASPBERRY_PIE(
-            "raspberry_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Raspberry Pie
-        )
-        ),
-
-        CINNAMON_PIE(
-            "cinnamon_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-            // TODO: Implement and use Cinnamon Pie
-        )
-        ),
+        //
+        //        GLOWBERRY_TART(
+        //            "glowberry_tart", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
+        //            // TODO: Implement and use Glowberry Tart
+        //        )
+        //        ),
+        //
+        //        RASPBERRY_PIE(
+        //            "raspberry_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
+        //            // TODO: Implement and use Raspberry Pie
+        //        )
+        //        ),
+        //
+        //        CINNAMON_PIE(
+        //            "cinnamon_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
+        //            // TODO: Implement and use Cinnamon Pie
+        //        )
+        //        ),
         ;
 
         public static void register() {
