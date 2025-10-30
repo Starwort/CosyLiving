@@ -416,7 +416,7 @@ public enum ModItems {
 
         RASPBERRY(
             "raspberry", () -> new ItemNameTooltipBlockItem(
-            Blocks.AMETHYST_BLOCK, // TODO: Implement and use Raspberry Bush
+            ModBlocks.RASPBERRY_BUSH.block(), // TODO: Implement and use Raspberry Bush
             FoodValues.RASPBERRY.intoProperties()
         )
         ),

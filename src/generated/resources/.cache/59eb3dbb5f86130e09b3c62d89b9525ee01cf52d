@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-29T15:22:43.800298477	Loot Tables
+// 1.20.1	2025-10-30T11:29:00.15831858	Loot Tables
 0670f48c3333ac592b1715ce10e1e0315020ef1d data/cozyliving/loot_tables/blocks/coconut_hanging_sign.json
 91f816fbb415053e7a0420334b27517dc6316b3e data/cozyliving/loot_tables/blocks/coconut_leaves.json
 8287c9c3df7ef7369bfb29ffeef9969e8fe90b80 data/cozyliving/loot_tables/blocks/coconut_log.json
@@ -7,5 +7,6 @@
 c7c1c435edb32667e937e66bc64f96ec139202bd data/cozyliving/loot_tables/blocks/coconut_wall_hanging_sign.json
 1ace0eeb3704b1251d48f536045c681e56d45e82 data/cozyliving/loot_tables/blocks/coconut_wall_sign.json
 bb2fe881adce16c9c134356d94cc9c61a6b7217a data/cozyliving/loot_tables/blocks/coconut_wood.json
+dc6704950cb91da690f67d0dc56715b33e616d9b data/cozyliving/loot_tables/blocks/raspberry_bush.json
 54648116cfa09a5f88425c8a0c74c1ece2c98bde data/cozyliving/loot_tables/blocks/stripped_coconut_log.json
 e0ea059fd349136735d63328f21a3d05e51f5d8d data/cozyliving/loot_tables/blocks/stripped_coconut_wood.json

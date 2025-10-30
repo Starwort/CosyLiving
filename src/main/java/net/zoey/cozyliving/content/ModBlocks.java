@@ -150,6 +150,8 @@ public enum ModBlocks {
         ),
         null
     ),
+
+    RASPBERRY_BUSH("raspberry_bush", RaspberryBushBlock::new),
     ;
 
     public static void register(IEventBus modEventBus) {

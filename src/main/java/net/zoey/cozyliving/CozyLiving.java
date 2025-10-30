@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -101,6 +102,22 @@ public class CozyLiving {
         }
 
         @SubscribeEvent
+        public static void registerBlockColors(RegisterColorHandlersEvent.Block event) {
+            event.register(
+                (state, level, pos, tintIndex) -> {
+                    if (level == null || pos == null) {
+                        return GrassColor.get(0.5, 1.0);
+                    }
+                    return BiomeColors.getAverageGrassColor(level, pos);
+                },
+                // ModBlocks.COTTON_CROP.block(),
+                // ModBlocks.COTTON_SHRUB.block(),
+                // ModBlocks.POTTED_COTTON.block(),
+                ModBlocks.RASPBERRY_BUSH.block()
+            );
+        }
+
+        @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Setting up client...");
             EntityRenderers.register(
@@ -111,6 +128,7 @@ public class CozyLiving {
                 ModEntities.CUSTOM_CHEST_BOAT.get(),
                 context -> new CustomBoatRenderer(context, true)
             );
+
 
             Sheets.addWoodType(ModWoodTypes.COCONUT);
         }

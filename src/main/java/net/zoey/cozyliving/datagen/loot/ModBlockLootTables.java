@@ -1,11 +1,18 @@
 package net.zoey.cozyliving.datagen.loot;
 
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.data.loot.*;
 import net.minecraft.world.flag.*;
+import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.storage.loot.*;
+import net.minecraft.world.level.storage.loot.entries.*;
+import net.minecraft.world.level.storage.loot.functions.*;
+import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.content.block.*;
 import org.jetbrains.annotations.*;
 
 import java.util.*;
@@ -41,9 +48,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 Blocks.AMETHYST_BLOCK, 0.15f
             )
         );
+
+        add(ModBlocks.RASPBERRY_BUSH.block(), raspberryBushDrops());
     }
 
-    //    public static LootTable.Builder leavesDrops()
+    public static LootTable.Builder raspberryBushDrops() {
+        return LootTable
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem.lootTableItem(ModItems.Food.RASPBERRY.item()))
+                .when(LootItemBlockStatePropertyCondition
+                    .hasBlockStateProperties(ModBlocks.RASPBERRY_BUSH.block())
+                    .setProperties(StatePropertiesPredicate.Builder
+                        .properties()
+                        .hasProperty(RaspberryBushBlock.AGE, 4)))
+                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)));
+    }
 
     @Override
     protected @NotNull Iterable<Block> getKnownBlocks() {

@@ -3,11 +3,14 @@ package net.zoey.cozyliving.datagen;
 import net.minecraft.data.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.*;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.*;
 import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.content.block.*;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -55,6 +58,134 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.COCONUT_PLANKS);
 
         leavesBlock(ModBlocks.COCONUT_LEAVES.registryObject());
+
+        makeRaspberryBush((RaspberryBushBlock) ModBlocks.RASPBERRY_BUSH.block());
+    }
+
+    public void makeRaspberryBush(
+        RaspberryBushBlock block
+    ) {
+        getVariantBuilder(block).forAllStates(this::raspberryStates);
+    }
+
+    private ConfiguredModel[] raspberryStates(
+        BlockState state
+    ) {
+        if (state.getValue(RaspberryBushBlock.AGE) == 4) {
+            return raspberryStatesAge4(state);
+        } else {
+            return new ConfiguredModel[] {
+                raspberryState(state)
+            };
+        }
+    }
+
+    public ConfiguredModel tintedCross(
+        String modelName,
+        String mainTexture,
+        String overlay
+    ) {
+        return tintedCross(
+            modelName,
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, mainTexture),
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, overlay)
+        );
+    }
+
+    public ConfiguredModel tintedCross(
+        String modelName,
+        ResourceLocation mainTexture,
+        ResourceLocation overlay
+    ) {
+        return tintedCross(modelName, mainTexture, overlay, mainTexture);
+    }
+
+    public ConfiguredModel tintedCross(
+        String modelName,
+        ResourceLocation mainTexture,
+        ResourceLocation overlay,
+        ResourceLocation particle
+    ) {
+        return new ConfiguredModel(models()
+            .withExistingParent(
+                modelName,
+                ResourceLocation.fromNamespaceAndPath(
+                    CozyLiving.MODID,
+                    "block/tinted_cross"
+                )
+            )
+            .texture("0", mainTexture)
+            .texture("overlay", overlay)
+            .texture("particle", particle)
+            .renderType("cutout"));
+    }
+
+    public ConfiguredModel cropTintedCross(
+        String modelName,
+        String mainTexture,
+        String overlay
+    ) {
+        return cropTintedCross(
+            modelName,
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, mainTexture),
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, overlay)
+        );
+    }
+
+    public ConfiguredModel cropTintedCross(
+        String modelName,
+        ResourceLocation mainTexture,
+        ResourceLocation overlay
+    ) {
+        return cropTintedCross(modelName, mainTexture, overlay, mainTexture);
+    }
+
+    public ConfiguredModel cropTintedCross(
+        String modelName,
+        ResourceLocation mainTexture,
+        ResourceLocation overlay,
+        ResourceLocation particle
+    ) {
+        return new ConfiguredModel(models()
+            .withExistingParent(
+                modelName,
+                ResourceLocation.fromNamespaceAndPath(
+                    CozyLiving.MODID,
+                    "block/crop_tinted_cross"
+                )
+            )
+            .texture("0", mainTexture)
+            .texture("overlay", overlay)
+            .texture("particle", particle)
+            .renderType("cutout"));
+    }
+
+    private ConfiguredModel raspberryState(BlockState state) {
+        var age = state.getValue(RaspberryBushBlock.AGE);
+        var half = state.getValue(RaspberryBushBlock.HALF).equals(DoubleBlockHalf.UPPER)
+            ? "upper"
+            : "lower";
+
+        return tintedCross(
+            "raspberry_bush_" + half + "_" + age,
+            "block/raspberry_bush_" + half + "_" + age,
+            "block/transparent"
+        );
+    }
+
+    private ConfiguredModel[] raspberryStatesAge4(BlockState state) {
+        var half = state.getValue(RaspberryBushBlock.HALF).equals(DoubleBlockHalf.UPPER)
+            ? "upper"
+            : "lower";
+        var models = new ConfiguredModel[4];
+        for (var model = 0; model < 4; model++) {
+            models[model] = tintedCross(
+                "raspberry_bush_" + half + "_4",
+                "block/raspberry_bush_" + half + "_3",
+                "block/raspberry_bush_overlay_" + model
+            );
+        }
+        return models;
     }
 
     public void hangingSignBlock(
