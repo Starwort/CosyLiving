@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
+import net.minecraft.sounds.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
@@ -32,6 +33,9 @@ import org.slf4j.Logger;
 public class CozyLiving {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "cozyliving";
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS,
+        MODID
+    );
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
         MODID
     );
@@ -52,6 +56,7 @@ public class CozyLiving {
 
         LOGGER.info("Cosy Living starting up.");
 
+        ModSounds.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);

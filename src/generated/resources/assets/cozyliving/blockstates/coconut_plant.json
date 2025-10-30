@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "cozyliving:block/coconut_plant_small"
+    },
+    "age=1": {
+      "model": "cozyliving:block/coconut_plant_medium"
+    },
+    "age=2": {
+      "model": "cozyliving:block/coconut_plant_large"
+    },
+    "age=3": {
+      "model": "cozyliving:block/coconut_plant_large"
+    },
+    "age=4": {
+      "model": "cozyliving:block/coconut_plant_large"
+    }
+  }
+}

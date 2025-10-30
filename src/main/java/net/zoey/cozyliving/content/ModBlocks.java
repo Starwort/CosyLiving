@@ -11,6 +11,7 @@ import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.block.*;
 import net.zoey.cozyliving.content.block.entity.*;
+import net.zoey.cozyliving.content.item.*;
 
 import javax.annotation.*;
 import java.util.*;
@@ -152,6 +153,10 @@ public enum ModBlocks {
     ),
 
     RASPBERRY_BUSH("raspberry_bush", RaspberryBushBlock::new),
+
+    COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
+
+    COCONUT("coconut", CoconutBlock::new, TooltipBlockItem::new),
     ;
 
     public static void register(IEventBus modEventBus) {

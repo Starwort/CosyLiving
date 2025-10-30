@@ -1,8 +1,10 @@
-// 1.20.1	2025-10-30T12:24:54.669179754	Block States: cozyliving
+// 1.20.1	2025-10-30T14:34:02.02711026	Block States: cozyliving
+45e6de69cdc835a62370b255d71d39c2ee838aa0 assets/cozyliving/blockstates/coconut.json
 85c995204b86f198e6dd27151fc3e79fba75bbd9 assets/cozyliving/blockstates/coconut_hanging_sign.json
 0aa2bc9ad096ace2f355a196f05ec17d4037dd81 assets/cozyliving/blockstates/coconut_leaves.json
 af6450234d3225d7a7426bf6a63f4b1944f3decd assets/cozyliving/blockstates/coconut_log.json
 545ceb4adee136a25519a8edf75145fdbfcef114 assets/cozyliving/blockstates/coconut_planks.json
+77f97ace0b68d07b2409b2c73932698f6d4b01b2 assets/cozyliving/blockstates/coconut_plant.json
 6dee72154fecf6bafb47f95d8c8f07e2b233a2a0 assets/cozyliving/blockstates/coconut_sign.json
 85c995204b86f198e6dd27151fc3e79fba75bbd9 assets/cozyliving/blockstates/coconut_wall_hanging_sign.json
 6dee72154fecf6bafb47f95d8c8f07e2b233a2a0 assets/cozyliving/blockstates/coconut_wall_sign.json
@@ -32,6 +34,7 @@ d811460b2ec8e386c1de4e2e0a431bd06f14b0ef assets/cozyliving/models/block/raspberr
 071e48ccceb4d0d43abfe46059989f9698819f31 assets/cozyliving/models/block/stripped_coconut_log_horizontal.json
 6e4332c5d38d2693fe3e8a4870c136ce0072f482 assets/cozyliving/models/block/stripped_coconut_wood.json
 281181eecc92cf2cf7d4b7ea94ce9548fcdcb2a9 assets/cozyliving/models/block/stripped_coconut_wood_horizontal.json
+e683f1be1d2d0884b890bae1ab9cb69f113c6c32 assets/cozyliving/models/item/coconut.json
 88e3a034e253098e11a5bb255ab25c9ccef980ef assets/cozyliving/models/item/coconut_leaves.json
 c2cc9c6f8171be1112b15f01296f985e01b52674 assets/cozyliving/models/item/coconut_log.json
 2c126d0cb78902f4973a8e8024f132928bafd00e assets/cozyliving/models/item/coconut_planks.json

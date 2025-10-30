@@ -59,13 +59,36 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         leavesBlock(ModBlocks.COCONUT_LEAVES.registryObject());
 
-        makeRaspberryBush((RaspberryBushBlock) ModBlocks.RASPBERRY_BUSH.block());
+        getVariantBuilder(ModBlocks.RASPBERRY_BUSH.block()).forAllStates(this::raspberryStates);
+        getVariantBuilder(ModBlocks.COCONUT_PLANT.block()).forAllStates(state -> new ConfiguredModel[] {
+            exactModel(switch (state.getValue(CoconutPlantBlock.AGE)) {
+                case 0 -> "block/coconut_plant_small";
+                case 1 -> "block/coconut_plant_medium";
+                default -> "block/coconut_plant_large";
+            })
+        });
+
+        simpleBlockWithItem(ModBlocks.COCONUT.block(), modelFile("block/coconut"));
     }
 
-    public void makeRaspberryBush(
-        RaspberryBushBlock block
+    public ModelFile modelFile(String id) {
+        return modelFile(ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, id));
+    }
+
+    public ModelFile modelFile(ResourceLocation location) {
+        return models().getExistingFile(location);
+    }
+
+    public ConfiguredModel exactModel(
+        String id
     ) {
-        getVariantBuilder(block).forAllStates(this::raspberryStates);
+        return new ConfiguredModel(modelFile(id));
+    }
+
+    public ConfiguredModel exactModel(
+        ResourceLocation location
+    ) {
+        return new ConfiguredModel(modelFile(location));
     }
 
     private ConfiguredModel[] raspberryStates(

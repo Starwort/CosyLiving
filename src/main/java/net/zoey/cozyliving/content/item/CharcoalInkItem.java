@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.entity.*;
+import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
 public class CharcoalInkItem extends TooltipItem implements SignApplicator {
@@ -20,9 +21,12 @@ public class CharcoalInkItem extends TooltipItem implements SignApplicator {
     ) {
         if (sign.updateText(signText -> signText.setHasGlowingText(false), front)) {
             level.playSound(
-                null, sign.getBlockPos(),
-                // TODO: Custom sound event
-                SoundEvents.INK_SAC_USE, SoundSource.BLOCKS, 1f, 1f
+                null,
+                sign.getBlockPos(),
+                ModSounds.INK_SMEAR.sound(),
+                SoundSource.BLOCKS,
+                1f,
+                1f
             );
 
             // try to give the player a bottle

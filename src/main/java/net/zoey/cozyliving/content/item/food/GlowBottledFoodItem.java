@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.entity.*;
+import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.item.*;
 import org.jetbrains.annotations.*;
 
@@ -29,9 +30,12 @@ public class GlowBottledFoodItem extends BottledFoodItem implements SignApplicat
     ) {
         if (sign.updateText(signText -> signText.setHasGlowingText(true), front)) {
             level.playSound(
-                null, sign.getBlockPos(),
-                // TODO: Custom sound event
-                SoundEvents.GLOW_INK_SAC_USE, SoundSource.BLOCKS, 1f, 1f
+                null,
+                sign.getBlockPos(),
+                ModSounds.JAM_SMEAR.sound(),
+                SoundSource.BLOCKS,
+                1f,
+                1f
             );
 
             // try to give the player a bottle
