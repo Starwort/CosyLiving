@@ -76,19 +76,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public void genericSliceableBlock(Block block, String name) {
-        // TODO: Rotate the model based on FACING
         getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
-            new ConfiguredModel(models()
-                .withExistingParent(
-                    name + "_" + state.getValue(SliceableFoodBlock.BITES),
-                    modLoc("block/generic_sliceable_" + state.getValue(
-                        SliceableFoodBlock.BITES))
-                )
-                .texture("inside", modLoc("block/" + name + "/inside"))
-                .texture("outside", modLoc("block/" + name + "/outside"))
-                .texture("top", modLoc("block/" + name + "/top"))
-                .texture("bottom", modLoc("block/" + name + "/bottom"))
-                .texture("particle", modLoc("block/" + name + "/top")))
+            new ConfiguredModel(
+                models()
+                    .withExistingParent(
+                        name + "_" + state.getValue(SliceableFoodBlock.BITES),
+                        modLoc("block/generic_sliceable_" + state.getValue(
+                            SliceableFoodBlock.BITES))
+                    )
+                    .texture("inside", modLoc("block/" + name + "/inside"))
+                    .texture("outside", modLoc("block/" + name + "/outside"))
+                    .texture("top", modLoc("block/" + name + "/top"))
+                    .texture("bottom", modLoc("block/" + name + "/bottom"))
+                    .texture("particle", modLoc("block/" + name + "/top")),
+                0,
+                switch (state.getValue(SliceableFoodBlock.FACING)) {
+                    case DOWN, UP ->
+                        throw new IllegalStateException("FACING cannot be up or down");
+                    case NORTH -> 270;
+                    case EAST -> 0;
+                    case SOUTH -> 90;
+                    case WEST -> 180;
+                },
+                false
+            )
         });
     }
 
