@@ -20,8 +20,7 @@ import org.jetbrains.annotations.*;
 public class CoconutBlock extends FallingBlock implements Fallable {
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
 
-    // TODO: one usage of this used to be a 6 instead of a 5
-    public static final int COCONUT_FALL_MAX_DAMAGE = 5;
+    public static final int COCONUT_FALL_MAX_DAMAGE = 6;
     public static final float COCONUT_FALL_DAMAGE = 1;
 
     public CoconutBlock() {
