@@ -42,17 +42,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(
-        BlockState state,
-        HitResult target,
-        BlockGetter level,
-        BlockPos pos,
-        Player player
-    ) {
-        return new ItemStack(ModItems.Food.RASPBERRY.item());
-    }
-
-    @Override
     public void destroy(LevelAccessor level, BlockPos pos, @NotNull BlockState state) {
         if (level.getBlockState(pos.below()).is(ModBlocks.RASPBERRY_BUSH.block())) {
             level.destroyBlock(pos.below(), true);
@@ -253,7 +242,7 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
         // if this plant is ripe, pick both halves
         if (myAge == 4) {
             int berriesToDrop = 2 + level.random.nextInt(2) + level.random.nextInt(2);
-            var stack = new ItemStack(ModItems.Food.RASPBERRY.item(), berriesToDrop);
+            var stack = new ItemStack(ModBlocks.RASPBERRY_BUSH.asItem(), berriesToDrop);
             player.getInventory().placeItemBackInInventory(stack);
 
             var iAmLower = state.getValue(HALF) == DoubleBlockHalf.LOWER;

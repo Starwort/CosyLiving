@@ -1,19 +1,25 @@
 package net.zoey.cozyliving.content;
 
 import net.minecraft.core.*;
+import net.minecraft.resources.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.*;
+import net.minecraft.world.level.material.*;
+import net.minecraft.world.phys.shapes.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.block.*;
 import net.zoey.cozyliving.content.block.entity.*;
+import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.*;
+import org.jetbrains.annotations.*;
 
 import javax.annotation.*;
+import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.*;
 
@@ -152,7 +158,13 @@ public enum ModBlocks {
         null
     ),
 
-    RASPBERRY_BUSH("raspberry_bush", RaspberryBushBlock::new),
+    RASPBERRY_BUSH(
+        "raspberry_bush",
+        RaspberryBushBlock::new,
+        "raspberry",
+        ItemNameTooltipBlockItem::new,
+        FoodValues.RASPBERRY.intoProperties()
+    ),
 
     COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
 
@@ -184,7 +196,63 @@ public enum ModBlocks {
         ),
         ItemNameTooltipBlockItem::new
     ),
-    ;
+
+    COTTON_CROP(
+        "cotton_crop",
+        () -> new CropBlock(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.QUARTZ)
+            .noCollission()
+            .randomTicks()
+            .instabreak()
+            .sound(SoundType.CROP)
+            .pushReaction(PushReaction.DESTROY)
+            .ignitedByLava())
+        {
+            @Override
+            protected @NotNull ItemLike getBaseSeedId() {
+                return ModBlocks.COTTON_CROP.asItem();
+            }
+        },
+        "cotton_boll",
+        ItemNameTooltipBlockItem::new
+    ),
+
+    COTTON_SHRUB(
+        "cotton_shrub",
+        () -> new BushBlock(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.QUARTZ)
+            .noCollission()
+            .instabreak()
+            .sound(SoundType.CROP)
+            .offsetType(BlockBehaviour.OffsetType.XZ)
+            .pushReaction(PushReaction.DESTROY)
+            .ignitedByLava())
+        {
+            @Override
+            @SuppressWarnings("deprecation")
+            public @NotNull VoxelShape getShape(
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull CollisionContext context
+            ) {
+                return box(3, 0, 3, 13, 13, 13);
+            }
+        },
+        TooltipBlockItem::new
+    ),
+
+    POTTED_COTTON(
+        "potted_cotton_shrub",
+        () -> new FlowerPotBlock(
+            () -> ((FlowerPotBlock) Blocks.FLOWER_POT),
+            COTTON_SHRUB::block,
+            BlockBehaviour.Properties.copy(Blocks.POTTED_FERN).mapColor(MapColor.QUARTZ)
+        ),
+        null
+    );
 
     public static void register(IEventBus modEventBus) {
         CozyLiving.LOGGER.info(
@@ -202,13 +270,14 @@ public enum ModBlocks {
     ModBlocks(
         String name,
         Supplier<Block> supplier,
+        String itemName,
         @Nullable BiFunction<Block, Item.Properties, BlockItem> itemFactory,
         @Nullable Item.Properties properties
     ) {
         myValue = CozyLiving.BLOCKS.register(name, supplier);
         if (itemFactory != null) {
             myItem = CozyLiving.ITEMS.register(
-                name, () -> itemFactory.apply(
+                itemName, () -> itemFactory.apply(
                     myValue.get(),
                     properties == null ? new Item.Properties() : properties
                 )
@@ -221,13 +290,43 @@ public enum ModBlocks {
     ModBlocks(
         String name,
         Supplier<Block> supplier,
+        @Nullable BiFunction<Block, Item.Properties, BlockItem> itemFactory,
+        @Nullable Item.Properties properties
+    ) {
+        this(name, supplier, name, itemFactory, properties);
+    }
+
+    ModBlocks(
+        String name,
+        Supplier<Block> supplier,
+        String itemName,
         @Nullable BiFunction<Block, Item.Properties, BlockItem> itemFactory
     ) {
-        this(name, supplier, itemFactory, null);
+        this(name, supplier, itemName, itemFactory, null);
+    }
+
+    ModBlocks(
+        String name,
+        Supplier<Block> supplier,
+        @Nullable BiFunction<Block, Item.Properties, BlockItem> itemFactory
+    ) {
+        this(name, supplier, name, itemFactory);
     }
 
     ModBlocks(String name, Supplier<Block> supplier) {
         this(name, supplier, BlockItem::new);
+    }
+
+    public ResourceLocation id() {
+        return myValue.getId();
+    }
+
+    @Nullable
+    public ResourceLocation itemId() {
+        if (myItem == null) {
+            return null;
+        }
+        return myItem.getId();
     }
 
     public RegistryObject<Block> registryObject() {
@@ -260,7 +359,7 @@ public enum ModBlocks {
 
     public boolean isFoodBlock() {
         return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
-            || this == ModBlocks.RASPBERRY_PIE;
+            || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH;
     }
 
     public static class Entities {

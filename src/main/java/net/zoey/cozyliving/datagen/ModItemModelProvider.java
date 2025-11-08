@@ -71,10 +71,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.CHOCOLATE_BAR);
         simpleItem(ModItems.Food.RED_SUGAR);
         simpleItem(ModItems.Food.MAO_CROQUI);
-        simpleItem(ModItems.Food.RASPBERRY);
-        simpleItem(ModBlocks.GLOWBERRY_TART.itemRegistryObject());
-        simpleItem(ModBlocks.RASPBERRY_PIE.itemRegistryObject());
-        simpleItem(ModBlocks.CINNAMON_PIE.itemRegistryObject());
+        simpleItem(ModBlocks.RASPBERRY_BUSH);
+        simpleItem(ModBlocks.GLOWBERRY_TART);
+        simpleItem(ModBlocks.RASPBERRY_PIE);
+        simpleItem(ModBlocks.CINNAMON_PIE);
 
         simpleItem(ModItems.WAND_OF_HUNGER);
         simpleItem(ModItems.RASPBERRY_RHODOLITE);
@@ -90,6 +90,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.COCONUT_BOAT);
         simpleItem(ModItems.COCONUT_CHEST_BOAT);
         simpleItem(ModItems.FLOWER_CROWN);
+        simpleItem(ModBlocks.COTTON_CROP);
+        simpleItem(ModBlocks.COTTON_SHRUB);
     }
 
     private ItemModelBuilder simpleItem(ModItems.Food food) {
@@ -98,6 +100,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder simpleItem(ModItems item) {
         return simpleItem(item.registryObject());
+    }
+
+    private ItemModelBuilder simpleItem(ModBlocks block) {
+        var item = block.itemRegistryObject();
+        assert item != null : "Called simpleItem on a block with no item!";
+        return simpleItem(item);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

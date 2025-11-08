@@ -1,0 +1,9 @@
+{
+  "parent": "cozyliving:block/crop_tinted_cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "cozyliving:block/cotton_crop_overlay_3",
+    "tinted": "cozyliving:block/cotton_crop_overlay_3",
+    "untinted": "cozyliving:block/cotton_crop_3"
+  }
+}

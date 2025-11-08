@@ -9,6 +9,7 @@ import net.minecraft.world.level.storage.loot.*;
 import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.providers.number.*;
 import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
@@ -16,6 +17,7 @@ import net.zoey.cozyliving.content.block.*;
 import org.jetbrains.annotations.*;
 
 import java.util.*;
+import java.util.function.*;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
@@ -58,6 +60,71 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.GLOWBERRY_TART.block(), noDrop());
         add(ModBlocks.RASPBERRY_PIE.block(), noDrop());
         add(ModBlocks.CINNAMON_PIE.block(), noDrop());
+
+        add(ModBlocks.COTTON_SHRUB.block(), cottonShrubDrops());
+        add(ModBlocks.COTTON_CROP.block(), cottonCropDrops());
+
+        add(
+            ModBlocks.POTTED_COTTON.block(),
+            createPotFlowerItemTable(ModBlocks.COTTON_SHRUB.asItem())
+        );
+    }
+
+    private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(
+        HAS_SILK_TOUCH);
+    private static final LootItemCondition.Builder HAS_NO_SHEARS_OR_SILK_TOUCH = HAS_SHEARS_OR_SILK_TOUCH.invert();
+    private static final LootItemCondition.Builder COTTON_FULLY_GROWN = LootItemBlockStatePropertyCondition
+        .hasBlockStateProperties(ModBlocks.COTTON_CROP.block())
+        .setProperties(StatePropertiesPredicate.Builder
+            .properties()
+            .hasProperty(CropBlock.AGE, 7));
+
+    private LootTable.Builder cottonCropDrops() {
+        return LootTable
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(ModBlocks.COTTON_SHRUB.asItem())
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                .when(HAS_SHEARS_OR_SILK_TOUCH.and(COTTON_FULLY_GROWN)))
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(ModBlocks.COTTON_CROP.asItem())
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                        2,
+                        5
+                    )))
+                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                .when(HAS_NO_SHEARS_OR_SILK_TOUCH.and(COTTON_FULLY_GROWN)))
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(ModBlocks.COTTON_CROP.asItem())
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
+                .when(COTTON_FULLY_GROWN.invert()));
+    }
+
+    private LootTable.Builder cottonShrubDrops() {
+        return LootTable
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(ModBlocks.COTTON_SHRUB.asItem())
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                    .when(HAS_SHEARS_OR_SILK_TOUCH)))
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(ModBlocks.COTTON_CROP.asItem())
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                        2,
+                        3
+                    )))
+                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
+                    .when(HAS_NO_SHEARS_OR_SILK_TOUCH)));
     }
 
     public static LootTable.Builder raspberryBushDrops() {
@@ -65,7 +132,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             .lootTable()
             .withPool(LootPool
                 .lootPool()
-                .add(LootItem.lootTableItem(ModItems.Food.RASPBERRY.item()))
+                .add(LootItem.lootTableItem(ModBlocks.RASPBERRY_BUSH.asItem()))
                 .when(LootItemBlockStatePropertyCondition
                     .hasBlockStateProperties(ModBlocks.RASPBERRY_BUSH.block())
                     .setProperties(StatePropertiesPredicate.Builder

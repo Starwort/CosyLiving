@@ -144,7 +144,7 @@ public enum ModItems {
         return myValue.get();
     }
 
-    public static enum Food {
+    public enum Food {
         CINNAMON_BUN(
             "cinnamon_bun",
             () -> new TooltipItem(FoodValues.CINNAMON_BUN.intoProperties())
@@ -410,14 +410,6 @@ public enum ModItems {
         ),
 
         MAO_CROQUI("mao_croqui", MaoCroquiItem::new),
-
-        RASPBERRY(
-            "raspberry",
-            () -> new ItemNameTooltipBlockItem(
-                ModBlocks.RASPBERRY_BUSH.block(),
-                FoodValues.RASPBERRY.intoProperties()
-            )
-        ),
         ;
 
         public static void register() {

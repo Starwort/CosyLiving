@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-30T15:34:09.410775288	Loot Tables
+// 1.20.1	2025-11-08T16:02:08.128771594	Loot Tables
 7a1676d81f95ba82214e6171002ff9d08bb6a4ab data/cozyliving/loot_tables/blocks/cinnamon_pie.json
 e8f06eb5cea85e10df962555e80444ff38a1a50d data/cozyliving/loot_tables/blocks/coconut.json
 0670f48c3333ac592b1715ce10e1e0315020ef1d data/cozyliving/loot_tables/blocks/coconut_hanging_sign.json
@@ -10,7 +10,10 @@ ce3958a374ae10c5edb7cab949634df55b6fe8d3 data/cozyliving/loot_tables/blocks/coco
 c7c1c435edb32667e937e66bc64f96ec139202bd data/cozyliving/loot_tables/blocks/coconut_wall_hanging_sign.json
 1ace0eeb3704b1251d48f536045c681e56d45e82 data/cozyliving/loot_tables/blocks/coconut_wall_sign.json
 bb2fe881adce16c9c134356d94cc9c61a6b7217a data/cozyliving/loot_tables/blocks/coconut_wood.json
+32b44dafa7eaf5f5d4cb88960bf0cecbb9bb2c2e data/cozyliving/loot_tables/blocks/cotton_crop.json
+8d2e4f54154d3dda73dda946c0796ca745bfe49c data/cozyliving/loot_tables/blocks/cotton_shrub.json
 e740a2d38f4b75fcc74bc842a03447a2d36440d8 data/cozyliving/loot_tables/blocks/glowberry_tart.json
+7488c4b0cf8b3afb9d17d6e0fb763e3aaed5d475 data/cozyliving/loot_tables/blocks/potted_cotton_shrub.json
 dc6704950cb91da690f67d0dc56715b33e616d9b data/cozyliving/loot_tables/blocks/raspberry_bush.json
 2176171350f2791d82d9a6cde9d06ebbe13bbfa6 data/cozyliving/loot_tables/blocks/raspberry_pie.json
 54648116cfa09a5f88425c8a0c74c1ece2c98bde data/cozyliving/loot_tables/blocks/stripped_coconut_log.json

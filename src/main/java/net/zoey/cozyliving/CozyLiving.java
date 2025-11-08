@@ -75,8 +75,10 @@ public class CozyLiving {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
+        event.enqueueWork(() -> ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(
+            ModBlocks.COTTON_SHRUB.id(),
+            ModBlocks.POTTED_COTTON::block
+        ));
     }
 
     // Add the example block item to the building blocks tab
@@ -115,9 +117,9 @@ public class CozyLiving {
                     }
                     return BiomeColors.getAverageGrassColor(level, pos);
                 },
-                // ModBlocks.COTTON_CROP.block(),
-                // ModBlocks.COTTON_SHRUB.block(),
-                // ModBlocks.POTTED_COTTON.block(),
+                ModBlocks.COTTON_CROP.block(),
+                ModBlocks.COTTON_SHRUB.block(),
+                ModBlocks.POTTED_COTTON.block(),
                 ModBlocks.RASPBERRY_BUSH.block()
             );
         }

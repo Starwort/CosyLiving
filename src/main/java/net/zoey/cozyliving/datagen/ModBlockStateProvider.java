@@ -73,6 +73,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         genericSliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie");
         genericSliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie");
         genericSliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart");
+
+        getVariantBuilder(ModBlocks.COTTON_CROP.block()).forAllStates(state -> {
+            var age = state.getValue(CropBlock.AGE);
+            return new ConfiguredModel[] {
+                cropTintedCross(
+                    "cotton_crop_" + age,
+                    "block/cotton_crop_overlay_" + age,
+                    "block/cotton_crop_" + age
+                ),
+            };
+        });
+
+        simpleBlock(
+            ModBlocks.COTTON_SHRUB.block(),
+            tintedCross(
+                "cotton_shrub",
+                "block/cotton_crop_overlay_7",
+                "block/cotton_crop_7"
+            )
+        );
+        simpleBlock(
+            ModBlocks.POTTED_COTTON.block(),
+            exactModel("block/potted_cotton_shrub")
+        );
     }
 
     public void genericSliceableBlock(Block block, String name) {
@@ -135,30 +159,58 @@ public class ModBlockStateProvider extends BlockStateProvider {
         }
     }
 
+    public ConfiguredModel raspberryBush(
+        String modelName,
+        String tinted,
+        String untinted
+    ) {
+        return new ConfiguredModel(models()
+            .withExistingParent(
+                modelName,
+                ResourceLocation.fromNamespaceAndPath(
+                    CozyLiving.MODID,
+                    "block/raspberry_bush"
+                )
+            )
+            .texture(
+                "tinted",
+                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted)
+            )
+            .texture(
+                "untinted",
+                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
+            )
+            .texture(
+                "particle",
+                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted)
+            )
+            .renderType("cutout"));
+    }
+
     public ConfiguredModel tintedCross(
         String modelName,
-        String mainTexture,
-        String overlay
+        String tinted,
+        String untinted
     ) {
         return tintedCross(
             modelName,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, mainTexture),
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, overlay)
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted),
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
         );
     }
 
     public ConfiguredModel tintedCross(
         String modelName,
-        ResourceLocation mainTexture,
-        ResourceLocation overlay
+        ResourceLocation tinted,
+        ResourceLocation untinted
     ) {
-        return tintedCross(modelName, mainTexture, overlay, mainTexture);
+        return tintedCross(modelName, tinted, untinted, tinted);
     }
 
     public ConfiguredModel tintedCross(
         String modelName,
-        ResourceLocation mainTexture,
-        ResourceLocation overlay,
+        ResourceLocation tinted,
+        ResourceLocation untinted,
         ResourceLocation particle
     ) {
         return new ConfiguredModel(models()
@@ -169,36 +221,36 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     "block/tinted_cross"
                 )
             )
-            .texture("0", mainTexture)
-            .texture("overlay", overlay)
+            .texture("tinted", tinted)
+            .texture("untinted", untinted)
             .texture("particle", particle)
             .renderType("cutout"));
     }
 
     public ConfiguredModel cropTintedCross(
         String modelName,
-        String mainTexture,
-        String overlay
+        String tinted,
+        String untinted
     ) {
         return cropTintedCross(
             modelName,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, mainTexture),
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, overlay)
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted),
+            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
         );
     }
 
     public ConfiguredModel cropTintedCross(
         String modelName,
-        ResourceLocation mainTexture,
-        ResourceLocation overlay
+        ResourceLocation tinted,
+        ResourceLocation untinted
     ) {
-        return cropTintedCross(modelName, mainTexture, overlay, mainTexture);
+        return cropTintedCross(modelName, tinted, untinted, tinted);
     }
 
     public ConfiguredModel cropTintedCross(
         String modelName,
-        ResourceLocation mainTexture,
-        ResourceLocation overlay,
+        ResourceLocation tinted,
+        ResourceLocation untinted,
         ResourceLocation particle
     ) {
         return new ConfiguredModel(models()
@@ -209,8 +261,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     "block/crop_tinted_cross"
                 )
             )
-            .texture("0", mainTexture)
-            .texture("overlay", overlay)
+            .texture("tinted", tinted)
+            .texture("untinted", untinted)
             .texture("particle", particle)
             .renderType("cutout"));
     }
@@ -221,7 +273,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             ? "upper"
             : "lower";
 
-        return tintedCross(
+        return raspberryBush(
             "raspberry_bush_" + half + "_" + age,
             "block/raspberry_bush_" + half + "_" + age,
             "block/transparent"
@@ -234,7 +286,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             : "lower";
         var models = new ConfiguredModel[4];
         for (var model = 0; model < 4; model++) {
-            models[model] = tintedCross(
+            models[model] = raspberryBush(
                 "raspberry_bush_" + half + "_4",
                 "block/raspberry_bush_" + half + "_3",
                 "block/raspberry_bush_overlay_" + model

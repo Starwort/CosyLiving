@@ -33,7 +33,7 @@ public enum ModCreativeTabs {
         () -> CreativeModeTab
             .builder()
             .title(Component.translatable("item_group." + CozyLiving.MODID + ".food"))
-            .icon(() -> new ItemStack(ModItems.Food.RASPBERRY.item()))
+            .icon(() -> new ItemStack(ModBlocks.RASPBERRY_BUSH.asItem()))
             .displayItems((displayContext, entries) -> {
                 for (var item : ModItems.Food.values()) {
                     entries.accept(item.item());

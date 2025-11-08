@@ -1,9 +1,9 @@
 {
-  "parent": "cozyliving:block/tinted_cross",
+  "parent": "cozyliving:block/raspberry_bush",
   "render_type": "minecraft:cutout",
   "textures": {
-    "0": "cozyliving:block/raspberry_bush_upper_3",
-    "overlay": "cozyliving:block/raspberry_bush_overlay_3",
-    "particle": "cozyliving:block/raspberry_bush_upper_3"
+    "particle": "cozyliving:block/raspberry_bush_upper_3",
+    "tinted": "cozyliving:block/raspberry_bush_upper_3",
+    "untinted": "cozyliving:block/raspberry_bush_overlay_3"
   }
 }
