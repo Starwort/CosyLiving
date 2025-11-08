@@ -409,10 +409,7 @@ public enum ModItems {
             () -> new TooltipItem(FoodValues.RED_SUGAR.intoProperties())
         ),
 
-        MAO_CROQUI(
-            "mao_croqui",
-            () -> new TooltipItem(FoodValues.MAO_CROQUI.intoProperties())
-        ),
+        MAO_CROQUI("mao_croqui", MaoCroquiItem::new),
 
         RASPBERRY(
             "raspberry",
@@ -421,24 +418,6 @@ public enum ModItems {
                 FoodValues.RASPBERRY.intoProperties()
             )
         ),
-        //
-        //        GLOWBERRY_TART(
-        //            "glowberry_tart", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-        //            // TODO: Implement and use Glowberry Tart
-        //        )
-        //        ),
-        //
-        //        RASPBERRY_PIE(
-        //            "raspberry_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-        //            // TODO: Implement and use Raspberry Pie
-        //        )
-        //        ),
-        //
-        //        CINNAMON_PIE(
-        //            "cinnamon_pie", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-        //            // TODO: Implement and use Cinnamon Pie
-        //        )
-        //        ),
         ;
 
         public static void register() {
