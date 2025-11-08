@@ -258,6 +258,11 @@ public enum ModBlocks {
         return myItem.get();
     }
 
+    public boolean isFoodBlock() {
+        return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
+            || this == ModBlocks.RASPBERRY_PIE;
+    }
+
     public static class Entities {
         public static void register(IEventBus modEventBus) {
             REGISTER.register(modEventBus);

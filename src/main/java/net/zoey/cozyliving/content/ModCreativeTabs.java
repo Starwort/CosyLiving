@@ -19,6 +19,11 @@ public enum ModCreativeTabs {
                 for (var item : ModItems.values()) {
                     entries.accept(item.item());
                 }
+                for (var block : ModBlocks.values()) {
+                    if (!block.isFoodBlock() && block.asItem() != Items.AIR) {
+                        entries.accept(block.asItem());
+                    }
+                }
             })
             .build()
     ),
@@ -32,6 +37,11 @@ public enum ModCreativeTabs {
             .displayItems((displayContext, entries) -> {
                 for (var item : ModItems.Food.values()) {
                     entries.accept(item.item());
+                }
+                for (var block : ModBlocks.values()) {
+                    if (block.isFoodBlock() && block.asItem() != Items.AIR) {
+                        entries.accept(block.asItem());
+                    }
                 }
             })
             .build()
