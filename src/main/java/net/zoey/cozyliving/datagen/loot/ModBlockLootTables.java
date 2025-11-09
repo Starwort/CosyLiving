@@ -46,8 +46,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(
             ModBlocks.COCONUT_LEAVES.block(), createLeavesDrops(
                 ModBlocks.COCONUT_LEAVES.block(),
-                // TODO: Implement and use Coconut sapling
-                Blocks.AMETHYST_BLOCK, 0.15f
+                ModBlocks.COCONUT_SAPLING.block(),
+                0.15f
             )
         );
 
@@ -68,6 +68,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             ModBlocks.POTTED_COTTON.block(),
             createPotFlowerItemTable(ModBlocks.COTTON_SHRUB.asItem())
         );
+        dropSelf(ModBlocks.COCONUT_SAPLING.block());
+        dropSelf(ModBlocks.COTTON_BALE.block());
+        dropSelf(ModBlocks.RASPBERRY_CRATE.block());
+        dropSelf(ModBlocks.COCONUT_CRATE.block());
     }
 
     private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(

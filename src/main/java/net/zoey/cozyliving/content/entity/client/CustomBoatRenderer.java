@@ -26,10 +26,7 @@ public class CustomBoatRenderer extends BoatRenderer {
             .of(CustomBoat.Type.values())
             .collect(ImmutableMap.toImmutableMap(
                 type -> type, type -> Pair.of(
-                    ResourceLocation.fromNamespaceAndPath(
-                        CozyLiving.MODID,
-                        getTextureLocation(type, isChestBoat)
-                    ),
+                    CozyLiving.loc(getTextureLocation(type, isChestBoat)),
                     createBoatModel(context, type, isChestBoat)
                 )
             ));
@@ -68,7 +65,7 @@ public class CustomBoatRenderer extends BoatRenderer {
 
     private static ModelLayerLocation createLocation(String path, String model) {
         return new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, path),
+            CozyLiving.loc(path),
             // force a line break so my formatter behaves
             model
         );

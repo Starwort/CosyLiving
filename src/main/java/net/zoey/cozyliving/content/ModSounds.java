@@ -1,8 +1,6 @@
 package net.zoey.cozyliving.content;
 
-import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
-import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.common.util.*;
 import net.minecraftforge.eventbus.api.*;
@@ -33,10 +31,7 @@ public enum ModSounds {
     ModSounds(String id) {
         myValue = CozyLiving.SOUNDS.register(
             id,
-            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(
-                CozyLiving.MODID,
-                id
-            ))
+            () -> SoundEvent.createVariableRangeEvent(CozyLiving.loc(id))
         );
     }
 

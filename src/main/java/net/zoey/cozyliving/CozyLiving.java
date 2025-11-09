@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
+import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
@@ -47,6 +48,10 @@ public class CozyLiving {
     );
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static ResourceLocation loc(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
     public CozyLiving(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();

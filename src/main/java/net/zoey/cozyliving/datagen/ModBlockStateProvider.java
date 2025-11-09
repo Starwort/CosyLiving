@@ -39,10 +39,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         axisBlock(
             (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_LOG.block(),
             blockTexture(ModBlocks.STRIPPED_COCONUT_LOG.block()),
-            ResourceLocation.fromNamespaceAndPath(
-                CozyLiving.MODID,
-                "block/stripped_coconut_log_top"
-            )
+            modLoc("block/stripped_coconut_log_top")
         );
         axisBlock(
             (RotatedPillarBlock) ModBlocks.STRIPPED_COCONUT_WOOD.block(),
@@ -97,6 +94,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
             ModBlocks.POTTED_COTTON.block(),
             exactModel("block/potted_cotton_shrub")
         );
+
+        axisBlock(
+            ((RotatedPillarBlock) ModBlocks.COTTON_BALE.block()),
+            modLoc("block/cotton_bale_side"),
+            modLoc("block/cotton_bale_top")
+        );
+        blockItem(ModBlocks.COTTON_BALE);
+
+        simpleBlockWithItem(
+            ModBlocks.COCONUT_CRATE.block(), models().cubeBottomTop(
+                "coconut_crate",
+                modLoc("block/crate/coconut/side"),
+                modLoc("block/crate/bottom"),
+                modLoc("block/crate/coconut/top")
+            )
+        );
+        simpleBlockWithItem(
+            ModBlocks.RASPBERRY_CRATE.block(), models().cubeBottomTop(
+                "raspberry_crate",
+                modLoc("block/crate/raspberry/side"),
+                modLoc("block/crate/bottom"),
+                modLoc("block/crate/raspberry/top")
+            )
+        );
+        saplingBlock(ModBlocks.COCONUT_SAPLING);
     }
 
     public void genericSliceableBlock(Block block, String name) {
@@ -127,8 +149,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
     }
 
+    public void saplingBlock(ModBlocks block) {
+        simpleBlock(
+            block.block(),
+            models()
+                .cross(block.id().getPath(), blockTexture(block.block()))
+                .renderType("cutout")
+        );
+    }
+
     public ModelFile modelFile(String id) {
-        return modelFile(ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, id));
+        return modelFile(modLoc(id));
     }
 
     public ModelFile modelFile(ResourceLocation location) {
@@ -165,25 +196,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         String untinted
     ) {
         return new ConfiguredModel(models()
-            .withExistingParent(
-                modelName,
-                ResourceLocation.fromNamespaceAndPath(
-                    CozyLiving.MODID,
-                    "block/raspberry_bush"
-                )
-            )
-            .texture(
-                "tinted",
-                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted)
-            )
-            .texture(
-                "untinted",
-                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
-            )
-            .texture(
-                "particle",
-                ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted)
-            )
+            .withExistingParent(modelName, modLoc("block/raspberry_bush"))
+            .texture("tinted", modLoc(tinted))
+            .texture("untinted", modLoc(untinted))
+            .texture("particle", modLoc(tinted))
             .renderType("cutout"));
     }
 
@@ -192,11 +208,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         String tinted,
         String untinted
     ) {
-        return tintedCross(
-            modelName,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted),
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
-        );
+        return tintedCross(modelName, modLoc(tinted), modLoc(untinted));
     }
 
     public ConfiguredModel tintedCross(
@@ -214,13 +226,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation particle
     ) {
         return new ConfiguredModel(models()
-            .withExistingParent(
-                modelName,
-                ResourceLocation.fromNamespaceAndPath(
-                    CozyLiving.MODID,
-                    "block/tinted_cross"
-                )
-            )
+            .withExistingParent(modelName, modLoc("block/tinted_cross"))
             .texture("tinted", tinted)
             .texture("untinted", untinted)
             .texture("particle", particle)
@@ -232,11 +238,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         String tinted,
         String untinted
     ) {
-        return cropTintedCross(
-            modelName,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, tinted),
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, untinted)
-        );
+        return cropTintedCross(modelName, modLoc(tinted), modLoc(untinted));
     }
 
     public ConfiguredModel cropTintedCross(
@@ -254,13 +256,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         ResourceLocation particle
     ) {
         return new ConfiguredModel(models()
-            .withExistingParent(
-                modelName,
-                ResourceLocation.fromNamespaceAndPath(
-                    CozyLiving.MODID,
-                    "block/crop_tinted_cross"
-                )
-            )
+            .withExistingParent(modelName, modLoc("block/crop_tinted_cross"))
             .texture("tinted", tinted)
             .texture("untinted", untinted)
             .texture("particle", particle)
@@ -333,11 +329,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void blockItem(RegistryObject<Block> block) {
-        simpleBlockItem(
-            block.get(),
-            new ModelFile.UncheckedModelFile(
-                CozyLiving.MODID + ":block/" + name(block.get()))
-        );
+        simpleBlockItem(block.get(), modelFile("block/" + name(block.get())));
     }
 
     private void blockWithItem(ModBlocks block) {

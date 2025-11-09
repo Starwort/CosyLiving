@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-08T16:02:08.13041217	Item Models: cozyliving
+// 1.20.1	2025-11-09T11:01:34.023527356	Item Models: cozyliving
 f48ffa3e7d76b872e2f690d0d96b4e9c9eeb91e5 assets/cozyliving/models/item/apple_jam.json
 024f279cf9c4d2934e1d1df83ce059903140613a assets/cozyliving/models/item/apple_jam_doughnut.json
 7f24edfdd28ab07e7c7cbed053bdca2f3b6f77d8 assets/cozyliving/models/item/apple_sauce.json
@@ -17,6 +17,7 @@ bdeb8f9b9edc0a8d005bb55ec14da3f2a82f1cdb assets/cozyliving/models/item/coconut_c
 cf90f9e46153026f1e666eb53567bfcefbbb78ab assets/cozyliving/models/item/coconut_hanging_sign.json
 6916a204499b6f6ad44d4cc6bc4f84be5768a2c6 assets/cozyliving/models/item/coconut_ice_cream.json
 9b2163e13b953d0ec104f823ea5659a641ad9fd5 assets/cozyliving/models/item/coconut_milk.json
+88a4c1e31d801381e783c2399750fff2b254b7fa assets/cozyliving/models/item/coconut_sapling.json
 01b3ad560ef655f1ebe0443d7e3c1cb94fb8f49f assets/cozyliving/models/item/coconut_sign.json
 d977bd686a9f2961e8340910958eae19ce4c612f assets/cozyliving/models/item/cotton_boll.json
 0d1a0c49b2bd13e22feeb30d45dd0a117cbe6c4a assets/cozyliving/models/item/cotton_shrub.json

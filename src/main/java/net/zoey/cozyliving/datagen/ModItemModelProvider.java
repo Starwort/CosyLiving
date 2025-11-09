@@ -30,13 +30,11 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .getId()
                 .getPath(), ResourceLocation.parse("item/generated")
         ).texture(
-            "layer0", ResourceLocation.fromNamespaceAndPath(
-                CozyLiving.MODID,
-                "item/" + ModItems.Food.GOLDEN_CANDY_APPLE
-                    .registryObject()
-                    .getId()
-                    .getPath()
-            )
+            "layer0",
+            CozyLiving.loc("item/" + ModItems.Food.GOLDEN_CANDY_APPLE
+                .registryObject()
+                .getId()
+                .getPath())
         );
         simpleItem(ModItems.Food.ROASTED_PUMPKIN_SEEDS);
         simpleItem(ModItems.Food.ROASTED_MELON_SEEDS);
@@ -83,8 +81,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.GILDED_CINNAMON_STICK);
         simpleItem(ModItems.CHARCOAL_INK);
         simpleItem(ModItems.BUCKRAM);
-        //        simpleItem(ModItems.COTTON_BOLL);
-        //        simpleItem(ModItems.COTTON_SHRUB);
         simpleItem(ModItems.COCONUT_SIGN);
         simpleItem(ModItems.COCONUT_HANGING_SIGN);
         simpleItem(ModItems.COCONUT_BOAT);
@@ -92,6 +88,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.FLOWER_CROWN);
         simpleItem(ModBlocks.COTTON_CROP);
         simpleItem(ModBlocks.COTTON_SHRUB);
+        simpleItem(ModBlocks.COCONUT_SAPLING);
     }
 
     private ItemModelBuilder simpleItem(ModItems.Food food) {
@@ -115,9 +112,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(
             path,
             ResourceLocation.parse("item/generated")
-        ).texture(
-            "layer0",
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, "item/" + path)
-        );
+        ).texture("layer0", CozyLiving.loc("item/" + path));
     }
 }

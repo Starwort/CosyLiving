@@ -2,11 +2,16 @@ package net.zoey.cozyliving.content;
 
 import net.minecraft.core.*;
 import net.minecraft.resources.*;
+import net.minecraft.sounds.*;
+import net.minecraft.tags.*;
+import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.*;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.*;
 import net.minecraft.world.phys.shapes.*;
 import net.minecraftforge.eventbus.api.*;
@@ -16,6 +21,7 @@ import net.zoey.cozyliving.content.block.*;
 import net.zoey.cozyliving.content.block.entity.*;
 import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.*;
+import net.zoey.cozyliving.level.gen.*;
 import org.jetbrains.annotations.*;
 
 import javax.annotation.*;
@@ -168,6 +174,27 @@ public enum ModBlocks {
 
     COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
 
+    COCONUT_SAPLING(
+        "coconut_sapling",
+        () -> new SaplingBlock(
+            new CoconutTreeGrower(),
+            BlockBehaviour.Properties.copy(Blocks.JUNGLE_SAPLING)
+        )
+        {
+            @Override
+            public boolean canSurvive(
+                @NotNull BlockState state,
+                @NotNull LevelReader level,
+                @NotNull BlockPos pos
+            ) {
+                pos = pos.below();
+                var floor = level.getBlockState(pos);
+                return floor.is(BlockTags.SAND) || floor.is(BlockTags.DIRT) || floor.is(
+                    Blocks.FARMLAND);
+            }
+        }
+    ),
+
     COCONUT("coconut", CoconutBlock::new, TooltipBlockItem::new),
 
     GLOWBERRY_TART(
@@ -252,7 +279,67 @@ public enum ModBlocks {
             BlockBehaviour.Properties.copy(Blocks.POTTED_FERN).mapColor(MapColor.QUARTZ)
         ),
         null
-    );
+    ),
+
+    COTTON_BALE(
+        "cotton_bale",
+        () -> new RotatedPillarBlock(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.QUARTZ)
+            .sound(SoundType.WOOL)
+            .ignitedByLava()
+            .strength(0.25f)
+            .instrument(NoteBlockInstrument.FLUTE))
+        {
+            @Override
+            public void fallOn(
+                @NotNull Level level,
+                @NotNull BlockState state,
+                @NotNull BlockPos pos,
+                @NotNull Entity entity,
+                float fallDistance
+            ) {
+                entity.causeFallDamage(fallDistance, 0f, level.damageSources().fall());
+                if (fallDistance >= 4) {
+                    Player entitySource = null;
+                    if (entity instanceof Player player) {
+                        entitySource = player;
+                        // player.awardStat(ModStatistics.LAND_ON_COTTON_BALE);
+                    }
+                    level.playSound(
+                        entitySource,
+                        pos,
+                        SoundEvents.WOOL_FALL,
+                        SoundSource.BLOCKS
+                    );
+                }
+            }
+        },
+        TooltipBlockItem::new
+    ),
+
+    COCONUT_CRATE(
+        "coconut_crate",
+        () -> new Block(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.COLOR_BROWN)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+            .strength(1)),
+        TooltipBlockItem::new
+    ),
+
+    RASPBERRY_CRATE(
+        "raspberry_crate",
+        () -> new Block(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.FIRE)
+            .sound(SoundType.WOOD)
+            .ignitedByLava()
+            .strength(1)),
+        TooltipBlockItem::new
+    ),
+    ;
 
     public static void register(IEventBus modEventBus) {
         CozyLiving.LOGGER.info(
