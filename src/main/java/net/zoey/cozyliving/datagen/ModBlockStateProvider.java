@@ -12,6 +12,8 @@ import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.block.*;
 
+import java.util.function.*;
+
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, CozyLiving.MODID, exFileHelper);
@@ -19,15 +21,16 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        var planks = blockTexture(ModBlocks.COCONUT_PLANKS.block());
         signBlock(
             (StandingSignBlock) ModBlocks.COCONUT_SIGN.block(),
             (WallSignBlock) ModBlocks.COCONUT_WALL_SIGN.block(),
-            blockTexture(ModBlocks.COCONUT_PLANKS.block())
+            planks
         );
         hangingSignBlock(
             ModBlocks.COCONUT_HANGING_SIGN.block(),
             ModBlocks.COCONUT_WALL_HANGING_SIGN.block(),
-            blockTexture(ModBlocks.COCONUT_PLANKS.block())
+            planks
         );
 
         logBlock((RotatedPillarBlock) ModBlocks.COCONUT_LOG.block());
@@ -96,15 +99,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
 
         simpleBlock(
-            ModBlocks.POTTED_COCONUT_SAPLING.block(),
-            models()
-                .singleTexture(
-                    "potted_coconut_sapling",
-                    ResourceLocation.parse("flower_pot_cross"),
-                    "plant",
-                    blockTexture(ModBlocks.COCONUT_SAPLING.block())
-                )
-                .renderType("cutout")
+            ModBlocks.POTTED_COCONUT_SAPLING.block(), models().singleTexture(
+                "potted_coconut_sapling",
+                ResourceLocation.parse("flower_pot_cross"),
+                "plant",
+                blockTexture(ModBlocks.COCONUT_SAPLING.block())
+            ).renderType("cutout")
         );
 
         axisBlock(
@@ -131,6 +131,39 @@ public class ModBlockStateProvider extends BlockStateProvider {
             )
         );
         saplingBlock(ModBlocks.COCONUT_SAPLING);
+
+        pressurePlateBlock(
+            (PressurePlateBlock) ModBlocks.COCONUT_PRESSURE_PLATE.block(),
+            planks
+        );
+        itemModels().pressurePlate("coconut_pressure_plate", planks);
+        trapdoorBlockWithRenderType(
+            (TrapDoorBlock) ModBlocks.COCONUT_TRAPDOOR.block(),
+            modLoc("block/coconut_trapdoor"),
+            true,
+            "cutout"
+        );
+        itemModels()
+            .trapdoorOrientableBottom(
+                "coconut_trapdoor",
+                modLoc("block/coconut_trapdoor")
+            )
+            .renderType("cutout");
+        stairsBlock((StairBlock) ModBlocks.COCONUT_STAIRS.block(), planks);
+        itemModels().stairs("coconut_stairs", planks, planks, planks);
+        buttonBlock((ButtonBlock) ModBlocks.COCONUT_BUTTON.block(), planks);
+        itemModels().buttonInventory("coconut_button", planks);
+        slabBlock((SlabBlock) ModBlocks.COCONUT_SLAB.block(), planks, planks);
+        itemModels().slab("coconut_slab", planks, planks, planks);
+        fenceBlock((FenceBlock) ModBlocks.COCONUT_FENCE.block(), planks);
+        itemModels().fenceInventory("coconut_fence", planks);
+        fenceGateBlock((FenceGateBlock) ModBlocks.COCONUT_FENCE_GATE.block(), planks);
+        itemModels().fenceGate("coconut_fence_gate", planks);
+        doorBlock(
+            (DoorBlock) ModBlocks.COCONUT_DOOR.block(),
+            modLoc("block/coconut_door_bottom"),
+            modLoc("block/coconut_door_bottom")
+        );
     }
 
     public void genericSliceableBlock(Block block, String name) {

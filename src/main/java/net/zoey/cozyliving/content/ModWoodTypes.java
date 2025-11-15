@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.properties.*;
 import net.zoey.cozyliving.*;
 
 public class ModWoodTypes {
-    private static final BlockSetType COCONUT_BLOCK_SET_TYPE = new BlockSetType(
+    public static final BlockSetType COCONUT_BLOCK_SET_TYPE = new BlockSetType(
         "coconut",
         true,
         SoundType.WOOD,

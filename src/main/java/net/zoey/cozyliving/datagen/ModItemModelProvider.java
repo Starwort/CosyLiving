@@ -73,6 +73,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlocks.GLOWBERRY_TART);
         simpleItem(ModBlocks.RASPBERRY_PIE);
         simpleItem(ModBlocks.CINNAMON_PIE);
+        simpleItem(ModBlocks.COCONUT_DOOR);
 
         simpleItem(ModItems.WAND_OF_HUNGER);
         simpleItem(ModItems.RASPBERRY_RHODOLITE);
@@ -112,6 +113,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(
             path,
             ResourceLocation.parse("item/generated")
-        ).texture("layer0", CozyLiving.loc("item/" + path));
+        ).texture(
+            "layer0",
+            CozyLiving.loc("item/" + path)
+        );
     }
 }

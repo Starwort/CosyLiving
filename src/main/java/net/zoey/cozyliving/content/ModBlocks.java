@@ -367,6 +367,66 @@ public enum ModBlocks {
             .strength(1)),
         TooltipBlockItem::new
     ),
+
+    COCONUT_PRESSURE_PLATE(
+        "coconut_pressure_plate", () -> new PressurePlateBlock(
+        PressurePlateBlock.Sensitivity.EVERYTHING,
+        BlockBehaviour.Properties.copy(Blocks.MANGROVE_PRESSURE_PLATE),
+        ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+    )
+    ),
+
+    COCONUT_TRAPDOOR(
+        "coconut_trapdoor",
+        () -> new TrapDoorBlock(
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_TRAPDOOR),
+            ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+        )
+    ),
+
+    COCONUT_STAIRS(
+        "coconut_stairs",
+        () -> new StairBlock(
+            () -> COCONUT_PLANKS.block().defaultBlockState(),
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_STAIRS)
+        )
+    ),
+
+    COCONUT_BUTTON(
+        "coconut_button", () -> new ButtonBlock(
+        BlockBehaviour.Properties.copy(Blocks.MANGROVE_BUTTON),
+        ModWoodTypes.COCONUT_BLOCK_SET_TYPE,
+        30,
+        true
+    )
+    ),
+
+    COCONUT_SLAB(
+        "coconut_slab",
+        () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_SLAB))
+    ),
+
+    COCONUT_FENCE_GATE(
+        "coconut_fence_gate",
+        () -> new FenceGateBlock(
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE_GATE),
+            ModWoodTypes.COCONUT
+        )
+    ),
+
+    COCONUT_FENCE(
+        "coconut_fence",
+        () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE))
+    ),
+
+    COCONUT_DOOR(
+        "coconut_door",
+        () -> new DoorBlock(
+            BlockBehaviour.Properties
+                .copy(Blocks.MANGROVE_DOOR)
+                .noOcclusion(), ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+        )
+    ),
     ;
 
     public static void register(IEventBus modEventBus) {

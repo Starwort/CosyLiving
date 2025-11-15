@@ -65,15 +65,24 @@
 - [x] Stripped Coconut Wood (registered `block/ModBlocks.java`)
     - `content/block/FlammableRotatedPillarBlock.java`, registered
       `content/ModBlocks.java`
-- [ ] Coconut Pressure Plate (registered `block/ModBlocks.java`)
-- [ ] Coconut Trapdoor (registered `block/ModBlocks.java`)
-- [ ] Coconut Stairs (registered `block/ModBlocks.java`)
-- [ ] Coconut Button (registered `block/ModBlocks.java`)
-- [ ] Coconut Slab (registered `block/ModBlocks.java`)
-- [ ] Coconut Fence Gate (registered `block/ModBlocks.java`)
-- [ ] Coconut Fence (registered `block/ModBlocks.java`)
-- [ ] Coconut Door (registered `block/ModBlocks.java`)
+- [x] Coconut Pressure Plate (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Trapdoor (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Stairs (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Button (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Slab (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Fence Gate (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Fence (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Door (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
 - [x] Potted Coconut Sapling (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
 - [x] Coconut Standing Sign (`TerraformSignBlock`, registered `block/ModBlocks.java`)
     - `content/block/CustomStandingSignBlock.java`, registered `content/ModBlocks.java`
     - Block entity at `content/block/entity/CustomSignBE.java`
@@ -251,14 +260,22 @@
     - Registered `content/ModBlocks.java`
 - [x] Stripped Coconut Wood (registered `block/ModBlocks.java`)
     - Registered `content/ModBlocks.java`
-- [ ] Coconut Pressure Plate (registered `block/ModBlocks.java`)
-- [ ] Coconut Trapdoor (registered `block/ModBlocks.java`)
-- [ ] Coconut Stairs (registered `block/ModBlocks.java`)
-- [ ] Coconut Button (registered `block/ModBlocks.java`)
-- [ ] Coconut Slab (registered `block/ModBlocks.java`)
-- [ ] Coconut Fence Gate (registered `block/ModBlocks.java`)
-- [ ] Coconut Fence (registered `block/ModBlocks.java`)
-- [ ] Coconut Door (registered `block/ModBlocks.java`)
+- [x] Coconut Pressure Plate (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Trapdoor (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Stairs (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Button (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Slab (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Fence Gate (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Fence (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Coconut Door (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
 - [ ] Potted Coconut Sapling (registered `block/ModBlocks.java`)
     - Intentionally omitted; this seems like an oversight
 - [ ] Raspberry Rhodolite Block (registered `block/ModBlocks.java`)

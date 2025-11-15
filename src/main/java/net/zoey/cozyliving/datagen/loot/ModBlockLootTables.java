@@ -76,6 +76,21 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.COTTON_BALE.block());
         dropSelf(ModBlocks.RASPBERRY_CRATE.block());
         dropSelf(ModBlocks.COCONUT_CRATE.block());
+
+        dropSelf(ModBlocks.COCONUT_PRESSURE_PLATE.block());
+        dropSelf(ModBlocks.COCONUT_TRAPDOOR.block());
+        dropSelf(ModBlocks.COCONUT_STAIRS.block());
+        dropSelf(ModBlocks.COCONUT_BUTTON.block());
+        dropSelf(ModBlocks.COCONUT_FENCE.block());
+        dropSelf(ModBlocks.COCONUT_FENCE_GATE.block());
+        add(
+            ModBlocks.COCONUT_DOOR.block(),
+            createDoorTable(ModBlocks.COCONUT_DOOR.block())
+        );
+        add(
+            ModBlocks.COCONUT_SLAB.block(),
+            createSlabItemTable(ModBlocks.COCONUT_SLAB.block())
+        );
     }
 
     private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(
