@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-09T11:05:50.054932336	Block States: cozyliving
+// 1.20.1	2025-11-15T13:19:34.992607817	Block States: cozyliving
 45cda6e7fd74a5c1fb3e47f140f84c649bce368b assets/cozyliving/blockstates/cinnamon_pie.json
 45e6de69cdc835a62370b255d71d39c2ee838aa0 assets/cozyliving/blockstates/coconut.json
 370125ada4ee611c8c981f7b1b928ef161e22482 assets/cozyliving/blockstates/coconut_crate.json
@@ -16,6 +16,7 @@ c4ffc8bb078eb4ced5746b099c7a20e912c9020a assets/cozyliving/blockstates/cotton_ba
 a74bf30bdd9e1c30aa2f512e1551d5de040f6e13 assets/cozyliving/blockstates/cotton_crop.json
 0b1c0d513e68f1ecea1eab0410b48e9db69812fb assets/cozyliving/blockstates/cotton_shrub.json
 b12e601371ea955440b4a7a5a2bc2438d06f058f assets/cozyliving/blockstates/glowberry_tart.json
+e96151e9a9e5f992506ab6817fedb0afb31d7606 assets/cozyliving/blockstates/potted_coconut_sapling.json
 b093d59d1af93c785d8e62b059c3d214c812102d assets/cozyliving/blockstates/potted_cotton_shrub.json
 4b44170d224ca6b5bb49e6d10beb344aaf5d5b14 assets/cozyliving/blockstates/raspberry_bush.json
 41c6dadc3c32dede83f5f5e85f1711d0f4915270 assets/cozyliving/blockstates/raspberry_crate.json
@@ -51,6 +52,7 @@ d0e5fee7728737b22871a6b45f5f3afa3c0d4d85 assets/cozyliving/models/block/cotton_c
 1c2f9b223b44fe692cca6c088ede4c169ff0277a assets/cozyliving/models/block/glowberry_tart_1.json
 fca05f27348c4780571bfc8d27251cd2c3030367 assets/cozyliving/models/block/glowberry_tart_2.json
 75ba0ee2cb1f1cbfceab4328808bf4730c773b47 assets/cozyliving/models/block/glowberry_tart_3.json
+d13d838967c23ae8efa4441ef94af6ace8176e6b assets/cozyliving/models/block/potted_coconut_sapling.json
 9a2dc55b26e09225ca939dca1050a9ecf583093d assets/cozyliving/models/block/raspberry_bush_lower_0.json
 4d0d3e9735199971d1b051b53b83a64ca835dd7c assets/cozyliving/models/block/raspberry_bush_lower_1.json
 671d1fee642df6ce653f46c800601363bb1d328e assets/cozyliving/models/block/raspberry_bush_lower_2.json

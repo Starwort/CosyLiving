@@ -80,10 +80,14 @@ public class CozyLiving {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(
-            ModBlocks.COTTON_SHRUB.id(),
-            ModBlocks.POTTED_COTTON::block
-        ));
+        event.enqueueWork(() -> {
+            var pot = ((FlowerPotBlock) Blocks.FLOWER_POT);
+            pot.addPlant(ModBlocks.COTTON_SHRUB.id(), ModBlocks.POTTED_COTTON::block);
+            pot.addPlant(
+                ModBlocks.COCONUT_SAPLING.id(),
+                ModBlocks.POTTED_COCONUT_SAPLING::block
+            );
+        });
     }
 
     // Add the example block item to the building blocks tab

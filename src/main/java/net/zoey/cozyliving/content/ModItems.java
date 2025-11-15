@@ -57,36 +57,6 @@ public enum ModItems {
     CHARCOAL_INK("charcoal_ink", CharcoalInkItem::new),
 
     BUCKRAM("buckram", TooltipItem::new),
-    //
-    //    COTTON_BOLL(
-    //        "cotton_boll", () -> new ItemNameTooltipBlockItem(Blocks.AMETHYST_BLOCK
-    //        // TODO: Implement and use Cotton
-    //    )
-    //    ),
-    //
-    //    COTTON_SHRUB(
-    //        "cotton_shrub", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-    //        // TODO: Implement and use Cotton Shrub
-    //    )
-    //    ),
-    //
-    //    COTTON_BALE(
-    //        "cotton_bale", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-    //        // TODO: Implement and use Cotton Bale
-    //    )
-    //    ),
-    //
-    //    COCONUT_CRATE(
-    //        "coconut_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-    //        // TODO: Implement and use Coconut Crate
-    //    )
-    //    ),
-    //
-    //    RASPBERRY_CRATE(
-    //        "raspberry_crate", () -> new TooltipBlockItem(Blocks.AMETHYST_BLOCK
-    //        // TODO: Implement and use Raspberry Crate
-    //    )
-    //    ),
 
     COCONUT_SIGN(
         "coconut_sign", () -> new SignItem(

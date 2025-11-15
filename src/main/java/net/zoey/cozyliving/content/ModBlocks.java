@@ -271,6 +271,14 @@ public enum ModBlocks {
         TooltipBlockItem::new
     ),
 
+    POTTED_COCONUT_SAPLING(
+        "potted_coconut_sapling", () -> new FlowerPotBlock(
+        () -> ((FlowerPotBlock) Blocks.FLOWER_POT),
+        COCONUT_SAPLING::block,
+        BlockBehaviour.Properties.copy(Blocks.POTTED_FERN)
+    ), null
+    ),
+
     POTTED_COTTON(
         "potted_cotton_shrub",
         () -> new FlowerPotBlock(
@@ -283,7 +291,7 @@ public enum ModBlocks {
 
     COTTON_BALE(
         "cotton_bale",
-        () -> new RotatedPillarBlock(BlockBehaviour.Properties
+        () -> new FlammableRotatedPillarBlock(BlockBehaviour.Properties
             .of()
             .mapColor(MapColor.QUARTZ)
             .sound(SoundType.WOOL)
@@ -291,6 +299,26 @@ public enum ModBlocks {
             .strength(0.25f)
             .instrument(NoteBlockInstrument.FLUTE))
         {
+            @Override
+            public int getFlammability(
+                BlockState state,
+                BlockGetter level,
+                BlockPos pos,
+                Direction direction
+            ) {
+                return 25;
+            }
+
+            @Override
+            public int getFireSpreadSpeed(
+                BlockState state,
+                BlockGetter level,
+                BlockPos pos,
+                Direction direction
+            ) {
+                return 25;
+            }
+
             @Override
             public void fallOn(
                 @NotNull Level level,

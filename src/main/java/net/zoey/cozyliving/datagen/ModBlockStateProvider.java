@@ -95,6 +95,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
             exactModel("block/potted_cotton_shrub")
         );
 
+        simpleBlock(
+            ModBlocks.POTTED_COCONUT_SAPLING.block(),
+            models()
+                .singleTexture(
+                    "potted_coconut_sapling",
+                    ResourceLocation.parse("flower_pot_cross"),
+                    "plant",
+                    blockTexture(ModBlocks.COCONUT_SAPLING.block())
+                )
+                .renderType("cutout")
+        );
+
         axisBlock(
             ((RotatedPillarBlock) ModBlocks.COTTON_BALE.block()),
             modLoc("block/cotton_bale_side"),

@@ -68,6 +68,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             ModBlocks.POTTED_COTTON.block(),
             createPotFlowerItemTable(ModBlocks.COTTON_SHRUB.asItem())
         );
+        add(
+            ModBlocks.POTTED_COCONUT_SAPLING.block(),
+            createPotFlowerItemTable(ModBlocks.COCONUT_SAPLING.asItem())
+        );
         dropSelf(ModBlocks.COCONUT_SAPLING.block());
         dropSelf(ModBlocks.COTTON_BALE.block());
         dropSelf(ModBlocks.RASPBERRY_CRATE.block());
