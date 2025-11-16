@@ -98,12 +98,18 @@
     - `content/block/CustomWallHangingSignBlock.java`, registered
       `content/ModBlocks.java`
     - Block entity at `content/block/entity/CustomHangingSignBE.java`
-- [ ] Raspberry Rhodolite Block (registered `block/ModBlocks.java`)
-- [ ] Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
-- [ ] Deepslate Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
-- [ ] Benitoite Block (registered `block/ModBlocks.java`)
-- [ ] Benitoite Ore (registered `block/ModBlocks.java`)
-- [ ] Deepslate Benitoite Ore (registered `block/ModBlocks.java`)
+- [x] Raspberry Rhodolite Block (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Deepslate Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Benitoite Block (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Benitoite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Deepslate Benitoite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
 
 ### Items
 
@@ -278,12 +284,18 @@
     - Registered `content/ModBlocks.java`
 - [ ] Potted Coconut Sapling (registered `block/ModBlocks.java`)
     - Intentionally omitted; this seems like an oversight
-- [ ] Raspberry Rhodolite Block (registered `block/ModBlocks.java`)
-- [ ] Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
-- [ ] Deepslate Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
-- [ ] Benitoite Block (registered `block/ModBlocks.java`)
-- [ ] Benitoite Ore (registered `block/ModBlocks.java`)
-- [ ] Deepslate Benitoite Ore (registered `block/ModBlocks.java`)
+- [x] Raspberry Rhodolite Block (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Deepslate Raspberry Rhodolite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Benitoite Block (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Benitoite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
+- [x] Deepslate Benitoite Ore (registered `block/ModBlocks.java`)
+    - Registered `content/ModBlocks.java`
 - [x] Raspberry (`item/custom/ModAliasedBlockToolTipItem.java`, registered
   `item/ModItems.java`)
     - `content/item/ItemNameTooltipBlockItem.java`, registered `content/ModBlocks.java`
