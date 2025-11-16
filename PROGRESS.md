@@ -206,7 +206,7 @@
 - [x] Sleepy Tea (`item/custom/SleepyTeaItem.java`, registered `item/ModItems.java`)
     - `content/item/food/BottledFoodItem.java`, registered `content/ModItems.java`
 - [x] Goopy Chorus (`item/custom/ModTooltipItem.java`, registered `item/ModItems.java`)
-    - `content/item/food/BottledFoodItem.java`, registered `content/ModItems.java`
+    - `content/item/TooltipItem.java`, registered `content/ModItems.java`
 - [x] Myco Medley (`item/custom/ContainerItem.java`, registered `item/ModItems.java`)
     - `content/item/food/ResidueFoodItem.java`, registered `content/ModItems.java`
 - [x] Berry Blend Smoothie (`item/custom/BottledItem.java`, registered
@@ -333,8 +333,9 @@
 
 - [x] Sleepy (`effect/SleepyEffect.java`, registered `effect/ModEffects.java`)
     - `content/effect/SleepyMobEffect.java`, registered `content/ModEffects.java`
-- [ ] Third Eye Open (`effect/ThirdEyeOpenEffect.java`, registered
+- [x] Third Eye Open (`effect/ThirdEyeOpenEffect.java`, registered
   `effect/ModEffects.java`)
+    - `content/effect/ThirdEyeOpenMobEffect.java`, registered `content/ModEffects.java`
 - [x] Well Rested (`effect/WellRestedEffect.java`, registered `effect/ModEffects.java`)
     - `content/effect/WellRestedaMobEffect.java`, registered `content/ModEffects.java`
 
