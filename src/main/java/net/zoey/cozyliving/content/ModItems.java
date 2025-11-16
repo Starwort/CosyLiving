@@ -1,7 +1,9 @@
 package net.zoey.cozyliving.content;
 
+import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.*;
+import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
@@ -269,7 +271,7 @@ public enum ModItems {
 
         GOOPY_CHORUS(
             "goopy_chorus",
-            () -> new BottledFoodItem(FoodValues.GOOPY_CHORUS.intoProperties(), 45)
+            () -> new TooltipItem(FoodValues.GOOPY_CHORUS.intoProperties())
         ),
 
         MYCO_MEDLEY(

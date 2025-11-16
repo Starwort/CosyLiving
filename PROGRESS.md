@@ -331,10 +331,12 @@
 
 ### Effects
 
-- [ ] Sleepy Tea (`effect/SleepyEffect.java`, registered `effect/ModEffects.java`)
+- [x] Sleepy (`effect/SleepyEffect.java`, registered `effect/ModEffects.java`)
+    - `content/effect/SleepyMobEffect.java`, registered `content/ModEffects.java`
 - [ ] Third Eye Open (`effect/ThirdEyeOpenEffect.java`, registered
   `effect/ModEffects.java`)
-- [ ] Well Rested (`effect/WellRestedEffect.java`, registered `effect/ModEffects.java`)
+- [x] Well Rested (`effect/WellRestedEffect.java`, registered `effect/ModEffects.java`)
+    - `content/effect/WellRestedaMobEffect.java`, registered `content/ModEffects.java`
 
 ### Statistics
 

@@ -10,6 +10,8 @@ import net.minecraft.core.registries.*;
 import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
+import net.minecraft.world.effect.*;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
@@ -37,6 +39,12 @@ import org.slf4j.Logger;
 public class CozyLiving {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "cozyliving";
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,
+        MODID
+    );
+    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS,
+        MODID
+    );
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS,
         MODID
     );
@@ -65,6 +73,7 @@ public class CozyLiving {
         LOGGER.info("Cosy Living starting up.");
 
         ModSounds.register(modEventBus);
+        ModEffects.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
@@ -158,11 +167,11 @@ public class CozyLiving {
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Setting up client...");
             EntityRenderers.register(
-                ModEntities.CUSTOM_BOAT.get(),
+                ModEntities.CUSTOM_BOAT.entity(),
                 context -> new CustomBoatRenderer(context, false)
             );
             EntityRenderers.register(
-                ModEntities.CUSTOM_CHEST_BOAT.get(),
+                ModEntities.CUSTOM_CHEST_BOAT.entity(),
                 context -> new CustomBoatRenderer(context, true)
             );
 

@@ -4,6 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.zoey.cozyliving.content.*;
 
 public enum FoodValues {
     CINNAMON_BUN(new net.minecraft.world.food.FoodProperties.Builder()
@@ -100,13 +101,22 @@ public enum FoodValues {
         // TODO: Shouldn't this grant Luck?
         .build()),
 
-    SLEEPY_TEA(new FoodProperties.Builder().nutrition(1).saturationMod(1f)
-        // TODO: Implement and then grant Well Rested
-        .build()),
+    SLEEPY_TEA(new FoodProperties.Builder().nutrition(1).saturationMod(1f).build()),
 
-    GOOPY_CHORUS(new FoodProperties.Builder().nutrition(1).saturationMod(1f).alwaysEat()
-        // TODO: Implement and then inflict Third Eye Open
-        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 6000), 1f).build()),
+    GOOPY_CHORUS(new FoodProperties.Builder()
+        .nutrition(1)
+        .saturationMod(1f)
+        .alwaysEat()
+        .effect(
+            () -> new MobEffectInstance(
+                ModEffects.THIRD_EYE_OPEN.effect(),
+                6000,
+                0
+            ),
+            1f
+        )
+        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 6000), 1f)
+        .build()),
 
     MYCO_MEDLEY(new FoodProperties.Builder()
         .nutrition(8)

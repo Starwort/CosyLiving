@@ -7,10 +7,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.item.*;
 import org.jetbrains.annotations.*;
 
@@ -43,9 +45,21 @@ public class BottledFoodItem extends ResidueFoodItem {
             player.awardStat(Stats.ITEM_USED.get(this));
         }
         var item = CLItemUtils.idOf(stack.getItem());
-        if (item.equals("coconut_milk") || item.equals("heavy_cream")) {
-            if (!level.isClientSide) {
-                user.removeAllEffects();
+        if ((item.equals("coconut_milk") || item.equals("heavy_cream"))
+            && !level.isClientSide) {
+            user.removeAllEffects();
+        }
+        if (item.equals("sleepy_tea") && !level.isClientSide) {
+            if (user.hasEffect(ModEffects.WELL_RESTED.effect())) {
+                user.removeEffect(ModEffects.WELL_RESTED.effect());
+            } else {
+                user.addEffect(new MobEffectInstance(
+                    ModEffects.SLEEPY.effect(),
+                    216_000,
+                    0,
+                    true,
+                    false
+                ));
             }
         }
         return super.finishUsingItem(stack, level, user);
