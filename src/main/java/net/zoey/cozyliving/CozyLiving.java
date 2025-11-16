@@ -1,11 +1,13 @@
 package net.zoey.cozyliving;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.*;
 import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
+import net.minecraft.network.chat.*;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.item.*;
@@ -15,6 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -89,6 +92,33 @@ public class CozyLiving {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
+    }
+
+    @Mod.EventBusSubscriber(
+        modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT
+    )
+    public static class ClientForgeEvents {
+        @SubscribeEvent
+        public static void onTooltip(ItemTooltipEvent event) {
+            var stack = event.getItemStack();
+            var tooltip = event.getToolTip();
+
+            if (stack.getItem() == ModItems.FLOWER_CROWN.item()) {
+                // locate 'When worn on head:'
+                for (var i = 0; i < tooltip.size(); i++) {
+                    var line = tooltip.get(i);
+                    if (line.contains(Component.translatable("item.modifiers.head"))) {
+                        tooltip.add(
+                            i + 1,
+                            Component
+                                .translatable("tooltip.cozyliving.flower_crown")
+                                .withStyle(ChatFormatting.BLUE)
+                        );
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

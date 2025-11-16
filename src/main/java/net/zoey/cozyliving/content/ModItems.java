@@ -86,7 +86,7 @@ public enum ModItems {
 
     FLOWER_CROWN(
         "flower_crown",
-        () -> new TooltipArmourItem(
+        () -> new ArmorItem(
             ArmourMaterials.FLOWER_CROWN,
             ArmorItem.Type.HELMET,
             new Item.Properties()
