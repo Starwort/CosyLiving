@@ -91,6 +91,21 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             ModBlocks.COCONUT_SLAB.block(),
             createSlabItemTable(ModBlocks.COCONUT_SLAB.block())
         );
+
+        dropSelf(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block());
+        simpleOre(ModBlocks.RASPBERRY_RHODOLITE_ORE, ModItems.RASPBERRY_RHODOLITE);
+        simpleOre(
+            ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE,
+            ModItems.RASPBERRY_RHODOLITE
+        );
+
+        dropSelf(ModBlocks.BENITOITE_BLOCK.block());
+        simpleOre(ModBlocks.BENITOITE_ORE, ModItems.BENITOITE);
+        simpleOre(ModBlocks.DEEPSLATE_BENITOITE_ORE, ModItems.BENITOITE);
+    }
+
+    private void simpleOre(ModBlocks ore, ModItems drop) {
+        add(ore.block(), createOreDrop(ore.block(), drop.item()));
     }
 
     private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(

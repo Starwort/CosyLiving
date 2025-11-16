@@ -4,6 +4,7 @@ import net.minecraft.core.*;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
@@ -422,10 +423,71 @@ public enum ModBlocks {
     COCONUT_DOOR(
         "coconut_door",
         () -> new DoorBlock(
-            BlockBehaviour.Properties
-                .copy(Blocks.MANGROVE_DOOR)
-                .noOcclusion(), ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+            BlockBehaviour.Properties.copy(Blocks.MANGROVE_DOOR).noOcclusion(),
+            ModWoodTypes.COCONUT_BLOCK_SET_TYPE
         )
+    ),
+
+    RASPBERRY_RHODOLITE_BLOCK(
+        "raspberry_rhodolite_block",
+        () -> new Block(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.NETHER)
+            .requiresCorrectToolForDrops()
+            .strength(5.5f, 6.5f)
+            .sound(SoundType.METAL))
+    ),
+
+    RASPBERRY_RHODOLITE_ORE(
+        "raspberry_rhodolite_ore", () -> new DropExperienceBlock(
+        BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(3.5f, 3.5f), UniformInt.of(16, 24)
+    )
+    ),
+
+    DEEPSLATE_RASPBERRY_RHODOLITE_ORE(
+        "deepslate_raspberry_rhodolite_ore", () -> new DropExperienceBlock(
+        BlockBehaviour.Properties
+            .copy(RASPBERRY_RHODOLITE_ORE.block())
+            .mapColor(MapColor.DEEPSLATE)
+            .strength(5.5f, 3.5f)
+            .sound(SoundType.DEEPSLATE), UniformInt.of(16, 24)
+    )
+    ),
+
+    BENITOITE_BLOCK(
+        "benitoite_block",
+        () -> new Block(BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.TERRACOTTA_BLUE)
+            .requiresCorrectToolForDrops()
+            .strength(5.5f, 6.5f)
+            .sound(SoundType.METAL))
+    ),
+
+    BENITOITE_ORE(
+        "benitoite_ore", () -> new DropExperienceBlock(
+        BlockBehaviour.Properties
+            .of()
+            .mapColor(MapColor.STONE)
+            .instrument(NoteBlockInstrument.BASEDRUM)
+            .requiresCorrectToolForDrops()
+            .strength(3.5f, 3.5f), UniformInt.of(16, 24)
+    )
+    ),
+
+    DEEPSLATE_BENITOITE_ORE(
+        "deepslate_benitoite_ore", () -> new DropExperienceBlock(
+        BlockBehaviour.Properties
+            .copy(BENITOITE_ORE.block())
+            .mapColor(MapColor.DEEPSLATE)
+            .strength(5.5f, 3.5f)
+            .sound(SoundType.DEEPSLATE), UniformInt.of(16, 24)
+    )
     ),
     ;
 

@@ -164,6 +164,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
             modLoc("block/coconut_door_bottom"),
             modLoc("block/coconut_door_bottom")
         );
+
+        blockWithItem(ModBlocks.RASPBERRY_RHODOLITE_BLOCK);
+        blockWithItem(ModBlocks.RASPBERRY_RHODOLITE_ORE);
+        blockWithItem(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE);
+
+        blockWithItem(ModBlocks.BENITOITE_BLOCK);
+        blockWithItem(ModBlocks.BENITOITE_ORE);
+        blockWithItem(ModBlocks.DEEPSLATE_BENITOITE_ORE);
     }
 
     public void genericSliceableBlock(Block block, String name) {
