@@ -33,8 +33,7 @@ public class CustomBoat extends Boat {
     @Override
     public @NotNull Item getDropItem() {
         return switch (getModVariant()) {
-            case COCONUT ->
-                ModItems.COCONUT_BOAT.item(); // TODO: Implement and use Coconut Boat
+            case COCONUT -> ModItems.COCONUT_BOAT.item();
         };
     }
 
@@ -65,11 +64,10 @@ public class CustomBoat extends Boat {
     }
 
     public enum Type implements StringRepresentable {
-        // TODO: Implement and use Coconut Planks
-        COCONUT(Blocks.AMETHYST_BLOCK, "coconut");
+        COCONUT(ModBlocks.COCONUT_PLANKS::block, "coconut");
 
         private final String name;
-        private final Block planks;
+        private final Supplier<Block> planks;
         public static final StringRepresentable.EnumCodec<Type> CODEC = StringRepresentable.fromEnum(
             Type::values);
         private static final IntFunction<Type> BY_ID = ByIdMap.continuous(
@@ -78,7 +76,7 @@ public class CustomBoat extends Boat {
             ByIdMap.OutOfBoundsStrategy.ZERO
         );
 
-        Type(Block planks, String name) {
+        Type(Supplier<Block> planks, String name) {
             this.name = name;
             this.planks = planks;
         }
@@ -92,7 +90,7 @@ public class CustomBoat extends Boat {
         }
 
         public Block getPlanks() {
-            return this.planks;
+            return this.planks.get();
         }
 
         public String toString() {

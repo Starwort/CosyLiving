@@ -135,7 +135,6 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
                 1f,
                 0.8f + random.nextFloat() * 0.4f
             );
-            // TODO: implement coconuts
             var naturalCoconutBlockState = ModBlocks.COCONUT
                 .block()
                 .defaultBlockState();
