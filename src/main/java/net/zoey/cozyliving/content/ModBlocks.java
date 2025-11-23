@@ -307,7 +307,7 @@ public enum ModBlocks {
                 BlockPos pos,
                 Direction direction
             ) {
-                return 25;
+                return 10;
             }
 
             @Override
@@ -317,7 +317,7 @@ public enum ModBlocks {
                 BlockPos pos,
                 Direction direction
             ) {
-                return 25;
+                return 250;
             }
 
             @Override
