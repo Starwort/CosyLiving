@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.*;
 import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
-public class CustomHangingSignBE extends SignBlockEntity {
+public class CustomHangingSignBE extends HangingSignBlockEntity {
     public CustomHangingSignBE(BlockPos pos, BlockState state) {
         super(ModBlocks.Entities.HANGING_SIGN.get(), pos, state);
     }
