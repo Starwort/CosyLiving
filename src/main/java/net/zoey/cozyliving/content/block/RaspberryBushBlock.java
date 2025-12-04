@@ -261,11 +261,11 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
             var newState = state.setValue(AGE, 3);
             level.setBlockAndUpdate(pos, newState);
             var otherHalf = iAmLower ? pos.above() : pos.below();
-            // TODO: This crashes the game if the other half isn't the block we're
-            //       expecting (e.g. in Debug world, where it's air).
-            //       Should probably fix that
-            var otherState = level.getBlockState(otherHalf).setValue(AGE, 3);
-            level.setBlockAndUpdate(otherHalf, otherState);
+            var otherState = level.getBlockState(otherHalf);
+            if (otherState.is(ModBlocks.RASPBERRY_BUSH.block())) {
+                otherState.setValue(AGE, 3);
+                level.setBlockAndUpdate(otherHalf, otherState);
+            }
             level.gameEvent(
                 GameEvent.BLOCK_CHANGE,
                 pos,
