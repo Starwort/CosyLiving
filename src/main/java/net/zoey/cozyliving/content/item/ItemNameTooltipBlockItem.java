@@ -4,6 +4,7 @@ import net.minecraft.network.chat.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
+import net.zoey.cozyliving.common.*;
 import org.jetbrains.annotations.*;
 
 import java.util.*;

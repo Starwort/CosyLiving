@@ -6,8 +6,8 @@ import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.entity.*;
+import net.zoey.cozyliving.common.*;
 import net.zoey.cozyliving.content.*;
-import net.zoey.cozyliving.content.item.*;
 import org.jetbrains.annotations.*;
 
 public class GlowBottledFoodItem extends BottledFoodItem implements SignApplicator {

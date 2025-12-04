@@ -1,4 +1,4 @@
-package net.zoey.cozyliving.content.item;
+package net.zoey.cozyliving.common;
 
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;

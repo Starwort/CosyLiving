@@ -7,7 +7,7 @@ import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
-import net.zoey.cozyliving.content.item.*;
+import net.zoey.cozyliving.common.*;
 import org.jetbrains.annotations.*;
 
 public class CandyAppleItem extends ResidueFoodItem {
