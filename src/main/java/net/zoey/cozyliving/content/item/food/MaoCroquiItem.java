@@ -20,13 +20,23 @@ public class MaoCroquiItem extends Item {
         @NotNull List<Component> tooltip,
         @NotNull TooltipFlag flag
     ) {
+        var chosenPlayer = getRandomPlayerName(level);
         tooltip.add(Component.translatable(
             "tooltip.cozyliving.mao_croqui.1",
-            getRandomPlayerName(level)
+            chosenPlayer
         ));
-        tooltip.add(Component.translatable("tooltip.cozyliving.mao_croqui.2"));
-        tooltip.add(Component.translatable("tooltip.cozyliving.mao_croqui.3"));
-        tooltip.add(Component.translatable("tooltip.cozyliving.mao_croqui.4"));
+        tooltip.add(Component.translatable(
+            "tooltip.cozyliving.mao_croqui.2",
+            chosenPlayer
+        ));
+        tooltip.add(Component.translatable(
+            "tooltip.cozyliving.mao_croqui.3",
+            chosenPlayer
+        ));
+        tooltip.add(Component.translatable(
+            "tooltip.cozyliving.mao_croqui.4",
+            chosenPlayer
+        ));
         if (flag.isAdvanced() && level != null) {
             tooltip.add(Component.literal("Current GameTime: " + lastKnownGameTime));
             tooltip.add(Component.literal(
