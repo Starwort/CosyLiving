@@ -35,9 +35,8 @@ public class CoconutBlock extends FallingBlock implements Fallable {
     }
 
     @Override
-    public @NotNull DamageSource getFallDamageSource(@NotNull Entity pEntity) {
-        // TODO: implement and use Coconut Bonk damage type
-        return super.getFallDamageSource(pEntity);
+    public @NotNull DamageSource getFallDamageSource(@NotNull Entity entity) {
+        return ModDamageTypes.COCONUT_BONK.asSource(entity.level());
     }
 
     @Override
