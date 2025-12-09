@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cozyliving:cinnamon_stick"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "cozyliving:heavy_cream"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "item": "cozyliving:cinnamon_bun"
+  }
+}
