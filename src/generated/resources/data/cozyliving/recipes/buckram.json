@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "b": {
-      "item": "minecraft:string"
+      "item": "cozyliving:cotton_boll"
     },
     "g": {
       "item": "cozyliving:cotton_boll"
@@ -12,7 +12,7 @@
       "item": "minecraft:string"
     },
     "r": {
-      "item": "cozyliving:cotton_boll"
+      "item": "minecraft:string"
     }
   },
   "pattern": [

@@ -8,13 +8,11 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.*;
-import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.ModBlocks;
 import net.zoey.cozyliving.content.ModItems;
 import net.zoey.cozyliving.content.ModTags;
 import org.jetbrains.annotations.*;
 
-import java.util.*;
 import java.util.function.*;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -45,8 +43,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("rb")
                 .define('g', ModBlocks.COTTON_CROP.asItem())
                 .define('o', Items.STRING)
-                .define('r', ModBlocks.COTTON_CROP.asItem())
-                .define('b', Items.STRING)
+                .define('r', Items.STRING)
+                .define('b', ModBlocks.COTTON_CROP.asItem())
                 .unlockedBy(getHasName(ModBlocks.COTTON_CROP.asItem()), has(ModBlocks.COTTON_CROP.asItem()))
                 .save(writer);
 
