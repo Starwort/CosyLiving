@@ -7,6 +7,9 @@ import net.minecraft.world.item.*;
 import net.zoey.cozyliving.content.*;
 
 public enum FoodValues {
+
+    //TODO: Redo all food values with purpose
+
     CINNAMON_BUN(new net.minecraft.world.food.FoodProperties.Builder()
         .nutrition(5)
         .saturationMod(1)
@@ -184,7 +187,15 @@ public enum FoodValues {
         .saturationMod(0.5f)
         .fast()
         .build()),
+
+    BUTTERSCOTCH_STAR(new FoodProperties.Builder()
+            .nutrition(7)
+            .saturationMod(0.75f)
+            .build())
+
     ;
+
+
 
     public final FoodProperties value;
 
