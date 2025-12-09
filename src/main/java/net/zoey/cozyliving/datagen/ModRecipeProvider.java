@@ -40,6 +40,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
                 .save(writer);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BUCKRAM.item(), 1)
+                .pattern("go")
+                .pattern("rb")
+                .define('g', ModBlocks.COTTON_CROP.asItem())
+                .define('o', Items.STRING)
+                .define('r', ModBlocks.COTTON_CROP.asItem())
+                .define('b', Items.STRING)
+                .unlockedBy(getHasName(ModBlocks.COTTON_CROP.asItem()), has(ModBlocks.COTTON_CROP.asItem()))
+                .save(writer);
+
         //fuck
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BENITOITE.item(), 9)
@@ -160,15 +170,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
                 .save(writer);
 
-        /*CookingRecip.create(Ingredient.ofItems(Items.CHORUS_FLOWER), RecipeCategory.FOOD, ModItems.Food.GOOPY_CHORUS.item(), 1, 200, RecipeSerializer.SMELTING)
-                .unlockedBy(getHasName(Items.CHORUS_FLOWER), has(Items.CHORUS_FLOWER))
-                .save(writer) ;
-        e(Ingredient.ofItems(Items.CHORUS_FLOWER), RecipeCategory.FOOD, ModItems.Food.GOOPY_CHORUS.item(), 1, 100, RecipeSerializer.SMOKING)
-                .unlockedBy(getHasName(Items.CHORUS_FLOWER), has(Items.CHORUS_FLOWER))
-                .save(writer) ;
-        e(Ingredient.ofItems(Items.CHORUS_FLOWER), RecipeCategory.FOOD, ModItems.Food.GOOPY_CHORUS.item(), 1, 600, RecipeSerializer.CAMPFIRE_COOKING)
-                .unlockedBy(getHasName(Items.CHORUS_FLOWER), has(Items.CHORUS_FLOWER))
-                .save(writer);*/
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.Food.HEAVY_CREAM.item(), 2)
                 .requires(ModBlocks.COCONUT.asItem())
@@ -265,6 +266,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         createCookingRecipe(writer, Items.MELON_SEEDS, ModItems.Food.ROASTED_MELON_SEEDS.item(), 0.1f);
         createCookingRecipe(writer, Items.PUMPKIN_SEEDS, ModItems.Food.ROASTED_PUMPKIN_SEEDS.item(), 0.1f);
+        createCookingRecipe(writer, Items.CHORUS_FLOWER, ModItems.Food.GOOPY_CHORUS.item(), 2f);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.Food.SLEEPY_TEA.item(), 2)
                 .requires(Items.HONEY_BOTTLE)
