@@ -93,8 +93,7 @@ public enum ModItems {
             ArmorItem.Type.HELMET,
             new Item.Properties()
         )
-    ),
-    ;
+    );
 
     public static void register(IEventBus modEventBus) {
         Food.register();
@@ -382,6 +381,12 @@ public enum ModItems {
         ),
 
         MAO_CROQUI("mao_croqui", MaoCroquiItem::new),
+
+        BUTTERSCOTCH_STAR(
+                "butterscotch_star",
+                () -> new TooltipItem(FoodValues.BUTTERSCOTCH_STAR.intoProperties())
+        ),
+
         ;
 
         public static void register() {
