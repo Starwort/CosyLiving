@@ -1,3 +1,23 @@
-// 1.20.1	2025-10-29T15:22:43.802078374	Tags for minecraft:item mod id cozyliving
-cad96633a7bf6295364eb1f40fce17a1791c6531 data/minecraft/tags/items/logs_that_burn.json
+// 1.20.1	2025-12-10T21:39:43.181751307	Tags for minecraft:item mod id cozyliving
+a1a3424963b34004c80aa760f3126750e9893f06 data/cozyliving/tags/items/brewing_stand_ingredient_useable.json
+2c7e90a9c2ca666f8d7ecad6b3170e438218d493 data/cozyliving/tags/items/brewing_stand_input_useable.json
+cad96633a7bf6295364eb1f40fce17a1791c6531 data/cozyliving/tags/items/coconut_logs.json
+846b3094ccb3fbd4fe5e230d2225a6e3fc181b1d data/cozyliving/tags/items/cotton_items.json
+ee8eed2932dde8b6dec99f648d6adecea23f16f0 data/cozyliving/tags/items/cozyliving_starter_items.json
+1cef4a4c9683f2691da9beaf28de548fa6bc5fec data/cozyliving/tags/items/ice_creams.json
+5e83b595d8e62725693f330e35f9c76d46628174 data/cozyliving/tags/items/jams.json
+84b796307887f287c44ca2e869fb4b16f1cda27f data/minecraft/tags/items/beacon_payment_items.json
+20c298e282e1ef57dab2e61c82ba755944fb89f5 data/minecraft/tags/items/boats.json
+af09dc707748b14fc112c4b7e2ef0a78851448ab data/minecraft/tags/items/chest_boats.json
+d4027e838dba1b8d98ee87cbc749adc5c817eb37 data/minecraft/tags/items/fence_gates.json
+efdbb17dde60aed4ffb46d75de7fcc11e2e697f0 data/minecraft/tags/items/hanging_signs.json
+6524ce5d1c65061aae30d59497d33be38ad33510 data/minecraft/tags/items/logs_that_burn.json
 b15b1266095792a143e3e3e47071cb2cfd5d2e33 data/minecraft/tags/items/planks.json
+f6b5e2a09972adb492fae8ffc2bcfd19a5db50de data/minecraft/tags/items/signs.json
+53d21858b66dec1983bfb519a0dfb7cc0f694d4c data/minecraft/tags/items/wooden_buttons.json
+fee7aceb629a1facede113213543726d34ece3a7 data/minecraft/tags/items/wooden_doors.json
+2acdee14591c48b00bfdcd10d2904af9297df749 data/minecraft/tags/items/wooden_fences.json
+67cf4c0a7168299b7979fc5359b0b50874760b31 data/minecraft/tags/items/wooden_pressure_plates.json
+254bd03ab9a84f00ebbb95a07b3b31115259ee43 data/minecraft/tags/items/wooden_slabs.json
+7cff57c58c197360c73ecb7adebc45369ff74aa6 data/minecraft/tags/items/wooden_stairs.json
+509671c2762ac4fe4dc18c0eb56f62cdc6d08ee9 data/minecraft/tags/items/wooden_trapdoors.json

@@ -1,57 +1,70 @@
 package net.zoey.cozyliving.content;
 
+import net.minecraft.core.registries.*;
 import net.minecraft.resources.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.block.*;
 import net.zoey.cozyliving.CozyLiving;
 
 public class ModTags {
-    public static class Blocks {
-        public static final TagKey<Block> COCONUT_LOGS = createTag("coconut_logs");
+    public enum Blocks {
+        COCONUT_LOGS("coconut_logs"),
+        ;
 
+        public final TagKey<Block> myValue;
 
-        private static TagKey<Block> createTag(String name) {
-            //TODO: shouldn't have to do this probably
-            //noinspection removal
-            return BlockTags.create(new ResourceLocation(CozyLiving.MODID, name));
+        Blocks(String id) {
+            myValue = BlockTags.create(CozyLiving.loc(id));
+        }
+
+        public TagKey<Block> get() {
+            return myValue;
         }
     }
 
-    public static class Items {
-        public static final TagKey<Item> COCONUT_LOGS = createTag("coconut_logs");
-        public static final TagKey<Item> BREWING_STAND_INPUT_USEABLE = createTag("brewing_stand_input_useable");
-        public static final TagKey<Item> BREWING_STAND_INGREDIENT_USEABLE = createTag("brewing_stand_ingredient_useable");
-        public static final TagKey<Item> JAMS = createTag("jams");
-        public static final TagKey<Item> COZYLIVING_STARTER_ITEMS = createTag("cozyliving_starter_items");
-        public static final TagKey<Item> COTTON_ITEMS = createTag("cotton_items");
-        public static final TagKey<Item> ICE_CREAMS = createTag("ice_creams");
+    public enum Items {
+        COCONUT_LOGS("coconut_logs"),
 
+        BREWING_STAND_INPUT_USEABLE("brewing_stand_input_useable"),
 
+        BREWING_STAND_INGREDIENT_USEABLE("brewing_stand_ingredient_useable"),
 
-        private static TagKey<Item> createTag(String name) {
-            //noinspection removal
+        JAMS("jams"),
 
-            return ItemTags.create(new ResourceLocation(CozyLiving.MODID, name));
+        COZYLIVING_STARTER_ITEMS("cozyliving_starter_items"),
+
+        COTTON_ITEMS("cotton_items"),
+
+        ICE_CREAMS("ice_creams"),
+        ;
+
+        private final TagKey<Item> myValue;
+
+        Items(String id) {
+            myValue = ItemTags.create(CozyLiving.loc(id));
+        }
+
+        public TagKey<Item> get() {
+            return myValue;
         }
     }
 
-    //TODO: Fix biome tags
-    /*
-    public static class Biomes {
-        public static final TagKey<Biome> HAS_COTTON_SHRUB_PATCHES = createTag("has_cotton_shrub_patches");
-        public static final TagKey<Biome> HAS_RASPBERRY_PATCHES = createTag("has_raspberry_patches");
+    public enum Biomes {
+        HAS_COTTON_SHRUB_PATCHES("has_cotton_shrub_patches"),
+
+        HAS_RASPBERRY_PATCHES("has_raspberry_patches"),
+        ;
+
+        private final TagKey<Biome> myValue;
+
+        Biomes(String id) {
+            myValue = TagKey.create(Registries.BIOME, CozyLiving.loc(id));
+        }
+
+        public TagKey<Biome> get() {
+            return myValue;
+        }
     }
-        //public static final TagKey<Biome> HAS_COTTON_SHRUB_PATCHES = TagKey.of(RegistryKeys.BIOME, new Identifier("has_cotton_shrub_patches"));
-        //public static final TagKey<Biome> HAS_RASPBERRY_PATCHES = TagKey.of(RegistryKeys.BIOME, new Identifier("has_cotton_shrub_patches"));
-
-
-        private static TagKey<Biome> createTag(String name) {
-            return BiomeTags.create(new ResourceLocation(CozyLiving.MODID, name));
-    }*/
-
-    public static void registerModTags() {
-        CozyLiving.LOGGER.info("Registering Mod Tags for " + CozyLiving.MODID);
-    }
-
 }
