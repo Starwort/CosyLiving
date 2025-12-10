@@ -2,6 +2,7 @@ package net.zoey.cozyliving;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.*;
+import net.minecraft.client.*;
 import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.gui.overlay.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.player.*;
@@ -125,6 +127,21 @@ public class CozyLiving {
                         );
                         break;
                     }
+                }
+            }
+        }
+
+        @SubscribeEvent
+        public static void onOverlay(RenderGuiOverlayEvent.Pre event) {
+            // Skip Nether Portal overlay rendering if we have Third Eye Open
+            // This is pretty much the same thing vanilla does if the player
+            // has CONFUSION (Nausea) [n.b. both skip portal rendering even
+            // if the player is standing in a portal]
+            if (event.getOverlay() == VanillaGuiOverlay.PORTAL.type()) {
+                var player = Minecraft.getInstance().player;
+                if (player != null
+                    && player.hasEffect(ModEffects.THIRD_EYE_OPEN.effect())) {
+                    event.setCanceled(true);
                 }
             }
         }

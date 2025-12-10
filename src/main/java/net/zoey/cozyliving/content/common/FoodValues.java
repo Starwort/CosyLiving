@@ -118,7 +118,8 @@ public enum FoodValues {
             ),
             1f
         )
-        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 6000), 1f)
+        // DebilitatingNauseaMixin means we have no real need to set vanilla nausea also
+        //        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 6000), 1f)
         .build()),
 
     MYCO_MEDLEY(new FoodProperties.Builder()
@@ -189,12 +190,9 @@ public enum FoodValues {
         .build()),
 
     BUTTERSCOTCH_STAR(new FoodProperties.Builder()
-            .nutrition(7)
-            .saturationMod(0.75f)
-            .build())
-
-    ;
-
+        .nutrition(7)
+        .saturationMod(0.75f)
+        .build());
 
 
     public final FoodProperties value;

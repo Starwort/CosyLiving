@@ -16,8 +16,7 @@ import java.util.stream.Collectors;
 // An example config class. This is not required, but it's a good idea to have one to keep your config organized.
 // Demonstrates how to use Forge's config APIs
 @Mod.EventBusSubscriber(modid = CozyLiving.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class Config
-{
+public class Config {
     private static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
 
     // tbd if any config is necessary
@@ -29,6 +28,10 @@ public class Config
     // private static final ForgeConfigSpec.IntValue MAGIC_NUMBER = BUILDER
     //         .comment("A magic number")
     //         .defineInRange("magicNumber", 42, 0, Integer.MAX_VALUE);
+
+    private static final ForgeConfigSpec.DoubleValue DEBILITATING_NAUSEA_FACTOR = BUILDER
+        .comment("How debilitating to make Third Eye Open")
+        .defineInRange("debilitatingNauseaFactor", 3., 1., Double.POSITIVE_INFINITY);
 
     // public static final ForgeConfigSpec.ConfigValue<String> MAGIC_NUMBER_INTRODUCTION = BUILDER
     //         .comment("What you want the introduction message to be for the magic number")
@@ -45,15 +48,16 @@ public class Config
     // public static int magicNumber;
     // public static String magicNumberIntroduction;
     // public static Set<Item> items;
+    public static double debilitatingNauseaFactor;
 
-    private static boolean validateItemName(final Object obj)
-    {
-        return obj instanceof final String itemName && ForgeRegistries.ITEMS.containsKey(ResourceLocation.parse(itemName));
+    private static boolean validateItemName(final Object obj) {
+        return obj instanceof final String itemName
+            && ForgeRegistries.ITEMS.containsKey(ResourceLocation.parse(itemName));
     }
 
     @SubscribeEvent
-    static void onLoad(final ModConfigEvent event)
-    {
+    static void onLoad(final ModConfigEvent event) {
+        debilitatingNauseaFactor = DEBILITATING_NAUSEA_FACTOR.get();
         // logDirtBlock = LOG_DIRT_BLOCK.get();
         // magicNumber = MAGIC_NUMBER.get();
         // magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
