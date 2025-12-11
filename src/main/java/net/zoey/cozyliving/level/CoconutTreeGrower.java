@@ -1,4 +1,4 @@
-package net.zoey.cozyliving.level.gen;
+package net.zoey.cozyliving.level;
 
 import net.minecraft.resources.*;
 import net.minecraft.util.*;
