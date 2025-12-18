@@ -38,6 +38,14 @@ public class DataGenerators {
         );
 
         generator.addProvider(
+                event.includeServer(), new ModBiomeTagsProvider(
+                        packOutput,
+                        lookupProvider,
+                        existingFileHelper
+                )
+        );
+
+        generator.addProvider(
             event.includeClient(),
             new ModBlockStateProvider(packOutput, existingFileHelper)
         );
