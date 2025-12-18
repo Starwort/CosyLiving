@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:lush_caves",
+  "features": "cozyliving:patch_cotton_shrub_placed",
+  "step": "vegetal_decoration"
+}
