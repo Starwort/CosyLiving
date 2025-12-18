@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
 import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.effect.*;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.*;
@@ -34,7 +36,10 @@ import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
+import net.zoey.cozyliving.level.RaspberryBushesFeature;
 import org.slf4j.Logger;
+
+import java.awt.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CozyLiving.MODID)
@@ -59,6 +64,10 @@ public class CozyLiving {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
         MODID
     );
+
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE,
+        MODID);
+
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -80,6 +89,7 @@ public class CozyLiving {
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
+        //RaspberryBushesFeature.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
