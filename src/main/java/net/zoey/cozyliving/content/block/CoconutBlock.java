@@ -28,6 +28,7 @@ public class CoconutBlock extends FallingBlock implements Fallable {
             .of()
             .mapColor(MapColor.COLOR_BROWN)
             .sound(ModSounds.COCONUT_SOUNDS)
+            .instrument(NoteBlockInstrument.CUSTOM_HEAD)
             .noOcclusion()
             .destroyTime(.3f));
 

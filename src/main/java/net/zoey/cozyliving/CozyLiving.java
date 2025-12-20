@@ -18,12 +18,14 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.event.level.*;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -37,6 +39,7 @@ import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
 import net.zoey.cozyliving.level.RaspberryBushesFeature;
+import net.zoey.cozyliving.mixin.*;
 import org.slf4j.Logger;
 
 import java.awt.*;
@@ -66,7 +69,8 @@ public class CozyLiving {
     );
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE,
-        MODID);
+        MODID
+    );
 
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -216,6 +220,32 @@ public class CozyLiving {
                 ModBlocks.Entities.HANGING_SIGN.get(),
                 HangingSignRenderer::new
             );
+        }
+    }
+
+    @Mod.EventBusSubscriber(
+        modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE
+    )
+    public static class CommonForgeEvents {
+        @SubscribeEvent
+        public static void onNotePlay(NoteBlockEvent.Play event) {
+            var level = event.getLevel();
+            var pos = event.getPos();
+
+            if (level.getBlockState(pos.above()).is(ModBlocks.COCONUT.block())) {
+                event.setInstrument(NoteBlockInstrument.CUSTOM_HEAD);
+                level.playSound(
+                    null,
+                    pos,
+                    ModSounds.COCONUT_BONK.sound(),
+                    SoundSource.RECORDS,
+                    1.0f,
+                    // TODO: raise the coconut bonk sound by one tone? This stops
+                    //  getting higher for the last two notes of the note block
+                    (float) Math.pow(2.0, (event.getVanillaNoteId() - 10.0) / 12)
+                );
+                event.setCanceled(true);
+            }
         }
     }
 }
