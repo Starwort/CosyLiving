@@ -72,6 +72,8 @@ public class CozyLiving {
         MODID
     );
 
+    public static final boolean DEBUG_MODE = true;
+
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
@@ -93,7 +95,7 @@ public class CozyLiving {
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
-        //RaspberryBushesFeature.register(modEventBus);
+        RaspberryBushesFeature.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,53 +1,80 @@
 package net.zoey.cozyliving.level;
 
-import com.mojang.serialization.Codec;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.WorldGenLevel;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
-import net.zoey.cozyliving.CozyLiving;
-import net.zoey.cozyliving.content.ModBlocks;
-import net.zoey.cozyliving.content.ModItems;
+import com.mojang.serialization.*;
+import net.minecraft.core.*;
+import net.minecraft.tags.*;
+import net.minecraft.util.*;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.levelgen.feature.*;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraftforge.eventbus.api.*;
+import net.minecraftforge.registries.*;
+import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.*;
 
-
-import static net.zoey.cozyliving.content.block.RaspberryBushBlock.AGE;
-import static net.zoey.cozyliving.content.block.RaspberryBushBlock.HALF;
+import static net.zoey.cozyliving.content.block.RaspberryBushBlock.*;
 
 public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
     public RaspberryBushesFeature(Codec<NoneFeatureConfiguration> configCodec) {
         super(configCodec);
     }
 
+    public RaspberryBushesFeature() {
+        this(NoneFeatureConfiguration.CODEC);
+    }
+
+    public static final RegistryObject<Feature<NoneFeatureConfiguration>> RASPBERRY_BUSHES = CozyLiving.FEATURES.register("raspberry_bushes",
+        RaspberryBushesFeature::new
+    );
+
+    public static void register(IEventBus modEventBus) {
+        var registry = CozyLiving.FEATURES;
+        CozyLiving.LOGGER.info("Registering Raspberry Bushes feature");
+        registry.register(modEventBus);
+    }
+
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel worldgenlevel = context.level(); //Get access to world
-        BlockPos blockPos = context.origin();                        //Get position to spawn feature
-        context.config();                                            //Honestly I have no idea what this is for
-        RandomSource random = context.random();                            //Get random generator based on world seed
-        BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();              //?????
+        var level = context.level();
+        var blockPos = context.origin();
+        var _config = context.config(); // we don't read this but maybe it's somehow necessary??
+        var random = context.random();
+        var mutablePos = new BlockPos.MutableBlockPos();
+        CozyLiving.LOGGER.info(
+            "Trying to place a RaspberryBushesFeature at {} {} {}",
+            blockPos.getX(),
+            blockPos.getY(),
+            blockPos.getZ()
+        );
         int successes = 0;
         int xz_spread = 5;
         int y_spread = 3;
-        for(int tries = 0; tries < 33; ++tries) {
-            mutable.set(random.nextInt(xz_spread) - random.nextInt(xz_spread), random.nextInt(y_spread) - random.nextInt(y_spread), random.nextInt(xz_spread) - random.nextInt(xz_spread));
-            if (worldgenlevel.isEmptyBlock(mutable) //Is air at position
-                    && (worldgenlevel.isEmptyBlock(mutable.above()) //Is air at position above (in case of larger bush)
-                    && (mutable.getY() <= worldgenlevel.getMaxBuildHeight()-2)      //Isn't out of bounds
-                    && (worldgenlevel.getBlockState(mutable.below()).is(BlockTags.DIRT)))) //Block below is suitable
+        for (int tries = 0; tries < 33; ++tries) {
+            mutablePos.setWithOffset(
+                blockPos,
+                random.nextInt(xz_spread) - random.nextInt(xz_spread),
+                random.nextInt(y_spread) - random.nextInt(y_spread),
+                random.nextInt(xz_spread) - random.nextInt(xz_spread)
+            );
+            if (level.isEmptyBlock(mutablePos) //Is air at position
+                && (
+                level.isEmptyBlock(mutablePos.above())
+                    //Is air at position above (in case of larger bush)
+                    && (mutablePos.getY() <= level.getMaxBuildHeight() - 2)
+                    //Isn't out of bounds
+                    && (
+                    level.getBlockState(mutablePos.below()).is(BlockTags.DIRT)
+                )
+            )) //Block below is suitable
             {
-                PlaceBush(worldgenlevel, mutable, random, successes==0);   //Places one of the bush types
+                placeBush(
+                    level,
+                    mutablePos,
+                    random,
+                    successes == 0
+                );   //Places one of the bush types
                 successes++;
             }
         }
@@ -55,78 +82,60 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
     }
 
 
-    public static void PlaceBush(WorldGenLevel worldgenlevel, BlockPos.MutableBlockPos mutable, RandomSource random, Boolean isFirst) {
-
-        if (isFirst) { //If this is the first bush placed, make it fully grown
-            worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-            worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-        } else { //Otherwise, select from this list of options:
-            switch (random.nextInt(9)) {
-                case 0:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,0).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    break;
-                case 1:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,1).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    break;
-                case 2:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,2).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    break;
-                case 3:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,0).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                case 4:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,1).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                case 5:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,2).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                case 6:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                case 7:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                case 8:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,3).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-                default:
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.LOWER), 2);
-                    worldgenlevel.setBlock(mutable, ModBlocks.RASPBERRY_BUSH.block().defaultBlockState().setValue(AGE,4).setValue(HALF,DoubleBlockHalf.UPPER), 2);
-                    break;
-            }
+    public static void placeBush(
+        WorldGenLevel level,
+        BlockPos.MutableBlockPos mutablePos,
+        RandomSource random,
+        boolean isFirst
+    ) {
+        // If this is the first bush placed, make it fully grown
+        // Otherwise, choose a random growth stage
+        var age = isFirst ? 7 : random.nextInt(8);
+        CozyLiving.LOGGER.info(
+            "Placing a bush (age {}) at {} {} {}",
+            age,
+            mutablePos.getX(),
+            mutablePos.getY(),
+            mutablePos.getZ()
+        );
+        // stages => 0; 1; 2; 3,0; 3,1; 3,2; 3,3; 4,4
+        if (age > 2) {
+            var topAge = age - 3;
+            age = topAge == 4 ? 4 : 3;
+            level.setBlock(
+                mutablePos.above(),
+                ModBlocks.RASPBERRY_BUSH
+                    .block()
+                    .defaultBlockState()
+                    .setValue(AGE, topAge)
+                    .setValue(HALF, DoubleBlockHalf.UPPER),
+                // TODO: this feels like the wrong update mode for world-gen
+                Block.UPDATE_CLIENTS
+            );
+            CozyLiving.LOGGER.info(
+                "Placed top half (age {}) at {} {} {}",
+                topAge,
+                mutablePos.above().getX(),
+                mutablePos.above().getY(),
+                mutablePos.above().getZ()
+            );
         }
+        level.setBlock(
+            mutablePos,
+            ModBlocks.RASPBERRY_BUSH
+                .block()
+                .defaultBlockState()
+                .setValue(AGE, age)
+                .setValue(HALF, DoubleBlockHalf.LOWER),
+            // TODO: this feels like the wrong update mode for world-gen
+            Block.UPDATE_CLIENTS
+        );
+        CozyLiving.LOGGER.info(
+            "Placed bottom half (age {}) at {} {} {}",
+            age,
+            mutablePos.getX(),
+            mutablePos.getY(),
+            mutablePos.getZ()
+        );
     }
-    /*
-    //TODO: BuiltInRegistries.FEATURE is deprecated.
-    private static <C extends FeatureConfiguration, F extends Feature<C>> F register(String pKey, F pValue) {
-        return Registry.register(ForgeRegistries.FEATURES, pKey, pValue);
-    }*/
-    /*public static final Feature<NoneFeatureConfiguration> RASPBERRY_BUSHES;
-    static{ RASPBERRY_BUSHES = register("raspberry_bushes", new RaspberryBushesFeature(NoneFeatureConfiguration.CODEC));}
-
-    public static void register(IEventBus modEventBus) {
-        ModItems.Food.register();
-        CozyLiving.LOGGER.info("Registering raspberry bush feature");
-        CozyLiving.FEATURES.register(modEventBus);
-
-    }*/
-    /*public static final DeferredRegister<Feature<?>> REGISTER = DeferredRegister.create(ForgeRegistries.FEATURES,
-            CozyLiving.MODID
-    );*/
-
-    /*public static void register(IEventBus modEventBus) {
-
-        CozyLiving.FEATURES.register(modEventBus);
-    }*/
-
-    //TODO: idk what i'm doing
-    //public static final RegistryObject<Feature<?>> RASPBERRY_BUSHES = REGISTER.register(
-     //       "raspberry_bushes", ForgeRegistries.FEATURES);
-
 }
