@@ -39,15 +39,8 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         var level = context.level();
         var blockPos = context.origin();
-        var _config = context.config(); // we don't read this but maybe it's somehow necessary??
         var random = context.random();
         var mutablePos = new BlockPos.MutableBlockPos();
-        CozyLiving.LOGGER.info(
-            "Trying to place a RaspberryBushesFeature at {} {} {}",
-            blockPos.getX(),
-            blockPos.getY(),
-            blockPos.getZ()
-        );
         int successes = 0;
         int xz_spread = 5;
         int y_spread = 3;
@@ -91,13 +84,6 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
         // If this is the first bush placed, make it fully grown
         // Otherwise, choose a random growth stage
         var age = isFirst ? 7 : random.nextInt(8);
-        CozyLiving.LOGGER.info(
-            "Placing a bush (age {}) at {} {} {}",
-            age,
-            mutablePos.getX(),
-            mutablePos.getY(),
-            mutablePos.getZ()
-        );
         // stages => 0; 1; 2; 3,0; 3,1; 3,2; 3,3; 4,4
         if (age > 2) {
             var topAge = age - 3;
@@ -112,13 +98,6 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                 // TODO: this feels like the wrong update mode for world-gen
                 Block.UPDATE_CLIENTS
             );
-            CozyLiving.LOGGER.info(
-                "Placed top half (age {}) at {} {} {}",
-                topAge,
-                mutablePos.above().getX(),
-                mutablePos.above().getY(),
-                mutablePos.above().getZ()
-            );
         }
         level.setBlock(
             mutablePos,
@@ -129,13 +108,6 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                 .setValue(HALF, DoubleBlockHalf.LOWER),
             // TODO: this feels like the wrong update mode for world-gen
             Block.UPDATE_CLIENTS
-        );
-        CozyLiving.LOGGER.info(
-            "Placed bottom half (age {}) at {} {} {}",
-            age,
-            mutablePos.getX(),
-            mutablePos.getY(),
-            mutablePos.getZ()
         );
     }
 }
