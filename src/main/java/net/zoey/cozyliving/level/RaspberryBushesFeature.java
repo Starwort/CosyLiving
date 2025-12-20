@@ -83,11 +83,14 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
     ) {
         // If this is the first bush placed, make it fully grown
         // Otherwise, choose a random growth stage
-        var age = isFirst ? 7 : random.nextInt(8);
-        // stages => 0; 1; 2; 3,0; 3,1; 3,2; 3,3; 4,4
+        var age = isFirst ? 9 : random.nextInt(10);
+        // stages => 0; 1; 2; 3,0; 3,1; 3,2; 3,3; 3,4; 4,3; 4,4
         if (age > 2) {
             var topAge = age - 3;
-            age = topAge == 4 ? 4 : 3;
+            if (topAge > 4) {
+                topAge -= 2;
+            }
+            age = age >= 8 ? 4 : 3;
             level.setBlock(
                 mutablePos.above(),
                 ModBlocks.RASPBERRY_BUSH

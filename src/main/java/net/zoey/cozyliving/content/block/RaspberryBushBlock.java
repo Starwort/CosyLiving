@@ -125,11 +125,8 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
         @NotNull BlockPos pos,
         RandomSource random
     ) {
-        // TODO: why not just check random.nextInt(15) == 0?
-        if (random.nextIntBetweenInclusive(1, 3) == 3) {
-            if (random.nextInt(5) == 0 && level.getRawBrightness(pos.above(), 0) >= 9) {
-                performBonemeal(level, random, pos, state);
-            }
+        if (random.nextInt(15) == 0 && level.getRawBrightness(pos.above(), 0) >= 9) {
+            performBonemeal(level, random, pos, state);
         }
     }
 
@@ -169,15 +166,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
         if (myHalf == DoubleBlockHalf.UPPER || myAge < 2) {
             // always grow if this is a top half or if not ready to have a top half
             level.setBlockAndUpdate(pos, state.setValue(AGE, myAge + 1));
-            // if our age is 3, we must be a top half. Put berries on our lower half
-            if (myAge == 3) {
-                level.setBlockAndUpdate(
-                    pos.below(),
-                    defaultBlockState()
-                        .setValue(HALF, DoubleBlockHalf.LOWER)
-                        .setValue(AGE, 4)
-                );
-            }
         } else if (myAge == 2) {
             // grow into age 3 and spawn a block above me
             // TODO: does this just delete light sources?
@@ -208,9 +196,8 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
                     aboveState.setValue(AGE, aboveAge + 1)
                 );
             } else {
-                // grow both halves at the same time (each to 4)
+                // our top half is old enough, put berries on this half
                 level.setBlockAndUpdate(pos, state.setValue(AGE, 4));
-                level.setBlockAndUpdate(pos.above(), aboveState.setValue(AGE, 4));
             }
         }
     }
@@ -239,11 +226,9 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
         if (myAge != 4 && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
             return InteractionResult.PASS;
         }
-        // if this plant is ripe, pick both halves
+        // if this plant is ripe, try to pick both halves
         if (myAge == 4) {
-            int berriesToDrop = 2 + level.random.nextInt(2) + level.random.nextInt(2);
-            var stack = new ItemStack(ModBlocks.RASPBERRY_BUSH.asItem(), berriesToDrop);
-            player.getInventory().placeItemBackInInventory(stack);
+            int berriesToDrop = level.random.nextInt(2) + 1;
 
             var iAmLower = state.getValue(HALF) == DoubleBlockHalf.LOWER;
 
@@ -262,9 +247,11 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
             level.setBlockAndUpdate(pos, newState);
             var otherHalf = iAmLower ? pos.above() : pos.below();
             var otherState = level.getBlockState(otherHalf);
-            if (otherState.is(ModBlocks.RASPBERRY_BUSH.block())) {
+            if (otherState.is(ModBlocks.RASPBERRY_BUSH.block())
+                && otherState.getValue(AGE) == 4) {
                 otherState.setValue(AGE, 3);
                 level.setBlockAndUpdate(otherHalf, otherState);
+                berriesToDrop += level.random.nextInt(2) + 1;
             }
             level.gameEvent(
                 GameEvent.BLOCK_CHANGE,
@@ -276,6 +263,8 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
                 otherHalf,
                 GameEvent.Context.of(player, otherState)
             );
+            var stack = new ItemStack(ModBlocks.RASPBERRY_BUSH.asItem(), berriesToDrop);
+            player.getInventory().placeItemBackInInventory(stack);
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
             return super.use(state, level, pos, player, hand, hit);
