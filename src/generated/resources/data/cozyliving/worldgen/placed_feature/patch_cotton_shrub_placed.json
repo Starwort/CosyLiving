@@ -1,9 +1,9 @@
 {
-  "feature": "cozyliving:patch_raspberries",
+  "feature": "cozyliving:patch_cotton_shrub",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 1
+      "chance": 31
     },
     {
       "type": "minecraft:in_square"
