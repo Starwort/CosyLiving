@@ -23,7 +23,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.*;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.player.*;
 import net.minecraftforge.event.level.*;
 import net.minecraftforge.event.server.ServerStartingEvent;
