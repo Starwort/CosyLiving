@@ -23,10 +23,9 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
     private static final VoxelShape[] SHAPES = new VoxelShape[] {
-        // TODO: why are X1 and Z1 not the same?
-        box(4f, 0f, 3f, 12f, 8f, 12f),
-        box(3f, 0f, 2f, 13f, 10f, 13f),
-        box(2f, 0f, 1f, 14f, 14f, 14f),
+        box(4f, 0f, 4f, 12f, 8f, 12f),
+        box(3f, 0f, 3f, 13f, 10f, 13f),
+        box(2f, 0f, 2f, 14f, 14f, 14f),
         box(1f, 0f, 1f, 15f, 16f, 15f),
         box(1f, 0f, 1f, 15f, 16f, 15f),
         // SHAPES[4] is a duplicate of SHAPES[3] - this is so ageing
