@@ -98,8 +98,7 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                     .defaultBlockState()
                     .setValue(AGE, topAge)
                     .setValue(HALF, DoubleBlockHalf.UPPER),
-                // TODO: this feels like the wrong update mode for world-gen
-                Block.UPDATE_CLIENTS
+                Block.UPDATE_NEIGHBORS
             );
         }
         level.setBlock(
@@ -109,8 +108,7 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                 .defaultBlockState()
                 .setValue(AGE, age)
                 .setValue(HALF, DoubleBlockHalf.LOWER),
-            // TODO: this feels like the wrong update mode for world-gen
-            Block.UPDATE_CLIENTS
+            Block.UPDATE_NEIGHBORS
         );
     }
 }
