@@ -7,11 +7,7 @@ import net.minecraft.world.level.*;
 import net.zoey.cozyliving.*;
 
 public enum ModDamageTypes {
-    COCONUT_BONK("coconut_bonk"),
-
-    // TODO: not used?
-    HOTTER_CHOCOLATE("hotter_chocolate"),
-    ;
+    COCONUT_BONK("coconut_bonk");
 
     private final ResourceKey<DamageType> myValue;
 
