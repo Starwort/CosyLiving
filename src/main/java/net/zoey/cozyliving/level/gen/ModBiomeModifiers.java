@@ -18,7 +18,7 @@ import net.zoey.cozyliving.content.ModTags;
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_RASPBERRY_RHODOLITE_ORE = registerKey("add_raspberry_rhodolite_ore");
     public static final ResourceKey<BiomeModifier> ADD_BENITOITE_ORE = registerKey("add_benitoite_ore");
-    //public static final ResourceKey<BiomeModifier> ADD_PATCH_RASPBERRIES = registerKey("add_patch_raspberries");
+    public static final ResourceKey<BiomeModifier> ADD_PATCH_RASPBERRIES = registerKey("add_patch_raspberries");
     public static final ResourceKey<BiomeModifier> ADD_PATCH_COTTON_SHRUB = registerKey("add_patch_cotton_shrub");
     public static final ResourceKey<BiomeModifier> ADD_PATCH_LUSH_COTTON_SHRUB = registerKey("add_patch_lush_cotton_shrub");
 
@@ -37,10 +37,10 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BENITOITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        /*context.register(ADD_PATCH_RASPBERRIES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_RASPBERRIES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_RASPBERRY_PATCHES.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_RASPBERRIES_PLACED_KEY)),
-                GenerationStep.Decoration.VEGETAL_DECORATION));*/
+                GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_PATCH_COTTON_SHRUB, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
