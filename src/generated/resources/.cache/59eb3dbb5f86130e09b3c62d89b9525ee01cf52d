@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-16T11:26:47.504569844	Loot Tables
+// 1.20.1	2025-12-18T19:35:46.4100876	Loot Tables
 7d086ebd9b1982084b5ac545239f5b1513e71a16 data/cozyliving/loot_tables/blocks/benitoite_block.json
 0dff42ec72b5d5ac4a18a5feeef1230bf17fba2a data/cozyliving/loot_tables/blocks/benitoite_ore.json
 7a1676d81f95ba82214e6171002ff9d08bb6a4ab data/cozyliving/loot_tables/blocks/cinnamon_pie.json
@@ -28,6 +28,7 @@ cb229f49d54f044c6adf7f197878902dcf76b05d data/cozyliving/loot_tables/blocks/cott
 61812d7944824dc0ec5526adc3d69b4367ea73ec data/cozyliving/loot_tables/blocks/deepslate_benitoite_ore.json
 9efd653b51b3705d44562539a273dd94c5db6a46 data/cozyliving/loot_tables/blocks/deepslate_raspberry_rhodolite_ore.json
 e740a2d38f4b75fcc74bc842a03447a2d36440d8 data/cozyliving/loot_tables/blocks/glowberry_tart.json
+ef7e70e2b611419d0bee9b293c551cf264a931c8 data/cozyliving/loot_tables/blocks/golden_carrot_cake.json
 03f43f49d95515a407aa857f565c18c03dfb4937 data/cozyliving/loot_tables/blocks/potted_coconut_sapling.json
 7488c4b0cf8b3afb9d17d6e0fb763e3aaed5d475 data/cozyliving/loot_tables/blocks/potted_cotton_shrub.json
 dc6704950cb91da690f67d0dc56715b33e616d9b data/cozyliving/loot_tables/blocks/raspberry_bush.json

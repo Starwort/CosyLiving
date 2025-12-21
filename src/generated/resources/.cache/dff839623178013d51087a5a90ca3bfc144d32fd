@@ -1,4 +1,4 @@
-// 1.20.1	2025-11-16T11:26:47.498661604	Block States: cozyliving
+// 1.20.1	2025-12-18T19:35:46.4080872	Block States: cozyliving
 211bec6aaeb948a30ab38c657ccb6e7eeebed863 assets/cozyliving/blockstates/benitoite_block.json
 a7fb1a90c604c5164b909e9c337dcb37a7ecf3d4 assets/cozyliving/blockstates/benitoite_ore.json
 45cda6e7fd74a5c1fb3e47f140f84c649bce368b assets/cozyliving/blockstates/cinnamon_pie.json
@@ -28,6 +28,7 @@ a74bf30bdd9e1c30aa2f512e1551d5de040f6e13 assets/cozyliving/blockstates/cotton_cr
 95df635aeadaeed7c13018850749f593b4f9f65e assets/cozyliving/blockstates/deepslate_benitoite_ore.json
 3f179fa0692a9b0fed62cdd078180848819aa87e assets/cozyliving/blockstates/deepslate_raspberry_rhodolite_ore.json
 b12e601371ea955440b4a7a5a2bc2438d06f058f assets/cozyliving/blockstates/glowberry_tart.json
+7cc3cd5206e507adabfe6e7f392de28e8fda8168 assets/cozyliving/blockstates/golden_carrot_cake.json
 e96151e9a9e5f992506ab6817fedb0afb31d7606 assets/cozyliving/blockstates/potted_coconut_sapling.json
 b093d59d1af93c785d8e62b059c3d214c812102d assets/cozyliving/blockstates/potted_cotton_shrub.json
 4b44170d224ca6b5bb49e6d10beb344aaf5d5b14 assets/cozyliving/blockstates/raspberry_bush.json
@@ -96,6 +97,10 @@ f46b3046b0f1b8b69574e335e6f00bcd106f3b8e assets/cozyliving/models/block/deepslat
 1c2f9b223b44fe692cca6c088ede4c169ff0277a assets/cozyliving/models/block/glowberry_tart_1.json
 fca05f27348c4780571bfc8d27251cd2c3030367 assets/cozyliving/models/block/glowberry_tart_2.json
 75ba0ee2cb1f1cbfceab4328808bf4730c773b47 assets/cozyliving/models/block/glowberry_tart_3.json
+8a9b670a4eb191a99341f8d37d957c25bc184c1d assets/cozyliving/models/block/golden_carrot_cake_0.json
+f79a70ba4697b372dfb4886f8659e6d4381a8c80 assets/cozyliving/models/block/golden_carrot_cake_1.json
+f83f6814e7b4a8657ddd60400d6a60fc4b605c12 assets/cozyliving/models/block/golden_carrot_cake_2.json
+25c5334bf6a4725bdf9a5d65ca731c891ac0c058 assets/cozyliving/models/block/golden_carrot_cake_3.json
 d13d838967c23ae8efa4441ef94af6ace8176e6b assets/cozyliving/models/block/potted_coconut_sapling.json
 9a2dc55b26e09225ca939dca1050a9ecf583093d assets/cozyliving/models/block/raspberry_bush_lower_0.json
 4d0d3e9735199971d1b051b53b83a64ca835dd7c assets/cozyliving/models/block/raspberry_bush_lower_1.json

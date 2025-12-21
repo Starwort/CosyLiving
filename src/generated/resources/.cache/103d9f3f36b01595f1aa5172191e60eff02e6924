@@ -1,7 +1,8 @@
-// 1.20.1	2025-12-20T18:04:42.934204096	Registries
+// 1.20.1	2025-12-21T10:24:50.6393073	Registries
 2fc7e594084424254be296ba82b7d7430710bcb2 data/cozyliving/forge/biome_modifier/add_benitoite_ore.json
 ffa9e72d8143125f2e0e4bec8d0f06d4d1924832 data/cozyliving/forge/biome_modifier/add_patch_cotton_shrub.json
 b3aa2f3a25c8bf298873368e22bcd31148c63fa7 data/cozyliving/forge/biome_modifier/add_patch_lush_cotton_shrub.json
+3ef4783639a1e86e3a4ce1630cec9a0fd544ecd5 data/cozyliving/forge/biome_modifier/add_patch_raspberries.json
 86a3d526897177c5d88226ab5979992fd157f1af data/cozyliving/forge/biome_modifier/add_raspberry_rhodolite_ore.json
 bfadc2e9f883c8a75fff33a9eb601f02c7f77d9f data/cozyliving/worldgen/configured_feature/benitoite_ore.json
 a5e154f0dca0ff50bf605a5219edf8fee8f13ba1 data/cozyliving/worldgen/configured_feature/patch_cotton_shrub.json
