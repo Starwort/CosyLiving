@@ -72,7 +72,7 @@ public class ModPlacedFeatures {
             PATCH_RASPBERRIES_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_RASPBERRIES_KEY),
             List.of(
-                RarityFilter.onAverageOnceEvery(CozyLiving.DEBUG_MODE ? 1 : 15),
+                RarityFilter.onAverageOnceEvery(15),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome()
@@ -85,17 +85,15 @@ public class ModPlacedFeatures {
 
         register(
             context, PATCH_COTTON_SHRUB_PLACED_KEY,
-            // TODO: remove this debug switch once raspberry patch placement is fixed
-            configuredFeatures.getOrThrow(CozyLiving.DEBUG_MODE
-                ? ModConfiguredFeatures.PATCH_RASPBERRIES_KEY
-                : ModConfiguredFeatures.PATCH_COTTON_SHRUB_KEY), List.of(
-                RarityFilter.onAverageOnceEvery(CozyLiving.DEBUG_MODE ? 1 : 31),
+            configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_COTTON_SHRUB_KEY), List.of(
+                RarityFilter.onAverageOnceEvery(31),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome()
             )
         );
 
+        //TODO: cotton shrubs kinda just fail to generate in lush caves for some reason
         register(
             context,
             PATCH_LUSH_COTTON_SHRUB_PLACED_KEY,
