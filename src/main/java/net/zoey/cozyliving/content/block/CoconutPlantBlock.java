@@ -193,7 +193,6 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
         BlockPos pos
     ) {
         var ceiling = level.getBlockState(pos.above());
-        // TODO: why is the below condition duplicated?
-        return ceiling.is(BlockTags.LEAVES); // || ceiling.is(BlockTags.LEAVES);
+        return ceiling.is(BlockTags.LEAVES);
     }
 }
