@@ -242,9 +242,7 @@ public class CozyLiving {
                     ModSounds.COCONUT_BONK.sound(),
                     SoundSource.RECORDS,
                     1.0f,
-                    // TODO: raise the coconut bonk sound by one tone? This stops
-                    //  getting higher for the last two notes of the note block
-                    (float) Math.pow(2.0, (event.getVanillaNoteId() - 10.0) / 12)
+                    (float) Math.pow(2.0, (event.getVanillaNoteId() - 12.0) / 12)
                 );
                 event.setCanceled(true);
             }
