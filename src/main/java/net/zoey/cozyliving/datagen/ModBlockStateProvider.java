@@ -179,9 +179,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
             new ConfiguredModel(
                 models()
                     .withExistingParent(
-                        name + "_" + state.getValue(SliceableFoodBlock.BITES),
+                        name + "_" + state.getValue(GenericSliceableFoodBlock.BITES),
                         modLoc("block/" + size + "_sliceable_" + state.getValue(
-                            SliceableFoodBlock.BITES))
+                            GenericSliceableFoodBlock.BITES))
                     )
                     .texture("inside", modLoc("block/" + name + "/inside"))
                     .texture("outside", modLoc("block/" + name + "/outside"))
@@ -189,7 +189,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .texture("bottom", modLoc("block/" + name + "/bottom"))
                     .texture("particle", modLoc("block/" + name + "/top")),
                 0,
-                switch (state.getValue(SliceableFoodBlock.FACING)) {
+                switch (state.getValue(GenericSliceableFoodBlock.FACING)) {
                     case DOWN, UP ->
                         throw new IllegalStateException("FACING cannot be up or down");
                     case NORTH -> 270;
