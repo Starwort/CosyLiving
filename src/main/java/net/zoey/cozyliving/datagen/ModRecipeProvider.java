@@ -57,6 +57,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             )
             .save(writer);
 
+        ShapedRecipeBuilder
+                .shaped(RecipeCategory.MISC, ModBlocks.GOLDEN_CARROT_CAKE.asItem(), 1)
+                .pattern("hch")
+                .pattern("ggg")
+                .pattern("wsw")
+                .define('h', ModItems.Food.HEAVY_CREAM.item())
+                .define('s', Items.SUGAR)
+                .define('g', Items.GOLDEN_CARROT)
+                .define('c', ModItems.CINNAMON_STICK.item())
+                .define('w', Items.WHEAT)
+                .unlockedBy(
+                        getHasName(Items.GOLDEN_CARROT),
+                        has(Items.GOLDEN_CARROT)
+                )
+                .save(writer);
+
         //fuck
 
         ShapelessRecipeBuilder
