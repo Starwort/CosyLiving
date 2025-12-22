@@ -30,6 +30,13 @@ public enum FoodValues {
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 150, 1), 1f)
         .build()),
 
+    GOLDEN_CARROT_CAKE(new FoodProperties.Builder()
+            .nutrition(6)
+            .saturationMod(1.2f)
+            .alwaysEat()
+            .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 36000, 0, true, false), 1f)
+            .build()),
+
     ENCHANTED_GOLDEN_CANDY_APPLE(new FoodProperties.Builder()
         .nutrition(6)
         .saturationMod(3f)
