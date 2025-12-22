@@ -205,6 +205,15 @@ public enum ModBlocks {
         ItemNameTooltipBlockItem::new
     ),
 
+    GOLDEN_CARROT_CAKE(
+            "golden_carrot_cake",
+            () -> new SliceableFoodBlock(
+                    ModItems.Food.GOLDEN_CARROT_CAKE_SLICE::item,
+                    BlockBehaviour.Properties.copy(Blocks.CAKE)
+            ),
+            ItemNameTooltipBlockItem::new
+    ),
+
     RASPBERRY_PIE(
         "raspberry_pie",
         () -> new SliceableFoodBlock(
@@ -594,7 +603,8 @@ public enum ModBlocks {
 
     public boolean isFoodBlock() {
         return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
-            || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH;
+            || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH
+                || this == ModBlocks.GOLDEN_CARROT_CAKE;
     }
 
     public static class Entities {
