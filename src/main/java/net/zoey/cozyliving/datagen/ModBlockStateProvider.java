@@ -12,8 +12,6 @@ import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.block.*;
 
-import java.util.function.*;
-
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, CozyLiving.MODID, exFileHelper);
@@ -70,9 +68,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.COCONUT.block(), modelFile("block/coconut"));
 
-        genericSliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie");
-        genericSliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie");
-        genericSliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart");
+        SliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie", "generic");
+        SliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie","generic");
+        SliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart", "generic");
 
         getVariantBuilder(ModBlocks.COTTON_CROP.block()).forAllStates(state -> {
             var age = state.getValue(CropBlock.AGE);
@@ -172,15 +170,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BENITOITE_BLOCK);
         blockWithItem(ModBlocks.BENITOITE_ORE);
         blockWithItem(ModBlocks.DEEPSLATE_BENITOITE_ORE);
+
+        SliceableBlock(ModBlocks.GOLDEN_CARROT_CAKE.block(), "golden_carrot_cake", "large");
     }
 
-    public void genericSliceableBlock(Block block, String name) {
+    public void SliceableBlock(Block block, String name, String size) {
         getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
             new ConfiguredModel(
                 models()
                     .withExistingParent(
                         name + "_" + state.getValue(SliceableFoodBlock.BITES),
-                        modLoc("block/generic_sliceable_" + state.getValue(
+                        modLoc("block/" + size + "_sliceable_" + state.getValue(
                             SliceableFoodBlock.BITES))
                     )
                     .texture("inside", modLoc("block/" + name + "/inside"))
