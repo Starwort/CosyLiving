@@ -198,7 +198,7 @@ public enum ModBlocks {
 
     GLOWBERRY_TART(
         "glowberry_tart",
-        () -> new SliceableFoodBlock(
+        () -> new GenericSliceableFoodBlock(
             ModItems.Food.GLOWBERRY_TART_SLICE::item,
             BlockBehaviour.Properties.copy(Blocks.CAKE)
         ),
@@ -207,7 +207,7 @@ public enum ModBlocks {
 
     GOLDEN_CARROT_CAKE(
             "golden_carrot_cake",
-            () -> new SliceableFoodBlock(
+            () -> new LargeSliceableFoodBlock(
                     ModItems.Food.GOLDEN_CARROT_CAKE_SLICE::item,
                     BlockBehaviour.Properties.copy(Blocks.CAKE)
             ),
@@ -216,7 +216,7 @@ public enum ModBlocks {
 
     RASPBERRY_PIE(
         "raspberry_pie",
-        () -> new SliceableFoodBlock(
+        () -> new GenericSliceableFoodBlock(
             ModItems.Food.RASPBERRY_PIE_SLICE::item,
             BlockBehaviour.Properties.copy(Blocks.CAKE)
         ),
@@ -225,7 +225,7 @@ public enum ModBlocks {
 
     CINNAMON_PIE(
         "cinnamon_pie",
-        () -> new SliceableFoodBlock(
+        () -> new GenericSliceableFoodBlock(
             ModItems.Food.CINNAMON_PIE_SLICE::item,
             BlockBehaviour.Properties.copy(Blocks.CAKE)
         ),
