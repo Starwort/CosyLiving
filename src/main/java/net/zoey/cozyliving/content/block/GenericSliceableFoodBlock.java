@@ -17,12 +17,12 @@ import org.jetbrains.annotations.*;
 
 import java.util.function.*;
 
-public class SliceableFoodBlock extends Block {
+public class GenericSliceableFoodBlock extends Block {
     public static final IntegerProperty BITES = IntegerProperty.create("bites", 0, 3);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public final Supplier<Item> sliceItem;
 
-    public SliceableFoodBlock(
+    public GenericSliceableFoodBlock(
         @NotNull Supplier<Item> sliceItem,
         BlockBehaviour.Properties properties
     ) {
