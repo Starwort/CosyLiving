@@ -41,6 +41,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.GLOWBERRY_TART_SLICE);
         simpleItem(ModItems.Food.RASPBERRY_PIE_SLICE);
         simpleItem(ModItems.Food.CINNAMON_PIE_SLICE);
+        simpleItem(ModItems.Food.GOLDEN_CARROT_CAKE_SLICE);
         simpleItem(ModItems.Food.APPLE_SAUCE);
         simpleItem(ModItems.Food.WATERMELON_POPSICLE);
         simpleItem(ModItems.Food.HONEYCOMB_ICE_CREAM);
@@ -73,6 +74,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlocks.GLOWBERRY_TART);
         simpleItem(ModBlocks.RASPBERRY_PIE);
         simpleItem(ModBlocks.CINNAMON_PIE);
+        simpleItem(ModBlocks.GOLDEN_CARROT_CAKE);
         simpleItem(ModBlocks.COCONUT_DOOR);
 
         simpleItem(ModItems.WAND_OF_HUNGER);
