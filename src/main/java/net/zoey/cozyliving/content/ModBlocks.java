@@ -206,12 +206,12 @@ public enum ModBlocks {
     ),
 
     GOLDEN_CARROT_CAKE(
-            "golden_carrot_cake",
-            () -> new LargeSliceableFoodBlock(
-                    ModItems.Food.GOLDEN_CARROT_CAKE_SLICE::item,
-                    BlockBehaviour.Properties.copy(Blocks.CAKE)
-            ),
-            ItemNameTooltipBlockItem::new
+        "golden_carrot_cake",
+        () -> new LargeSliceableFoodBlock(
+            ModItems.Food.GOLDEN_CARROT_CAKE_SLICE::item,
+            BlockBehaviour.Properties.copy(Blocks.CAKE)
+        ),
+        ItemNameTooltipBlockItem::new
     ),
 
     RASPBERRY_PIE(
