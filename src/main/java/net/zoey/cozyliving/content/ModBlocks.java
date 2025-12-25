@@ -340,7 +340,7 @@ public enum ModBlocks {
                     Player entitySource = null;
                     if (entity instanceof Player player) {
                         entitySource = player;
-                        // player.awardStat(ModStatistics.LAND_ON_COTTON_BALE);
+                        player.awardStat(ModStatistics.LAND_ON_COTTON_BALE.asStat());
                     }
                     level.playSound(
                         entitySource,
@@ -604,7 +604,7 @@ public enum ModBlocks {
     public boolean isFoodBlock() {
         return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
             || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH
-                || this == ModBlocks.GOLDEN_CARROT_CAKE;
+            || this == ModBlocks.GOLDEN_CARROT_CAKE;
     }
 
     public static class Entities {

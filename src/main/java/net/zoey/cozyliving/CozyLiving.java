@@ -12,6 +12,7 @@ import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
+import net.minecraft.stats.*;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.*;
@@ -71,6 +72,10 @@ public class CozyLiving {
         MODID
     );
 
+    public static final DeferredRegister<ResourceLocation> STATISTICS = DeferredRegister.create(Registries.CUSTOM_STAT,
+        CozyLiving.MODID
+    );
+
     public static final boolean DEBUG_MODE = true;
 
     // Directly reference a slf4j logger
@@ -95,6 +100,7 @@ public class CozyLiving {
         ModItems.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         RaspberryBushesFeature.register(modEventBus);
+        ModStatistics.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
