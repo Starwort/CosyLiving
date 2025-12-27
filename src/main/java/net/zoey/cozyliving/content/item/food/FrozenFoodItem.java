@@ -33,7 +33,7 @@ public class FrozenFoodItem extends ResidueFoodItem {
         }
         if (!level.isClientSide) {
             user.extinguishFire();
-            user.setTicksFrozen(100);
+            user.setTicksFrozen(user.getTicksFrozen() + 100);
         }
         return super.finishUsingItem(stack, level, user);
     }
