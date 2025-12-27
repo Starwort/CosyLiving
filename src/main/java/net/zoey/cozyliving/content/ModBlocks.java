@@ -8,6 +8,7 @@ import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
@@ -250,7 +251,9 @@ public enum ModBlocks {
             }
         },
         "cotton_boll",
-        ItemNameTooltipBlockItem::new
+            (block, props) -> new BurnableBlockItem(block, props, 67)
+
+
     ),
 
     COTTON_SHRUB(
@@ -276,7 +279,8 @@ public enum ModBlocks {
                 return box(3, 0, 3, 13, 13, 13);
             }
         },
-        TooltipBlockItem::new
+            (block, props) -> new BurnableBlockItem(block, props, 200)
+
     ),
 
     POTTED_COCONUT_SAPLING(
@@ -307,6 +311,8 @@ public enum ModBlocks {
             .strength(0.25f)
             .instrument(NoteBlockInstrument.FLUTE))
         {
+
+
             @Override
             public int getFlammability(
                 BlockState state,
@@ -351,7 +357,8 @@ public enum ModBlocks {
                 }
             }
         },
-        TooltipBlockItem::new
+
+            (block, props) -> new BurnableBlockItem(block, props, 600)
     ),
 
     COCONUT_CRATE(

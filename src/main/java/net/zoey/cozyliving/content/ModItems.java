@@ -7,6 +7,7 @@ import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.eventbus.api.*;
@@ -19,6 +20,7 @@ import net.zoey.cozyliving.content.item.BoatItem;
 import net.zoey.cozyliving.content.item.food.*;
 import org.jetbrains.annotations.*;
 
+import javax.annotation.Nullable;
 import java.util.function.*;
 
 public enum ModItems {
@@ -93,6 +95,12 @@ public enum ModItems {
             ArmorItem.Type.HELMET,
             new Item.Properties()
         )
+        {
+            @Override
+            public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
+                return 200;
+            }
+        }
     );
 
     public static void register(IEventBus modEventBus) {
