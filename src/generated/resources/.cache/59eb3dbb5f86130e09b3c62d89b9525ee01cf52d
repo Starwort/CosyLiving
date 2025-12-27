@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-18T19:35:46.4100876	Loot Tables
+// 1.20.1	2025-12-27T10:48:08.9870346	Loot Tables
 7d086ebd9b1982084b5ac545239f5b1513e71a16 data/cozyliving/loot_tables/blocks/benitoite_block.json
 0dff42ec72b5d5ac4a18a5feeef1230bf17fba2a data/cozyliving/loot_tables/blocks/benitoite_ore.json
 7a1676d81f95ba82214e6171002ff9d08bb6a4ab data/cozyliving/loot_tables/blocks/cinnamon_pie.json
@@ -38,3 +38,4 @@ dc6704950cb91da690f67d0dc56715b33e616d9b data/cozyliving/loot_tables/blocks/rasp
 c675489177713d43dcdd0b1aa7b8a4124fa0a28c data/cozyliving/loot_tables/blocks/raspberry_rhodolite_ore.json
 54648116cfa09a5f88425c8a0c74c1ece2c98bde data/cozyliving/loot_tables/blocks/stripped_coconut_log.json
 e0ea059fd349136735d63328f21a3d05e51f5d8d data/cozyliving/loot_tables/blocks/stripped_coconut_wood.json
+65cb45100233cdc068c73e93f80884c2be95fb7b data/cozyliving/loot_tables/blocks/test_block.json
