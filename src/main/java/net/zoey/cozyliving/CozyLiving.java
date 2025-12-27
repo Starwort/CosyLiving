@@ -40,6 +40,7 @@ import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
 import net.zoey.cozyliving.level.RaspberryBushesFeature;
 import net.zoey.cozyliving.mixin.*;
+import net.zoey.cozyliving.util.CompostingUtil;
 import org.slf4j.Logger;
 
 import java.awt.*;
@@ -117,6 +118,7 @@ public class CozyLiving {
                 ModBlocks.COCONUT_SAPLING.id(),
                 ModBlocks.POTTED_COCONUT_SAPLING::block
             );
+            CompostingUtil.addToRegister();
         });
     }
 
