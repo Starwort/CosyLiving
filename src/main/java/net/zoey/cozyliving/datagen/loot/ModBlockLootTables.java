@@ -103,6 +103,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.BENITOITE_BLOCK.block());
         simpleOre(ModBlocks.BENITOITE_ORE, ModItems.BENITOITE);
         simpleOre(ModBlocks.DEEPSLATE_BENITOITE_ORE, ModItems.BENITOITE);
+
+        dropSelf(ModBlocks.TEST_BLOCK.block());
     }
 
     private void simpleOre(ModBlocks ore, ModItems drop) {

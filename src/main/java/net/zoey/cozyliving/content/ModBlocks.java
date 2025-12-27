@@ -496,7 +496,12 @@ public enum ModBlocks {
             .sound(SoundType.DEEPSLATE), UniformInt.of(16, 24)
     )
     ),
-    ;
+
+    TEST_BLOCK(
+            "test_block", () -> new TestBlock(
+                    BlockBehaviour.Properties.of()
+    )
+    );
 
     public static void register(IEventBus modEventBus) {
         CozyLiving.LOGGER.info(
