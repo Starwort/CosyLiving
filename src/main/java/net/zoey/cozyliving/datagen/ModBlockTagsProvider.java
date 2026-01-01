@@ -28,5 +28,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(ModBlocks.STRIPPED_COCONUT_WOOD.block());
         tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.block());
         tag(BlockTags.LEAVES).add(ModBlocks.COCONUT_LEAVES.block());
+        tag(BlockTags.LEAVES).add(ModBlocks.COCONUT_LEAVES_CORNER.block());
     }
 }
