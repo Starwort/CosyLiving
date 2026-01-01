@@ -35,6 +35,8 @@ public class ModPlacedFeatures {
         "patch_cotton_shrub_placed");
     public static final ResourceKey<PlacedFeature> PATCH_LUSH_COTTON_SHRUB_PLACED_KEY = registerKey(
         "patch_lush_cotton_shrub_placed");
+    public static final ResourceKey<PlacedFeature> COCONUT_TREE_PLACED_KEY = registerKey(
+            "coconut_tree_placed");
 
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -106,6 +108,22 @@ public class ModPlacedFeatures {
                 //EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.replaceable(), 12),
                 //RandomOffsetPlacement.vertical(ConstantInt.of(1))
             )
+        );
+
+        //Coconut trees
+        /*register(context, COCONUT_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
+                RarityFilterPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                BiomePlacementModifier.of());*/
+        register(
+                context,
+                COCONUT_TREE_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(10),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
         );
     }
 
