@@ -21,6 +21,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PATCH_RASPBERRIES = registerKey("add_patch_raspberries");
     public static final ResourceKey<BiomeModifier> ADD_PATCH_COTTON_SHRUB = registerKey("add_patch_cotton_shrub");
     public static final ResourceKey<BiomeModifier> ADD_PATCH_LUSH_COTTON_SHRUB = registerKey("add_patch_lush_cotton_shrub");
+    public static final ResourceKey<BiomeModifier> ADD_COCONUT_TREE = registerKey("add_coconut_tree");
 
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
@@ -50,6 +51,11 @@ public class ModBiomeModifiers {
         context.register(ADD_PATCH_LUSH_COTTON_SHRUB, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.LUSH_CAVES)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_COTTON_SHRUB_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_COCONUT_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.BEACH)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COCONUT_TREE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }
