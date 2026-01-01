@@ -30,11 +30,15 @@ import javax.annotation.Nullable;
 import java.util.function.*;
 
 public enum ModBlocks {
+
     COCONUT_LOG(
         "coconut_log",
-        () -> new FlammableRotatedPillarBlock(BlockBehaviour.Properties
+        () -> new CoconutLogBlock(BlockBehaviour.Properties
             .copy(Blocks.MANGROVE_LOG)
-            .strength(3f))
+            .strength(3f)) {
+
+        }
+
     ),
 
     COCONUT_WOOD(
@@ -127,6 +131,14 @@ public enum ModBlocks {
             }
         }
     ),
+
+    COCONUT_LEAVES_CORNER(
+            "coconut_leaves_corner",
+            () -> new CoconutLeavesCornerBlock(
+                    BlockBehaviour.Properties.copy(ModBlocks.COCONUT_LEAVES.block())
+            ),
+            null
+    ), //TODO: does this need the flammability stuff the other coconut leaves have?
 
     COCONUT_SIGN(
         "coconut_sign",
