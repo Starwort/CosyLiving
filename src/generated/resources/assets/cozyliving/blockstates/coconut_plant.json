@@ -11,9 +11,6 @@
     },
     "age=3": {
       "model": "cozyliving:block/coconut_plant_large"
-    },
-    "age=4": {
-      "model": "cozyliving:block/coconut_plant_large"
     }
   }
 }
