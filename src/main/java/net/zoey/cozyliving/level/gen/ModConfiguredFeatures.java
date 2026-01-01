@@ -6,16 +6,21 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.content.ModBlocks;
 import net.zoey.cozyliving.level.RaspberryBushesFeature;
+import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;
 
 import java.util.List;
 
@@ -30,6 +35,10 @@ public class ModConfiguredFeatures {
         "patch_cotton_shrub");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_LUSH_COTTON_SHRUB_KEY = registerKey(
         "patch_lush_cotton_shrub");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> COCONUT_TREE_KEY = registerKey(
+            "coconut_tree");
+
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -113,6 +122,30 @@ public class ModConfiguredFeatures {
                 RaspberryBushesFeature.RASPBERRY_BUSHES.get(),
                 new NoneFeatureConfiguration()
             )
+        );
+
+
+        //COCONUT TREE STUFF
+        /*context.register(
+                COCONUT_TREE_KEY, new ConfiguredFeature<>(
+                        Feature.TREE,
+
+                        new TreeConfiguration.TreeConfigurationBuilder(
+                                BlockStateProvider.simple(ModBlocks.COCONUT_LOG.block().defaultBlockState()),
+                                new StraightTrunkPlacer(5, 4, 3),
+
+                                BlockStateProvider.simple(ModBlocks.COCONUT_LEAVES.block().defaultBlockState()),
+                                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
+
+                                new TwoLayersFeatureSize(1, 0, 2))
+
+                        .build()));*/
+        context.register(
+                COCONUT_TREE_KEY,
+                new ConfiguredFeature<>(
+                        CoconutTreeFeature.COCONUT_TREE.get(),
+                        new NoneFeatureConfiguration()
+                )
         );
     }
 
