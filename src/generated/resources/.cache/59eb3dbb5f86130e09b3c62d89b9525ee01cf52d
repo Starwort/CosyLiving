@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-27T10:48:08.9870346	Loot Tables
+// 1.20.1	2026-01-01T14:51:24.1313589	Loot Tables
 7d086ebd9b1982084b5ac545239f5b1513e71a16 data/cozyliving/loot_tables/blocks/benitoite_block.json
 0dff42ec72b5d5ac4a18a5feeef1230bf17fba2a data/cozyliving/loot_tables/blocks/benitoite_ore.json
 7a1676d81f95ba82214e6171002ff9d08bb6a4ab data/cozyliving/loot_tables/blocks/cinnamon_pie.json
@@ -10,6 +10,7 @@ e8f06eb5cea85e10df962555e80444ff38a1a50d data/cozyliving/loot_tables/blocks/coco
 8dfb336863a9dff7287ae2a0f6be1503c02e81b8 data/cozyliving/loot_tables/blocks/coconut_fence_gate.json
 0670f48c3333ac592b1715ce10e1e0315020ef1d data/cozyliving/loot_tables/blocks/coconut_hanging_sign.json
 fca97d615c58ef087ec02efe5bb06df8e3f15dcd data/cozyliving/loot_tables/blocks/coconut_leaves.json
+9475d3547a7b4fe73b5bb48a0960d90febb55f84 data/cozyliving/loot_tables/blocks/coconut_leaves_corner.json
 8287c9c3df7ef7369bfb29ffeef9969e8fe90b80 data/cozyliving/loot_tables/blocks/coconut_log.json
 560bcffdc62d6e70a29bdf171187bb19e33a264c data/cozyliving/loot_tables/blocks/coconut_planks.json
 105f0b4c0cfab0f03d52a678af5d28379c27bf1e data/cozyliving/loot_tables/blocks/coconut_plant.json
