@@ -139,6 +139,6 @@ public class CoconutBlock extends FallingBlock implements Fallable {
             }
         }
         // didn't find a coconut plant, we die now
-        level.removeBlock(pos, false);
+        level.destroyBlock(pos, true);
     }
 }
