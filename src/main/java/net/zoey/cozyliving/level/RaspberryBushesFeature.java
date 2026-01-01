@@ -29,10 +29,10 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
         RaspberryBushesFeature::new
     );
 
-    public static void register(IEventBus modEventBus) {
-        var registry = CozyLiving.FEATURES;
+    public static void register() {
+        /*var registry = CozyLiving.FEATURES;
         CozyLiving.LOGGER.info("Registering Raspberry Bushes feature");
-        registry.register(modEventBus);
+        registry.register(modEventBus);*/
     }
 
     @Override
@@ -98,7 +98,7 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                     .defaultBlockState()
                     .setValue(AGE, topAge)
                     .setValue(HALF, DoubleBlockHalf.UPPER),
-                Block.UPDATE_NEIGHBORS
+                Block.UPDATE_ALL
             );
         }
         level.setBlock(
@@ -108,7 +108,7 @@ public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
                 .defaultBlockState()
                 .setValue(AGE, age)
                 .setValue(HALF, DoubleBlockHalf.LOWER),
-            Block.UPDATE_NEIGHBORS
+            Block.UPDATE_ALL
         );
     }
 }
