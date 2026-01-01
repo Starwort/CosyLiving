@@ -39,6 +39,8 @@ import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
 import net.zoey.cozyliving.level.RaspberryBushesFeature;
+import net.zoey.cozyliving.level.gen.ModCustomFeatures;
+import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;
 import net.zoey.cozyliving.mixin.*;
 import net.zoey.cozyliving.util.CompostingUtil;
 import org.slf4j.Logger;
@@ -77,7 +79,7 @@ public class CozyLiving {
         CozyLiving.MODID
     );
 
-    public static final boolean DEBUG_MODE = true;
+    public static final boolean DEBUG_MODE = false;
 
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
@@ -100,8 +102,8 @@ public class CozyLiving {
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
-        RaspberryBushesFeature.register(modEventBus);
         ModStatistics.register(modEventBus);
+        ModCustomFeatures.RegisterFeatures(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
