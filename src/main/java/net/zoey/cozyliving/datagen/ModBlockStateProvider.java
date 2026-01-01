@@ -56,6 +56,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.COCONUT_PLANKS);
 
         leavesBlock(ModBlocks.COCONUT_LEAVES.registryObject());
+        leavesCornerBlock(ModBlocks.COCONUT_LEAVES_CORNER.registryObject());
 
         getVariantBuilder(ModBlocks.RASPBERRY_BUSH.block()).forAllStates(this::raspberryStates);
         getVariantBuilder(ModBlocks.COCONUT_PLANT.block()).forAllStates(state -> new ConfiguredModel[] {
@@ -374,6 +375,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 "all",
                 blockTexture(block.get())
             ).renderType("cutout")
+        );
+    }
+
+    private void leavesCornerBlock(RegistryObject<Block> block) {
+        simpleBlockWithItem(
+                block.get(), models().singleTexture(
+                        name(block.get()),
+                        ResourceLocation.fromNamespaceAndPath("minecraft", "block/leaves"),
+                        "all",
+                        blockTexture(ModBlocks.COCONUT_LEAVES.block())
+                ).renderType("cutout")
         );
     }
 
