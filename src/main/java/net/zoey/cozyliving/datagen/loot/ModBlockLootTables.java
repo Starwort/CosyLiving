@@ -51,6 +51,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             )
         );
 
+        add(
+                ModBlocks.COCONUT_LEAVES_CORNER.block(), createLeavesDrops(
+                        ModBlocks.COCONUT_LEAVES.block(),
+                        ModBlocks.COCONUT_SAPLING.block(),
+                        0.15f
+                )
+        );
+
         add(ModBlocks.RASPBERRY_BUSH.block(), raspberryBushDrops());
 
         add(ModBlocks.COCONUT_PLANT.block(), noDrop());
