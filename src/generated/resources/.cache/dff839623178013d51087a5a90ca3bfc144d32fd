@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-22T20:29:28.9547573	Block States: cozyliving
+// 1.20.1	2026-01-01T16:26:53.8113881	Block States: cozyliving
 211bec6aaeb948a30ab38c657ccb6e7eeebed863 assets/cozyliving/blockstates/benitoite_block.json
 a7fb1a90c604c5164b909e9c337dcb37a7ecf3d4 assets/cozyliving/blockstates/benitoite_ore.json
 45cda6e7fd74a5c1fb3e47f140f84c649bce368b assets/cozyliving/blockstates/cinnamon_pie.json
@@ -10,9 +10,10 @@ c7e5864e6f7ce3995f60848af162f5cf468afb99 assets/cozyliving/blockstates/coconut_b
 35bef73ab5af7d9b717be4cb04081a55cd557c17 assets/cozyliving/blockstates/coconut_fence_gate.json
 85c995204b86f198e6dd27151fc3e79fba75bbd9 assets/cozyliving/blockstates/coconut_hanging_sign.json
 0aa2bc9ad096ace2f355a196f05ec17d4037dd81 assets/cozyliving/blockstates/coconut_leaves.json
+f75dac322c7d29ec2dde4402739997269166081a assets/cozyliving/blockstates/coconut_leaves_corner.json
 af6450234d3225d7a7426bf6a63f4b1944f3decd assets/cozyliving/blockstates/coconut_log.json
 545ceb4adee136a25519a8edf75145fdbfcef114 assets/cozyliving/blockstates/coconut_planks.json
-77f97ace0b68d07b2409b2c73932698f6d4b01b2 assets/cozyliving/blockstates/coconut_plant.json
+48cf632f5af1693f10d0f1d11813a171fdadc0ff assets/cozyliving/blockstates/coconut_plant.json
 7975677601436b8fd7ac55bd746c0d64f155b33b assets/cozyliving/blockstates/coconut_pressure_plate.json
 4948449d279455a17f799817593ec99a9b010838 assets/cozyliving/blockstates/coconut_sapling.json
 6dee72154fecf6bafb47f95d8c8f07e2b233a2a0 assets/cozyliving/blockstates/coconut_sign.json
@@ -63,6 +64,7 @@ d329ac5f70e34faef3b68f53448069639e2c2bcc assets/cozyliving/models/block/coconut_
 ba30f4d9bf4cf874f1a8d5c0a1c67d964ff517dd assets/cozyliving/models/block/coconut_fence_side.json
 12dca52cd188735d3f384f019081076d2c3682d2 assets/cozyliving/models/block/coconut_hanging_sign.json
 80e26ec2e5547200e09c2f50cea78ea6646cf035 assets/cozyliving/models/block/coconut_leaves.json
+80e26ec2e5547200e09c2f50cea78ea6646cf035 assets/cozyliving/models/block/coconut_leaves_corner.json
 bc6e3bff208363bb0062b1b017c93bc7dbadd5f7 assets/cozyliving/models/block/coconut_log.json
 315ecb9d38c8ce73314ff98a4d49eab5a5d12be1 assets/cozyliving/models/block/coconut_log_horizontal.json
 5026f9109880f8f662f4938996bd9106656397fe assets/cozyliving/models/block/coconut_planks.json
@@ -131,6 +133,7 @@ e683f1be1d2d0884b890bae1ab9cb69f113c6c32 assets/cozyliving/models/item/coconut.j
 7dee8b76c47a53e300ece17d187aa8b3ef195a4f assets/cozyliving/models/item/coconut_fence.json
 2b3ff38f8229e9c464f6ffb8849030f4705ab39e assets/cozyliving/models/item/coconut_fence_gate.json
 88e3a034e253098e11a5bb255ab25c9ccef980ef assets/cozyliving/models/item/coconut_leaves.json
+184d70896f25306ac5e48795058d2a4304b929ff assets/cozyliving/models/item/coconut_leaves_corner.json
 c2cc9c6f8171be1112b15f01296f985e01b52674 assets/cozyliving/models/item/coconut_log.json
 2c126d0cb78902f4973a8e8024f132928bafd00e assets/cozyliving/models/item/coconut_planks.json
 3ae9b8bdee54bb5734bf3ecb6b9a5146c6fbfe53 assets/cozyliving/models/item/coconut_pressure_plate.json
