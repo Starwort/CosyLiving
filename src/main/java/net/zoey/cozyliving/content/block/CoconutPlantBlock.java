@@ -22,7 +22,7 @@ import org.jetbrains.annotations.*;
 public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     public static final int MAX_AGE = 3;
     public static final int RIPE_AGE = 2;
-    public static final IntegerProperty AGE = BlockStateProperties.AGE_4;
+    public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 
     private static final VoxelShape[] SHAPES = new VoxelShape[] {
         box(6, 12, 6, 10, 16, 10),
@@ -137,7 +137,8 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
             );
             var naturalCoconutBlockState = ModBlocks.COCONUT
                 .block()
-                .defaultBlockState();
+                .defaultBlockState()
+                    .setValue(CoconutBlock.PERSISTENT, false);
             var fallingBlock = FallingBlockEntity.fall(
                 level,
                 pos,
