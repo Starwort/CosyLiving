@@ -93,6 +93,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlocks.COTTON_SHRUB);
         simpleItem(ModBlocks.COCONUT_SAPLING);
         simpleItem(ModItems.Food.BUTTERSCOTCH_STAR);
+        simpleItem(ModItems.Food.FORTUNE_COOKIE);
     }
 
     private ItemModelBuilder simpleItem(ModItems.Food food) {
