@@ -12,22 +12,57 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.common.CLItemUtils;
 import net.zoey.cozyliving.content.item.TooltipItem;
 import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FortuneCookieItem extends TooltipItem {
     public FortuneCookieItem(Properties properties) {
         super(properties);
     }
+    public static final List<String> Fortunes = new ArrayList<>();
 
-    String[] translationKeys = {
-            "gorb.1",
-            "gorb.2",
-            "gorb.3",
-            "aegis.1",
-            "aegis.2"
-    };
+    static{
+        Fortunes.add("fortune.cozyliving.gorb.1");
+        Fortunes.add("fortune.cozyliving.gorb.2");
+        Fortunes.add("fortune.cozyliving.gorb.3");
+        Fortunes.add("fortune.cozyliving.gorb.4");
+        Fortunes.add("fortune.cozyliving.aegis.1");
+        Fortunes.add("fortune.cozyliving.aegis.2");
+        Fortunes.add("fortune.cozyliving.elo.1");
+        Fortunes.add("fortune.cozyliving.elo.2");
+        Fortunes.add("fortune.cozyliving.elo.3");
+        Fortunes.add("fortune.cozyliving.elo.4");
+        Fortunes.add("fortune.cozyliving.elo.5");
+        Fortunes.add("fortune.cozyliving.elo.6");
+        Fortunes.add("fortune.cozyliving.elo.7");
+        Fortunes.add("fortune.cozyliving.elo.8");
+        Fortunes.add("fortune.cozyliving.elo.9");
+        Fortunes.add("fortune.cozyliving.elo.10");
+        Fortunes.add("fortune.cozyliving.elo.11");
+        Fortunes.add("fortune.cozyliving.elo.12");
+        Fortunes.add("fortune.cozyliving.elo.13");
+        Fortunes.add("fortune.cozyliving.chan.1");
+        Fortunes.add("fortune.cozyliving.zoey.1");
+        Fortunes.add("fortune.cozyliving.zoey.2");
+        Fortunes.add("fortune.cozyliving.zoey.3");
+        Fortunes.add("fortune.cozyliving.zoey.4");
+        Fortunes.add("fortune.cozyliving.zoey.5");
+        Fortunes.add("fortune.cozyliving.zoey.6");
+        Fortunes.add("fortune.cozyliving.zoey.7");
+        Fortunes.add("fortune.cozyliving.zoey.8");
+        Fortunes.add("fortune.cozyliving.zoey.9");
+        Fortunes.add("fortune.cozyliving.zoey.10");
+        Fortunes.add("fortune.cozyliving.zoey.11");
+        Fortunes.add("fortune.cozyliving.star.1");
+        Fortunes.add("fortune.cozyliving.star.2");
+    }
+
 
     @Override
     public @NotNull ItemStack finishUsingItem(
@@ -36,20 +71,25 @@ public class FortuneCookieItem extends TooltipItem {
             @NotNull LivingEntity user
     ) {
 
-
         super.finishUsingItem(stack, level, user);
 
-        ItemStack FortunePaper = new ItemStack(Items.PAPER); //TODO: why are we getting multiple fortunes?
-        FortunePaper.setHoverName(Component.translatable("fortune.cozyliving." + translationKeys[level.getRandom().nextInt(translationKeys.length-1)]));
+        if(!level.isClientSide()){ //Gotta only run on server to prevent misprediction error
+            ItemStack FortunePaper = null;
+            FortunePaper = new ItemStack(Items.PAPER);
+            FortunePaper.setHoverName(Component.translatable(Fortunes.get(level.getRandom().nextInt(Fortunes.size() - 1))));
 
-        if (user instanceof Player player) {
-            return CLItemUtils.createFilledResultWithoutConsuming(
-                    stack,
-                    player,
-                    FortunePaper,
-                    true
-            );
+            if (user instanceof Player player) {
+                return CLItemUtils.createFilledResultWithoutConsuming(
+                        stack,
+                        player,
+                        FortunePaper,
+                        true
+                );
+            }
         }
+
+
+
         return stack;
     }
 
