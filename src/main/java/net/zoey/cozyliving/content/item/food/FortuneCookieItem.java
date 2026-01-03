@@ -67,8 +67,7 @@ public class FortuneCookieItem extends TooltipItem {
         super.finishUsingItem(stack, level, user);
 
         if(!level.isClientSide()){ //Gotta only run on server to prevent misprediction error
-            ItemStack FortunePaper = null;
-            FortunePaper = new ItemStack(Items.PAPER);
+            ItemStack FortunePaper = new ItemStack(Items.PAPER);
             FortunePaper.setHoverName(Component.translatable(Fortunes.get(level.getRandom().nextInt(Fortunes.size() - 1))));
 
             if (user instanceof Player player) {
