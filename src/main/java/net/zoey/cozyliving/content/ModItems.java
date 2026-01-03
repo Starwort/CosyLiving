@@ -400,6 +400,11 @@ public enum ModItems {
                 () -> new TooltipItem(FoodValues.BUTTERSCOTCH_STAR.intoProperties())
         ),
 
+        FORTUNE_COOKIE(
+                "fortune_cookie",
+                () -> new FortuneCookieItem(FoodValues.FORTUNE_COOKIE.intoProperties())
+        ),
+
         ;
 
         public static void register() {
