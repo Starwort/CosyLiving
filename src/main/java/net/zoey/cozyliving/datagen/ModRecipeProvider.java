@@ -39,6 +39,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(writer);
 
         ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, ModItems.Food.FORTUNE_COOKIE.item(), 1)
+                .requires(Items.SUGAR)
+                .requires(Items.PAPER)
+                .requires(Items.WHEAT)
+                .unlockedBy(
+                        getHasName(Items.SUGAR),
+                        has(Items.SUGAR)
+                )
+                .save(writer);
+
+        ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModItems.CHARCOAL_INK.item(), 3)
             .requires(Items.CHARCOAL)
             .requires(Items.GLASS_BOTTLE, 3)
