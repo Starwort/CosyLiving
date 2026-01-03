@@ -204,6 +204,7 @@ public enum FoodValues {
     FORTUNE_COOKIE(new FoodProperties.Builder()
         .nutrition(2)
         .saturationMod(0.5f)
+        .alwaysEat()
         .build());
 
 
