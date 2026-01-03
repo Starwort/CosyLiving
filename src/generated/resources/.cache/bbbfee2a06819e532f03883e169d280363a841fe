@@ -1,4 +1,4 @@
-// 1.20.1	2025-12-22T21:11:47.1700366	Item Models: cozyliving
+// 1.20.1	2026-01-01T22:52:08.6063015	Item Models: cozyliving
 f48ffa3e7d76b872e2f690d0d96b4e9c9eeb91e5 assets/cozyliving/models/item/apple_jam.json
 024f279cf9c4d2934e1d1df83ce059903140613a assets/cozyliving/models/item/apple_jam_doughnut.json
 7f24edfdd28ab07e7c7cbed053bdca2f3b6f77d8 assets/cozyliving/models/item/apple_sauce.json
@@ -26,6 +26,7 @@ d977bd686a9f2961e8340910958eae19ce4c612f assets/cozyliving/models/item/cotton_bo
 9e241262f82974bfd957a16aed67848d55720895 assets/cozyliving/models/item/cream_doughnut.json
 e2c65c845b91a44ef949dd9e3a7fb207c7f3c828 assets/cozyliving/models/item/enchanted_golden_candy_apple.json
 b438663953ce13a46a5a7899e43012553bd668bf assets/cozyliving/models/item/flower_crown.json
+33800b44f8d23801c17d17973c8af4af4d53534d assets/cozyliving/models/item/fortune_cookie.json
 48f423af8ca0ca64a78aa2433c4cf65bcd2d414b assets/cozyliving/models/item/gilded_cinnamon_stick.json
 166c35bc93ce97a97230689c5db745f8acfe8862 assets/cozyliving/models/item/gilded_tea.json
 68f2683025241bc544cb66c34534cd0cea412661 assets/cozyliving/models/item/glowberry_jam.json
