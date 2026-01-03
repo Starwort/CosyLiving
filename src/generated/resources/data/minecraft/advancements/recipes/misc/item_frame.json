@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_buckram": {
+    "has_any_leather": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:buckram"
-            ]
+            "tag": "forge:leather"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_buckram",
+      "has_any_leather",
       "has_the_recipe"
     ]
   ],

@@ -6,6 +6,7 @@ import net.minecraft.data.tags.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
+import net.minecraftforge.common.*;
 import net.minecraftforge.common.data.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
@@ -77,6 +78,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.asItem());
 
+        tag(Tags.Items.LEATHER).add(ModItems.BUCKRAM.item());
+        tag(ModTags.Items.GLOWING_ITEMS.get())
+            .add(ModItems.Food.GLOWBERRY_JAM.item())
+            .add(Items.GLOW_INK_SAC);
 
         tag(ItemTags.SIGNS).add(ModItems.COCONUT_SIGN.item());
         tag(ItemTags.HANGING_SIGNS).add(ModItems.COCONUT_HANGING_SIGN.item());

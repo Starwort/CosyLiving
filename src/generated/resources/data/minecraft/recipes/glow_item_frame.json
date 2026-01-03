@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "cozyliving:glowberry_jam"
+      "tag": "cozyliving:glowing_items"
     },
     {
       "item": "minecraft:item_frame"

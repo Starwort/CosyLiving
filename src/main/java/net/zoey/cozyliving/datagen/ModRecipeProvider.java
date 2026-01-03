@@ -7,7 +7,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.*;
 import net.minecraftforge.common.crafting.conditions.*;
+import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.ModBlocks;
 import net.zoey.cozyliving.content.ModItems;
 import net.zoey.cozyliving.content.ModTags;
@@ -58,20 +60,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .save(writer);
 
         ShapedRecipeBuilder
-                .shaped(RecipeCategory.MISC, ModBlocks.GOLDEN_CARROT_CAKE.asItem(), 1)
-                .pattern("hch")
-                .pattern("ggg")
-                .pattern("wsw")
-                .define('h', ModItems.Food.HEAVY_CREAM.item())
-                .define('s', Items.SUGAR)
-                .define('g', Items.GOLDEN_CARROT)
-                .define('c', ModItems.CINNAMON_STICK.item())
-                .define('w', Items.WHEAT)
-                .unlockedBy(
-                        getHasName(Items.GOLDEN_CARROT),
-                        has(Items.GOLDEN_CARROT)
-                )
-                .save(writer);
+            .shaped(RecipeCategory.MISC, ModBlocks.GOLDEN_CARROT_CAKE.asItem(), 1)
+            .pattern("hch")
+            .pattern("ggg")
+            .pattern("wsw")
+            .define('h', ModItems.Food.HEAVY_CREAM.item())
+            .define('s', Items.SUGAR)
+            .define('g', Items.GOLDEN_CARROT)
+            .define('c', ModItems.CINNAMON_STICK.item())
+            .define('w', Items.WHEAT)
+            .unlockedBy(getHasName(Items.GOLDEN_CARROT), has(Items.GOLDEN_CARROT))
+            .save(writer);
 
         //fuck
 
@@ -866,7 +865,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Blocks.PISTON)
             .group("sticky_piston")
             .unlockedBy("has_jam", has(ModTags.Items.JAMS.get()))
-            .save(writer);
+            .save(writer, CozyLiving.loc("sticky_piston_from_jam"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)
@@ -876,7 +875,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(writer, CozyLiving.loc("pink_dye_from_raspberry"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.MILK_BUCKET, 1)
@@ -887,7 +886,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.Food.COCONUT_MILK.item()),
                 has(ModItems.Food.COCONUT_MILK.item())
             )
-            .save(writer);
+            .save(writer, CozyLiving.loc("milk_bucket_from_coconut_milk"));
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, Items.ITEM_FRAME, 1)
@@ -895,28 +894,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("aba")
             .pattern("aaa")
             .define('a', Items.STICK)
-            .define('b', ModItems.BUCKRAM.item())
-            .unlockedBy(
-                getHasName(ModItems.BUCKRAM.item()),
-                has(ModItems.BUCKRAM.item())
-            )
+            .define('b', Tags.Items.LEATHER)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
             .save(writer);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.GLOW_ITEM_FRAME, 1)
-            .requires(ModItems.Food.GLOWBERRY_JAM.item())
+            .requires(ModTags.Items.GLOWING_ITEMS.get())
             .requires(Items.ITEM_FRAME, 1)
-            .unlockedBy(getHasName(Items.GLOW_ITEM_FRAME), has(Items.GLOW_ITEM_FRAME))
+            .unlockedBy("has_any_glowing_item", has(ModTags.Items.GLOWING_ITEMS.get()))
             .save(writer);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.BOOK, 1)
             .requires(Items.PAPER, 3)
-            .requires(ModItems.BUCKRAM.item())
-            .unlockedBy(
-                getHasName(ModItems.BUCKRAM.item()),
-                has(ModItems.BUCKRAM.item())
-            )
+            .requires(Tags.Items.LEATHER)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
             .save(writer);
 
         ShapelessRecipeBuilder
@@ -926,7 +919,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.CHARCOAL_INK.item()),
                 has(ModItems.CHARCOAL_INK.item())
             )
-            .save(writer);
+            .save(writer, CozyLiving.loc("black_dye_from_charcoal_ink"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.WRITABLE_BOOK, 1)
@@ -934,18 +927,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModItems.CHARCOAL_INK.item())
             .requires(Items.FEATHER)
             .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
-            .save(writer);
+            .save(writer, CozyLiving.loc("book_and_quill_from_charcoal_ink"));
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, Items.BUNDLE, 1)
             .pattern("a")
             .pattern("b")
             .define('a', Items.STRING)
-            .define('b', ModItems.BUCKRAM.item())
-            .unlockedBy(
-                getHasName(ModItems.BUCKRAM.item()),
-                has(ModItems.BUCKRAM.item())
-            )
+            .define('b', Tags.Items.LEATHER)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
             .save(writer);
 
 

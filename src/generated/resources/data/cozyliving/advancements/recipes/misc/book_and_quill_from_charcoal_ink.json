@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:writable_book"
+        "recipe": "cozyliving:book_and_quill_from_charcoal_ink"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:writable_book"
+      "cozyliving:book_and_quill_from_charcoal_ink"
     ]
   },
   "sends_telemetry_event": false

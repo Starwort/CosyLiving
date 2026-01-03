@@ -6,7 +6,7 @@
       "item": "minecraft:stick"
     },
     "b": {
-      "item": "cozyliving:buckram"
+      "tag": "forge:leather"
     }
   },
   "pattern": [

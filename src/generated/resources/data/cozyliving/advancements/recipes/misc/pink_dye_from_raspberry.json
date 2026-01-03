@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye"
+        "recipe": "cozyliving:pink_dye_from_raspberry"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye"
+      "cozyliving:pink_dye_from_raspberry"
     ]
   },
   "sends_telemetry_event": false

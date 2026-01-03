@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_jam": {
+    "has_charcoal_ink": {
       "conditions": {
         "items": [
           {
-            "tag": "cozyliving:jams"
+            "items": [
+              "cozyliving:charcoal_ink"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:sticky_piston"
+        "recipe": "cozyliving:black_dye_from_charcoal_ink"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_jam",
+      "has_charcoal_ink",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:sticky_piston"
+      "cozyliving:black_dye_from_charcoal_ink"
     ]
   },
   "sends_telemetry_event": false

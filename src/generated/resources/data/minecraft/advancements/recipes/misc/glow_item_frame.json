@@ -1,13 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_glow_item_frame": {
+    "has_any_glowing_item": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:glow_item_frame"
-            ]
+            "tag": "cozyliving:glowing_items"
           }
         ]
       },
@@ -22,7 +20,7 @@
   },
   "requirements": [
     [
-      "has_glow_item_frame",
+      "has_any_glowing_item",
       "has_the_recipe"
     ]
   ],

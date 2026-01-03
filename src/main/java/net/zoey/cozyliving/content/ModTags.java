@@ -38,6 +38,8 @@ public class ModTags {
         COTTON_ITEMS("cotton_items"),
 
         ICE_CREAMS("ice_creams"),
+
+        GLOWING_ITEMS("glowing_items"),
         ;
 
         private final TagKey<Item> myValue;
