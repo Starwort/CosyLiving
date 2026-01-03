@@ -199,6 +199,11 @@ public enum FoodValues {
     BUTTERSCOTCH_STAR(new FoodProperties.Builder()
         .nutrition(7)
         .saturationMod(0.75f)
+        .build()),
+
+    FORTUNE_COOKIE(new FoodProperties.Builder()
+        .nutrition(2)
+        .saturationMod(0.5f)
         .build());
 
 
