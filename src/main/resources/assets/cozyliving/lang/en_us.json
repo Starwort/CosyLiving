@@ -1,4 +1,11 @@
 {
+  "fortune.cozyliving.gorb.1": "oh goodness, im so sorry, you dont want to know this",
+  "fortune.cozyliving.gorb.2": "We've been trying to reach you about your cars extended warranty",
+  "fortune.cozyliving.gorb.3": "Wanna hear something Anti-Climactic?",
+  "fortune.cozyliving.aegis.1": "with every step you will have moved forward",
+  "fortune.cozyliving.aegis.2": "if you continue on your current path you will find that you have moved in a straight line\n",
+
+
   "advancements.cozyliving.root.title": "Cosy Living",
   "advancements.cozyliving.root.description": "Comfort and Confection!",
   "advancements.cozyliving.get_raspberry.title": "Berry Beginnings",
@@ -143,8 +150,10 @@
   "item.cozyliving.golden_carrot_cake": "Golden Carrot Cake",
   "item.cozyliving.golden_carrot_cake_slice": "Slice of Golden Carrot Cake",
   "item.cozyliving.test_block": "Test Block",
+  "item.cozyliving.fortune_cookie": "Fortune Cookie",
   "block.cozyliving.test_block": "Test Block",
   "tooltip.cozyliving.butterscotch_star": "§7§oThank you for the help!",
+  "tooltip.cozyliving.fortune_cookie": "§7Feeling lucky?",
   "item_group.cozyliving.main": "Cosy Living",
   "item_group.cozyliving.food": "Cosy Living Food",
   "sounds.cozyliving.coconut_bonk": "Bonk!",
