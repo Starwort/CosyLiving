@@ -1,6 +1,7 @@
 {
-  "parent": "block/block",
+  "format_version": "1.21.6",
   "credit": "Made with Blockbench",
+  "parent": "block/block",
   "texture_size": [
     24,
     24
@@ -259,9 +260,9 @@
         },
         "west": {
           "uv": [
+            0.66667,
             0,
-            0,
-            4,
+            4.66667,
             1.33333
           ],
           "texture": "#0"
@@ -269,9 +270,9 @@
         "up": {
           "uv": [
             0,
-            0,
             0.66667,
-            4
+            0.66667,
+            4.66667
           ],
           "texture": "#0"
         }
@@ -754,20 +755,10 @@
       ]
     },
     "fixed": {
-      "rotation": [
-        0,
-        0,
-        0
-      ],
       "translation": [
         0,
         4,
         0
-      ],
-      "scale": [
-        1,
-        1,
-        1
       ]
     }
   },
