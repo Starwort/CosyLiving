@@ -18,9 +18,10 @@ public class FortuneCookieItem extends TooltipItem {
     public FortuneCookieItem(Properties properties) {
         super(properties);
     }
+
     public static final List<String> Fortunes = new ArrayList<>();
 
-    static{
+    static {
         Fortunes.add("fortune.cozyliving.gorb.1");
         Fortunes.add("fortune.cozyliving.gorb.2");
         Fortunes.add("fortune.cozyliving.gorb.3");
@@ -54,32 +55,34 @@ public class FortuneCookieItem extends TooltipItem {
         Fortunes.add("fortune.cozyliving.zoey.11");
         Fortunes.add("fortune.cozyliving.star.1");
         Fortunes.add("fortune.cozyliving.star.2");
+        Fortunes.add("fortune.cozyliving.star.3");
     }
 
 
     @Override
     public @NotNull ItemStack finishUsingItem(
-            @NotNull ItemStack stack,
-            @NotNull Level level,
-            @NotNull LivingEntity user
+        @NotNull ItemStack stack,
+        @NotNull Level level,
+        @NotNull LivingEntity user
     ) {
 
         super.finishUsingItem(stack, level, user);
 
-        if(!level.isClientSide()){ //Gotta only run on server to prevent misprediction error
+        if (!level.isClientSide()) { //Gotta only run on server to prevent misprediction error
             ItemStack FortunePaper = new ItemStack(Items.PAPER);
-            FortunePaper.setHoverName(Component.translatable(Fortunes.get(level.getRandom().nextInt(Fortunes.size() - 1))));
+            FortunePaper.setHoverName(Component.translatable(Fortunes.get(level
+                .getRandom()
+                .nextInt(Fortunes.size() - 1))));
 
             if (user instanceof Player player) {
                 return CLItemUtils.createFilledResultWithoutConsuming(
-                        stack,
-                        player,
-                        FortunePaper,
-                        true
+                    stack,
+                    player,
+                    FortunePaper,
+                    true
                 );
             }
         }
-
 
 
         return stack;
