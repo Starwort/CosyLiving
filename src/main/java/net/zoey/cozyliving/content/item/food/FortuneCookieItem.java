@@ -44,6 +44,7 @@ public class FortuneCookieItem extends TooltipItem {
         Fortunes.add("fortune.cozyliving.elo.11");
         Fortunes.add("fortune.cozyliving.elo.12");
         Fortunes.add("fortune.cozyliving.elo.13");
+        Fortunes.add("fortune.cozyliving.elo.14");
         Fortunes.add("fortune.cozyliving.chan.1");
         Fortunes.add("fortune.cozyliving.zoey.1");
         Fortunes.add("fortune.cozyliving.zoey.2");
