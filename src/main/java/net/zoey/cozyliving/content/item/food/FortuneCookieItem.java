@@ -8,6 +8,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.zoey.cozyliving.common.CLItemUtils;
+import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.TooltipItem;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FortuneCookieItem extends TooltipItem {
-    public FortuneCookieItem(Properties properties) {
-        super(properties);
+    public FortuneCookieItem() {
+        super(FoodValues.FORTUNE_COOKIE.intoProperties());
     }
 
     public static final List<String> Fortunes = new ArrayList<>();

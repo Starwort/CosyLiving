@@ -97,7 +97,10 @@ public enum ModItems {
         )
         {
             @Override
-            public int getBurnTime(ItemStack stack, @Nullable RecipeType<?> recipeType) {
+            public int getBurnTime(
+                ItemStack stack,
+                @Nullable RecipeType<?> recipeType
+            ) {
                 return 200;
             }
         }
@@ -174,8 +177,8 @@ public enum ModItems {
         ),
 
         GOLDEN_CARROT_CAKE_SLICE(
-                "golden_carrot_cake_slice",
-                () -> new TooltipItem(FoodValues.GOLDEN_CARROT_CAKE.intoProperties())
+            "golden_carrot_cake_slice",
+            () -> new TooltipItem(FoodValues.GOLDEN_CARROT_CAKE.intoProperties())
         ),
 
         RASPBERRY_PIE_SLICE(
@@ -396,14 +399,11 @@ public enum ModItems {
         MAO_CROQUI("mao_croqui", MaoCroquiItem::new),
 
         BUTTERSCOTCH_STAR(
-                "butterscotch_star",
-                () -> new TooltipItem(FoodValues.BUTTERSCOTCH_STAR.intoProperties())
+            "butterscotch_star",
+            () -> new TooltipItem(FoodValues.BUTTERSCOTCH_STAR.intoProperties())
         ),
 
-        FORTUNE_COOKIE(
-                "fortune_cookie",
-                () -> new FortuneCookieItem(FoodValues.FORTUNE_COOKIE.intoProperties())
-        ),
+        FORTUNE_COOKIE("fortune_cookie", FortuneCookieItem::new),
 
         ;
 
