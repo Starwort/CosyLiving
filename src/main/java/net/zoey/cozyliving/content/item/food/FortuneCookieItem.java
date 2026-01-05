@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.content.item.food;
 
+import net.minecraft.client.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -7,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.*;
 import net.zoey.cozyliving.common.CLItemUtils;
 import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.TooltipItem;
@@ -57,6 +59,10 @@ public class FortuneCookieItem extends TooltipItem {
         Fortunes.add("fortune.cozyliving.star.1");
         Fortunes.add("fortune.cozyliving.star.2");
         Fortunes.add("fortune.cozyliving.star.3");
+        Fortunes.add("fortune.cozyliving.star.4");
+        Fortunes.add("fortune.cozyliving.star.5");
+        Fortunes.add("fortune.cozyliving.star.6");
+        Fortunes.add("fortune.cozyliving.star.7");
     }
 
 
@@ -69,24 +75,42 @@ public class FortuneCookieItem extends TooltipItem {
 
         super.finishUsingItem(stack, level, user);
 
-        if (!level.isClientSide()) { //Gotta only run on server to prevent misprediction error
-            ItemStack FortunePaper = new ItemStack(Items.PAPER);
-            FortunePaper.setHoverName(Component.translatable(Fortunes.get(level
-                .getRandom()
-                .nextInt(Fortunes.size() - 1))));
-
-            if (user instanceof Player player) {
-                return CLItemUtils.createFilledResultWithoutConsuming(
-                    stack,
-                    player,
-                    FortunePaper,
-                    true
-                );
-            }
+        if (!level.isClientSide() && user instanceof Player player) {
+            // Run only on the server to stop the client from mispredicting the result
+            ItemStack fortune = generateFortune(level, player);
+            return CLItemUtils.createFilledResultWithoutConsuming(
+                stack,
+                player,
+                fortune,
+                true
+            );
         }
 
 
         return stack;
+    }
+
+    private static @NotNull ItemStack generateFortune(
+        @NotNull Level level,
+        Player player
+    ) {
+        ItemStack FortunePaper = new ItemStack(Items.PAPER);
+        var rand = level.getRandom();
+        var mods = ModList.get().getMods();
+        var randomModName = mods.get(rand.nextInt(mods.size())).getDisplayName();
+        // Format parameters:
+        // XX XX XX XX [four numbers 0-99] $random_mod_name $obfuscated_random_mod_name $player_name
+        FortunePaper.setHoverName(Component.translatable(
+            Fortunes.get(rand.nextInt(Fortunes.size() - 1)),
+            rand.nextInt(99),
+            rand.nextInt(99),
+            rand.nextInt(99),
+            rand.nextInt(99),
+            randomModName,
+            "§k" + randomModName,
+            player.getDisplayName()
+        ));
+        return FortunePaper;
     }
 
     @Override
