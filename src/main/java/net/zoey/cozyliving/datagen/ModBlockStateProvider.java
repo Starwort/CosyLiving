@@ -173,6 +173,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.DEEPSLATE_BENITOITE_ORE);
 
         SliceableBlock(ModBlocks.GOLDEN_CARROT_CAKE.block(), "golden_carrot_cake", "large");
+        SliceableBlock(ModBlocks.RED_VELVET_CAKE.block(), "red_velvet_cake", "large");
     }
 
     public void SliceableBlock(Block block, String name, String size) {

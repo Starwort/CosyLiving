@@ -227,6 +227,15 @@ public enum ModBlocks {
         ItemNameTooltipBlockItem::new
     ),
 
+    RED_VELVET_CAKE(
+            "red_velvet_cake",
+            () -> new LargeSliceableFoodBlock(
+                    ModItems.Food.RED_VELVET_CAKE_SLICE::item,
+                    BlockBehaviour.Properties.copy(Blocks.CAKE)
+            ),
+            ItemNameTooltipBlockItem::new
+    ),
+
     RASPBERRY_PIE(
         "raspberry_pie",
         () -> new GenericSliceableFoodBlock(

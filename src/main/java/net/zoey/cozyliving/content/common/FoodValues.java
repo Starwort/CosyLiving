@@ -46,6 +46,11 @@ public enum FoodValues {
         )
         .build()),
 
+    GENERIC_CAKE(new FoodProperties.Builder()
+            .nutrition(6)
+            .saturationMod(1.2f)
+            .build()),
+
     ENCHANTED_GOLDEN_CANDY_APPLE(new FoodProperties.Builder()
         .nutrition(6)
         .saturationMod(3f)

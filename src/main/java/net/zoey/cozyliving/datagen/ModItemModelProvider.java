@@ -76,6 +76,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlocks.CINNAMON_PIE);
         simpleItem(ModBlocks.GOLDEN_CARROT_CAKE);
         simpleItem(ModBlocks.COCONUT_DOOR);
+        simpleItem(ModBlocks.RED_VELVET_CAKE);
+        simpleItem(ModItems.Food.RED_VELVET_CAKE_SLICE);
 
         simpleItem(ModItems.WAND_OF_HUNGER);
         simpleItem(ModItems.RASPBERRY_RHODOLITE);

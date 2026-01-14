@@ -181,6 +181,11 @@ public enum ModItems {
             () -> new TooltipItem(FoodValues.GOLDEN_CARROT_CAKE.intoProperties())
         ),
 
+        RED_VELVET_CAKE_SLICE(
+                "red_velvet_cake_slice",
+                () -> new TooltipItem(FoodValues.GENERIC_CAKE.intoProperties())
+        ),
+
         RASPBERRY_PIE_SLICE(
             "raspberry_pie_slice",
             () -> new TooltipItem(FoodValues.PIES.intoProperties())

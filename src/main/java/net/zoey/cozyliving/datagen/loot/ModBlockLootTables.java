@@ -69,6 +69,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ModBlocks.RASPBERRY_PIE.block(), noDrop());
         add(ModBlocks.CINNAMON_PIE.block(), noDrop());
         add(ModBlocks.GOLDEN_CARROT_CAKE.block(), noDrop());
+        add(ModBlocks.RED_VELVET_CAKE.block(), noDrop());
 
         add(ModBlocks.COTTON_SHRUB.block(), cottonShrubDrops());
         add(ModBlocks.COTTON_CROP.block(), cottonCropDrops());
