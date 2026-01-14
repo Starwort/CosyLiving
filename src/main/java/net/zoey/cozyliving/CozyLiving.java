@@ -43,6 +43,7 @@ import net.zoey.cozyliving.level.gen.ModCustomFeatures;
 import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;
 import net.zoey.cozyliving.mixin.*;
 import net.zoey.cozyliving.util.CompostingUtil;
+import net.zoey.cozyliving.util.ModLootTableModifiers;
 import org.slf4j.Logger;
 
 import java.awt.*;
@@ -104,6 +105,7 @@ public class CozyLiving {
         ModCreativeTabs.register(modEventBus);
         ModStatistics.register(modEventBus);
         ModCustomFeatures.RegisterFeatures(modEventBus);
+        ModLootTableModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
