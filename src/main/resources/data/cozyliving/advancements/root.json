@@ -1,0 +1,36 @@
+{
+  "criteria": {
+    "got_starter_item": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "cozyliving:cozyliving_starter_items"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "cozyliving:textures/block/coconut_log_top.png",
+    "description": {
+      "translate": "advancements.cozyliving.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:raspberry_jam"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.cozyliving.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_starter_item"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

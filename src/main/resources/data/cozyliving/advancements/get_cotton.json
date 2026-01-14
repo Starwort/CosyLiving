@@ -1,0 +1,36 @@
+{
+  "parent": "cozyliving:root",
+  "criteria": {
+    "got_cotton": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "cozyliving:cotton_items"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.cozyliving.get_cotton.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "cozyliving:cotton_boll"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.cozyliving.get_cotton.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_cotton"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
