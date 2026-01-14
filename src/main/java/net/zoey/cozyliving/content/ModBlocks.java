@@ -637,7 +637,7 @@ public enum ModBlocks {
     public boolean isFoodBlock() {
         return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
             || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH
-            || this == ModBlocks.GOLDEN_CARROT_CAKE;
+            || this == ModBlocks.GOLDEN_CARROT_CAKE || this == ModBlocks.RED_VELVET_CAKE;
     }
 
     public static class Entities {
