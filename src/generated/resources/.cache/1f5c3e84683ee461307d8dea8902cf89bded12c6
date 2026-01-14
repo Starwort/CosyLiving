@@ -1,0 +1,5 @@
+// 1.20.1	2026-01-14T10:35:05.1332781	Global Loot Modifiers : cozyliving
+c3b1c4f19d1229bb2ab357e830ec4f192e56484f data/cozyliving/loot_modifiers/cinnamon_from_jungle_leaves.json
+d7a6808c7739961700f6daaa7d8f07b885fde7ac data/cozyliving/loot_modifiers/gilded_cinnamon_from_jungle_temple_chests.json
+03b4e6a4bec8199b039a8155e14abc48080274f3 data/cozyliving/loot_modifiers/raspberry_from_grass.json
+4b4c7578d642e22fae67eb6c383760bc191deff6 data/forge/loot_modifiers/global_loot_modifiers.json
