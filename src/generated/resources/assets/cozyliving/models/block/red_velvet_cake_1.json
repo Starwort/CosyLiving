@@ -1,0 +1,10 @@
+{
+  "parent": "cozyliving:block/large_sliceable_1",
+  "textures": {
+    "bottom": "cozyliving:block/red_velvet_cake/bottom",
+    "inside": "cozyliving:block/red_velvet_cake/inside",
+    "outside": "cozyliving:block/red_velvet_cake/outside",
+    "particle": "cozyliving:block/red_velvet_cake/top",
+    "top": "cozyliving:block/red_velvet_cake/top"
+  }
+}
