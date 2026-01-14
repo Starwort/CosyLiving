@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-03T18:20:25.3541188	Recipes
+// 1.20.1	2026-01-14T14:54:25.6037491	Recipes
 141c2d02c7b2f9b0e653ed947d9bfac1a711fce1 data/cozyliving/advancements/recipes/building_blocks/benitoite_block.json
 3f74ed705a1919df8702bb661470b1e6490d0bc0 data/cozyliving/advancements/recipes/building_blocks/coconut_button.json
 d3cc1f370c7b50649ee7141e496e99561ef3a2d8 data/cozyliving/advancements/recipes/building_blocks/coconut_crate.json
@@ -67,6 +67,7 @@ e3dbe45906d0bf35d87e0e9d48df2915e13b306c data/cozyliving/advancements/recipes/mi
 9f97c0fce34a0239c5f3b8646bba3631bc8adcb1 data/cozyliving/advancements/recipes/misc/raspberry.json
 42b3bc919d7bf74045dbbad7a1e7bfd7e927bccb data/cozyliving/advancements/recipes/misc/raspberry_jam_doughnut.json
 e6550c2f4bbf1d917377897056bcec707953737c data/cozyliving/advancements/recipes/misc/raspberry_rhodolite.json
+00b52db1afb0de0f738d4e4b04efe558e36f7985 data/cozyliving/advancements/recipes/misc/red_velvet_cake.json
 f5f0ac9f26df182ad5b00764ca810592c5a967d4 data/cozyliving/advancements/recipes/misc/sweetberry_jam_doughnut.json
 3522b1d9af1811b1101365e0528f0a06eef59f95 data/cozyliving/advancements/recipes/redstone/coconut_pressure_plate.json
 718d7c0cdda138258c45512a92e01bec61ea8390 data/cozyliving/advancements/recipes/redstone/sticky_piston_from_jam.json
@@ -137,6 +138,7 @@ fff0196d2333fe27b679636c2c0d735f9c5fe392 data/cozyliving/recipes/raspberry_rhodo
 9a45a5d2fd47f32dce11de78b878c37b3e2ae048 data/cozyliving/recipes/raspberry_rhodolite_block.json
 5354739929053ff3957eb76b6265c5b9f47dabe0 data/cozyliving/recipes/raspberry_tea.json
 ca63c635e6a3fd0fac08fc03df63ab7f4ca775bd data/cozyliving/recipes/red_sugar.json
+de716030b7779804d1d78ce61f6bcc75d891c181 data/cozyliving/recipes/red_velvet_cake.json
 707b7e8f9288a485bb73075ad5155e3c3d2e7323 data/cozyliving/recipes/sleepy_tea.json
 bc3a220551aa1cf5f38502643e9c8848990914ed data/cozyliving/recipes/sticky_piston_from_jam.json
 5c4c33e3434cceaf3d8360e3f9725867fe868df7 data/cozyliving/recipes/stripped_coconut_wood.json

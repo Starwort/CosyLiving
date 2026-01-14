@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-01T22:52:08.6063015	Item Models: cozyliving
+// 1.20.1	2026-01-14T14:37:13.4869235	Item Models: cozyliving
 f48ffa3e7d76b872e2f690d0d96b4e9c9eeb91e5 assets/cozyliving/models/item/apple_jam.json
 024f279cf9c4d2934e1d1df83ce059903140613a assets/cozyliving/models/item/apple_jam_doughnut.json
 7f24edfdd28ab07e7c7cbed053bdca2f3b6f77d8 assets/cozyliving/models/item/apple_sauce.json
@@ -53,6 +53,8 @@ a2d4451b7d522bce5f6fb2de4e9b628c10085a40 assets/cozyliving/models/item/raspberry
 a1f71e508626099905f2dc8f9e9d3ad50d15b341 assets/cozyliving/models/item/raspberry_rhodolite.json
 b6d2a4e0b693c7fc432649ca2a9bec0763559313 assets/cozyliving/models/item/raspberry_tea.json
 801fceec4b04bb769d776c7769a3d095818c7a4c assets/cozyliving/models/item/red_sugar.json
+3994c60c5e713396143608bb37ce1916c1ef46fc assets/cozyliving/models/item/red_velvet_cake.json
+07ff5a5d4ea2975faca8005921f3af98b7e50589 assets/cozyliving/models/item/red_velvet_cake_slice.json
 dd43c0dd95dfe5830265f01a22fa91cec1de89ec assets/cozyliving/models/item/roasted_melon_seeds.json
 eae778a5df370fbc2c4c2b7bf86270cf309ad010 assets/cozyliving/models/item/roasted_pumpkin_seeds.json
 2d216c9665eb464ea75e5cf4adab968a5df137b4 assets/cozyliving/models/item/sleepy_tea.json
