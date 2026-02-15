@@ -214,6 +214,11 @@ public enum ModBlocks {
         () -> new GenericSliceableFoodBlock(
             ModItems.Food.GLOWBERRY_TART_SLICE::item,
             BlockBehaviour.Properties.copy(Blocks.CAKE)
+
+                    .lightLevel((p_50874_) -> {
+                        return 7;
+                    })
+
         ),
         ItemNameTooltipBlockItem::new
     ),
