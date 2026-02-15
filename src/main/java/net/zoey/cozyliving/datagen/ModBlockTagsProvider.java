@@ -2,9 +2,7 @@ package net.zoey.cozyliving.datagen;
 
 import net.minecraft.core.*;
 import net.minecraft.data.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
-import net.minecraft.world.item.Item;
 import net.minecraftforge.common.data.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
