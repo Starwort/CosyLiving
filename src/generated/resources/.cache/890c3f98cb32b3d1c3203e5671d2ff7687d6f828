@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-03T10:36:51.437070209	Tags for minecraft:item mod id cozyliving
+// 1.20.1	2026-02-15T14:59:01.8065179	Tags for minecraft:item mod id cozyliving
 a1a3424963b34004c80aa760f3126750e9893f06 data/cozyliving/tags/items/brewing_stand_ingredient_useable.json
 2c7e90a9c2ca666f8d7ecad6b3170e438218d493 data/cozyliving/tags/items/brewing_stand_input_useable.json
 cad96633a7bf6295364eb1f40fce17a1791c6531 data/cozyliving/tags/items/coconut_logs.json
@@ -7,6 +7,7 @@ ee8eed2932dde8b6dec99f648d6adecea23f16f0 data/cozyliving/tags/items/cozyliving_s
 e5bcab2341d98d92b920cb7f057fb672c45d7b5c data/cozyliving/tags/items/glowing_items.json
 1cef4a4c9683f2691da9beaf28de548fa6bc5fec data/cozyliving/tags/items/ice_creams.json
 5e83b595d8e62725693f330e35f9c76d46628174 data/cozyliving/tags/items/jams.json
+d367516b227e6b70c086ad8a36eaabc12089e8cf data/create/tags/items/upright_on_belt.json
 f4effaa51b38a0eb9379da1a5f69e8de1acaef1f data/forge/tags/items/leather.json
 84b796307887f287c44ca2e869fb4b16f1cda27f data/minecraft/tags/items/beacon_payment_items.json
 20c298e282e1ef57dab2e61c82ba755944fb89f5 data/minecraft/tags/items/boats.json
