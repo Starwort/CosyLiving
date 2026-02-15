@@ -3,6 +3,7 @@ package net.zoey.cozyliving.datagen;
 import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.data.tags.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
@@ -104,5 +105,38 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.WOODEN_STAIRS).add(ModBlocks.COCONUT_STAIRS.asItem());
 
         tag(ItemTags.WOODEN_TRAPDOORS).add(ModBlocks.COCONUT_TRAPDOOR.asItem());
+
+        tag(createModUprightOnBelt)
+                .add(ModItems.CHARCOAL_INK.item())
+                .add(ModItems.Food.CANDY_APPLE.item())
+                .add(ModItems.Food.GOLDEN_CANDY_APPLE.item())
+                .add(ModItems.Food.ENCHANTED_GOLDEN_CANDY_APPLE.item())
+                .add(ModItems.Food.APPLE_SAUCE.item())
+                .add(ModItems.Food.COCONUT_MILK.item())
+                .add(ModItems.Food.HEAVY_CREAM.item())
+                .add(ModItems.Food.RASPBERRY_TEA.item())
+                .add(ModItems.Food.HERBAL_TEA.item())
+                .add(ModItems.Food.GILDED_TEA.item())
+                .add(ModItems.Food.HOT_CHOCOLATE.item())
+                .add(ModItems.Food.HOTTER_CHOCOLATE.item())
+                .add(ModItems.Food.SLEEPY_TEA.item())
+                .add(ModItems.Food.BERRY_BLEND_SMOOTHIE.item())
+                .add(ModItems.Food.RASPBERRY_JAM.item())
+                .add(ModItems.Food.APPLE_JAM.item())
+                .add(ModItems.Food.SWEETBERRY_JAM.item())
+                .add(ModItems.Food.GLOWBERRY_JAM.item())
+                .add(ModBlocks.GLOWBERRY_TART.asItem())
+                .add(ModBlocks.RASPBERRY_PIE.asItem())
+                .add(ModBlocks.CINNAMON_PIE.asItem())
+                .add(ModBlocks.GOLDEN_CARROT_CAKE.asItem())
+                .add(ModItems.Food.VILLAGER_STEW.item())
+                .add(ModItems.Food.HONEYCOMB_ICE_CREAM.item())
+                .add(ModItems.Food.COCONUT_ICE_CREAM.item())
+                .add(ModItems.Food.RASPBERRY_ICE_CREAM.item())
+                .add(ModItems.Food.TRIPLE_ICE_CREAM.item())
+                .add(ModItems.Food.MYCO_MEDLEY.item())
+                .add(ModBlocks.RED_VELVET_CAKE.asItem());
     }
+    public static final TagKey<Item> createModUprightOnBelt = ItemTags.create(
+            ResourceLocation.fromNamespaceAndPath("create", "upright_on_belt"));
 }
