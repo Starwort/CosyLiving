@@ -28,6 +28,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //TODO: Add butter / coconut butter / margarine, doesn't really make sense to make butterscotch without butter
 
         ShapelessRecipeBuilder
+            .shapeless(RecipeCategory.MISC, Items.FEATHER, 2)
+                .requires(ModTags.Items.PAMPAS_GRASSES.get())
+                .unlockedBy(
+                        "has_pampas_grass",
+                        has(ModTags.Items.PAMPAS_GRASSES.get())
+                )
+                .save(writer);
+
+        ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModItems.Food.BUTTERSCOTCH_STAR.item(), 3)
             .requires(Items.SUGAR)
             .requires(ModItems.Food.HEAVY_CREAM.item())
