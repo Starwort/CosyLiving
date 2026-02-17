@@ -30,6 +30,8 @@ public class CompostingUtil {
         ComposterBlock.COMPOSTABLES.put(ModBlocks.COCONUT_LEAVES.item(),0.30f);
         ComposterBlock.COMPOSTABLES.put(ModItems.Food.GOOPY_CHORUS.item(),0.30f);
         ComposterBlock.COMPOSTABLES.put(ModItems.Food.BUTTERSCOTCH_STAR.item(),0.30f);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.PINK_PAMPAS_GRASS.item(),0.30f);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.WHITE_PAMPAS_GRASS.item(),0.30f);
     }
 }
 
