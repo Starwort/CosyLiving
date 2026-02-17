@@ -203,7 +203,9 @@ public class CozyLiving {
                 ModBlocks.COTTON_CROP.block(),
                 ModBlocks.COTTON_SHRUB.block(),
                 ModBlocks.POTTED_COTTON.block(),
-                ModBlocks.RASPBERRY_BUSH.block()
+                ModBlocks.RASPBERRY_BUSH.block(),
+                ModBlocks.PINK_PAMPAS_GRASS.block(),
+                ModBlocks.WHITE_PAMPAS_GRASS.block()
             );
         }
 
