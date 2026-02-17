@@ -1,0 +1,13 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "item": "cozyliving:white_pampas_grass"
+    }
+  ],
+  "results": [
+    {
+      "id": "cozyliving:pink_pampas_grass"
+    }
+  ]
+}
