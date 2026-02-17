@@ -11,6 +11,9 @@ import net.zoey.cozyliving.CozyLiving;
 public class ModTags {
     public enum Blocks {
         COCONUT_LOGS("coconut_logs"),
+
+        PAMPAS_GRASSES("pampas_grasses"),
+
         ;
 
         public final TagKey<Block> myValue;
@@ -40,6 +43,8 @@ public class ModTags {
         ICE_CREAMS("ice_creams"),
 
         GLOWING_ITEMS("glowing_items"),
+
+        PAMPAS_GRASSES("pampas_grasses"),
         ;
 
         private final TagKey<Item> myValue;
