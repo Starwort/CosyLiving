@@ -1,4 +1,4 @@
-// 1.20.1	2026-01-14T14:54:25.6037491	Recipes
+// 1.20.1	2026-02-17T14:33:15.352714	Recipes
 141c2d02c7b2f9b0e653ed947d9bfac1a711fce1 data/cozyliving/advancements/recipes/building_blocks/benitoite_block.json
 3f74ed705a1919df8702bb661470b1e6490d0bc0 data/cozyliving/advancements/recipes/building_blocks/coconut_button.json
 d3cc1f370c7b50649ee7141e496e99561ef3a2d8 data/cozyliving/advancements/recipes/building_blocks/coconut_crate.json
@@ -166,6 +166,7 @@ dd46f9a6232893c9961c4dd3ab46863b6924e41f data/minecraft/advancements/recipes/foo
 09e3222368505349d051d50fa0d0e092fc79509e data/minecraft/advancements/recipes/food/raspberry_rhodolite_ore_from_smelting.json
 f7733119c51892215704a713c4cd13424f21078e data/minecraft/advancements/recipes/misc/book.json
 42ec01243034b78b65a6daa4f4d7d018d2cbf1b8 data/minecraft/advancements/recipes/misc/bundle.json
+f175180933f1837e6b1cf6ee8a31721796966ae9 data/minecraft/advancements/recipes/misc/feather.json
 428e017b16c4c68b0d7fdf1ed03ec51425df5c4d data/minecraft/advancements/recipes/misc/glow_item_frame.json
 e8bdd4ebe40c5b84e3d06e9a1536a70e055fbcbe data/minecraft/advancements/recipes/misc/item_frame.json
 f5043a0b4d7ef41d9996b8f8bfa58025f6d6f504 data/minecraft/advancements/recipes/misc/string.json
@@ -181,6 +182,7 @@ d8a046e282c00bb6d120789fc9a443917c86b267 data/minecraft/recipes/deepslate_benito
 3a566d18a0377cdbbd2e68002aca24cb117d0a02 data/minecraft/recipes/deepslate_benitoite_ore_from_smelting.json
 48dbd456b97f854e4211db5b5f8b2d210780560e data/minecraft/recipes/deepslate_raspberry_rhodolite_ore_from_blasting.json
 c442e65c9607ba9ba328174160ad1779e8da7089 data/minecraft/recipes/deepslate_raspberry_rhodolite_ore_from_smelting.json
+01149da5317fb23ee405e228b1b9deaae310bd3e data/minecraft/recipes/feather.json
 543e91418e7c2e7f6ca8704560d5635a85098a23 data/minecraft/recipes/glow_item_frame.json
 374d1a11f74441e569b2deee02859efa4f243052 data/minecraft/recipes/item_frame.json
 205bd2feaf77aa32880829ecbf9e198eabe4ba76 data/minecraft/recipes/melon_seeds_from_campfire_cooking.json
