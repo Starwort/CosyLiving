@@ -1,7 +1,13 @@
 {
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
   "type": "botanypots:crop",
   "seed": {
-    "item": "cozyliving:pink_pampas_grass"
+    "item": "cozyliving:white_pampas_grass"
   },
   "categories": [
     "dirt"
@@ -9,13 +15,13 @@
   "growthTicks": 1200,
   "display": [
     {
-      "block": "cozyliving:pink_pampas_grass",
+      "block": "cozyliving:white_pampas_grass",
       "properties": {
         "half": "lower"
       }
     },
     {
-      "block": "cozyliving:pink_pampas_grass",
+      "block": "cozyliving:white_pampas_grass",
       "properties": {
         "half": "upper"
       }
@@ -23,18 +29,18 @@
   ],
   "drops": [
     {
-      "chance": 0.05,
-      "output": {
-        "item": "cozyliving:pink_pampas_grass"
-      }
-    },
-    {
       "chance": 1,
       "output": {
         "item": "minecraft:feather"
       },
       "minRolls": 1,
       "maxRolls": 3
+    },
+    {
+      "chance": 0.05,
+      "output": {
+        "item": "cozyliving:white_pampas_grass"
+      }
     }
   ]
 }
