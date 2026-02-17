@@ -1,14 +1,10 @@
 package net.zoey.cozyliving.datagen;
 
-import net.minecraft.core.*;
-import net.minecraft.data.*;
-import net.minecraftforge.common.data.*;
 import net.minecraftforge.data.event.*;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.*;
 import net.zoey.cozyliving.*;
-
-import java.util.concurrent.*;
+import net.zoey.cozyliving.datagen.create.*;
 
 @Mod.EventBusSubscriber(modid = CozyLiving.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
@@ -20,6 +16,18 @@ public class DataGenerators {
         var lookupProvider = event.getLookupProvider();
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
+        generator.addProvider(
+            event.includeServer(),
+            new HauntingRecipeProvider(packOutput)
+        );
+        generator.addProvider(
+            event.includeServer(),
+            new MillingRecipeProvider(packOutput)
+        );
+        generator.addProvider(
+            event.includeServer(),
+            new CrushingRecipeProvider(packOutput)
+        );
         generator.addProvider(
             event.includeServer(),
             ModLootTableProvider.create(packOutput)
@@ -38,11 +46,8 @@ public class DataGenerators {
         );
 
         generator.addProvider(
-                event.includeServer(), new ModBiomeTagsProvider(
-                        packOutput,
-                        lookupProvider,
-                        existingFileHelper
-                )
+            event.includeServer(),
+            new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper)
         );
 
         generator.addProvider(
@@ -55,9 +60,11 @@ public class DataGenerators {
         );
         generator.addProvider(
             event.includeServer(),
-            new ModWorldGenProvider(packOutput, lookupProvider));
+            new ModWorldGenProvider(packOutput, lookupProvider)
+        );
         generator.addProvider(
-                event.includeServer(),
-                new ModGlobalLootModifiersProvider(packOutput));
+            event.includeServer(),
+            new ModGlobalLootModifiersProvider(packOutput)
+        );
     }
 }

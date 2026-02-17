@@ -1,19 +1,19 @@
 {
+  "type": "create:haunting",
   "conditions": [
     {
       "type": "forge:mod_loaded",
       "modid": "create"
     }
   ],
-  "type": "create:haunting",
   "ingredients": [
     {
-      "item": "cozyliving:white_pampas_grass"
+      "item": "cozyliving:pink_pampas_grass"
     }
   ],
   "results": [
     {
-      "id": "cozyliving:pink_pampas_grass"
+      "item": "cozyliving:white_pampas_grass"
     }
   ]
 }

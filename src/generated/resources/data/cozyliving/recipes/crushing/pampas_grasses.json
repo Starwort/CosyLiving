@@ -1,20 +1,24 @@
 {
+  "type": "create:crushing",
   "conditions": [
     {
       "type": "forge:mod_loaded",
       "modid": "create"
     }
   ],
-  "type": "create:milling",
   "ingredients": [
     {
       "tag": "cozyliving:pampas_grasses"
     }
   ],
-  "processing_time": 100,
+  "processingTime": 100,
   "results": [
     {
-      "id": "minecraft:feather"
+      "item": "minecraft:feather"
+    },
+    {
+      "chance": 0.5,
+      "item": "minecraft:feather"
     }
   ]
 }
