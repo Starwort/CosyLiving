@@ -39,9 +39,9 @@
           "age": "4",
           "half": "upper"
         }
-      },
-    ],
+      }
+    ]
   },
   "drops": [{"chance": 1.00, "output": {"item": "cozyliving:raspberry"}, "minRolls": 1, "maxRolls": 3}],
-  "growthTicks": 1200,
+  "growthTicks": 1200
 }
