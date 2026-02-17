@@ -1,0 +1,47 @@
+{
+  "type": "botanypots:crop",
+  "seed": {"item": "cozyliving:raspberry"},
+  "categories": ["dirt"],
+  "display": {
+    "type": "botanypots:transitional",
+    "phases": [
+      {
+        "block": "cozyliving:raspberry_bush",
+        "properties": {
+          "age": "0",
+          "half": "upper"
+        }
+      },
+      {
+        "block": "cozyliving:raspberry_bush",
+        "properties": {
+          "age": "1",
+          "half": "upper"
+        }
+      },
+      {
+        "block": "cozyliving:raspberry_bush",
+        "properties": {
+          "age": "2",
+          "half": "upper"
+        }
+      },
+      {
+        "block": "cozyliving:raspberry_bush",
+        "properties": {
+          "age": "3",
+          "half": "upper"
+        }
+      },
+      {
+        "block": "cozyliving:raspberry_bush",
+        "properties": {
+          "age": "4",
+          "half": "upper"
+        }
+      },
+    ],
+  },
+  "drops": [{"chance": 1.00, "output": {"item": "cozyliving:raspberry"}, "minRolls": 1, "maxRolls": 3}],
+  "growthTicks": 1200,
+}

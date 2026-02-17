@@ -1,0 +1,8 @@
+{
+  "type": "botanypots:crop",
+  "seed": {"item": "cozyliving:cotton_boll"},
+  "categories": ["dirt", "farmland"],
+  "display": {"type": "botanypots:aging", "block": "cozyliving:cotton_crop"},
+  "drops": [{"chance": 1.00, "output": {"item": "cozyliving:cotton_boll"}, "minRolls": 1, "maxRolls": 3}],
+  "growthTicks": 1200
+}
