@@ -86,7 +86,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(
             ModBlocks.COTTON_SHRUB.block(),
-            tintedCross(
+            partiallyTintedCross(
                 "cotton_shrub",
                 "block/cotton_crop_overlay_7",
                 "block/cotton_crop_7"
@@ -174,7 +174,47 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         SliceableBlock(ModBlocks.GOLDEN_CARROT_CAKE.block(), "golden_carrot_cake", "large");
         SliceableBlock(ModBlocks.RED_VELVET_CAKE.block(), "red_velvet_cake", "large");
+
+        getVariantBuilder(ModBlocks.PINK_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[] {
+                switch (state.getValue(TallFlowerBlock.HALF)) {
+                    case UPPER -> partiallyTintedCross(
+                            "pink_pampas_grass_upper",
+                            "block/pampas_grass_upper",
+                            "block/pink_pampas_grass_feathers"
+                    );
+                    default -> tintedCross(
+                            "pampas_grass_lower",
+                            "block/pampas_grass_lower"
+                    );
+                }
+        });
+
+        getVariantBuilder(ModBlocks.WHITE_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[] {
+                switch (state.getValue(TallFlowerBlock.HALF)) {
+                    case UPPER -> partiallyTintedCross(
+                            "white_pampas_grass_upper",
+                            "block/pampas_grass_upper",
+                            "block/white_pampas_grass_feathers"
+                    );
+                    default -> tintedCross(
+                            "pampas_grass_lower",
+                            "block/pampas_grass_lower"
+                    );
+                }
+        });
+
     }
+
+    /*public void PampasGrassBlock(Block block, String name){
+        getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
+                new ConfiguredModel(
+                        models()
+                                .withExistingParent(
+                                        name + "_" + state.getValue(TallFlowerBlock.HALF),
+                                modLoc("block/" + name + "pampas_grass_" + state.getValue(TallFlowerBlock.HALF)))
+                )
+        })
+    }*/
 
     public void SliceableBlock(Block block, String name, String size) {
         getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
@@ -258,23 +298,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
             .renderType("cutout"));
     }
 
-    public ConfiguredModel tintedCross(
+    public ConfiguredModel partiallyTintedCross(
         String modelName,
         String tinted,
         String untinted
     ) {
-        return tintedCross(modelName, modLoc(tinted), modLoc(untinted));
+        return partiallyTintedCross(modelName, modLoc(tinted), modLoc(untinted));
     }
 
-    public ConfiguredModel tintedCross(
+    public ConfiguredModel partiallyTintedCross(
         String modelName,
         ResourceLocation tinted,
         ResourceLocation untinted
     ) {
-        return tintedCross(modelName, tinted, untinted, tinted);
+        return partiallyTintedCross(modelName, tinted, untinted, tinted);
     }
 
-    public ConfiguredModel tintedCross(
+    public ConfiguredModel partiallyTintedCross(
         String modelName,
         ResourceLocation tinted,
         ResourceLocation untinted,
@@ -286,6 +326,31 @@ public class ModBlockStateProvider extends BlockStateProvider {
             .texture("untinted", untinted)
             .texture("particle", particle)
             .renderType("cutout"));
+    }
+
+    public ConfiguredModel tintedCross(
+            String modelName,
+            String tinted
+    ) {
+        return tintedCross(modelName, modLoc(tinted));
+    }
+
+    public ConfiguredModel tintedCross(
+            String modelName,
+            ResourceLocation tinted
+    ) {
+        return tintedCross(modelName, tinted, tinted);
+    }
+
+    public ConfiguredModel tintedCross(
+            String modelName,
+            ResourceLocation tinted,
+            ResourceLocation particle
+    ) {
+        return new ConfiguredModel(models()
+                .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/tinted_cross"))
+                .texture("cross", tinted)
+                .renderType("cutout"));
     }
 
     public ConfiguredModel cropTintedCross(

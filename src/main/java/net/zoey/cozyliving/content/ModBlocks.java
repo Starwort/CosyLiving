@@ -8,7 +8,6 @@ import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
@@ -183,6 +182,8 @@ public enum ModBlocks {
         ItemNameTooltipBlockItem::new,
         FoodValues.RASPBERRY.intoProperties()
     ),
+
+
 
     COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
 
@@ -534,7 +535,24 @@ public enum ModBlocks {
             "test_block", () -> new TestBlock(
                     BlockBehaviour.Properties.of()
     )
-    );
+    ),
+
+    PINK_PAMPAS_GRASS(
+            "pink_pampas_grass", () -> new TallFlowerBlock(
+            BlockBehaviour.Properties
+                    .copy(Blocks.LILAC)),
+            "pink_pampas_grass",
+            ItemNameTooltipBlockItem::new
+    ),
+
+    WHITE_PAMPAS_GRASS(
+            "white_pampas_grass", () -> new TallFlowerBlock(
+            BlockBehaviour.Properties
+                    .copy(Blocks.AZURE_BLUET)),
+            "white_pampas_grass",
+    ItemNameTooltipBlockItem::new
+            );
+
 
     public static void register(IEventBus modEventBus) {
         CozyLiving.LOGGER.info(

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "cozyliving:block/pampas_grass_lower"
+    },
+    "half=upper": {
+      "model": "cozyliving:block/white_pampas_grass_upper"
+    }
+  }
+}

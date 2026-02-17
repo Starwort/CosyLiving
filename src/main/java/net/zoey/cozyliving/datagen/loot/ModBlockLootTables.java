@@ -1,10 +1,13 @@
 package net.zoey.cozyliving.datagen.loot;
 
 import net.minecraft.advancements.critereon.*;
+import net.minecraft.core.BlockPos;
 import net.minecraft.data.loot.*;
 import net.minecraft.world.flag.*;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.*;
 import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
@@ -114,6 +117,26 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         simpleOre(ModBlocks.DEEPSLATE_BENITOITE_ORE, ModItems.BENITOITE);
 
         dropSelf(ModBlocks.TEST_BLOCK.block());
+
+        add(
+                ModBlocks.PINK_PAMPAS_GRASS.block(),
+                createPampasGrassDrops(ModBlocks.PINK_PAMPAS_GRASS.block())
+        );
+        add(
+                ModBlocks.WHITE_PAMPAS_GRASS.block(),
+                createPampasGrassDrops(ModBlocks.WHITE_PAMPAS_GRASS.block())
+        );
+
+    }
+
+    protected LootTable.Builder createPampasGrassDrops(Block pBlock) { //Mostly stolen from the tall grass dropping function lol
+        LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(pBlock).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).when(HAS_SHEARS)
+                .otherwise(this.applyExplosionCondition(pBlock, LootItem.lootTableItem(Items.FEATHER)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                                1,
+                                3
+                        )))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
     }
 
     private void simpleOre(ModBlocks ore, ModItems drop) {
@@ -175,6 +198,41 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                     )))
                     .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
                     .when(HAS_NO_SHEARS_OR_SILK_TOUCH)));
+    }
+
+    private LootTable.Builder pampasGrassDrops(Block block) {
+        return LootTable
+                .lootTable()
+                .withPool(LootPool
+                        .lootPool()
+                        .add(LootItem
+                                .lootTableItem(block.asItem())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                .when(HAS_SHEARS_OR_SILK_TOUCH.and(
+                                        LootItemBlockStatePropertyCondition
+                                                .hasBlockStateProperties(block)
+                                                .setProperties(StatePropertiesPredicate.Builder
+                                                        .properties()
+                                                        .hasProperty(TallFlowerBlock.HALF, DoubleBlockHalf.LOWER)))
+                                        .and(LocationCheck.checkLocation(new LocationPredicate.Builder(), BlockPos.ZERO.above()))
+                                )))
+                .withPool(LootPool
+                        .lootPool()
+                        .add(LootItem
+                                .lootTableItem(Items.FEATHER)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                                        2,
+                                        3
+                                )))
+                                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
+                                .when(HAS_NO_SHEARS_OR_SILK_TOUCH.and(
+                                        LootItemBlockStatePropertyCondition
+                                                .hasBlockStateProperties(block)
+                                                .setProperties(StatePropertiesPredicate.Builder
+                                                        .properties()
+                                                        .hasProperty(TallFlowerBlock.HALF, DoubleBlockHalf.LOWER)))
+                                        .and(LocationCheck.checkLocation(new LocationPredicate.Builder(), BlockPos.ZERO.above()))
+                                )));
     }
 
     public static LootTable.Builder raspberryBushDrops() {

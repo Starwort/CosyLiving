@@ -1,0 +1,9 @@
+{
+  "parent": "cozyliving:block/tinted_cross",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "particle": "cozyliving:block/pampas_grass_upper",
+    "tinted": "cozyliving:block/pampas_grass_upper",
+    "untinted": "cozyliving:block/pink_pampas_grass_feathers"
+  }
+}
