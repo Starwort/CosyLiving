@@ -1,7 +1,6 @@
 package net.zoey.cozyliving.content;
 
 import net.minecraft.core.registries.*;
-import net.minecraft.resources.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.biome.*;
