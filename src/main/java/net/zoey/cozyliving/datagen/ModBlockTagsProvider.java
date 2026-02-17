@@ -3,6 +3,7 @@ package net.zoey.cozyliving.datagen;
 import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.tags.*;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
@@ -21,9 +22,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NotNull Provider provider) {
+
+        tag(ModTags.Blocks.PAMPAS_GRASSES.get())
+                .add(ModBlocks.PINK_PAMPAS_GRASS.block())
+                .add(ModBlocks.WHITE_PAMPAS_GRASS.block());
+
         tag(BlockTags.BEACON_BASE_BLOCKS).add(ModBlocks.BENITOITE_BLOCK.block(), ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block());
         tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.COCONUT_HANGING_SIGN.block());
         tag(BlockTags.CROPS).add(ModBlocks.RASPBERRY_BUSH.block(), ModBlocks.COTTON_CROP.block(), ModBlocks.COCONUT_PLANT.block());
+        tag(BlockTags.TALL_FLOWERS).addTag(ModTags.Blocks.PAMPAS_GRASSES.get());
         tag(BlockTags.FENCE_GATES).add(ModBlocks.COCONUT_FENCE_GATE.block());
         tag(BlockTags.FLOWER_POTS).add(ModBlocks.POTTED_COTTON.block(),ModBlocks.POTTED_COCONUT_SAPLING.block());
         tag(BlockTags.LEAVES).add(ModBlocks.COCONUT_LEAVES.block(),ModBlocks.COCONUT_LEAVES_CORNER.block());
@@ -83,6 +90,16 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
                 .add(ModBlocks.COCONUT_WOOD.block())
                 .add(ModBlocks.STRIPPED_COCONUT_LOG.block())
                 .add(ModBlocks.STRIPPED_COCONUT_WOOD.block());
+
+        tag(Tags.Blocks.ORES).add(ModBlocks.BENITOITE_ORE.block(), ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),
+                ModBlocks.RASPBERRY_RHODOLITE_ORE.block(), ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+
+        tag(Tags.Blocks.ORES_IN_GROUND_STONE).add(ModBlocks.BENITOITE_ORE.block(),ModBlocks.RASPBERRY_RHODOLITE_ORE.block());
+        tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+
+        tag(Tags.Blocks.STORAGE_BLOCKS).add(ModBlocks.COCONUT_CRATE.block(), ModBlocks.RASPBERRY_CRATE.block(), ModBlocks.COTTON_BALE.block(),
+        ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block(), ModBlocks.BENITOITE_BLOCK.block());
+
     }
 
 

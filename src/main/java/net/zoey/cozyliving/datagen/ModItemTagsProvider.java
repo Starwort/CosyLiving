@@ -33,6 +33,10 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(ModBlocks.STRIPPED_COCONUT_LOG.asItem())
             .add(ModBlocks.STRIPPED_COCONUT_WOOD.asItem());
 
+        tag(ModTags.Items.PAMPAS_GRASSES.get())
+                .add(ModBlocks.PINK_PAMPAS_GRASS.asItem())
+                .add(ModBlocks.WHITE_PAMPAS_GRASS.asItem());
+
         tag(ModTags.Items.BREWING_STAND_INGREDIENT_USEABLE.get())
             .add(ModBlocks.RASPBERRY_BUSH.asItem())
             .add(ModItems.CINNAMON_STICK.item())
@@ -79,7 +83,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.asItem());
 
-        tag(Tags.Items.LEATHER).add(ModItems.BUCKRAM.item());
         tag(ModTags.Items.GLOWING_ITEMS.get())
             .add(ModItems.Food.GLOWBERRY_JAM.item())
             .add(Items.GLOW_INK_SAC);
@@ -106,7 +109,9 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ItemTags.WOODEN_TRAPDOORS).add(ModBlocks.COCONUT_TRAPDOOR.asItem());
 
-        tag(createModUprightOnBelt)
+        tag(ItemTags.TALL_FLOWERS).addTag(ModTags.Items.PAMPAS_GRASSES.get());
+
+        tag(TagFromPath("create", "upright_on_belt"))
                 .add(ModItems.CHARCOAL_INK.item())
                 .add(ModItems.Food.CANDY_APPLE.item())
                 .add(ModItems.Food.GOLDEN_CANDY_APPLE.item())
@@ -136,7 +141,21 @@ public class ModItemTagsProvider extends ItemTagsProvider {
                 .add(ModItems.Food.TRIPLE_ICE_CREAM.item())
                 .add(ModItems.Food.MYCO_MEDLEY.item())
                 .add(ModBlocks.RED_VELVET_CAKE.asItem());
+
+        tag(Tags.Items.LEATHER).add(ModItems.BUCKRAM.item());
+
+        tag(Tags.Items.GEMS)
+                .add(ModItems.RASPBERRY_RHODOLITE.item())
+                .add(ModItems.BENITOITE.item());
+
+        tag(Tags.Items.SEEDS)
+                .add(ModBlocks.COTTON_CROP.asItem(), ModBlocks.RASPBERRY_BUSH.item());
     }
+
+    public TagKey<Item> TagFromPath(String modID, String path){
+        return ItemTags.create(ResourceLocation.fromNamespaceAndPath(modID, path));
+    }
+
     public static final TagKey<Item> createModUprightOnBelt = ItemTags.create(
             ResourceLocation.fromNamespaceAndPath("create", "upright_on_belt"));
 }
