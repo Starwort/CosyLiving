@@ -55,16 +55,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         );
 
         add(
-                ModBlocks.COCONUT_LEAVES_CORNER.block(), createLeavesDrops(
-                        ModBlocks.COCONUT_LEAVES.block(),
-                        ModBlocks.COCONUT_SAPLING.block(),
-                        0.15f
-                )
+            ModBlocks.COCONUT_LEAVES_CORNER.block(), createLeavesDrops(
+                ModBlocks.COCONUT_LEAVES.block(),
+                ModBlocks.COCONUT_SAPLING.block(),
+                0.15f
+            )
         );
 
         add(ModBlocks.RASPBERRY_BUSH.block(), raspberryBushDrops());
 
-        add(ModBlocks.COCONUT_PLANT.block(), noDrop());
+        add(ModBlocks.COCONUT_PLANT.block(), coconutPlantDrops());
 
         dropSelf(ModBlocks.COCONUT.block());
 
@@ -119,24 +119,78 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         dropSelf(ModBlocks.TEST_BLOCK.block());
 
         add(
-                ModBlocks.PINK_PAMPAS_GRASS.block(),
-                createPampasGrassDrops(ModBlocks.PINK_PAMPAS_GRASS.block())
+            ModBlocks.PINK_PAMPAS_GRASS.block(),
+            createPampasGrassDrops(ModBlocks.PINK_PAMPAS_GRASS.block())
         );
         add(
-                ModBlocks.WHITE_PAMPAS_GRASS.block(),
-                createPampasGrassDrops(ModBlocks.WHITE_PAMPAS_GRASS.block())
+            ModBlocks.WHITE_PAMPAS_GRASS.block(),
+            createPampasGrassDrops(ModBlocks.WHITE_PAMPAS_GRASS.block())
         );
 
     }
 
     protected LootTable.Builder createPampasGrassDrops(Block pBlock) { //Mostly stolen from the tall grass dropping function lol
-        LootPoolEntryContainer.Builder<?> builder = LootItem.lootTableItem(pBlock).apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F))).when(HAS_SHEARS)
-                .otherwise(this.applyExplosionCondition(pBlock, LootItem.lootTableItem(Items.FEATHER)
-                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                                1,
-                                3
-                        )))));
-        return LootTable.lootTable().withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER).build()).build()), new BlockPos(0, 1, 0)))).withPool(LootPool.lootPool().add(builder).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER))).when(LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(pBlock).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER).build()).build()), new BlockPos(0, -1, 0))));
+        LootPoolEntryContainer.Builder<?> builder = LootItem
+            .lootTableItem(pBlock)
+            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+            .when(HAS_SHEARS)
+            .otherwise(this.applyExplosionCondition(
+                pBlock,
+                LootItem
+                    .lootTableItem(Items.FEATHER)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                        1,
+                        3
+                    )))
+            ));
+        return LootTable
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(builder)
+                .when(LootItemBlockStatePropertyCondition
+                    .hasBlockStateProperties(pBlock)
+                    .setProperties(StatePropertiesPredicate.Builder
+                        .properties()
+                        .hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))
+                .when(LocationCheck.checkLocation(
+                    LocationPredicate.Builder
+                        .location()
+                        .setBlock(BlockPredicate.Builder
+                            .block()
+                            .of(pBlock)
+                            .setProperties(StatePropertiesPredicate.Builder
+                                .properties()
+                                .hasProperty(
+                                    DoublePlantBlock.HALF,
+                                    DoubleBlockHalf.UPPER
+                                )
+                                .build())
+                            .build()), new BlockPos(0, 1, 0)
+                )))
+            .withPool(LootPool
+                .lootPool()
+                .add(builder)
+                .when(LootItemBlockStatePropertyCondition
+                    .hasBlockStateProperties(pBlock)
+                    .setProperties(StatePropertiesPredicate.Builder
+                        .properties()
+                        .hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.UPPER)))
+                .when(LocationCheck.checkLocation(
+                    LocationPredicate.Builder
+                        .location()
+                        .setBlock(BlockPredicate.Builder
+                            .block()
+                            .of(pBlock)
+                            .setProperties(StatePropertiesPredicate.Builder
+                                .properties()
+                                .hasProperty(
+                                    DoublePlantBlock.HALF,
+                                    DoubleBlockHalf.LOWER
+                                )
+                                .build())
+                            .build()), new BlockPos(0, -1, 0)
+                )));
     }
 
     private void simpleOre(ModBlocks ore, ModItems drop) {
@@ -202,37 +256,47 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     private LootTable.Builder pampasGrassDrops(Block block) {
         return LootTable
-                .lootTable()
-                .withPool(LootPool
-                        .lootPool()
-                        .add(LootItem
-                                .lootTableItem(block.asItem())
-                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
-                                .when(HAS_SHEARS_OR_SILK_TOUCH.and(
-                                        LootItemBlockStatePropertyCondition
-                                                .hasBlockStateProperties(block)
-                                                .setProperties(StatePropertiesPredicate.Builder
-                                                        .properties()
-                                                        .hasProperty(TallFlowerBlock.HALF, DoubleBlockHalf.LOWER)))
-                                        .and(LocationCheck.checkLocation(new LocationPredicate.Builder(), BlockPos.ZERO.above()))
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(block.asItem())
+                    .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                    .when(HAS_SHEARS_OR_SILK_TOUCH
+                        .and(LootItemBlockStatePropertyCondition
+                            .hasBlockStateProperties(block)
+                            .setProperties(StatePropertiesPredicate.Builder
+                                .properties()
+                                .hasProperty(
+                                    TallFlowerBlock.HALF,
+                                    DoubleBlockHalf.LOWER
                                 )))
-                .withPool(LootPool
-                        .lootPool()
-                        .add(LootItem
-                                .lootTableItem(Items.FEATHER)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                                        2,
-                                        3
+                        .and(LocationCheck.checkLocation(
+                            new LocationPredicate.Builder(),
+                            BlockPos.ZERO.above()
+                        )))))
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem
+                    .lootTableItem(Items.FEATHER)
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
+                        2,
+                        3
+                    )))
+                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
+                    .when(HAS_NO_SHEARS_OR_SILK_TOUCH
+                        .and(LootItemBlockStatePropertyCondition
+                            .hasBlockStateProperties(block)
+                            .setProperties(StatePropertiesPredicate.Builder
+                                .properties()
+                                .hasProperty(
+                                    TallFlowerBlock.HALF,
+                                    DoubleBlockHalf.LOWER
                                 )))
-                                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
-                                .when(HAS_NO_SHEARS_OR_SILK_TOUCH.and(
-                                        LootItemBlockStatePropertyCondition
-                                                .hasBlockStateProperties(block)
-                                                .setProperties(StatePropertiesPredicate.Builder
-                                                        .properties()
-                                                        .hasProperty(TallFlowerBlock.HALF, DoubleBlockHalf.LOWER)))
-                                        .and(LocationCheck.checkLocation(new LocationPredicate.Builder(), BlockPos.ZERO.above()))
-                                )));
+                        .and(LocationCheck.checkLocation(
+                            new LocationPredicate.Builder(),
+                            BlockPos.ZERO.above()
+                        )))));
     }
 
     public static LootTable.Builder raspberryBushDrops() {
@@ -247,6 +311,24 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         .properties()
                         .hasProperty(RaspberryBushBlock.AGE, 4)))
                 .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)));
+    }
+
+    public static LootTable.Builder coconutPlantDrops() {
+        return LootTable
+            .lootTable()
+            .withPool(LootPool
+                .lootPool()
+                .add(LootItem.lootTableItem(ModBlocks.COCONUT.asItem()))
+                .when(LootItemBlockStatePropertyCondition
+                    .hasBlockStateProperties(ModBlocks.COCONUT.block())
+                    .setProperties(StatePropertiesPredicate.Builder
+                        .properties()
+                        .hasProperty(CoconutPlantBlock.AGE, 2))
+                    .or(LootItemBlockStatePropertyCondition
+                        .hasBlockStateProperties(ModBlocks.COCONUT.block())
+                        .setProperties(StatePropertiesPredicate.Builder
+                            .properties()
+                            .hasProperty(CoconutPlantBlock.AGE, 3)))));
     }
 
     @Override

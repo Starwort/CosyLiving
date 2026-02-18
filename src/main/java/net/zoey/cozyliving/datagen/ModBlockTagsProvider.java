@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.datagen;
 
+import com.simibubi.create.*;
 import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.tags.*;
@@ -24,25 +25,38 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.@NotNull Provider provider) {
 
         tag(ModTags.Blocks.PAMPAS_GRASSES.get())
-                .add(ModBlocks.PINK_PAMPAS_GRASS.block())
-                .add(ModBlocks.WHITE_PAMPAS_GRASS.block());
+            .add(ModBlocks.PINK_PAMPAS_GRASS.block())
+            .add(ModBlocks.WHITE_PAMPAS_GRASS.block());
 
-        tag(BlockTags.BEACON_BASE_BLOCKS).add(ModBlocks.BENITOITE_BLOCK.block(), ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block());
+        tag(BlockTags.BEACON_BASE_BLOCKS).add(
+            ModBlocks.BENITOITE_BLOCK.block(),
+            ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block()
+        );
         tag(BlockTags.CEILING_HANGING_SIGNS).add(ModBlocks.COCONUT_HANGING_SIGN.block());
-        tag(BlockTags.CROPS).add(ModBlocks.RASPBERRY_BUSH.block(), ModBlocks.COTTON_CROP.block(), ModBlocks.COCONUT_PLANT.block());
+        tag(BlockTags.CROPS).add(
+            ModBlocks.RASPBERRY_BUSH.block(),
+            ModBlocks.COTTON_CROP.block(),
+            ModBlocks.COCONUT_PLANT.block()
+        );
         tag(BlockTags.TALL_FLOWERS).addTag(ModTags.Blocks.PAMPAS_GRASSES.get());
         tag(BlockTags.FENCE_GATES).add(ModBlocks.COCONUT_FENCE_GATE.block());
-        tag(BlockTags.FLOWER_POTS).add(ModBlocks.POTTED_COTTON.block(),ModBlocks.POTTED_COCONUT_SAPLING.block());
-        tag(BlockTags.LEAVES).add(ModBlocks.COCONUT_LEAVES.block(),ModBlocks.COCONUT_LEAVES_CORNER.block());
+        tag(BlockTags.FLOWER_POTS).add(
+            ModBlocks.POTTED_COTTON.block(),
+            ModBlocks.POTTED_COCONUT_SAPLING.block()
+        );
+        tag(BlockTags.LEAVES).add(
+            ModBlocks.COCONUT_LEAVES.block(),
+            ModBlocks.COCONUT_LEAVES_CORNER.block()
+        );
         tag(BlockTags.LOGS_THAT_BURN).addTag(ModTags.Blocks.COCONUT_LOGS.get());
 
         tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.BENITOITE_BLOCK.block())
-                .add(ModBlocks.BENITOITE_ORE.block())
-                .add(ModBlocks.DEEPSLATE_BENITOITE_ORE.block())
-                .add(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block())
-                .add(ModBlocks.RASPBERRY_RHODOLITE_ORE.block())
-                .add(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+            .add(ModBlocks.BENITOITE_BLOCK.block())
+            .add(ModBlocks.BENITOITE_ORE.block())
+            .add(ModBlocks.DEEPSLATE_BENITOITE_ORE.block())
+            .add(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block())
+            .add(ModBlocks.RASPBERRY_RHODOLITE_ORE.block())
+            .add(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
 
         tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(ModBlocks.COTTON_BALE.block());
         tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.block());
@@ -59,49 +73,64 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.COCONUT_TRAPDOOR.block());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .addTag(ModTags.Blocks.COCONUT_LOGS.get())
-                .add(ModBlocks.COCONUT_PLANKS.block())
-                .add(ModBlocks.COCONUT_SAPLING.block())
-                .add(ModBlocks.COCONUT_HANGING_SIGN.block())
-                .add(ModBlocks.COCONUT_SIGN.block())
-                .add(ModBlocks.COCONUT_WALL_HANGING_SIGN.block())
-                .add(ModBlocks.COCONUT_WALL_SIGN.block())
-                .add(ModBlocks.COCONUT_BUTTON.block())
-                .add(ModBlocks.COCONUT_DOOR.block())
-                .add(ModBlocks.COCONUT_FENCE.block())
-                .add(ModBlocks.COCONUT_PRESSURE_PLATE.block())
-                .add(ModBlocks.COCONUT_SLAB.block())
-                .add(ModBlocks.COCONUT_STAIRS.block())
-                .add(ModBlocks.COCONUT_TRAPDOOR.block())
-                .add(ModBlocks.RASPBERRY_CRATE.block())
-                .add(ModBlocks.RASPBERRY_BUSH.block())
-                .add(ModBlocks.COCONUT.block())
-                .add(ModBlocks.COCONUT_CRATE.block());
+            .addTag(ModTags.Blocks.COCONUT_LOGS.get())
+            .add(ModBlocks.COCONUT_PLANKS.block())
+            .add(ModBlocks.COCONUT_SAPLING.block())
+            .add(ModBlocks.COCONUT_HANGING_SIGN.block())
+            .add(ModBlocks.COCONUT_SIGN.block())
+            .add(ModBlocks.COCONUT_WALL_HANGING_SIGN.block())
+            .add(ModBlocks.COCONUT_WALL_SIGN.block())
+            .add(ModBlocks.COCONUT_BUTTON.block())
+            .add(ModBlocks.COCONUT_DOOR.block())
+            .add(ModBlocks.COCONUT_FENCE.block())
+            .add(ModBlocks.COCONUT_PRESSURE_PLATE.block())
+            .add(ModBlocks.COCONUT_SLAB.block())
+            .add(ModBlocks.COCONUT_STAIRS.block())
+            .add(ModBlocks.COCONUT_TRAPDOOR.block())
+            .add(ModBlocks.RASPBERRY_CRATE.block())
+            .add(ModBlocks.RASPBERRY_BUSH.block())
+            .add(ModBlocks.COCONUT.block())
+            .add(ModBlocks.COCONUT_CRATE.block());
 
         tag(BlockTags.MINEABLE_WITH_HOE)
-                .add(ModBlocks.COCONUT_LEAVES.block())
-                .add(ModBlocks.COCONUT_LEAVES_CORNER.block())
-                .add(ModBlocks.COTTON_BALE.block())
-                .add(ModBlocks.RASPBERRY_CRATE.block())
-                .add(ModBlocks.COCONUT_CRATE.block());
+            .add(ModBlocks.COCONUT_LEAVES.block())
+            .add(ModBlocks.COCONUT_LEAVES_CORNER.block())
+            .add(ModBlocks.COTTON_BALE.block())
+            .add(ModBlocks.RASPBERRY_CRATE.block())
+            .add(ModBlocks.COCONUT_CRATE.block());
 
         tag(ModTags.Blocks.COCONUT_LOGS.get())
-                .add(ModBlocks.COCONUT_LOG.block())
-                .add(ModBlocks.COCONUT_WOOD.block())
-                .add(ModBlocks.STRIPPED_COCONUT_LOG.block())
-                .add(ModBlocks.STRIPPED_COCONUT_WOOD.block());
+            .add(ModBlocks.COCONUT_LOG.block())
+            .add(ModBlocks.COCONUT_WOOD.block())
+            .add(ModBlocks.STRIPPED_COCONUT_LOG.block())
+            .add(ModBlocks.STRIPPED_COCONUT_WOOD.block());
 
-        tag(Tags.Blocks.ORES).add(ModBlocks.BENITOITE_ORE.block(), ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),
-                ModBlocks.RASPBERRY_RHODOLITE_ORE.block(), ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+        tag(Tags.Blocks.ORES).add(
+            ModBlocks.BENITOITE_ORE.block(),
+            ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),
+            ModBlocks.RASPBERRY_RHODOLITE_ORE.block(),
+            ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block()
+        );
 
-        tag(Tags.Blocks.ORES_IN_GROUND_STONE).add(ModBlocks.BENITOITE_ORE.block(),ModBlocks.RASPBERRY_RHODOLITE_ORE.block());
-        tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+        tag(Tags.Blocks.ORES_IN_GROUND_STONE).add(
+            ModBlocks.BENITOITE_ORE.block(),
+            ModBlocks.RASPBERRY_RHODOLITE_ORE.block()
+        );
+        tag(Tags.Blocks.ORES_IN_GROUND_DEEPSLATE).add(
+            ModBlocks.DEEPSLATE_BENITOITE_ORE.block(),
+            ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block()
+        );
 
-        tag(Tags.Blocks.STORAGE_BLOCKS).add(ModBlocks.COCONUT_CRATE.block(), ModBlocks.RASPBERRY_CRATE.block(), ModBlocks.COTTON_BALE.block(),
-        ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block(), ModBlocks.BENITOITE_BLOCK.block());
+        tag(Tags.Blocks.STORAGE_BLOCKS).add(
+            ModBlocks.COCONUT_CRATE.block(),
+            ModBlocks.RASPBERRY_CRATE.block(),
+            ModBlocks.COTTON_BALE.block(),
+            ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block(),
+            ModBlocks.BENITOITE_BLOCK.block()
+        );
 
+        tag(AllTags.AllBlockTags.TREE_ATTACHMENTS.tag).add(ModBlocks.COCONUT_PLANT.block());
     }
-
 
 
 }

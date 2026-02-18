@@ -1,6 +1,7 @@
-// 1.20.1	2026-02-17T14:33:15.3557186	Tags for minecraft:block mod id cozyliving
+// 1.20.1	2026-02-18T19:49:10.737387151	Tags for minecraft:block mod id cozyliving
 cad96633a7bf6295364eb1f40fce17a1791c6531 data/cozyliving/tags/blocks/coconut_logs.json
 34cbbfe374c873e5b5155229cdf505a6ac2cfc0a data/cozyliving/tags/blocks/pampas_grasses.json
+7726b21a06f20f5e5db9b208f24dbc166bc9a4dc data/create/tags/blocks/tree_attachments.json
 90b31ceab5c47ad27a5fa02f97c69cda811ee5d9 data/forge/tags/blocks/ores.json
 cf07f7e1effa08e0d443d91d7b584aad037b0189 data/forge/tags/blocks/ores_in_ground/deepslate.json
 88f28100fc0bdaa8a1bf2eec5a5299e7fb27555f data/forge/tags/blocks/ores_in_ground/stone.json
