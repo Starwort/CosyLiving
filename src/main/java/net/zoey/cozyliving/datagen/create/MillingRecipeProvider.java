@@ -20,7 +20,8 @@ public class MillingRecipeProvider extends MillingRecipeGen {
         p -> p
             .require(ModTags.Items.PAMPAS_GRASSES.get())
             .duration(100)
-            .output(Items.FEATHER)
+            .output(Items.FEATHER, 2)
+            .output(0.5f, Items.FEATHER, 1)
             .whenModLoaded("create")
     );
 

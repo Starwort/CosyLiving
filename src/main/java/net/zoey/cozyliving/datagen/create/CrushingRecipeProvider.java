@@ -14,8 +14,8 @@ public class CrushingRecipeProvider extends CrushingRecipeGen {
         p -> p
             .require(ModTags.Items.PAMPAS_GRASSES.get())
             .duration(100)
-            .output(Items.FEATHER)
-            .output(0.5f, Items.FEATHER)
+            .output(Items.FEATHER, 3)
+            .output(0.5f, Items.FEATHER, 2)
             .whenModLoaded("create")
     );
 
