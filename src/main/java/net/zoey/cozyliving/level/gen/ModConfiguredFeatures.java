@@ -39,6 +39,10 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> COCONUT_TREE_KEY = registerKey(
             "coconut_tree");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_PINK_PAMPAS_KEY = registerKey(
+            "patch_pink_pampas");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_WHITE_PAMPAS_KEY = registerKey(
+            "patch_white_pampas");
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -147,6 +151,31 @@ public class ModConfiguredFeatures {
                         new NoneFeatureConfiguration()
                 )
         );
+
+        //PAMPAS GRASS
+        context.register(
+                PATCH_PINK_PAMPAS_KEY, new ConfiguredFeature<>(
+                        Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PINK_PAMPAS_GRASS
+                                .block()
+                                .defaultBlockState())),
+                        List.of(Blocks.GRASS_BLOCK, Blocks.MOSS_BLOCK)
+                )
+                )
+        );
+        context.register(
+                PATCH_WHITE_PAMPAS_KEY, new ConfiguredFeature<>(
+                        Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WHITE_PAMPAS_GRASS
+                                .block()
+                                .defaultBlockState())),
+                        List.of(Blocks.GRASS_BLOCK, Blocks.MOSS_BLOCK)
+                )
+                )
+        );
+
     }
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {

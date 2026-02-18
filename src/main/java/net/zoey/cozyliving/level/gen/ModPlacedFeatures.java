@@ -37,6 +37,10 @@ public class ModPlacedFeatures {
         "patch_lush_cotton_shrub_placed");
     public static final ResourceKey<PlacedFeature> COCONUT_TREE_PLACED_KEY = registerKey(
             "coconut_tree_placed");
+    public static final ResourceKey<PlacedFeature> PATCH_PINK_PAMPAS_PLACED_KEY = registerKey(
+            "patch_pink_pampas_placed");
+    public static final ResourceKey<PlacedFeature> PATCH_WHITE_PAMPAS_PLACED_KEY = registerKey(
+            "patch_white_pampas_placed");
 
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
@@ -120,6 +124,26 @@ public class ModPlacedFeatures {
                 configuredFeatures.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
                 List.of(
                         RarityFilter.onAverageOnceEvery(10),
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+
+        //PAMPAS
+        register(
+                context, PATCH_PINK_PAMPAS_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_PINK_PAMPAS_KEY), List.of(
+                        RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
+                        InSquarePlacement.spread(),
+                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()
+                )
+        );
+        register(
+                context, PATCH_WHITE_PAMPAS_PLACED_KEY,
+                configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_WHITE_PAMPAS_KEY), List.of(
+                        RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
                         InSquarePlacement.spread(),
                         PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()

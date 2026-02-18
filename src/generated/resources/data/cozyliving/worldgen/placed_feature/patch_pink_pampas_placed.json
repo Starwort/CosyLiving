@@ -1,0 +1,19 @@
+{
+  "feature": "cozyliving:patch_pink_pampas",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 63
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

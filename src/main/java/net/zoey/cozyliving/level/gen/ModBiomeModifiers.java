@@ -22,6 +22,8 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PATCH_COTTON_SHRUB = registerKey("add_patch_cotton_shrub");
     public static final ResourceKey<BiomeModifier> ADD_PATCH_LUSH_COTTON_SHRUB = registerKey("add_patch_lush_cotton_shrub");
     public static final ResourceKey<BiomeModifier> ADD_COCONUT_TREE = registerKey("add_coconut_tree");
+    public static final ResourceKey<BiomeModifier> ADD_PATCH_PINK_PAMPAS = registerKey("add_patch_pink_pampas");
+    public static final ResourceKey<BiomeModifier> ADD_PATCH_WHITE_PAMPAS = registerKey("add_patch_white_pampas");
 
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
@@ -56,6 +58,15 @@ public class ModBiomeModifiers {
         context.register(ADD_COCONUT_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.BEACH)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COCONUT_TREE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_PATCH_PINK_PAMPAS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_PINK_PAMPAS_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_PATCH_WHITE_PAMPAS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_WHITE_PAMPAS_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
     }
