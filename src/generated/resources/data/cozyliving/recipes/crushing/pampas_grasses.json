@@ -14,10 +14,12 @@
   "processingTime": 100,
   "results": [
     {
+      "count": 3,
       "item": "minecraft:feather"
     },
     {
       "chance": 0.5,
+      "count": 2,
       "item": "minecraft:feather"
     }
   ]
