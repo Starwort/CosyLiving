@@ -1,6 +1,8 @@
 {
   "parent": "cozyliving:get_cotton",
-  "criteria": {},
+  "criteria": {
+    "trigger": "minecraft:impossible"
+  },
   "display": {
     "announce_to_chat": true,
     "description": {
