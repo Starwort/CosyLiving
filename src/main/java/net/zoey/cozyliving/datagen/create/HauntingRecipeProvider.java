@@ -3,17 +3,20 @@
 package net.zoey.cozyliving.datagen.create;
 
 import com.simibubi.create.api.data.recipe.*;
+import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 
+import java.util.concurrent.*;
+
 public class HauntingRecipeProvider extends HauntingRecipeGen {
     public GeneratedRecipe convert(
-        RegistryObject<Item> input,
-        RegistryObject<Item> result
+        DeferredHolder<Item,Item> input,
+        DeferredHolder<Item,Item> result
     ) {
         return create(
             input.getId().getPath(),
@@ -25,16 +28,16 @@ public class HauntingRecipeProvider extends HauntingRecipeGen {
     }
 
     GeneratedRecipe PINK_PAMPAS = convert(
-        ModBlocks.WHITE_PAMPAS_GRASS.itemRegistryObject(),
-        ModBlocks.PINK_PAMPAS_GRASS.itemRegistryObject()
+        ModBlocks.WHITE_PAMPAS_GRASS.itemHolder(),
+        ModBlocks.PINK_PAMPAS_GRASS.itemHolder()
     ),
 
     WHITE_PAMPAS = convert(
-        ModBlocks.PINK_PAMPAS_GRASS.itemRegistryObject(),
-        ModBlocks.WHITE_PAMPAS_GRASS.itemRegistryObject()
+        ModBlocks.PINK_PAMPAS_GRASS.itemHolder(),
+        ModBlocks.WHITE_PAMPAS_GRASS.itemHolder()
     );
 
-    public HauntingRecipeProvider(PackOutput output) {
-        super(output, CozyLiving.MODID);
+    public HauntingRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, CozyLiving.MODID);
     }
 }

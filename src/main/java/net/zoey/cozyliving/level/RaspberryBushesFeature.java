@@ -9,30 +9,24 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
+
+import java.util.function.*;
 
 import static net.zoey.cozyliving.content.block.RaspberryBushBlock.*;
 
 public class RaspberryBushesFeature extends Feature<NoneFeatureConfiguration> {
-    public RaspberryBushesFeature(Codec<NoneFeatureConfiguration> configCodec) {
-        super(configCodec);
-    }
-
     public RaspberryBushesFeature() {
-        this(NoneFeatureConfiguration.CODEC);
+        super(NoneFeatureConfiguration.CODEC);
     }
 
-    public static final RegistryObject<Feature<NoneFeatureConfiguration>> RASPBERRY_BUSHES = CozyLiving.FEATURES.register("raspberry_bushes",
+    public static final DeferredHolder<Feature<?>, RaspberryBushesFeature> RASPBERRY_BUSHES = CozyLiving.FEATURES.register("raspberry_bushes",
         RaspberryBushesFeature::new
     );
 
     public static void register() {
-        /*var registry = CozyLiving.FEATURES;
-        CozyLiving.LOGGER.info("Registering Raspberry Bushes feature");
-        registry.register(modEventBus);*/
     }
 
     @Override

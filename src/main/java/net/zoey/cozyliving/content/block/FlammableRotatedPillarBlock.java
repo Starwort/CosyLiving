@@ -1,12 +1,11 @@
 package net.zoey.cozyliving.content.block;
 
 import net.minecraft.core.*;
-import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
-import net.minecraftforge.common.*;
+import net.neoforged.neoforge.common.*;
 import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
@@ -17,42 +16,42 @@ public class FlammableRotatedPillarBlock extends RotatedPillarBlock {
 
     @Override
     public boolean isFlammable(
-        BlockState state,
-        BlockGetter level,
-        BlockPos pos,
-        Direction direction
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
     ) {
         return true;
     }
 
     @Override
     public int getFlammability(
-        BlockState state,
-        BlockGetter level,
-        BlockPos pos,
-        Direction direction
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
     ) {
         return 5;
     }
 
     @Override
     public int getFireSpreadSpeed(
-        BlockState state,
-        BlockGetter level,
-        BlockPos pos,
-        Direction direction
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
     ) {
         return 5;
     }
 
     @Override
     public @Nullable BlockState getToolModifiedState(
-        BlockState state,
-        UseOnContext context,
-        ToolAction toolAction,
+        @NotNull BlockState state,
+        @NotNull UseOnContext context,
+        @NotNull ItemAbility itemAbility,
         boolean simulate
     ) {
-        if (context.getItemInHand().getItem() instanceof AxeItem) {
+        if (itemAbility == ItemAbilities.AXE_STRIP) {
             if (state.is(ModBlocks.COCONUT_LOG.block())) {
                 return ModBlocks.STRIPPED_COCONUT_LOG
                     .block()
@@ -67,6 +66,6 @@ public class FlammableRotatedPillarBlock extends RotatedPillarBlock {
                     .setValue(AXIS, state.getValue(AXIS));
             }
         }
-        return super.getToolModifiedState(state, context, toolAction, simulate);
+        return super.getToolModifiedState(state, context, itemAbility, simulate);
     }
 }

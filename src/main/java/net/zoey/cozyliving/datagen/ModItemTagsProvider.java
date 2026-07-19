@@ -8,8 +8,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.common.*;
-import net.minecraftforge.common.data.*;
+import net.neoforged.neoforge.common.*;
+import net.neoforged.neoforge.common.data.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
@@ -111,14 +111,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.WOODEN_TRAPDOORS).add(ModBlocks.COCONUT_TRAPDOOR.asItem());
 
         tag(ItemTags.TALL_FLOWERS).addTag(ModTags.Items.PAMPAS_GRASSES.get());
-        tag(Tags.Items.LEATHER).add(ModItems.BUCKRAM.item());
+        tag(Tags.Items.LEATHERS).add(ModItems.BUCKRAM.item());
 
         tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(
-            "forge",
+            "c",
             "gems/raspberry_rhodolite"
         ))).add(ModItems.RASPBERRY_RHODOLITE.item());
         tag(ItemTags.create(ResourceLocation.fromNamespaceAndPath(
-            "forge",
+            "c",
             "gems/benitoite"
         ))).add(ModItems.BENITOITE.item());
         tag(Tags.Items.GEMS)

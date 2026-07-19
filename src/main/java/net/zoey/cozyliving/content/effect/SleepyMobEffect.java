@@ -13,7 +13,7 @@ public class SleepyMobEffect extends MobEffect {
     }
 
     @Override
-    public void applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
+    public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
         if (entity instanceof Player player) {
             // Avoid breaking things (boring)
             player.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
@@ -22,20 +22,21 @@ public class SleepyMobEffect extends MobEffect {
 
             if (player.getSleepTimer() != 0) {
                 player.addEffect(new MobEffectInstance(
-                    ModEffects.WELL_RESTED.effect(),
+                    ModEffects.WELL_RESTED.holder(),
                     216_000,
                     amplifier,
                     true,
                     false
                 ));
-                player.removeEffect(ModEffects.SLEEPY.effect());
+                player.removeEffect(ModEffects.SLEEPY.holder());
                 player.removeEffect(MobEffects.POISON);
             }
         }
+        return true;
     }
 
     @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
+    public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
         // Prevent lag by only ticking once a second
         // Tbh it doesn't seem like it should cause much lag anyway but w/e
         // Also despite the original comment saying once a second it actually ticks once

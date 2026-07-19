@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "net.zoey.cozyliving.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "DebilitatingNauseaMixin"
+  ],
+  "mixins": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

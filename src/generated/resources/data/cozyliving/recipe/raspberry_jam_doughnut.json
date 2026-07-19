@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:wheat"
+    },
+    "C": {
+      "item": "cozyliving:raspberry_jam"
+    },
+    "D": {
+      "item": "cozyliving:coconut_milk"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCB",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:raspberry_jam_doughnut"
+  }
+}

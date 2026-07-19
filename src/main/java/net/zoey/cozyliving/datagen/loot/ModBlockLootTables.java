@@ -1,7 +1,8 @@
 package net.zoey.cozyliving.datagen.loot;
 
 import net.minecraft.advancements.critereon.*;
-import net.minecraft.core.BlockPos;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
 import net.minecraft.data.loot.*;
 import net.minecraft.world.flag.*;
 import net.minecraft.world.item.Items;
@@ -13,7 +14,7 @@ import net.minecraft.world.level.storage.loot.entries.*;
 import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraft.world.level.storage.loot.providers.number.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.block.*;
@@ -23,8 +24,8 @@ import java.util.*;
 import java.util.function.*;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
-    public ModBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    public ModBlockLootTables(HolderLookup.Provider lookupProvider) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
     }
 
     @Override
@@ -138,10 +139,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 pBlock,
                 LootItem
                     .lootTableItem(Items.FEATHER)
-                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                        1,
-                        3
-                    )))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
             ));
         return LootTable
             .lootTable()
@@ -165,8 +163,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                     DoublePlantBlock.HALF,
                                     DoubleBlockHalf.UPPER
                                 )
-                                .build())
-                            .build()), new BlockPos(0, 1, 0)
+                            )
+                        ), new BlockPos(0, 1, 0)
                 )))
             .withPool(LootPool
                 .lootPool()
@@ -188,8 +186,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                     DoublePlantBlock.HALF,
                                     DoubleBlockHalf.LOWER
                                 )
-                                .build())
-                            .build()), new BlockPos(0, -1, 0)
+                            )
+                        ), new BlockPos(0, -1, 0)
                 )));
     }
 
@@ -197,9 +195,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         add(ore.block(), createOreDrop(ore.block(), drop.item()));
     }
 
-    private static final LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(
-        HAS_SILK_TOUCH);
-    private static final LootItemCondition.Builder HAS_NO_SHEARS_OR_SILK_TOUCH = HAS_SHEARS_OR_SILK_TOUCH.invert();
+    private LootItemCondition.Builder hasShearsOrSilkTouch() {
+        return HAS_SHEARS.or(this.hasSilkTouch());
+    }
+
+    private LootItemCondition.Builder doesNotHaveShearsOrSilkTouch() {
+        return this.hasShearsOrSilkTouch().invert();
+    }
+
+    private Holder<Enchantment> fortune() {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return registrylookup.getOrThrow(Enchantments.FORTUNE);
+    }
+
     private static final LootItemCondition.Builder COTTON_FULLY_GROWN = LootItemBlockStatePropertyCondition
         .hasBlockStateProperties(ModBlocks.COTTON_CROP.block())
         .setProperties(StatePropertiesPredicate.Builder
@@ -214,17 +222,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .add(LootItem
                     .lootTableItem(ModBlocks.COTTON_SHRUB.asItem())
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1))))
-                .when(HAS_SHEARS_OR_SILK_TOUCH.and(COTTON_FULLY_GROWN)))
+                .when(hasShearsOrSilkTouch().and(COTTON_FULLY_GROWN)))
             .withPool(LootPool
                 .lootPool()
                 .add(LootItem
                     .lootTableItem(ModBlocks.COTTON_CROP.asItem())
-                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                        2,
-                        5
-                    )))
-                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
-                .when(HAS_NO_SHEARS_OR_SILK_TOUCH.and(COTTON_FULLY_GROWN)))
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5)))
+                    .apply(ApplyBonusCount.addUniformBonusCount(fortune())))
+                .when(doesNotHaveShearsOrSilkTouch().and(COTTON_FULLY_GROWN)))
             .withPool(LootPool
                 .lootPool()
                 .add(LootItem
@@ -241,17 +246,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .add(LootItem
                     .lootTableItem(ModBlocks.COTTON_SHRUB.asItem())
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
-                    .when(HAS_SHEARS_OR_SILK_TOUCH)))
+                    .when(hasShearsOrSilkTouch())))
             .withPool(LootPool
                 .lootPool()
                 .add(LootItem
                     .lootTableItem(ModBlocks.COTTON_CROP.asItem())
-                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                        2,
-                        3
-                    )))
-                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
-                    .when(HAS_NO_SHEARS_OR_SILK_TOUCH)));
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 3)))
+                    .apply(ApplyBonusCount.addUniformBonusCount(fortune()))
+                    .when(doesNotHaveShearsOrSilkTouch())));
     }
 
     private LootTable.Builder pampasGrassDrops(Block block) {
@@ -262,7 +264,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .add(LootItem
                     .lootTableItem(block.asItem())
                     .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
-                    .when(HAS_SHEARS_OR_SILK_TOUCH
+                    .when(hasShearsOrSilkTouch()
                         .and(LootItemBlockStatePropertyCondition
                             .hasBlockStateProperties(block)
                             .setProperties(StatePropertiesPredicate.Builder
@@ -279,12 +281,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .lootPool()
                 .add(LootItem
                     .lootTableItem(Items.FEATHER)
-                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(
-                        2,
-                        3
-                    )))
-                    .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE))
-                    .when(HAS_NO_SHEARS_OR_SILK_TOUCH
+                    .apply(SetItemCountFunction.setCount(UniformGenerator.between(2,3)))
+                    .apply(ApplyBonusCount.addUniformBonusCount(fortune()))
+                    .when(doesNotHaveShearsOrSilkTouch()
                         .and(LootItemBlockStatePropertyCondition
                             .hasBlockStateProperties(block)
                             .setProperties(StatePropertiesPredicate.Builder
@@ -299,7 +298,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         )))));
     }
 
-    public static LootTable.Builder raspberryBushDrops() {
+    public LootTable.Builder raspberryBushDrops() {
         return LootTable
             .lootTable()
             .withPool(LootPool
@@ -310,7 +309,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                     .setProperties(StatePropertiesPredicate.Builder
                         .properties()
                         .hasProperty(RaspberryBushBlock.AGE, 4)))
-                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)));
+                .apply(ApplyBonusCount.addUniformBonusCount(fortune())));
     }
 
     public static LootTable.Builder coconutPlantDrops() {
@@ -320,12 +319,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .lootPool()
                 .add(LootItem.lootTableItem(ModBlocks.COCONUT.asItem()))
                 .when(LootItemBlockStatePropertyCondition
-                    .hasBlockStateProperties(ModBlocks.COCONUT.block())
+                    .hasBlockStateProperties(ModBlocks.COCONUT_PLANT.block())
                     .setProperties(StatePropertiesPredicate.Builder
                         .properties()
                         .hasProperty(CoconutPlantBlock.AGE, 2))
                     .or(LootItemBlockStatePropertyCondition
-                        .hasBlockStateProperties(ModBlocks.COCONUT.block())
+                        .hasBlockStateProperties(ModBlocks.COCONUT_PLANT.block())
                         .setProperties(StatePropertiesPredicate.Builder
                             .properties()
                             .hasProperty(CoconutPlantBlock.AGE, 3)))));
@@ -336,6 +335,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         return CozyLiving.BLOCKS
             .getEntries()
             .stream()
-            .map(RegistryObject::get)::iterator;
+            .map(i -> (Block)i.get())::iterator;
     }
 }

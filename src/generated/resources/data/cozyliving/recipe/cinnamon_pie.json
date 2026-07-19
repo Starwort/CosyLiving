@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cozyliving:cinnamon_stick"
+    },
+    "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "minecraft:wheat"
+    },
+    "D": {
+      "item": "cozyliving:heavy_cream"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BDB",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:cinnamon_pie"
+  }
+}

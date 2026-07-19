@@ -1,6 +1,7 @@
 package net.zoey.cozyliving.content.item.food;
 
 import net.minecraft.client.*;
+import net.minecraft.core.component.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -8,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.*;
+import net.neoforged.fml.*;
 import net.zoey.cozyliving.common.CLItemUtils;
 import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.TooltipItem;
@@ -94,14 +95,14 @@ public class FortuneCookieItem extends TooltipItem {
         return stack;
     }
 
-    static final String[] NS = new String[] {"N", "S"};
-    static final String[] EW = new String[] {"E", "W"};
+    static final String[] NS = new String[]{"N", "S"};
+    static final String[] EW = new String[]{"E", "W"};
 
     private static @NotNull ItemStack generateFortune(
         @NotNull Level level,
         Player player
     ) {
-        ItemStack FortunePaper = new ItemStack(Items.PAPER);
+        ItemStack fortunePaper = new ItemStack(Items.PAPER);
         var rand = level.getRandom();
         var mods = ModList.get().getMods();
         var randomModName = mods.get(rand.nextInt(mods.size())).getDisplayName();
@@ -115,7 +116,7 @@ public class FortuneCookieItem extends TooltipItem {
         // XX XX XX XX [four numbers 0-99] $random_mod_name $obfuscated_random_mod_name
         // $player_name $random_future_date NN WW [random coordinates; 0-89 for N, 0-189 for W]
         // $random_NS $random_EW
-        FortunePaper.setHoverName(Component.translatable(
+        fortunePaper.set(DataComponents.CUSTOM_NAME, Component.translatable(
             Fortunes.get(rand.nextInt(Fortunes.size() - 1)),
             rand.nextInt(100),
             rand.nextInt(100),
@@ -130,7 +131,7 @@ public class FortuneCookieItem extends TooltipItem {
             NS[rand.nextInt(2)],
             EW[rand.nextInt(2)]
         ));
-        return FortunePaper;
+        return fortunePaper;
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.*;
 
 public class CustomHangingSignBlock extends CeilingHangingSignBlock {
     public CustomHangingSignBlock(Properties properties, WoodType type) {
-        super(properties, type);
+        super(type, properties);
     }
 
     @Override

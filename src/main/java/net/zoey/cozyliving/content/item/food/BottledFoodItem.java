@@ -50,11 +50,11 @@ public class BottledFoodItem extends ResidueFoodItem {
             user.removeAllEffects();
         }
         if (item.equals("sleepy_tea") && !level.isClientSide) {
-            if (user.hasEffect(ModEffects.WELL_RESTED.effect())) {
-                user.removeEffect(ModEffects.WELL_RESTED.effect());
+            if (user.hasEffect(ModEffects.WELL_RESTED.holder())) {
+                user.removeEffect(ModEffects.WELL_RESTED.holder());
             } else {
                 user.addEffect(new MobEffectInstance(
-                    ModEffects.SLEEPY.effect(),
+                    ModEffects.SLEEPY.holder(),
                     216_000,
                     0,
                     true,
@@ -66,7 +66,7 @@ public class BottledFoodItem extends ResidueFoodItem {
     }
 
     @Override
-    public int getUseDuration(@NotNull ItemStack stack) {
+    public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
         return drinkingTime;
     }
 

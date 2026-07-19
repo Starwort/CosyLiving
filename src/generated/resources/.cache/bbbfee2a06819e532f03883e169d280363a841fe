@@ -1,4 +1,4 @@
-// 1.20.1	2026-02-17T12:48:08.8641231	Item Models: cozyliving
+// 1.21.1	2026-07-19T10:19:02.523774445	Item Models: cozyliving
 f48ffa3e7d76b872e2f690d0d96b4e9c9eeb91e5 assets/cozyliving/models/item/apple_jam.json
 024f279cf9c4d2934e1d1df83ce059903140613a assets/cozyliving/models/item/apple_jam_doughnut.json
 7f24edfdd28ab07e7c7cbed053bdca2f3b6f77d8 assets/cozyliving/models/item/apple_sauce.json
@@ -40,8 +40,8 @@ bb8cd75316961bec04a1e7c9bea45b5447b18bb9 assets/cozyliving/models/item/goopy_cho
 79f917747436ec8a7354ee40bfb996d474ae9959 assets/cozyliving/models/item/heavy_cream.json
 0bc5730018daa6a5628c17cda02c936afdcec1ce assets/cozyliving/models/item/herbal_tea.json
 8e19762d0de5ffe7af13a5bebcb6a344881fd271 assets/cozyliving/models/item/honeycomb_ice_cream.json
-34a2f4ca3ff293a0a50e6ce206f2ec58da2478b3 assets/cozyliving/models/item/hotter_chocolate.json
 54b929b908a3a74ed57e9b640b6973ffdad6d5d8 assets/cozyliving/models/item/hot_chocolate.json
+34a2f4ca3ff293a0a50e6ce206f2ec58da2478b3 assets/cozyliving/models/item/hotter_chocolate.json
 0594071e7fca3dfc3eaa109a9f79c16730956aa1 assets/cozyliving/models/item/mao_croqui.json
 a9e6242477e063ad8073c4bec414f59a2172a071 assets/cozyliving/models/item/myco_medley.json
 3b3f2b3f2b11774376ce28120031f354d05062aa assets/cozyliving/models/item/pink_pampas_grass.json

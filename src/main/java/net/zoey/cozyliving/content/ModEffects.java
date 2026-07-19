@@ -3,8 +3,8 @@ package net.zoey.cozyliving.content;
 import net.minecraft.resources.*;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.effect.*;
 
@@ -26,7 +26,7 @@ public enum ModEffects {
         CozyLiving.EFFECTS.register(modEventBus);
     }
 
-    private final RegistryObject<MobEffect> myValue;
+    private final DeferredHolder<MobEffect, MobEffect> myValue;
 
     ModEffects(String name, Supplier<MobEffect> supplier) {
         myValue = CozyLiving.EFFECTS.register(name, supplier);
@@ -36,7 +36,7 @@ public enum ModEffects {
         return myValue.getId();
     }
 
-    public RegistryObject<MobEffect> registryObject() {
+    public DeferredHolder<MobEffect, MobEffect> holder() {
         return myValue;
     }
 

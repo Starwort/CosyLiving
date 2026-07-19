@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_raspberry_rhodolite_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyliving:raspberry_rhodolite_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cozyliving:raspberry_rhodolite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_raspberry_rhodolite_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cozyliving:raspberry_rhodolite"
+    ]
+  }
+}

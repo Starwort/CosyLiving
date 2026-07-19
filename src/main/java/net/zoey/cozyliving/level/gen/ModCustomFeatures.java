@@ -1,6 +1,6 @@
 package net.zoey.cozyliving.level.gen;
 
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.neoforged.bus.api.*;
 import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.level.RaspberryBushesFeature;
 import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;

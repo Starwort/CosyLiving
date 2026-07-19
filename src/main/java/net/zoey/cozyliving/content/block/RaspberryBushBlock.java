@@ -33,7 +33,7 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     };
 
     public RaspberryBushBlock() {
-        super(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH));
+        super(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH));
         registerDefaultState(stateDefinition
             .any()
             .setValue(HALF, DoubleBlockHalf.LOWER)
@@ -48,7 +48,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull BlockState updateShape(
         @NotNull BlockState state,
         @NotNull Direction direction,
@@ -70,7 +69,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public boolean canSurvive(
         @NotNull BlockState state,
         LevelReader level,
@@ -80,7 +78,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void entityInside(
         @NotNull BlockState state,
         @NotNull Level level,
@@ -101,7 +98,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(
         @NotNull BlockState state,
         @NotNull BlockGetter level,
@@ -117,7 +113,6 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(
         @NotNull BlockState state,
         @NotNull ServerLevel level,
@@ -133,8 +128,7 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     public boolean isValidBonemealTarget(
         @NotNull LevelReader level,
         @NotNull BlockPos pos,
-        @NotNull BlockState state,
-        boolean isClient
+        @NotNull BlockState state
     ) {
         return state.getValue(AGE) < 4;
     }
@@ -211,20 +205,14 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(
+    public @NotNull InteractionResult useWithoutItem(
         BlockState state,
         @NotNull Level level,
         @NotNull BlockPos pos,
         @NotNull Player player,
-        @NotNull InteractionHand hand,
         @NotNull BlockHitResult hit
     ) {
         int myAge = state.getValue(AGE);
-        // defer to Bone Meal interaction unless this plant is ripe
-        if (myAge != 4 && player.getItemInHand(hand).is(Items.BONE_MEAL)) {
-            return InteractionResult.PASS;
-        }
         // if this plant is ripe, try to pick both halves
         if (myAge == 4) {
             int berriesToDrop = level.random.nextInt(2) + 1;
@@ -266,7 +254,7 @@ public class RaspberryBushBlock extends Block implements BonemealableBlock {
             player.getInventory().placeItemBackInInventory(stack);
             return InteractionResult.sidedSuccess(level.isClientSide);
         } else {
-            return super.use(state, level, pos, player, hand, hit);
+            return super.useWithoutItem(state, level, pos, player, hit);
         }
     }
 }

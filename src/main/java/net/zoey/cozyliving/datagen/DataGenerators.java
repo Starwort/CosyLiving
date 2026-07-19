@@ -1,12 +1,21 @@
 package net.zoey.cozyliving.datagen;
 
-import net.minecraftforge.data.event.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.fml.common.*;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.world.damagesource.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.common.data.*;
+import net.neoforged.neoforge.data.event.*;
+import net.neoforged.fml.common.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.datagen.create.*;
+import net.zoey.cozyliving.level.gen.*;
 
-@Mod.EventBusSubscriber(modid = CozyLiving.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+import java.util.*;
+
+@EventBusSubscriber(modid = CozyLiving.MODID)
 public class DataGenerators {
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
@@ -15,29 +24,30 @@ public class DataGenerators {
         var existingFileHelper = event.getExistingFileHelper();
         var lookupProvider = event.getLookupProvider();
 
-        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
+        generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(
             event.includeServer(),
-            new HauntingRecipeProvider(packOutput)
+            new HauntingRecipeProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),
-            new MillingRecipeProvider(packOutput)
+            new MillingRecipeProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),
-            new CrushingRecipeProvider(packOutput)
+            new CrushingRecipeProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),
-            ModLootTableProvider.create(packOutput)
+            new ModLootTableProvider(packOutput, lookupProvider)
         );
         var blockTagsProvider = generator.addProvider(
             event.includeServer(),
             new ModBlockTagsProvider(packOutput, lookupProvider, existingFileHelper)
         );
         generator.addProvider(
-            event.includeServer(), new ModItemTagsProvider(
+            event.includeServer(),
+            new ModItemTagsProvider(
                 packOutput,
                 lookupProvider,
                 blockTagsProvider.contentsGetter(),
@@ -60,11 +70,15 @@ public class DataGenerators {
         );
         generator.addProvider(
             event.includeServer(),
-            new ModWorldGenProvider(packOutput, lookupProvider)
+            new ModDataMapProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),
-            new ModGlobalLootModifiersProvider(packOutput)
+            new ModGlobalLootModifiersProvider(packOutput, lookupProvider)
+        );
+        generator.addProvider(
+            event.includeServer(),
+            new ModDatapackBuiltinEntriesProvider(packOutput, lookupProvider)
         );
     }
 }

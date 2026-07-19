@@ -21,7 +21,7 @@ public class CandyAppleItem extends ResidueFoodItem {
     }
 
     @Override
-    public int getUseDuration(@NotNull ItemStack stack) {
+    public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
         return 60;
     }
 

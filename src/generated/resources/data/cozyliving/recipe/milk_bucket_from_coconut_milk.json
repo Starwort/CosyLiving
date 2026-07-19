@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "milk_bucket",
+  "ingredients": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "item": "cozyliving:coconut_milk"
+    },
+    {
+      "item": "cozyliving:coconut_milk"
+    },
+    {
+      "item": "cozyliving:coconut_milk"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:milk_bucket"
+  }
+}

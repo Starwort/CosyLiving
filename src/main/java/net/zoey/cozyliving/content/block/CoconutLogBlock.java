@@ -1,20 +1,16 @@
 package net.zoey.cozyliving.content.block;
 
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.zoey.cozyliving.content.ModBlocks;
-import net.zoey.cozyliving.content.ModSounds;
-import org.jetbrains.annotations.NotNull;
+import net.minecraft.core.*;
+import net.minecraft.sounds.*;
+import net.minecraft.world.entity.player.*;
+import net.minecraft.world.level.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.*;
+import net.minecraft.world.level.block.state.properties.*;
+import net.zoey.cozyliving.content.*;
+import org.jetbrains.annotations.*;
 
-public class CoconutLogBlock extends FlammableRotatedPillarBlock{
-
+public class CoconutLogBlock extends FlammableRotatedPillarBlock {
     public static final BooleanProperty NATURAL = BooleanProperty.create("natural");
 
     public CoconutLogBlock(Properties properties) {
@@ -28,20 +24,15 @@ public class CoconutLogBlock extends FlammableRotatedPillarBlock{
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void attack(BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player) {
-
-        //CozyLiving.LOGGER.info("Started chain");
+    public void attack(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player) {
         boolean foundTop = false;
         BlockPos position = pos;
         BlockState blockState;
         BlockState naturalWood = ModBlocks.COCONUT_LOG.block().defaultBlockState().setValue(NATURAL, Boolean.TRUE);
 
-        while(!foundTop){
-            //CozyLiving.LOGGER.info("Current position: " + position);
+        while (!foundTop) {
             blockState = level.getBlockState(position.above());
-            //CozyLiving.LOGGER.info("Current block: " + blockState.toString());
-            if (blockState == naturalWood){
+            if (blockState == naturalWood) {
                 position = position.above();
             } else if (level.getBlockState(position.above().north()) == naturalWood) {
                 position = position.above().north();
@@ -53,10 +44,9 @@ public class CoconutLogBlock extends FlammableRotatedPillarBlock{
                 position = position.above().west();
             } else {
                 foundTop = true;
-                //CozyLiving.LOGGER.info("Top position found: " + position);
             }
         }
-        if (level.getBlockState(position.above()).is(ModBlocks.COCONUT_LEAVES.block())){
+        if (level.getBlockState(position.above()).is(ModBlocks.COCONUT_LEAVES.block())) {
             level.playSound(null, position, ModSounds.LEAVES_RUSTLE.sound(), SoundSource.BLOCKS, 0.05F, 0.8F + level.random.nextFloat() * 0.4F);
             level.addDestroyBlockEffect(position.below(), ModBlocks.COCONUT_LEAVES.block().defaultBlockState());
             level.scheduleTick(position.offset(2, -1, 0), ModBlocks.COCONUT_PLANT.block(), 1);
@@ -67,9 +57,6 @@ public class CoconutLogBlock extends FlammableRotatedPillarBlock{
             level.scheduleTick(position.offset(-1, -1, -1), ModBlocks.COCONUT_PLANT.block(), 11);
             level.scheduleTick(position.offset(0, -1, -2), ModBlocks.COCONUT_PLANT.block(), 13);
             level.scheduleTick(position.offset(1, -1, -1), ModBlocks.COCONUT_PLANT.block(), 15);
-            //CozyLiving.LOGGER.info("SUCCEEDED!");
-        } else {
-            //CozyLiving.LOGGER.info("FAILED!");
         }
         super.attack(state, level, pos, player);
     }

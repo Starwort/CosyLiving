@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "cozyliving:cotton_boll"
+    },
+    "g": {
+      "item": "cozyliving:cotton_boll"
+    },
+    "o": {
+      "item": "minecraft:string"
+    },
+    "r": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "go",
+    "rb"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:buckram"
+  }
+}

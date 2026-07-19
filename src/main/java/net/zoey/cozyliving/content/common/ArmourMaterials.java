@@ -1,19 +1,25 @@
 package net.zoey.cozyliving.content.common;
 
+import net.minecraft.*;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import org.jetbrains.annotations.*;
 
+import java.util.*;
 import java.util.function.*;
 
-public enum ArmourMaterials implements ArmorMaterial {
+public enum ArmourMaterials {
     FLOWER_CROWN(
         "flower_crown",
         0,
-        new int[] {0, 0, 0, 0},
+        new int[] {0, 0, 0, 0, 0},
         99,
         SoundEvents.CHERRY_LEAVES_PLACE,
         0f,
@@ -21,16 +27,8 @@ public enum ArmourMaterials implements ArmorMaterial {
         () -> Ingredient.of(ItemTags.SMALL_FLOWERS)
     );
 
-    private final String name;
     private final int durabilityMultiplier;
-    private final int[] defenceAmounts;
-    private final int enchantmentValue;
-    private final SoundEvent equipSound;
-    private final float toughness;
-    private final float kbResist;
-    private final Supplier<Ingredient> repairIngredient;
-
-    private static final int[] BASE_DURABILITY = {11, 16, 15, 13};
+    private final DeferredHolder<ArmorMaterial, ArmorMaterial> myValue;
 
     ArmourMaterials(
         String name,
@@ -42,53 +40,64 @@ public enum ArmourMaterials implements ArmorMaterial {
         float kbResist,
         Supplier<Ingredient> repairIngredient
     ) {
-        this.name = name;
+        this(
+            name,
+            durabilityMultiplier,
+            defenceAmounts,
+            enchantmentValue,
+            BuiltInRegistries.SOUND_EVENT.wrapAsHolder(equipSound),
+            toughness,
+            kbResist,
+            repairIngredient
+        );
+    }
+    ArmourMaterials(
+        String name,
+        int durabilityMultiplier,
+        int[] defenceAmounts,
+        int enchantmentValue,
+        Holder<SoundEvent> equipSound,
+        float toughness,
+        float kbResist,
+        Supplier<Ingredient> repairIngredient
+    ) {
         this.durabilityMultiplier = durabilityMultiplier;
-        this.defenceAmounts = defenceAmounts;
-        this.enchantmentValue = enchantmentValue;
-        this.equipSound = equipSound;
-        this.toughness = toughness;
-        this.kbResist = kbResist;
-        this.repairIngredient = repairIngredient;
+        myValue = CozyLiving.ARMOUR_MATERIALS.register(
+            name,
+            () -> new ArmorMaterial(
+                Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                    map.put(ArmorItem.Type.HELMET, defenceAmounts[0]);
+                    map.put(ArmorItem.Type.CHESTPLATE, defenceAmounts[1]);
+                    map.put(ArmorItem.Type.LEGGINGS, defenceAmounts[2]);
+                    map.put(ArmorItem.Type.BOOTS, defenceAmounts[3]);
+                    // BODY is used for non-player entities like wolves or horses.
+                    map.put(ArmorItem.Type.BODY, defenceAmounts[4]);
+                }),
+                enchantmentValue,
+                equipSound,
+                repairIngredient,
+                List.of(new ArmorMaterial.Layer(
+                    CozyLiving.loc(name)
+                )),
+                toughness,
+                kbResist
+            )
+        );
     }
 
-    @Override
-    public int getDurabilityForType(ArmorItem.Type type) {
-        return BASE_DURABILITY[type.ordinal()] * this.durabilityMultiplier;
+    public int durabilityFor(ArmorItem.Type type) {
+        return type.getDurability(durabilityMultiplier);
     }
 
-    @Override
-    public int getDefenseForType(ArmorItem.Type type) {
-        return defenceAmounts[type.ordinal()];
+    public DeferredHolder<ArmorMaterial, ArmorMaterial> holder() {
+        return myValue;
     }
 
-    @Override
-    public int getEnchantmentValue() {
-        return enchantmentValue;
+    public ArmorMaterial material() {
+        return myValue.get();
     }
 
-    @Override
-    public @NotNull SoundEvent getEquipSound() {
-        return equipSound;
-    }
-
-    @Override
-    public @NotNull Ingredient getRepairIngredient() {
-        return repairIngredient.get();
-    }
-
-    @Override
-    public @NotNull String getName() {
-        return CozyLiving.MODID + ":" + name;
-    }
-
-    @Override
-    public float getToughness() {
-        return toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return kbResist;
+    public ResourceLocation id() {
+        return myValue.getId();
     }
 }

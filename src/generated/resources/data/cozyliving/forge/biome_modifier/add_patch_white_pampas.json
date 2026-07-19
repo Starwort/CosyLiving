@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#cozyliving:has_cotton_shrub_patches",
-  "features": "cozyliving:patch_white_pampas_placed",
-  "step": "vegetal_decoration"
-}

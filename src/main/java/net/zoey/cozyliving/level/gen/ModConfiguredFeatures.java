@@ -1,26 +1,19 @@
 package net.zoey.cozyliving.level.gen;
 
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.core.registries.*;
+import net.minecraft.data.worldgen.*;
+import net.minecraft.data.worldgen.features.*;
+import net.minecraft.resources.*;
+import net.minecraft.tags.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
-import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
-import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
-import net.zoey.cozyliving.CozyLiving;
-import net.zoey.cozyliving.content.ModBlocks;
-import net.zoey.cozyliving.level.RaspberryBushesFeature;
-import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;
+import net.minecraft.world.level.levelgen.feature.stateproviders.*;
+import net.minecraft.world.level.levelgen.structure.templatesystem.*;
+import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.level.*;
+import net.zoey.cozyliving.level.gen.coconut_tree.*;
 
 import java.util.List;
 
@@ -44,7 +37,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_WHITE_PAMPAS_KEY = registerKey(
             "patch_white_pampas");
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceable = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplaceable = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
@@ -130,20 +123,6 @@ public class ModConfiguredFeatures {
 
 
         //COCONUT TREE STUFF
-        /*context.register(
-                COCONUT_TREE_KEY, new ConfiguredFeature<>(
-                        Feature.TREE,
-
-                        new TreeConfiguration.TreeConfigurationBuilder(
-                                BlockStateProvider.simple(ModBlocks.COCONUT_LOG.block().defaultBlockState()),
-                                new StraightTrunkPlacer(5, 4, 3),
-
-                                BlockStateProvider.simple(ModBlocks.COCONUT_LEAVES.block().defaultBlockState()),
-                                new BlobFoliagePlacer(ConstantInt.of(3), ConstantInt.of(2), 3),
-
-                                new TwoLayersFeatureSize(1, 0, 2))
-
-                        .build()));*/
         context.register(
                 COCONUT_TREE_KEY,
                 new ConfiguredFeature<>(
@@ -181,7 +160,7 @@ public class ModConfiguredFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return ResourceKey.create(
             Registries.CONFIGURED_FEATURE,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, name)
+            CozyLiving.loc(name)
         );
     }
 }

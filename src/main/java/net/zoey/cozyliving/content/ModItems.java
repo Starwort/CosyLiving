@@ -1,17 +1,15 @@
 package net.zoey.cozyliving.content;
 
-import net.minecraft.server.level.*;
+import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.*;
-import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.entity.*;
@@ -91,14 +89,14 @@ public enum ModItems {
     FLOWER_CROWN(
         "flower_crown",
         () -> new ArmorItem(
-            ArmourMaterials.FLOWER_CROWN,
+            ArmourMaterials.FLOWER_CROWN.holder(),
             ArmorItem.Type.HELMET,
             new Item.Properties()
         )
         {
             @Override
             public int getBurnTime(
-                ItemStack stack,
+                @NotNull ItemStack stack,
                 @Nullable RecipeType<?> recipeType
             ) {
                 return 200;
@@ -112,18 +110,22 @@ public enum ModItems {
         CozyLiving.ITEMS.register(modEventBus);
     }
 
-    private final RegistryObject<Item> myValue;
+    private final DeferredHolder<Item, Item> myValue;
 
     ModItems(String name, Supplier<Item> supplier) {
         myValue = CozyLiving.ITEMS.register(name, supplier);
     }
 
-    public RegistryObject<Item> registryObject() {
+    public DeferredHolder<Item, Item> holder() {
         return myValue;
     }
 
     public Item item() {
         return myValue.get();
+    }
+
+    public ResourceLocation id() {
+        return myValue.getId();
     }
 
     public enum Food {
@@ -324,7 +326,7 @@ public enum ModItems {
                 }
 
                 @Override
-                public int getUseDuration(@NotNull ItemStack stack) {
+                public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
                     return 45;
                 }
             }
@@ -416,18 +418,22 @@ public enum ModItems {
             // no-op, just forces the class to load
         }
 
-        private final RegistryObject<Item> myValue;
+        private final DeferredHolder<Item, Item> myValue;
 
         Food(String name, Supplier<Item> supplier) {
             myValue = CozyLiving.ITEMS.register(name, supplier);
         }
 
-        public RegistryObject<Item> registryObject() {
+        public DeferredHolder<Item, Item> holder() {
             return myValue;
         }
 
         public Item item() {
             return myValue.get();
+        }
+
+        public ResourceLocation id() {
+            return myValue.getId();
         }
     }
 }

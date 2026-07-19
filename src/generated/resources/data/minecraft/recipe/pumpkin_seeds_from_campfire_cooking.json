@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "minecraft:pumpkin_seeds"
+  },
+  "result": {
+    "count": 1,
+    "id": "cozyliving:roasted_pumpkin_seeds"
+  }
+}

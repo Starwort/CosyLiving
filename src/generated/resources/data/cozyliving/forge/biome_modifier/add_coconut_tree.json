@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "minecraft:beach",
-  "features": "cozyliving:coconut_tree_placed",
-  "step": "vegetal_decoration"
-}

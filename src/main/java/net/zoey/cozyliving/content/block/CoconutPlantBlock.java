@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.content.block;
 
+import com.mojang.serialization.*;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
@@ -20,6 +21,7 @@ import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
 public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
+    MapCodec<? extends BushBlock> CODEC = simpleCodec(CoconutPlantBlock::new);
     public static final int MAX_AGE = 3;
     public static final int RIPE_AGE = 2;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
@@ -32,13 +34,16 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     };
 
     public CoconutPlantBlock() {
-        super(BlockBehaviour.Properties
+        this(BlockBehaviour.Properties
             .of()
             .mapColor(MapColor.COLOR_BROWN)
             .sound(ModSounds.COCONUT_SOUNDS)
             .noOcclusion()
             .destroyTime(.3f));
+    }
 
+    public CoconutPlantBlock(Properties properties) {
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(AGE, 0));
     }
 
@@ -48,22 +53,21 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(
         @NotNull BlockState state,
         @NotNull BlockGetter level,
         @NotNull BlockPos pos,
         @NotNull CollisionContext context
     ) {
-        var age = state.getValue(AGE);
+        int age = state.getValue(AGE);
         if (age > MAX_AGE) {
             // this prevents literally 20 crashes on launch and I have no idea
             // why they would happen. For some reason this is called on an
             // invalid state 20 times just before the registries are frozen
             CozyLiving.LOGGER.error(
                 "Age of coconut plant in state {} at {} had invalid age of {}",
-                state.toString(),
-                pos.toString(),
+                state,
+                pos,
                 age
             );
             age = MAX_AGE;
@@ -77,14 +81,13 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(
         BlockState state,
         @NotNull ServerLevel level,
         @NotNull BlockPos pos,
         RandomSource random
     ) {
-        var myAge = state.getValue(AGE);
+        int myAge = state.getValue(AGE);
         if (random.nextIntBetweenInclusive(1, 3) == 3) {
             if (myAge < MAX_AGE && random.nextInt(5) == 0
                 && level.getRawBrightness(pos.above(), 0) >= 9) {
@@ -102,7 +105,6 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void attack(
         BlockState state,
         @NotNull Level level,
@@ -116,7 +118,6 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void tick(
         @NotNull BlockState state,
         @NotNull ServerLevel level,
@@ -157,8 +158,7 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     public boolean isValidBonemealTarget(
         @NotNull LevelReader level,
         @NotNull BlockPos pos,
-        @NotNull BlockState state,
-        boolean isClient
+        @NotNull BlockState state
     ) {
         return true;
     }
@@ -195,5 +195,10 @@ public class CoconutPlantBlock extends BushBlock implements BonemealableBlock {
     ) {
         var ceiling = level.getBlockState(pos.above());
         return ceiling.is(BlockTags.LEAVES);
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends BushBlock> codec() {
+        return CODEC;
     }
 }

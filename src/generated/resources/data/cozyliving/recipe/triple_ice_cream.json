@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cozyliving:raspberry_ice_cream"
+    },
+    {
+      "item": "cozyliving:coconut_ice_cream"
+    },
+    {
+      "item": "cozyliving:honeycomb_ice_cream"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyliving:triple_ice_cream"
+  }
+}

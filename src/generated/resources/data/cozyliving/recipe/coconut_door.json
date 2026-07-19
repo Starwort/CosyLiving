@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_doors",
+  "key": {
+    "A": {
+      "item": "cozyliving:coconut_planks"
+    }
+  },
+  "pattern": [
+    "AA",
+    "AA",
+    "AA"
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyliving:coconut_door"
+  }
+}

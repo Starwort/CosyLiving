@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "cozyliving:raspberry"
+    },
+    "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "minecraft:wheat"
+    },
+    "D": {
+      "item": "cozyliving:apple_sauce"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BDB",
+    "CCC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:raspberry_pie"
+  }
+}

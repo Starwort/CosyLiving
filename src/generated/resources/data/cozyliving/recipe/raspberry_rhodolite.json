@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cozyliving:raspberry_rhodolite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "cozyliving:raspberry_rhodolite"
+  }
+}

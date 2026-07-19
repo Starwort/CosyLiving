@@ -1,8 +1,8 @@
 package net.zoey.cozyliving.content;
 
 import net.minecraft.world.entity.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.entity.*;
 
@@ -28,13 +28,13 @@ public enum ModEntities {
     ),
     ;
 
-    private final RegistryObject<EntityType<? extends Entity>> myValue;
+    private final DeferredHolder<EntityType<? extends Entity>, EntityType<? extends Entity>> myValue;
 
     ModEntities(String name, Supplier<EntityType<? extends Entity>> supplier) {
         myValue = CozyLiving.ENTITIES.register(name, supplier);
     }
 
-    public RegistryObject<EntityType<? extends Entity>> registryObject() {
+    public DeferredHolder<EntityType<? extends Entity>, EntityType<? extends Entity>> holder() {
         return myValue;
     }
 

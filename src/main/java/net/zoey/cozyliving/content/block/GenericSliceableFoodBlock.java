@@ -38,7 +38,6 @@ public class GenericSliceableFoodBlock extends Block {
     private static final VoxelShape slice3 = box(8, 0, 8, 14, 4, 14);
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(
         @NotNull BlockState state,
         @NotNull BlockGetter level,
@@ -89,8 +88,8 @@ public class GenericSliceableFoodBlock extends Block {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public @NotNull InteractionResult use(
+    public @NotNull ItemInteractionResult useItemOn(
+        @NotNull ItemStack used,
         @NotNull BlockState state,
         @NotNull Level level,
         @NotNull BlockPos pos,
@@ -98,9 +97,7 @@ public class GenericSliceableFoodBlock extends Block {
         @NotNull InteractionHand hand,
         @NotNull BlockHitResult hit
     ) {
-        var held = player.getMainHandItem();
-
-        if (held.getItem() instanceof SwordItem) {
+        if (used.getItem() instanceof SwordItem) {
             // cut the sliceable block
             var inv = player.getInventory();
             var sliceStack = new ItemStack(sliceItem.get());
@@ -116,18 +113,20 @@ public class GenericSliceableFoodBlock extends Block {
             );
             return consumeChunk(level, pos, state, player);
         }
-        if (level.isClientSide || !(held.getItem() instanceof DebugStickItem)) {
-            if (tryEat(level, pos, state, player).consumesAction()) {
-                return InteractionResult.SUCCESS;
-            }
-            if (held.isEmpty()) {
-                return InteractionResult.CONSUME;
-            }
-        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+    @Override
+    protected @NotNull InteractionResult useWithoutItem(
+        @NotNull BlockState state,
+        @NotNull Level level,
+        @NotNull BlockPos pos,
+        @NotNull Player player,
+        @NotNull BlockHitResult hit
+    ) {
         return tryEat(level, pos, state, player);
     }
 
-    private @NotNull InteractionResult consumeChunk(
+    private @NotNull ItemInteractionResult consumeChunk(
         @NotNull Level level,
         @NotNull BlockPos pos,
         @NotNull BlockState state,
@@ -140,7 +139,7 @@ public class GenericSliceableFoodBlock extends Block {
             level.removeBlock(pos, false);
             level.gameEvent(player, GameEvent.BLOCK_DESTROY, pos);
         }
-        return InteractionResult.SUCCESS;
+        return ItemInteractionResult.SUCCESS;
     }
 
     private @NotNull InteractionResult tryEat(
@@ -154,7 +153,7 @@ public class GenericSliceableFoodBlock extends Block {
         } else {
             player.eat(level, new ItemStack(sliceItem.get()));
             level.gameEvent(player, GameEvent.EAT, pos);
-            return consumeChunk(level, pos, state, player);
+            return consumeChunk(level, pos, state, player).result();
         }
     }
 }

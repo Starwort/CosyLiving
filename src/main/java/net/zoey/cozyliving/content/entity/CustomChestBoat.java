@@ -46,9 +46,9 @@ public class CustomChestBoat extends ChestBoat {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_ID_TYPE, CustomBoat.Type.COCONUT.ordinal());
+    protected void defineSynchedData(@NotNull SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_ID_TYPE, CustomBoat.Type.COCONUT.ordinal());
     }
 
     @Override

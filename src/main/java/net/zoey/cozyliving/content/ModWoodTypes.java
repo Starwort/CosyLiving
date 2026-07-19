@@ -9,6 +9,9 @@ public class ModWoodTypes {
     public static final BlockSetType COCONUT_BLOCK_SET_TYPE = new BlockSetType(
         "coconut",
         true,
+        true,
+        true,
+        BlockSetType.PressurePlateSensitivity.EVERYTHING,
         SoundType.WOOD,
         SoundEvents.WOODEN_DOOR_CLOSE,
         SoundEvents.WOODEN_DOOR_OPEN,

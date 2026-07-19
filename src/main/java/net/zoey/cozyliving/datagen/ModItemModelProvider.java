@@ -3,9 +3,9 @@ package net.zoey.cozyliving.datagen;
 import net.minecraft.data.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.item.*;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.client.model.generators.*;
+import net.neoforged.neoforge.common.data.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 
@@ -26,13 +26,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.Food.GOLDEN_CANDY_APPLE);
         withExistingParent(
             ModItems.Food.ENCHANTED_GOLDEN_CANDY_APPLE
-                .registryObject()
+                .holder()
                 .getId()
                 .getPath(), ResourceLocation.parse("item/generated")
         ).texture(
             "layer0",
             CozyLiving.loc("item/" + ModItems.Food.GOLDEN_CANDY_APPLE
-                .registryObject()
+                .holder()
                 .getId()
                 .getPath())
         );
@@ -102,23 +102,21 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder simpleItem(ModItems.Food food) {
-        return simpleItem(food.registryObject());
+        return simpleItem(food.holder());
     }
 
     private ItemModelBuilder simpleItem(ModItems item) {
-        return simpleItem(item.registryObject());
+        return simpleItem(item.holder());
     }
 
     private ItemModelBuilder simpleItem(ModBlocks block) {
-        var item = block.itemRegistryObject();
+        var item = block.itemHolder();
         assert item != null : "Called simpleItem on a block with no item!";
         return simpleItem(item);
     }
 
-    private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
-        var id = item.getId();
-        assert id != null;
-        var path = id.getPath();
+    private ItemModelBuilder simpleItem(DeferredHolder<Item, Item> item) {
+        var path = item.getId().getPath();
         return withExistingParent(
             path,
             ResourceLocation.parse("item/generated")

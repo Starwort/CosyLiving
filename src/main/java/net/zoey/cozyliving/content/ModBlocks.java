@@ -1,6 +1,7 @@
 package net.zoey.cozyliving.content;
 
 import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
@@ -11,21 +12,22 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.*;
+import net.minecraft.world.level.block.grower.*;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.*;
-import net.minecraft.world.phys.shapes.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.block.*;
 import net.zoey.cozyliving.content.block.entity.*;
 import net.zoey.cozyliving.content.common.*;
 import net.zoey.cozyliving.content.item.*;
-import net.zoey.cozyliving.level.CoconutTreeGrower;
+import net.zoey.cozyliving.level.gen.*;
 import org.jetbrains.annotations.*;
 
 import javax.annotation.Nullable;
+import java.util.*;
 import java.util.function.*;
 
 public enum ModBlocks {
@@ -33,7 +35,7 @@ public enum ModBlocks {
     COCONUT_LOG(
         "coconut_log",
         () -> new CoconutLogBlock(BlockBehaviour.Properties
-            .copy(Blocks.MANGROVE_LOG)
+            .ofFullCopy(Blocks.MANGROVE_LOG)
             .strength(3f)) {
 
         }
@@ -43,53 +45,53 @@ public enum ModBlocks {
     COCONUT_WOOD(
         "coconut_wood",
         () -> new FlammableRotatedPillarBlock(BlockBehaviour.Properties
-            .copy(Blocks.MANGROVE_WOOD)
+            .ofFullCopy(Blocks.MANGROVE_WOOD)
             .strength(3f))
     ),
 
     STRIPPED_COCONUT_LOG(
         "stripped_coconut_log",
         () -> new FlammableRotatedPillarBlock(BlockBehaviour.Properties
-            .copy(Blocks.STRIPPED_MANGROVE_LOG)
+            .ofFullCopy(Blocks.STRIPPED_MANGROVE_LOG)
             .strength(3f))
     ),
 
     STRIPPED_COCONUT_WOOD(
         "stripped_coconut_wood",
         () -> new FlammableRotatedPillarBlock(BlockBehaviour.Properties
-            .copy(Blocks.STRIPPED_MANGROVE_WOOD)
+            .ofFullCopy(Blocks.STRIPPED_MANGROVE_WOOD)
             .strength(3f))
     ),
 
     COCONUT_PLANKS(
         "coconut_planks",
-        () -> new Block(BlockBehaviour.Properties.copy(Blocks.MANGROVE_PLANKS)) {
+        () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PLANKS)) {
             @Override
             public boolean isFlammable(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return true;
             }
 
             @Override
             public int getFlammability(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 20;
             }
 
             @Override
             public int getFireSpreadSpeed(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 5;
             }
@@ -98,33 +100,33 @@ public enum ModBlocks {
 
     COCONUT_LEAVES(
         "coconut_leaves",
-        () -> new LeavesBlock(BlockBehaviour.Properties.copy(Blocks.JUNGLE_LEAVES)) {
+        () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_LEAVES)) {
             @Override
             public boolean isFlammable(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return true;
             }
 
             @Override
             public int getFlammability(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 60;
             }
 
             @Override
             public int getFireSpreadSpeed(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 30;
             }
@@ -132,17 +134,17 @@ public enum ModBlocks {
     ),
 
     COCONUT_LEAVES_CORNER(
-            "coconut_leaves_corner",
-            () -> new CoconutLeavesCornerBlock(
-                    BlockBehaviour.Properties.copy(ModBlocks.COCONUT_LEAVES.block())
-            ),
-            null
+        "coconut_leaves_corner",
+        () -> new CoconutLeavesCornerBlock(
+            BlockBehaviour.Properties.ofFullCopy(ModBlocks.COCONUT_LEAVES.block())
+        ),
+        null
     ), //TODO: does this need the flammability stuff the other coconut leaves have?
 
     COCONUT_SIGN(
         "coconut_sign",
         () -> new CustomStandingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_SIGN),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -151,7 +153,7 @@ public enum ModBlocks {
     COCONUT_WALL_SIGN(
         "coconut_wall_sign",
         () -> new CustomWallSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_WALL_SIGN),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_WALL_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -160,7 +162,7 @@ public enum ModBlocks {
     COCONUT_HANGING_SIGN(
         "coconut_hanging_sign",
         () -> new CustomHangingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_HANGING_SIGN),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_HANGING_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -169,7 +171,7 @@ public enum ModBlocks {
     COCONUT_WALL_HANGING_SIGN(
         "coconut_wall_hanging_sign",
         () -> new CustomWallHangingSignBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_WALL_HANGING_SIGN),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_WALL_HANGING_SIGN),
             ModWoodTypes.COCONUT
         ),
         null
@@ -184,16 +186,14 @@ public enum ModBlocks {
     ),
 
 
-
     COCONUT_PLANT("coconut_plant", CoconutPlantBlock::new, null),
 
     COCONUT_SAPLING(
         "coconut_sapling",
         () -> new SaplingBlock(
-            new CoconutTreeGrower(),
-            BlockBehaviour.Properties.copy(Blocks.JUNGLE_SAPLING)
-        )
-        {
+            new TreeGrower("coconut", Optional.empty(), Optional.of(ModConfiguredFeatures.COCONUT_TREE_KEY), Optional.empty()),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)
+        ) {
             @Override
             public boolean canSurvive(
                 @NotNull BlockState state,
@@ -214,12 +214,8 @@ public enum ModBlocks {
         "glowberry_tart",
         () -> new GenericSliceableFoodBlock(
             ModItems.Food.GLOWBERRY_TART_SLICE::item,
-            BlockBehaviour.Properties.copy(Blocks.CAKE)
-
-                    .lightLevel((p_50874_) -> {
-                        return 7;
-                    })
-
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)
+                .lightLevel((p_50874_) -> 7)
         ),
         ItemNameTooltipBlockItem::new
     ),
@@ -228,25 +224,25 @@ public enum ModBlocks {
         "golden_carrot_cake",
         () -> new LargeSliceableFoodBlock(
             ModItems.Food.GOLDEN_CARROT_CAKE_SLICE::item,
-            BlockBehaviour.Properties.copy(Blocks.CAKE)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)
         ),
         ItemNameTooltipBlockItem::new
     ),
 
     RED_VELVET_CAKE(
-            "red_velvet_cake",
-            () -> new LargeSliceableFoodBlock(
-                    ModItems.Food.RED_VELVET_CAKE_SLICE::item,
-                    BlockBehaviour.Properties.copy(Blocks.CAKE)
-            ),
-            ItemNameTooltipBlockItem::new
+        "red_velvet_cake",
+        () -> new LargeSliceableFoodBlock(
+            ModItems.Food.RED_VELVET_CAKE_SLICE::item,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)
+        ),
+        ItemNameTooltipBlockItem::new
     ),
 
     RASPBERRY_PIE(
         "raspberry_pie",
         () -> new GenericSliceableFoodBlock(
             ModItems.Food.RASPBERRY_PIE_SLICE::item,
-            BlockBehaviour.Properties.copy(Blocks.CAKE)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)
         ),
         ItemNameTooltipBlockItem::new
     ),
@@ -255,7 +251,7 @@ public enum ModBlocks {
         "cinnamon_pie",
         () -> new GenericSliceableFoodBlock(
             ModItems.Food.CINNAMON_PIE_SLICE::item,
-            BlockBehaviour.Properties.copy(Blocks.CAKE)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE)
         ),
         ItemNameTooltipBlockItem::new
     ),
@@ -270,43 +266,22 @@ public enum ModBlocks {
             .instabreak()
             .sound(SoundType.CROP)
             .pushReaction(PushReaction.DESTROY)
-            .ignitedByLava())
-        {
+            .ignitedByLava()) {
             @Override
             protected @NotNull ItemLike getBaseSeedId() {
                 return ModBlocks.COTTON_CROP.asItem();
             }
         },
         "cotton_boll",
-            (block, props) -> new BurnableBlockItem(block, props, 67)
+        (block, props) -> new BurnableBlockItem(block, props, 67)
 
 
     ),
 
     COTTON_SHRUB(
         "cotton_shrub",
-        () -> new BushBlock(BlockBehaviour.Properties
-            .of()
-            .mapColor(MapColor.QUARTZ)
-            .noCollission()
-            .instabreak()
-            .sound(SoundType.CROP)
-            .offsetType(BlockBehaviour.OffsetType.XZ)
-            .pushReaction(PushReaction.DESTROY)
-            .ignitedByLava())
-        {
-            @Override
-            @SuppressWarnings("deprecation")
-            public @NotNull VoxelShape getShape(
-                @NotNull BlockState state,
-                @NotNull BlockGetter level,
-                @NotNull BlockPos pos,
-                @NotNull CollisionContext context
-            ) {
-                return box(3, 0, 3, 13, 13, 13);
-            }
-        },
-            (block, props) -> new BurnableBlockItem(block, props, 200)
+        CottonShrub::new,
+        (block, props) -> new BurnableBlockItem(block, props, 200)
 
     ),
 
@@ -314,7 +289,7 @@ public enum ModBlocks {
         "potted_coconut_sapling", () -> new FlowerPotBlock(
         () -> ((FlowerPotBlock) Blocks.FLOWER_POT),
         COCONUT_SAPLING::block,
-        BlockBehaviour.Properties.copy(Blocks.POTTED_FERN)
+        BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_FERN)
     ), null
     ),
 
@@ -323,7 +298,7 @@ public enum ModBlocks {
         () -> new FlowerPotBlock(
             () -> ((FlowerPotBlock) Blocks.FLOWER_POT),
             COTTON_SHRUB::block,
-            BlockBehaviour.Properties.copy(Blocks.POTTED_FERN).mapColor(MapColor.QUARTZ)
+            BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_FERN).mapColor(MapColor.QUARTZ)
         ),
         null
     ),
@@ -336,26 +311,25 @@ public enum ModBlocks {
             .sound(SoundType.WOOL)
             .ignitedByLava()
             .strength(0.25f)
-            .instrument(NoteBlockInstrument.FLUTE))
-        {
+            .instrument(NoteBlockInstrument.FLUTE)) {
 
 
             @Override
             public int getFlammability(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 10;
             }
 
             @Override
             public int getFireSpreadSpeed(
-                BlockState state,
-                BlockGetter level,
-                BlockPos pos,
-                Direction direction
+                @NotNull BlockState state,
+                @NotNull BlockGetter level,
+                @NotNull BlockPos pos,
+                @NotNull Direction direction
             ) {
                 return 250;
             }
@@ -385,7 +359,7 @@ public enum ModBlocks {
             }
         },
 
-            (block, props) -> new BurnableBlockItem(block, props, 600)
+        (block, props) -> new BurnableBlockItem(block, props, 600)
     ),
 
     COCONUT_CRATE(
@@ -412,60 +386,58 @@ public enum ModBlocks {
 
     COCONUT_PRESSURE_PLATE(
         "coconut_pressure_plate", () -> new PressurePlateBlock(
-        PressurePlateBlock.Sensitivity.EVERYTHING,
-        BlockBehaviour.Properties.copy(Blocks.MANGROVE_PRESSURE_PLATE),
-        ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+        ModWoodTypes.COCONUT_BLOCK_SET_TYPE,
+        BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_PRESSURE_PLATE)
     )
     ),
 
     COCONUT_TRAPDOOR(
         "coconut_trapdoor",
         () -> new TrapDoorBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_TRAPDOOR),
-            ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+            ModWoodTypes.COCONUT_BLOCK_SET_TYPE,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_TRAPDOOR)
         )
     ),
 
     COCONUT_STAIRS(
         "coconut_stairs",
         () -> new StairBlock(
-            () -> COCONUT_PLANKS.block().defaultBlockState(),
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_STAIRS)
+            COCONUT_PLANKS.block().defaultBlockState(),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_STAIRS)
         )
     ),
 
     COCONUT_BUTTON(
         "coconut_button", () -> new ButtonBlock(
-        BlockBehaviour.Properties.copy(Blocks.MANGROVE_BUTTON),
         ModWoodTypes.COCONUT_BLOCK_SET_TYPE,
         30,
-        true
+        BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_BUTTON)
     )
     ),
 
     COCONUT_SLAB(
         "coconut_slab",
-        () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_SLAB))
+        () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_SLAB))
     ),
 
     COCONUT_FENCE_GATE(
         "coconut_fence_gate",
         () -> new FenceGateBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE_GATE),
-            ModWoodTypes.COCONUT
+            ModWoodTypes.COCONUT,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_FENCE_GATE)
         )
     ),
 
     COCONUT_FENCE(
         "coconut_fence",
-        () -> new FenceBlock(BlockBehaviour.Properties.copy(Blocks.MANGROVE_FENCE))
+        () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_FENCE))
     ),
 
     COCONUT_DOOR(
         "coconut_door",
         () -> new DoorBlock(
-            BlockBehaviour.Properties.copy(Blocks.MANGROVE_DOOR).noOcclusion(),
-            ModWoodTypes.COCONUT_BLOCK_SET_TYPE
+            ModWoodTypes.COCONUT_BLOCK_SET_TYPE,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_DOOR).noOcclusion()
         )
     ),
 
@@ -481,22 +453,24 @@ public enum ModBlocks {
 
     RASPBERRY_RHODOLITE_ORE(
         "raspberry_rhodolite_ore", () -> new DropExperienceBlock(
+        UniformInt.of(16, 24),
         BlockBehaviour.Properties
             .of()
             .mapColor(MapColor.STONE)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .requiresCorrectToolForDrops()
-            .strength(3.5f, 3.5f), UniformInt.of(16, 24)
+            .strength(3.5f, 3.5f)
     )
     ),
 
     DEEPSLATE_RASPBERRY_RHODOLITE_ORE(
         "deepslate_raspberry_rhodolite_ore", () -> new DropExperienceBlock(
+        UniformInt.of(16, 24),
         BlockBehaviour.Properties
-            .copy(RASPBERRY_RHODOLITE_ORE.block())
+            .ofFullCopy(RASPBERRY_RHODOLITE_ORE.block())
             .mapColor(MapColor.DEEPSLATE)
             .strength(5.5f, 3.5f)
-            .sound(SoundType.DEEPSLATE), UniformInt.of(16, 24)
+            .sound(SoundType.DEEPSLATE)
     )
     ),
 
@@ -512,46 +486,48 @@ public enum ModBlocks {
 
     BENITOITE_ORE(
         "benitoite_ore", () -> new DropExperienceBlock(
+        UniformInt.of(16, 24),
         BlockBehaviour.Properties
             .of()
             .mapColor(MapColor.STONE)
             .instrument(NoteBlockInstrument.BASEDRUM)
             .requiresCorrectToolForDrops()
-            .strength(3.5f, 3.5f), UniformInt.of(16, 24)
+            .strength(3.5f, 3.5f)
     )
     ),
 
     DEEPSLATE_BENITOITE_ORE(
         "deepslate_benitoite_ore", () -> new DropExperienceBlock(
+        UniformInt.of(16, 24),
         BlockBehaviour.Properties
-            .copy(BENITOITE_ORE.block())
+            .ofFullCopy(BENITOITE_ORE.block())
             .mapColor(MapColor.DEEPSLATE)
             .strength(5.5f, 3.5f)
-            .sound(SoundType.DEEPSLATE), UniformInt.of(16, 24)
+            .sound(SoundType.DEEPSLATE)
     )
     ),
 
     TEST_BLOCK(
-            "test_block", () -> new TestBlock(
-                    BlockBehaviour.Properties.of()
+        "test_block", () -> new TestBlock(
+        BlockBehaviour.Properties.of()
     )
     ),
 
     PINK_PAMPAS_GRASS(
-            "pink_pampas_grass", () -> new TallFlowerBlock(
-            BlockBehaviour.Properties
-                    .copy(Blocks.LILAC)),
-            "pink_pampas_grass",
-            ItemNameTooltipBlockItem::new
+        "pink_pampas_grass", () -> new TallFlowerBlock(
+        BlockBehaviour.Properties
+            .ofFullCopy(Blocks.LILAC)),
+        "pink_pampas_grass",
+        ItemNameTooltipBlockItem::new
     ),
 
     WHITE_PAMPAS_GRASS(
-            "white_pampas_grass", () -> new TallFlowerBlock(
-            BlockBehaviour.Properties
-                    .copy(Blocks.AZURE_BLUET)),
-            "white_pampas_grass",
-    ItemNameTooltipBlockItem::new
-            );
+        "white_pampas_grass", () -> new TallFlowerBlock(
+        BlockBehaviour.Properties
+            .ofFullCopy(Blocks.AZURE_BLUET)),
+        "white_pampas_grass",
+        ItemNameTooltipBlockItem::new
+    );
 
 
     public static void register(IEventBus modEventBus) {
@@ -564,8 +540,8 @@ public enum ModBlocks {
         Entities.register(modEventBus);
     }
 
-    private final RegistryObject<Block> myValue;
-    private final @Nullable RegistryObject<Item> myItem;
+    private final DeferredHolder<Block, Block> myValue;
+    private final @Nullable DeferredHolder<Item, Item> myItem;
 
     ModBlocks(
         String name,
@@ -629,12 +605,12 @@ public enum ModBlocks {
         return myItem.getId();
     }
 
-    public RegistryObject<Block> registryObject() {
+    public DeferredHolder<Block, Block> holder() {
         return myValue;
     }
 
     @Nullable
-    public RegistryObject<Item> itemRegistryObject() {
+    public DeferredHolder<Item, Item> itemHolder() {
         return myItem;
     }
 
@@ -657,6 +633,13 @@ public enum ModBlocks {
         return myItem.get();
     }
 
+    public ResourceLocation asItemId() {
+        if (myItem == null) {
+            return ResourceLocation.withDefaultNamespace("air");
+        }
+        return myItem.getId();
+    }
+
     public boolean isFoodBlock() {
         return this == ModBlocks.GLOWBERRY_TART || this == ModBlocks.CINNAMON_PIE
             || this == ModBlocks.RASPBERRY_PIE || this == ModBlocks.RASPBERRY_BUSH
@@ -668,11 +651,11 @@ public enum ModBlocks {
             REGISTER.register(modEventBus);
         }
 
-        public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES,
+        public static final DeferredRegister<BlockEntityType<?>> REGISTER = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,
             CozyLiving.MODID
         );
 
-        public static final RegistryObject<BlockEntityType<CustomSignBE>> SIGN = REGISTER.register(
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CustomSignBE>> SIGN = REGISTER.register(
             "custom_sign", () -> BlockEntityType.Builder.of(
                 CustomSignBE::new,
                 ModBlocks.COCONUT_SIGN.block(),
@@ -680,7 +663,7 @@ public enum ModBlocks {
             ).build(null) // TODO: this is annotated as NotNull?
         );
 
-        public static final RegistryObject<BlockEntityType<CustomHangingSignBE>> HANGING_SIGN = REGISTER.register(
+        public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CustomHangingSignBE>> HANGING_SIGN = REGISTER.register(
             "custom_hanging_sign", () -> BlockEntityType.Builder.of(
                 CustomHangingSignBE::new,
                 ModBlocks.COCONUT_HANGING_SIGN.block(),
@@ -688,4 +671,5 @@ public enum ModBlocks {
             ).build(null) // TODO: this is annotated as NotNull?
         );
     }
+
 }

@@ -1,28 +1,17 @@
 package net.zoey.cozyliving.level.gen;
 
-import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderGetter;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.VegetationPatchFeature;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.data.worldgen.*;
+import net.minecraft.data.worldgen.placement.*;
+import net.minecraft.resources.*;
+import net.minecraft.world.level.levelgen.*;
+import net.minecraft.world.level.levelgen.feature.*;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.zoey.cozyliving.CozyLiving;
+import net.zoey.cozyliving.*;
 
-import java.util.List;
+import java.util.*;
 
-import static net.minecraft.world.level.levelgen.placement.InSquarePlacement.spread;
 
 public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> RASPBERRY_RHODOLITE_ORE_PLACED_KEY = registerKey(
@@ -36,14 +25,14 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PATCH_LUSH_COTTON_SHRUB_PLACED_KEY = registerKey(
         "patch_lush_cotton_shrub_placed");
     public static final ResourceKey<PlacedFeature> COCONUT_TREE_PLACED_KEY = registerKey(
-            "coconut_tree_placed");
+        "coconut_tree_placed");
     public static final ResourceKey<PlacedFeature> PATCH_PINK_PAMPAS_PLACED_KEY = registerKey(
-            "patch_pink_pampas_placed");
+        "patch_pink_pampas_placed");
     public static final ResourceKey<PlacedFeature> PATCH_WHITE_PAMPAS_PLACED_KEY = registerKey(
-            "patch_white_pampas_placed");
+        "patch_white_pampas_placed");
 
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(
             Registries.CONFIGURED_FEATURE);
 
@@ -119,35 +108,35 @@ public class ModPlacedFeatures {
                 RarityFilterPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
                 BiomePlacementModifier.of());*/
         register(
-                context,
-                COCONUT_TREE_PLACED_KEY,
-                configuredFeatures.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
-                List.of(
-                        RarityFilter.onAverageOnceEvery(10),
-                        InSquarePlacement.spread(),
-                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
-                )
+            context,
+            COCONUT_TREE_PLACED_KEY,
+            configuredFeatures.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
+            List.of(
+                RarityFilter.onAverageOnceEvery(10),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome()
+            )
         );
 
         //PAMPAS
         register(
-                context, PATCH_PINK_PAMPAS_PLACED_KEY,
-                configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_PINK_PAMPAS_KEY), List.of(
-                        RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
-                        InSquarePlacement.spread(),
-                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
-                )
+            context, PATCH_PINK_PAMPAS_PLACED_KEY,
+            configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_PINK_PAMPAS_KEY), List.of(
+                RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome()
+            )
         );
         register(
-                context, PATCH_WHITE_PAMPAS_PLACED_KEY,
-                configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_WHITE_PAMPAS_KEY), List.of(
-                        RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
-                        InSquarePlacement.spread(),
-                        PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()
-                )
+            context, PATCH_WHITE_PAMPAS_PLACED_KEY,
+            configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_WHITE_PAMPAS_KEY), List.of(
+                RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome()
+            )
         );
     }
 
@@ -155,12 +144,12 @@ public class ModPlacedFeatures {
     private static ResourceKey<PlacedFeature> registerKey(String name) {
         return ResourceKey.create(
             Registries.PLACED_FEATURE,
-            ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, name)
+            CozyLiving.loc(name)
         );
     }
 
     private static void register(
-        BootstapContext<PlacedFeature> context,
+        BootstrapContext<PlacedFeature> context,
         ResourceKey<PlacedFeature> key,
         Holder<ConfiguredFeature<?, ?>> configuration,
         List<PlacementModifier> modifiers

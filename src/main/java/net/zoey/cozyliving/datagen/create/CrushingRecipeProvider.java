@@ -3,10 +3,13 @@
 package net.zoey.cozyliving.datagen.create;
 
 import com.simibubi.create.api.data.recipe.*;
+import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.world.item.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
+
+import java.util.concurrent.*;
 
 public class CrushingRecipeProvider extends CrushingRecipeGen {
     GeneratedRecipe PAMPAS_GRASSES = create(
@@ -19,7 +22,7 @@ public class CrushingRecipeProvider extends CrushingRecipeGen {
             .whenModLoaded("create")
     );
 
-    public CrushingRecipeProvider(PackOutput output) {
-        super(output, CozyLiving.MODID);
+    public CrushingRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, CozyLiving.MODID);
     }
 }

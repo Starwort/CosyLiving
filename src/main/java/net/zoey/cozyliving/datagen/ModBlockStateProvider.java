@@ -1,13 +1,14 @@
 package net.zoey.cozyliving.datagen;
 
+import net.minecraft.core.registries.*;
 import net.minecraft.data.*;
 import net.minecraft.resources.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraftforge.client.model.generators.*;
-import net.minecraftforge.common.data.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.client.model.generators.*;
+import net.neoforged.neoforge.common.data.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.block.*;
@@ -55,11 +56,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(ModBlocks.COCONUT_PLANKS);
 
-        leavesBlock(ModBlocks.COCONUT_LEAVES.registryObject());
-        leavesCornerBlock(ModBlocks.COCONUT_LEAVES_CORNER.registryObject());
+        leavesBlock(ModBlocks.COCONUT_LEAVES.holder());
+        leavesCornerBlock(ModBlocks.COCONUT_LEAVES_CORNER.holder());
 
         getVariantBuilder(ModBlocks.RASPBERRY_BUSH.block()).forAllStates(this::raspberryStates);
-        getVariantBuilder(ModBlocks.COCONUT_PLANT.block()).forAllStates(state -> new ConfiguredModel[] {
+        getVariantBuilder(ModBlocks.COCONUT_PLANT.block()).forAllStates(state -> new ConfiguredModel[]{
             exactModel(switch (state.getValue(CoconutPlantBlock.AGE)) {
                 case 0 -> "block/coconut_plant_small";
                 case 1 -> "block/coconut_plant_medium";
@@ -69,13 +70,13 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(ModBlocks.COCONUT.block(), modelFile("block/coconut"));
 
-        SliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie", "generic");
-        SliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie","generic");
-        SliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart", "generic");
+        sliceableBlock(ModBlocks.RASPBERRY_PIE.block(), "raspberry_pie", "generic");
+        sliceableBlock(ModBlocks.CINNAMON_PIE.block(), "cinnamon_pie", "generic");
+        sliceableBlock(ModBlocks.GLOWBERRY_TART.block(), "glowberry_tart", "generic");
 
         getVariantBuilder(ModBlocks.COTTON_CROP.block()).forAllStates(state -> {
             var age = state.getValue(CropBlock.AGE);
-            return new ConfiguredModel[] {
+            return new ConfiguredModel[]{
                 cropTintedCross(
                     "cotton_crop_" + age,
                     "block/cotton_crop_overlay_" + age,
@@ -172,52 +173,41 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.BENITOITE_ORE);
         blockWithItem(ModBlocks.DEEPSLATE_BENITOITE_ORE);
 
-        SliceableBlock(ModBlocks.GOLDEN_CARROT_CAKE.block(), "golden_carrot_cake", "large");
-        SliceableBlock(ModBlocks.RED_VELVET_CAKE.block(), "red_velvet_cake", "large");
+        sliceableBlock(ModBlocks.GOLDEN_CARROT_CAKE.block(), "golden_carrot_cake", "large");
+        sliceableBlock(ModBlocks.RED_VELVET_CAKE.block(), "red_velvet_cake", "large");
 
-        getVariantBuilder(ModBlocks.PINK_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[] {
-                switch (state.getValue(TallFlowerBlock.HALF)) {
-                    case UPPER -> partiallyTintedCross(
-                            "pink_pampas_grass_upper",
-                            "block/pampas_grass_upper",
-                            "block/pink_pampas_grass_feathers"
-                    );
-                    default -> tintedCross(
-                            "pampas_grass_lower",
-                            "block/pampas_grass_lower"
-                    );
-                }
+        getVariantBuilder(ModBlocks.PINK_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[]{
+            switch (state.getValue(TallFlowerBlock.HALF)) {
+                case UPPER -> partiallyTintedCross(
+                    "pink_pampas_grass_upper",
+                    "block/pampas_grass_upper",
+                    "block/pink_pampas_grass_feathers"
+                );
+                default -> tintedCross(
+                    "pampas_grass_lower",
+                    "block/pampas_grass_lower"
+                );
+            }
         });
 
-        getVariantBuilder(ModBlocks.WHITE_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[] {
-                switch (state.getValue(TallFlowerBlock.HALF)) {
-                    case UPPER -> partiallyTintedCross(
-                            "white_pampas_grass_upper",
-                            "block/pampas_grass_upper",
-                            "block/white_pampas_grass_feathers"
-                    );
-                    default -> tintedCross(
-                            "pampas_grass_lower",
-                            "block/pampas_grass_lower"
-                    );
-                }
+        getVariantBuilder(ModBlocks.WHITE_PAMPAS_GRASS.block()).forAllStates(state -> new ConfiguredModel[]{
+            switch (state.getValue(TallFlowerBlock.HALF)) {
+                case UPPER -> partiallyTintedCross(
+                    "white_pampas_grass_upper",
+                    "block/pampas_grass_upper",
+                    "block/white_pampas_grass_feathers"
+                );
+                default -> tintedCross(
+                    "pampas_grass_lower",
+                    "block/pampas_grass_lower"
+                );
+            }
         });
 
     }
 
-    /*public void PampasGrassBlock(Block block, String name){
-        getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
-                new ConfiguredModel(
-                        models()
-                                .withExistingParent(
-                                        name + "_" + state.getValue(TallFlowerBlock.HALF),
-                                modLoc("block/" + name + "pampas_grass_" + state.getValue(TallFlowerBlock.HALF)))
-                )
-        })
-    }*/
-
-    public void SliceableBlock(Block block, String name, String size) {
-        getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[] {
+    public void sliceableBlock(Block block, String name, String size) {
+        getVariantBuilder(block).forAllStates(state -> new ConfiguredModel[]{
             new ConfiguredModel(
                 models()
                     .withExistingParent(
@@ -232,8 +222,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     .texture("particle", modLoc("block/" + name + "/top")),
                 0,
                 switch (state.getValue(GenericSliceableFoodBlock.FACING)) {
-                    case DOWN, UP ->
-                        throw new IllegalStateException("FACING cannot be up or down");
+                    case DOWN, UP -> throw new IllegalStateException("FACING cannot be up or down");
                     case NORTH -> 270;
                     case EAST -> 0;
                     case SOUTH -> 90;
@@ -279,7 +268,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         if (state.getValue(RaspberryBushBlock.AGE) == 4) {
             return raspberryStatesAge4(state);
         } else {
-            return new ConfiguredModel[] {
+            return new ConfiguredModel[]{
                 raspberryState(state)
             };
         }
@@ -329,28 +318,28 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     public ConfiguredModel tintedCross(
-            String modelName,
-            String tinted
+        String modelName,
+        String tinted
     ) {
         return tintedCross(modelName, modLoc(tinted));
     }
 
     public ConfiguredModel tintedCross(
-            String modelName,
-            ResourceLocation tinted
+        String modelName,
+        ResourceLocation tinted
     ) {
         return tintedCross(modelName, tinted, tinted);
     }
 
     public ConfiguredModel tintedCross(
-            String modelName,
-            ResourceLocation tinted,
-            ResourceLocation particle
+        String modelName,
+        ResourceLocation tinted,
+        ResourceLocation particle
     ) {
         return new ConfiguredModel(models()
-                .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/tinted_cross"))
-                .texture("cross", tinted)
-                .renderType("cutout"));
+            .withExistingParent(modelName, ResourceLocation.withDefaultNamespace("block/tinted_cross"))
+            .texture("cross", tinted)
+            .renderType("cutout"));
     }
 
     public ConfiguredModel cropTintedCross(
@@ -430,10 +419,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private ResourceLocation key(Block block) {
-        return ForgeRegistries.BLOCKS.getKey(block);
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
-    private void leavesBlock(RegistryObject<Block> block) {
+    private void leavesBlock(DeferredHolder<Block, Block> block) {
         simpleBlockWithItem(
             block.get(), models().singleTexture(
                 name(block.get()),
@@ -444,30 +433,30 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
     }
 
-    private void leavesCornerBlock(RegistryObject<Block> block) {
+    private void leavesCornerBlock(DeferredHolder<Block, Block> block) {
         simpleBlockWithItem(
-                block.get(), models().singleTexture(
-                        name(block.get()),
-                        ResourceLocation.fromNamespaceAndPath("minecraft", "block/leaves"),
-                        "all",
-                        blockTexture(ModBlocks.COCONUT_LEAVES.block())
-                ).renderType("cutout")
+            block.get(), models().singleTexture(
+                name(block.get()),
+                ResourceLocation.fromNamespaceAndPath("minecraft", "block/leaves"),
+                "all",
+                blockTexture(ModBlocks.COCONUT_LEAVES.block())
+            ).renderType("cutout")
         );
     }
 
     private void blockItem(ModBlocks block) {
-        blockItem(block.registryObject());
+        blockItem(block.holder());
     }
 
-    private void blockItem(RegistryObject<Block> block) {
+    private void blockItem(DeferredHolder<Block, Block> block) {
         simpleBlockItem(block.get(), modelFile("block/" + name(block.get())));
     }
 
     private void blockWithItem(ModBlocks block) {
-        blockWithItem(block.registryObject());
+        blockWithItem(block.holder());
     }
 
-    private void blockWithItem(RegistryObject<Block> block) {
+    private void blockWithItem(DeferredHolder<Block, Block> block) {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 }

@@ -16,10 +16,11 @@ public class MaoCroquiItem extends Item {
     @Override
     public void appendHoverText(
         @NotNull ItemStack stack,
-        @Nullable Level level,
+        @NotNull TooltipContext context,
         @NotNull List<Component> tooltip,
         @NotNull TooltipFlag flag
     ) {
+        var level = context.level();
         var chosenPlayer = getRandomPlayerName(level);
         tooltip.add(Component.translatable(
             "tooltip.cozyliving.mao_croqui.1",
@@ -42,7 +43,7 @@ public class MaoCroquiItem extends Item {
             tooltip.add(Component.literal(
                 "Current scrambled GameTime: " + scramble(lastKnownGameTime / 40)));
         }
-        super.appendHoverText(stack, level, tooltip, flag);
+        super.appendHoverText(stack, context, tooltip, flag);
     }
 
     static long scramble(long x) {

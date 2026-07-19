@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_fence_gates",
+  "key": {
+    "A": {
+      "item": "cozyliving:coconut_planks"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "BAB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:coconut_fence_gate"
+  }
+}

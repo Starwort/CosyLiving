@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "cozyliving:gilded_cinnamon_stick"
+    },
+    {
+      "item": "cozyliving:raspberry_tea"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "cozyliving:gilded_tea"
+  }
+}

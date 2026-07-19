@@ -4,14 +4,14 @@ package net.zoey.cozyliving.datagen.create;
 
 import com.simibubi.create.api.data.recipe.*;
 import com.simibubi.create.content.processing.recipe.*;
+import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
-import net.minecraftforge.common.*;
-import net.minecraftforge.registries.*;
 import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 
+import java.util.concurrent.*;
 import java.util.function.*;
 
 public class MillingRecipeProvider extends MillingRecipeGen {
@@ -25,7 +25,7 @@ public class MillingRecipeProvider extends MillingRecipeGen {
             .whenModLoaded("create")
     );
 
-    public MillingRecipeProvider(PackOutput output) {
-        super(output, CozyLiving.MODID);
+    public MillingRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, CozyLiving.MODID);
     }
 }

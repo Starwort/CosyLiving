@@ -12,28 +12,28 @@ public enum FoodValues {
 
     CINNAMON_BUN(new net.minecraft.world.food.FoodProperties.Builder()
         .nutrition(5)
-        .saturationMod(1)
+        .saturationModifier(1)
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 150, 0), 1f)
         .build()),
 
-    COCONUT_MILK(new FoodProperties.Builder().nutrition(2).saturationMod(0.5f).build()),
+    COCONUT_MILK(new FoodProperties.Builder().nutrition(2).saturationModifier(0.5f).build()),
 
-    HEAVY_CREAM(new FoodProperties.Builder().nutrition(3).saturationMod(0.5f).build()),
+    HEAVY_CREAM(new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f).build()),
 
-    CANDY_APPLE(new FoodProperties.Builder().nutrition(5).saturationMod(1.5f).build()),
+    CANDY_APPLE(new FoodProperties.Builder().nutrition(5).saturationModifier(1.5f).build()),
 
     GOLDEN_CANDY_APPLE(new FoodProperties.Builder()
         .nutrition(6)
-        .saturationMod(3f)
-        .alwaysEat()
+        .saturationModifier(3f)
+        .alwaysEdible()
         .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 3600), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 150, 1), 1f)
         .build()),
 
     GOLDEN_CARROT_CAKE(new FoodProperties.Builder()
         .nutrition(6)
-        .saturationMod(1.2f)
-        .alwaysEat()
+        .saturationModifier(1.2f)
+        .alwaysEdible()
         .effect(
             () -> new MobEffectInstance(
                 MobEffects.NIGHT_VISION,
@@ -48,13 +48,13 @@ public enum FoodValues {
 
     GENERIC_CAKE(new FoodProperties.Builder()
             .nutrition(6)
-            .saturationMod(1.2f)
+            .saturationModifier(1.2f)
             .build()),
 
     ENCHANTED_GOLDEN_CANDY_APPLE(new FoodProperties.Builder()
         .nutrition(6)
-        .saturationMod(3f)
-        .alwaysEat()
+        .saturationModifier(3f)
+        .alwaysEdible()
         .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 3600, 3), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 600, 1), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 9000), 1f)
@@ -63,50 +63,50 @@ public enum FoodValues {
 
     ROASTED_SEEDS(new FoodProperties.Builder()
         .nutrition(2)
-        .saturationMod(0.25f)
+        .saturationModifier(0.25f)
         .fast()
         .build()),
 
     GLOWBERRY_TART(new FoodProperties.Builder()
         .nutrition(6)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .effect(() -> new MobEffectInstance(MobEffects.GLOWING, 150), 1f)
         .build()),
 
-    PIES(new FoodProperties.Builder().nutrition(6).saturationMod(0.75f).build()),
+    PIES(new FoodProperties.Builder().nutrition(6).saturationModifier(0.75f).build()),
 
     APPLE_SAUCE(new FoodProperties.Builder()
         .nutrition(1)
-        .saturationMod(1f)
+        .saturationModifier(1f)
         .fast()
         .build()),
 
     WATERMELON_POPSICLE(new FoodProperties.Builder()
         .nutrition(3)
-        .saturationMod(0.75f)
-        .alwaysEat()
+        .saturationModifier(0.75f)
+        .alwaysEdible()
         .build()),
 
     ICE_CREAMS(new FoodProperties.Builder()
         .nutrition(5)
-        .saturationMod(0.5f)
-        .alwaysEat()
+        .saturationModifier(0.5f)
+        .alwaysEdible()
         .build()),
 
     VILLAGER_STEW(new FoodProperties.Builder()
         .nutrition(10)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .build()),
 
     TEAS(new FoodProperties.Builder()
         .nutrition(4)
-        .saturationMod(1f)
+        .saturationModifier(1f)
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 150), 1f)
         .build()),
 
     GILDED_TEA(new FoodProperties.Builder()
         .nutrition(10)
-        .saturationMod(1f)
+        .saturationModifier(1f)
         .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 18000), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 18000), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.LUCK, 18000), 1f)
@@ -114,26 +114,26 @@ public enum FoodValues {
 
     HOT_CHOCOLATE(new FoodProperties.Builder()
         .nutrition(6)
-        .saturationMod(1f)
+        .saturationModifier(1f)
         .effect(
             () -> new MobEffectInstance(MobEffects.LUCK, 12000, 0, false, false),
             1f
         )
         .build()),
 
-    HOTTER_CHOCOLATE(new FoodProperties.Builder().nutrition(6).saturationMod(1f)
+    HOTTER_CHOCOLATE(new FoodProperties.Builder().nutrition(6).saturationModifier(1f)
         // TODO: Shouldn't this grant Luck?
         .build()),
 
-    SLEEPY_TEA(new FoodProperties.Builder().nutrition(1).saturationMod(1f).build()),
+    SLEEPY_TEA(new FoodProperties.Builder().nutrition(1).saturationModifier(1f).build()),
 
     GOOPY_CHORUS(new FoodProperties.Builder()
         .nutrition(1)
-        .saturationMod(1f)
-        .alwaysEat()
+        .saturationModifier(1f)
+        .alwaysEdible()
         .effect(
             () -> new MobEffectInstance(
-                ModEffects.THIRD_EYE_OPEN.effect(),
+                ModEffects.THIRD_EYE_OPEN.holder(),
                 6000,
                 0
             ),
@@ -145,7 +145,7 @@ public enum FoodValues {
 
     MYCO_MEDLEY(new FoodProperties.Builder()
         .nutrition(8)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .effect(
             () -> new MobEffectInstance(
                 MobEffects.FIRE_RESISTANCE,
@@ -160,65 +160,65 @@ public enum FoodValues {
 
     BERRY_BLEND_SMOOTHIE(new FoodProperties.Builder()
         .nutrition(7)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .build()),
 
     PINA_GLOWADA(new FoodProperties.Builder()
         .nutrition(7)
-        .saturationMod(1f)
-        .alwaysEat()
+        .saturationModifier(1f)
+        .alwaysEdible()
         .effect(() -> new MobEffectInstance(MobEffects.GLOWING, 150), 1f)
         .build()),
 
-    JAMS(new FoodProperties.Builder().nutrition(3).saturationMod(0.67f).build()),
+    JAMS(new FoodProperties.Builder().nutrition(3).saturationModifier(0.67f).build()),
 
     GLOW_JAM(new FoodProperties.Builder()
         .nutrition(3)
-        .saturationMod(0.67f)
+        .saturationModifier(0.67f)
         .effect(() -> new MobEffectInstance(MobEffects.GLOWING, 150), 1f)
         .build()),
 
-    DOUGHNUTS(new FoodProperties.Builder().nutrition(7).saturationMod(0.75f).build()),
+    DOUGHNUTS(new FoodProperties.Builder().nutrition(7).saturationModifier(0.75f).build()),
 
     GLOWNUTS(new FoodProperties.Builder()
         .nutrition(7)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .effect(() -> new MobEffectInstance(MobEffects.GLOWING, 150), 1f)
         .build()),
 
     CHOCOLATE_BAR(new FoodProperties.Builder()
         .nutrition(7)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .build()),
 
     RED_SUGAR(new FoodProperties.Builder()
         .nutrition(1)
-        .saturationMod(0.5f)
+        .saturationModifier(0.5f)
         .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 40, 2), 1f)
         .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 600, 1), 1f)
         .build()),
 
     MAO_CROQUI(new FoodProperties.Builder()
         .nutrition(1)
-        .saturationMod(0.5f)
+        .saturationModifier(0.5f)
         .fast()
         .build()),
 
     RASPBERRY(new FoodProperties.Builder()
         .nutrition(1)
-        .saturationMod(0.5f)
+        .saturationModifier(0.5f)
         .fast()
         .build()),
 
     BUTTERSCOTCH_STAR(new FoodProperties.Builder()
         .nutrition(7)
-        .saturationMod(0.75f)
+        .saturationModifier(0.75f)
         .build()),
 
     FORTUNE_COOKIE(new FoodProperties.Builder()
         .nutrition(2)
-        .saturationMod(0.5f)
-        .alwaysEat()
+        .saturationModifier(0.5f)
+        .alwaysEdible()
         .fast()
         .build());
 

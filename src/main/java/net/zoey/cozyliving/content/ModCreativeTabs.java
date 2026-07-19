@@ -2,8 +2,8 @@ package net.zoey.cozyliving.content;
 
 import net.minecraft.network.chat.*;
 import net.minecraft.world.item.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 
 import java.util.function.*;
@@ -47,13 +47,13 @@ public enum ModCreativeTabs {
             .build()
     );
 
-    private final RegistryObject<CreativeModeTab> myValue;
+    private final DeferredHolder<CreativeModeTab, CreativeModeTab> myValue;
 
     ModCreativeTabs(String name, Supplier<CreativeModeTab> supplier) {
         myValue = CozyLiving.CREATIVE_TABS.register(name, supplier);
     }
 
-    public RegistryObject<CreativeModeTab> registryObject() {
+    public DeferredHolder<CreativeModeTab, CreativeModeTab> holder() {
         return myValue;
     }
 

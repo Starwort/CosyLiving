@@ -1,8 +1,9 @@
 package net.zoey.cozyliving.common;
 
+import net.minecraft.core.registries.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.neoforge.registries.*;
 import org.jetbrains.annotations.*;
 
 public class CLItemUtils {
@@ -30,7 +31,6 @@ public class CLItemUtils {
     }
 
     public static String idOf(Item item) {
-        var reflectedPath = ForgeRegistries.ITEMS.getKey(item);
-        return reflectedPath != null ? reflectedPath.getPath() : "unknown";
+        return BuiltInRegistries.ITEM.getKey(item).getPath();
     }
 }

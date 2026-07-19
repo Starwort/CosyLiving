@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "c": {
+      "item": "cozyliving:cinnamon_stick"
+    },
+    "g": {
+      "item": "minecraft:golden_carrot"
+    },
+    "h": {
+      "item": "cozyliving:heavy_cream"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "hch",
+    "ggg",
+    "wsw"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:golden_carrot_cake"
+  }
+}

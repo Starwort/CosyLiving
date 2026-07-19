@@ -1,19 +1,16 @@
 package net.zoey.cozyliving.level.gen;
 
-import net.minecraft.core.HolderSet;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BiomeTags;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.zoey.cozyliving.CozyLiving;
-import net.zoey.cozyliving.content.ModTags;
+import net.minecraft.core.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.data.worldgen.*;
+import net.minecraft.resources.*;
+import net.minecraft.tags.*;
+import net.minecraft.world.level.biome.*;
+import net.minecraft.world.level.levelgen.*;
+import net.neoforged.neoforge.common.world.*;
+import net.neoforged.neoforge.registries.*;
+import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.*;
 
 public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_RASPBERRY_RHODOLITE_ORE = registerKey("add_raspberry_rhodolite_ore");
@@ -26,45 +23,45 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PATCH_WHITE_PAMPAS = registerKey("add_patch_white_pampas");
 
 
-    public static void bootstrap(BootstapContext<BiomeModifier> context) {
+    public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-        context.register(ADD_RASPBERRY_RHODOLITE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_RASPBERRY_RHODOLITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.RASPBERRY_RHODOLITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        context.register(ADD_BENITOITE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_BENITOITE_ORE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BENITOITE_ORE_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
 
-        context.register(ADD_PATCH_RASPBERRIES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_RASPBERRIES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_RASPBERRY_PATCHES.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_RASPBERRIES_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        context.register(ADD_PATCH_COTTON_SHRUB, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_COTTON_SHRUB, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_COTTON_SHRUB_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        context.register(ADD_PATCH_LUSH_COTTON_SHRUB, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_LUSH_COTTON_SHRUB, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.LUSH_CAVES)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_COTTON_SHRUB_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        context.register(ADD_COCONUT_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_COCONUT_TREE, new BiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.BEACH)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COCONUT_TREE_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        context.register(ADD_PATCH_PINK_PAMPAS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_PINK_PAMPAS, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_PINK_PAMPAS_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-        context.register(ADD_PATCH_WHITE_PAMPAS, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+        context.register(ADD_PATCH_WHITE_PAMPAS, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_COTTON_SHRUB_PATCHES.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PATCH_WHITE_PAMPAS_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
@@ -72,6 +69,6 @@ public class ModBiomeModifiers {
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {
-        return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(CozyLiving.MODID, name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, CozyLiving.loc(name));
     }
 }

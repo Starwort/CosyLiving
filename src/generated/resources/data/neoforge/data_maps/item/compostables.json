@@ -1,0 +1,79 @@
+{
+  "values": {
+    "cozyliving:apple_sauce": {
+      "chance": 0.65
+    },
+    "cozyliving:butterscotch_star": {
+      "chance": 0.3
+    },
+    "cozyliving:candy_apple": {
+      "chance": 0.65
+    },
+    "cozyliving:cinnamon_bun": {
+      "chance": 0.65
+    },
+    "cozyliving:cinnamon_pie": {
+      "chance": 0.1
+    },
+    "cozyliving:cinnamon_pie_slice": {
+      "chance": 0.3
+    },
+    "cozyliving:cinnamon_stick": {
+      "chance": 0.3
+    },
+    "cozyliving:coconut": {
+      "chance": 0.3
+    },
+    "cozyliving:coconut_leaves": {
+      "chance": 0.3
+    },
+    "cozyliving:coconut_sapling": {
+      "chance": 0.3
+    },
+    "cozyliving:flower_crown": {
+      "chance": 1.0
+    },
+    "cozyliving:gilded_cinnamon_stick": {
+      "chance": 1.0
+    },
+    "cozyliving:glowberry_tart": {
+      "chance": 1.0
+    },
+    "cozyliving:glowberry_tart_slice": {
+      "chance": 0.3
+    },
+    "cozyliving:golden_carrot_cake": {
+      "chance": 0.1
+    },
+    "cozyliving:golden_carrot_cake_slice": {
+      "chance": 0.3
+    },
+    "cozyliving:goopy_chorus": {
+      "chance": 0.3
+    },
+    "cozyliving:pink_pampas_grass": {
+      "chance": 0.3
+    },
+    "cozyliving:raspberry": {
+      "chance": 0.3
+    },
+    "cozyliving:raspberry_pie": {
+      "chance": 1.0
+    },
+    "cozyliving:raspberry_pie_slice": {
+      "chance": 0.3
+    },
+    "cozyliving:roasted_melon_seeds": {
+      "chance": 0.3
+    },
+    "cozyliving:roasted_pumpkin_seeds": {
+      "chance": 0.3
+    },
+    "cozyliving:watermelon_popsicle": {
+      "chance": 0.3
+    },
+    "cozyliving:white_pampas_grass": {
+      "chance": 0.3
+    }
+  }
+}

@@ -2,9 +2,9 @@ package net.zoey.cozyliving.content;
 
 import net.minecraft.sounds.*;
 import net.minecraft.world.level.block.*;
-import net.minecraftforge.common.util.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.common.util.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 
 public enum ModSounds {
@@ -16,7 +16,7 @@ public enum ModSounds {
 
     INK_SMEAR("ink_smear"),
     ;
-    public static final SoundType COCONUT_SOUNDS = new ForgeSoundType(
+    public static final SoundType COCONUT_SOUNDS = new DeferredSoundType(
         1f,
         1f,
         SoundType.BAMBOO::getBreakSound,
@@ -26,7 +26,7 @@ public enum ModSounds {
         COCONUT_BONK::sound
     );
 
-    private final RegistryObject<SoundEvent> myValue;
+    private final DeferredHolder<SoundEvent, SoundEvent> myValue;
 
     ModSounds(String id) {
         myValue = CozyLiving.SOUNDS.register(
@@ -43,7 +43,7 @@ public enum ModSounds {
         CozyLiving.SOUNDS.register(modEventBus);
     }
 
-    public RegistryObject<SoundEvent> registryObject() {
+    public DeferredHolder<SoundEvent, SoundEvent> holder() {
         return myValue;
     }
 

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "b": {
+      "item": "minecraft:beetroot"
+    },
+    "c": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "h": {
+      "item": "cozyliving:heavy_cream"
+    },
+    "s": {
+      "item": "minecraft:sugar"
+    },
+    "w": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "pattern": [
+    "hsh",
+    "bcb",
+    "www"
+  ],
+  "result": {
+    "count": 1,
+    "id": "cozyliving:red_velvet_cake"
+  }
+}

@@ -2,15 +2,15 @@ package net.zoey.cozyliving.content;
 
 import net.minecraft.resources.*;
 import net.minecraft.stats.*;
-import net.minecraftforge.eventbus.api.*;
-import net.minecraftforge.registries.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 
 public enum ModStatistics {
     LAND_ON_COTTON_BALE("land_on_cotton_bale"),
     ;
 
-    private final RegistryObject<ResourceLocation> myValue;
+    private final DeferredHolder<ResourceLocation, ResourceLocation> myValue;
     private final StatFormatter myFormatter;
 
     ModStatistics(String id, StatFormatter formatter) {

@@ -1,6 +1,6 @@
 package net.zoey.cozyliving;
 
-import com.mojang.logging.LogUtils;
+import com.mojang.logging.*;
 import net.minecraft.*;
 import net.minecraft.client.*;
 import net.minecraft.client.model.*;
@@ -8,11 +8,9 @@ import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.blockentity.*;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.core.registries.*;
-import net.minecraft.network.chat.*;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.*;
 import net.minecraft.sounds.*;
-import net.minecraft.stats.*;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.item.*;
@@ -20,65 +18,41 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.block.state.properties.*;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.gui.overlay.*;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.*;
-import net.minecraftforge.event.level.*;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.*;
+import net.neoforged.api.distmarker.*;
+import net.neoforged.bus.api.*;
+import net.neoforged.fml.common.*;
+import net.neoforged.fml.config.*;
+import net.neoforged.fml.*;
+import net.neoforged.fml.event.lifecycle.*;
+import net.neoforged.neoforge.client.event.*;
+import net.neoforged.neoforge.client.gui.*;
+import net.neoforged.neoforge.common.*;
+import net.neoforged.neoforge.event.entity.player.*;
+import net.neoforged.neoforge.event.level.*;
+import net.neoforged.neoforge.event.server.*;
+import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
-import net.zoey.cozyliving.level.RaspberryBushesFeature;
-import net.zoey.cozyliving.level.gen.ModCustomFeatures;
-import net.zoey.cozyliving.level.gen.coconut_tree.CoconutTreeFeature;
-import net.zoey.cozyliving.mixin.*;
-import net.zoey.cozyliving.util.CompostingUtil;
-import net.zoey.cozyliving.util.ModLootTableModifiers;
-import org.slf4j.Logger;
-
-import java.awt.*;
+import net.zoey.cozyliving.level.gen.*;
+import net.zoey.cozyliving.util.*;
+import org.slf4j.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(CozyLiving.MODID)
 public class CozyLiving {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "cozyliving";
-    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES,
-        MODID
-    );
-    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS,
-        MODID
-    );
-    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS,
-        MODID
-    );
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
-        MODID
-    );
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB,
-        MODID
-    );
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
-        MODID
-    );
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, MODID);
+    public static final DeferredRegister<MobEffect> EFFECTS = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, MODID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, MODID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(MODID);
 
-    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE,
-        MODID
-    );
-
-    public static final DeferredRegister<ResourceLocation> STATISTICS = DeferredRegister.create(Registries.CUSTOM_STAT,
-        CozyLiving.MODID
-    );
+    public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, MODID);
+    public static final DeferredRegister<ArmorMaterial> ARMOUR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, MODID);
+    public static final DeferredRegister<ResourceLocation> STATISTICS = DeferredRegister.create(Registries.CUSTOM_STAT, MODID);
 
     public static final boolean DEBUG_MODE = false;
 
@@ -89,9 +63,7 @@ public class CozyLiving {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
-    public CozyLiving(FMLJavaModLoadingContext context) {
-        IEventBus modEventBus = context.getModEventBus();
-
+    public CozyLiving(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -108,10 +80,10 @@ public class CozyLiving {
         ModLootTableModifiers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
+        NeoForge.EVENT_BUS.register(this);
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -122,7 +94,6 @@ public class CozyLiving {
                 ModBlocks.COCONUT_SAPLING.id(),
                 ModBlocks.POTTED_COCONUT_SAPLING::block
             );
-            CompostingUtil.addToRegister();
         });
     }
 
@@ -132,10 +103,10 @@ public class CozyLiving {
         // Do something when the server starts
     }
 
-    @Mod.EventBusSubscriber(
-        modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT
+    @EventBusSubscriber(
+        modid = MODID, value = Dist.CLIENT
     )
-    public static class ClientForgeEvents {
+    public static class ClientNeoEvents {
         @SubscribeEvent
         public static void onTooltip(ItemTooltipEvent event) {
             var stack = event.getItemStack();
@@ -159,15 +130,15 @@ public class CozyLiving {
         }
 
         @SubscribeEvent
-        public static void onOverlay(RenderGuiOverlayEvent.Pre event) {
+        public static void onOverlay(RenderGuiLayerEvent.Pre event) {
             // Skip Nether Portal overlay rendering if we have Third Eye Open
             // This is pretty much the same thing vanilla does if the player
             // has CONFUSION (Nausea) [n.b. both skip portal rendering even
             // if the player is standing in a portal]
-            if (event.getOverlay() == VanillaGuiOverlay.PORTAL.type()) {
+            if (event.getName().equals(VanillaGuiLayers.CAMERA_OVERLAYS)) {
                 var player = Minecraft.getInstance().player;
                 if (player != null
-                    && player.hasEffect(ModEffects.THIRD_EYE_OPEN.effect())) {
+                    && player.hasEffect(ModEffects.THIRD_EYE_OPEN.holder())) {
                     event.setCanceled(true);
                 }
             }
@@ -175,8 +146,8 @@ public class CozyLiving {
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(
-        modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT
+    @EventBusSubscriber(
+        modid = MODID, value = Dist.CLIENT
     )
     public static class ClientModEvents {
         @SubscribeEvent
@@ -238,9 +209,7 @@ public class CozyLiving {
         }
     }
 
-    @Mod.EventBusSubscriber(
-        modid = MODID, bus = Mod.EventBusSubscriber.Bus.FORGE
-    )
+    @EventBusSubscriber(modid = MODID)
     public static class CommonForgeEvents {
         @SubscribeEvent
         public static void onNotePlay(NoteBlockEvent.Play event) {

@@ -1,29 +1,28 @@
 package net.zoey.cozyliving.datagen;
 
+import net.minecraft.core.*;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.*;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Items;
+import net.minecraft.tags.*;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.*;
-import net.minecraftforge.common.crafting.conditions.*;
+import net.minecraft.world.level.block.*;
+import net.neoforged.neoforge.common.*;
+import net.neoforged.neoforge.common.conditions.*;
 import net.zoey.cozyliving.*;
-import net.zoey.cozyliving.content.ModBlocks;
-import net.zoey.cozyliving.content.ModItems;
-import net.zoey.cozyliving.content.ModTags;
+import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
-import java.util.function.*;
+import java.util.concurrent.*;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput output) {
-        super(output);
+    public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider);
     }
 
     @Override
-    protected void buildRecipes(@NotNull Consumer<FinishedRecipe> writer) {
+    protected void buildRecipes(@NotNull RecipeOutput output) {
 
         //TODO: Add butter / coconut butter / margarine, doesn't really make sense to make butterscotch without butter
 
@@ -34,7 +33,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         "has_pampas_grass",
                         has(ModTags.Items.PAMPAS_GRASSES.get())
                 )
-                .save(writer);
+                .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModItems.Food.BUTTERSCOTCH_STAR.item(), 3)
@@ -45,7 +44,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(Items.SUGAR),
                 has(Items.SUGAR)
             ) //TODO: make this need cocoa butter
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ModItems.Food.FORTUNE_COOKIE.item(), 1)
@@ -56,14 +55,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         getHasName(Items.SUGAR),
                         has(Items.SUGAR)
                 )
-                .save(writer);
+                .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModItems.CHARCOAL_INK.item(), 3)
             .requires(Items.CHARCOAL)
             .requires(Items.GLASS_BOTTLE, 3)
             .unlockedBy(getHasName(Items.CHARCOAL), has(Items.CHARCOAL))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, ModItems.BUCKRAM.item(), 1)
@@ -77,7 +76,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COTTON_CROP.asItem()),
                 has(ModBlocks.COTTON_CROP.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, ModBlocks.GOLDEN_CARROT_CAKE.asItem(), 1)
@@ -90,7 +89,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('c', ModItems.CINNAMON_STICK.item())
             .define('w', Items.WHEAT)
             .unlockedBy(getHasName(Items.GOLDEN_CARROT), has(Items.GOLDEN_CARROT))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
                 .shaped(RecipeCategory.MISC, ModBlocks.RED_VELVET_CAKE.asItem(), 1)
@@ -103,7 +102,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('c', Items.COCOA_BEANS)
                 .define('w', Items.WHEAT)
                 .unlockedBy(getHasName(Items.BEETROOT), has(Items.BEETROOT))
-                .save(writer);
+                .save(output);
 
         //fuck
 
@@ -114,7 +113,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.BENITOITE_BLOCK.asItem()),
                 has(ModBlocks.BENITOITE_BLOCK.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModItems.RASPBERRY_RHODOLITE.item(), 9)
@@ -123,7 +122,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.asItem()),
                 has(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -139,7 +138,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.RASPBERRY_RHODOLITE.item()),
                 has(ModItems.RASPBERRY_RHODOLITE.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -155,17 +154,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.BENITOITE.item()),
                 has(ModItems.BENITOITE.item())
             )
-            .save(writer);
+            .save(output);
 
         createSmeltingRecipe(
-            writer,
+            output,
             ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.asItem(),
             ModItems.RASPBERRY_RHODOLITE.item(),
             15f,
             "raspberry_rhodolite"
         );
         createSmeltingRecipe(
-            writer,
+            output,
             ModBlocks.RASPBERRY_RHODOLITE_ORE.asItem(),
             ModItems.RASPBERRY_RHODOLITE.item(),
             15f,
@@ -173,14 +172,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         );
 
         createSmeltingRecipe(
-            writer,
+            output,
             ModBlocks.DEEPSLATE_BENITOITE_ORE.asItem(),
             ModItems.BENITOITE.item(),
             15f,
             "benitoite"
         );
         createSmeltingRecipe(
-            writer,
+            output,
             ModBlocks.BENITOITE_ORE.asItem(),
             ModItems.BENITOITE.item(),
             15f,
@@ -194,7 +193,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.APPLE)
             .requires(Items.GLASS_BOTTLE, 4)
             .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(
@@ -211,7 +210,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.Food.COCONUT_MILK.item()),
                 has(ModItems.Food.COCONUT_MILK.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.CANDY_APPLE.item(), 1)
@@ -220,7 +219,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.SUGAR)
             .requires(Items.STICK)
             .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.GOLDEN_CANDY_APPLE.item(), 1)
@@ -229,7 +228,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.SUGAR)
             .requires(Items.STICK)
             .unlockedBy(getHasName(Items.GOLDEN_APPLE), has(Items.GOLDEN_APPLE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(
@@ -245,7 +244,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(Items.ENCHANTED_GOLDEN_APPLE),
                 has(Items.ENCHANTED_GOLDEN_APPLE)
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.CINNAMON_BUN.item(), 1)
@@ -257,7 +256,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.CINNAMON_STICK.item()),
                 has(ModItems.CINNAMON_STICK.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.FOOD, ModBlocks.CINNAMON_PIE.asItem(), 1)
@@ -272,7 +271,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.CINNAMON_STICK.item()),
                 has(ModItems.CINNAMON_STICK.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.COCONUT_MILK.item(), 3)
@@ -282,7 +281,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
 
         ShapelessRecipeBuilder
@@ -294,7 +293,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.GILDED_CINNAMON_STICK.item()),
                 has(ModItems.GILDED_CINNAMON_STICK.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.FOOD, ModBlocks.GLOWBERRY_TART.asItem(), 1)
@@ -306,7 +305,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('C', Items.WHEAT)
             .define('D', ModItems.Food.APPLE_SAUCE.item())
             .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
-            .save(writer);
+            .save(output);
 
 
         ShapelessRecipeBuilder
@@ -317,7 +316,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.HERBAL_TEA.item(), 1)
@@ -325,7 +324,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.POTION)
             .requires(Items.BLAZE_POWDER)
             .unlockedBy(getHasName(Items.BLAZE_POWDER), has(Items.BLAZE_POWDER))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.HONEYCOMB_ICE_CREAM.item(), 1)
@@ -335,7 +334,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModItems.Food.HEAVY_CREAM.item())
             .requires(Items.BOWL)
             .unlockedBy(getHasName(Items.HONEYCOMB), has(Items.HONEYCOMB))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.COCONUT_ICE_CREAM.item(), 1)
@@ -348,7 +347,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.RASPBERRY_ICE_CREAM.item(), 1)
@@ -361,7 +360,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.TRIPLE_ICE_CREAM.item(), 3)
@@ -369,7 +368,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModItems.Food.COCONUT_ICE_CREAM.item())
             .requires(ModItems.Food.HONEYCOMB_ICE_CREAM.item())
             .unlockedBy("has_ice_cream", has(ModTags.Items.ICE_CREAMS.get()))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.HOT_CHOCOLATE.item(), 2)
@@ -380,7 +379,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.SUGAR)
             .requires(Items.GLASS_BOTTLE, 2)
             .unlockedBy(getHasName(Items.COCOA_BEANS), has(Items.COCOA_BEANS))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.HOTTER_CHOCOLATE.item(), 1)
@@ -392,7 +391,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.Food.HOT_CHOCOLATE.item()),
                 has(ModItems.Food.HOT_CHOCOLATE.item())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.MYCO_MEDLEY.item(), 1)
@@ -403,7 +402,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.BOWL)
             .unlockedBy(getHasName(Items.CRIMSON_FUNGUS), has(Items.CRIMSON_FUNGUS))
             .unlockedBy(getHasName(Items.WARPED_FUNGUS), has(Items.WARPED_FUNGUS))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.FOOD, ModBlocks.RASPBERRY_PIE.asItem(), 1)
@@ -418,7 +417,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.RASPBERRY_TEA.item(), 1)
@@ -426,22 +425,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.POTION)
             .requires(Items.BLAZE_POWDER)
             .unlockedBy(getHasName(Items.BLAZE_POWDER), has(Items.BLAZE_POWDER))
-            .save(writer);
+            .save(output);
 
         createCookingRecipe(
-            writer,
+            output,
             Items.MELON_SEEDS,
             ModItems.Food.ROASTED_MELON_SEEDS.item(),
             0.1f
         );
         createCookingRecipe(
-            writer,
+            output,
             Items.PUMPKIN_SEEDS,
             ModItems.Food.ROASTED_PUMPKIN_SEEDS.item(),
             0.1f
         );
         createCookingRecipe(
-            writer,
+            output,
             Items.CHORUS_FLOWER,
             ModItems.Food.GOOPY_CHORUS.item(),
             2f
@@ -456,7 +455,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.BLAZE_POWDER)
             .unlockedBy(getHasName(Items.BLAZE_POWDER), has(Items.BLAZE_POWDER))
             .unlockedBy(getHasName(Items.PHANTOM_MEMBRANE), has(Items.PHANTOM_MEMBRANE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.PINA_GLOWADA.item(), 1)
@@ -469,7 +468,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.VILLAGER_STEW.item(), 1)
@@ -482,7 +481,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .unlockedBy(getHasName(Items.POTATO), has(Items.POTATO))
             .unlockedBy(getHasName(Items.BEETROOT), has(Items.BEETROOT))
             .unlockedBy(getHasName(Items.CARROT), has(Items.CARROT))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.FOOD, ModItems.Food.WATERMELON_POPSICLE.item(), 1)
@@ -493,7 +492,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('B', Items.SNOWBALL)
             .define('C', Items.STICK)
             .unlockedBy(getHasName(Items.MELON_SLICE), has(Items.MELON_SLICE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.CHOCOLATE_BAR.item(), 1)
@@ -502,14 +501,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.PAPER)
             .requires(ModItems.Food.COCONUT_MILK.item())
             .unlockedBy(getHasName(Items.COCOA_BEANS), has(Items.COCOA_BEANS))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.RED_SUGAR.item(), 1)
             .requires(Items.REDSTONE)
             .requires(Items.SUGAR)
             .unlockedBy(getHasName(Items.REDSTONE), has(Items.REDSTONE))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.MAO_CROQUI.item(), 8)
@@ -522,7 +521,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(output);
 
 
         //JAMS
@@ -535,7 +534,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.GLOWBERRY_JAM.item(), 1)
@@ -543,7 +542,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.GLASS_BOTTLE)
             .requires(Items.GLOW_BERRIES)
             .unlockedBy(getHasName(Items.GLOW_BERRIES), has(Items.GLOW_BERRIES))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.SWEETBERRY_JAM.item(), 1)
@@ -551,7 +550,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.GLASS_BOTTLE)
             .requires(Items.SWEET_BERRIES)
             .unlockedBy(getHasName(Items.SWEET_BERRIES), has(Items.SWEET_BERRIES))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.FOOD, ModItems.Food.APPLE_JAM.item(), 2)
@@ -559,30 +558,30 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Items.GLASS_BOTTLE, 2)
             .requires(Items.APPLE)
             .unlockedBy(getHasName(Items.APPLE), has(Items.APPLE))
-            .save(writer);
+            .save(output);
 
-        createDonutRecipe(
-            writer,
+        createDoughnutRecipe(
+            output,
             ModItems.Food.RASPBERRY_JAM.item(),
             ModItems.Food.RASPBERRY_JAM_DOUGHNUT.item()
         );
-        createDonutRecipe(
-            writer,
+        createDoughnutRecipe(
+            output,
             ModItems.Food.GLOWBERRY_JAM.item(),
             ModItems.Food.GLOWBERRY_JAM_DOUGHNUT.item()
         );
-        createDonutRecipe(
-            writer,
+        createDoughnutRecipe(
+            output,
             ModItems.Food.APPLE_JAM.item(),
             ModItems.Food.APPLE_JAM_DOUGHNUT.item()
         );
-        createDonutRecipe(
-            writer,
+        createDoughnutRecipe(
+            output,
             ModItems.Food.SWEETBERRY_JAM.item(),
             ModItems.Food.SWEETBERRY_JAM_DOUGHNUT.item()
         );
-        createDonutRecipe(
-            writer,
+        createDoughnutRecipe(
+            output,
             ModItems.Food.HEAVY_CREAM.item(),
             ModItems.Food.CREAM_DOUGHNUT.item()
         );
@@ -596,7 +595,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("AAA")
             .group("boat")
             .unlockedBy("in_water", insideOf(Blocks.WATER))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.TRANSPORTATION, ModItems.COCONUT_CHEST_BOAT.item())
@@ -606,7 +605,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("AAA")
             .group("chest_boat")
             .unlockedBy("has_boat", has(ItemTags.BOATS))
-            .save(writer);
+            .save(output);
 
 
         ShapedRecipeBuilder
@@ -625,7 +624,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -643,7 +642,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 "has_stripped_logs",
                 has(ModBlocks.STRIPPED_COCONUT_LOG.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(
@@ -656,7 +655,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
 
         ShapedRecipeBuilder
@@ -670,7 +669,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COCONUT_FENCE.asItem(), 3)
@@ -684,7 +683,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -701,7 +700,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(
@@ -712,7 +711,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModTags.Items.COCONUT_LOGS.get())
             .group("planks")
             .unlockedBy("has_log", has(ModTags.Items.COCONUT_LOGS.get()))
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -727,7 +726,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -744,7 +743,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COCONUT_SLAB.asItem(), 6)
@@ -755,7 +754,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -771,7 +770,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_PLANKS.asItem()),
                 has(ModBlocks.COCONUT_PLANKS.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COCONUT_WOOD.asItem(), 3)
@@ -783,7 +782,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 has(ModBlocks.COCONUT_LOG.asItem())
             )
             .group("coconut_wood")
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -799,7 +798,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 has(ModBlocks.STRIPPED_COCONUT_LOG.asItem())
             )
             .group("coconut_wood")
-            .save(writer);
+            .save(output);
 
         //COTTON STUFF
         ShapedRecipeBuilder
@@ -811,7 +810,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COTTON_CROP.asItem()),
                 has(ModBlocks.COTTON_CROP.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, Items.STRING, 3)
@@ -821,7 +820,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COTTON_CROP.asItem()),
                 has(ModBlocks.COTTON_CROP.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COTTON_BALE.asItem(), 1)
@@ -833,7 +832,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COTTON_CROP.asItem()),
                 has(ModBlocks.COTTON_CROP.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModBlocks.COTTON_CROP.asItem(), 9)
@@ -842,7 +841,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COTTON_BALE.asItem()),
                 has(ModBlocks.COTTON_BALE.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.COCONUT_CRATE.asItem(), 1)
@@ -854,7 +853,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModBlocks.COCONUT.asItem(), 9)
@@ -863,7 +862,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.COCONUT_CRATE.asItem()),
                 has(ModBlocks.COCONUT.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapedRecipeBuilder
             .shaped(
@@ -879,7 +878,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, ModBlocks.RASPBERRY_BUSH.asItem(), 9)
@@ -888,7 +887,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_CRATE.asItem()),
                 has(ModBlocks.RASPBERRY_CRATE.asItem())
             )
-            .save(writer);
+            .save(output);
 
 
         //ALTERNATE RECIPES
@@ -898,7 +897,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(Blocks.PISTON)
             .group("sticky_piston")
             .unlockedBy("has_jam", has(ModTags.Items.JAMS.get()))
-            .save(writer, CozyLiving.loc("sticky_piston_from_jam"));
+            .save(output, CozyLiving.loc("sticky_piston_from_jam"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.PINK_DYE, 1)
@@ -908,7 +907,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModBlocks.RASPBERRY_BUSH.asItem()),
                 has(ModBlocks.RASPBERRY_BUSH.asItem())
             )
-            .save(writer, CozyLiving.loc("pink_dye_from_raspberry"));
+            .save(output, CozyLiving.loc("pink_dye_from_raspberry"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.MILK_BUCKET, 1)
@@ -919,7 +918,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.Food.COCONUT_MILK.item()),
                 has(ModItems.Food.COCONUT_MILK.item())
             )
-            .save(writer, CozyLiving.loc("milk_bucket_from_coconut_milk"));
+            .save(output, CozyLiving.loc("milk_bucket_from_coconut_milk"));
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, Items.ITEM_FRAME, 1)
@@ -927,23 +926,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("aba")
             .pattern("aaa")
             .define('a', Items.STICK)
-            .define('b', Tags.Items.LEATHER)
-            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
-            .save(writer);
+            .define('b', Tags.Items.LEATHERS)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHERS))
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.GLOW_ITEM_FRAME, 1)
             .requires(ModTags.Items.GLOWING_ITEMS.get())
             .requires(Items.ITEM_FRAME, 1)
             .unlockedBy("has_any_glowing_item", has(ModTags.Items.GLOWING_ITEMS.get()))
-            .save(writer);
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.BOOK, 1)
             .requires(Items.PAPER, 3)
-            .requires(Tags.Items.LEATHER)
-            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
-            .save(writer);
+            .requires(Tags.Items.LEATHERS)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHERS))
+            .save(output);
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.BLACK_DYE, 2)
@@ -952,7 +951,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 getHasName(ModItems.CHARCOAL_INK.item()),
                 has(ModItems.CHARCOAL_INK.item())
             )
-            .save(writer, CozyLiving.loc("black_dye_from_charcoal_ink"));
+            .save(output, CozyLiving.loc("black_dye_from_charcoal_ink"));
 
         ShapelessRecipeBuilder
             .shapeless(RecipeCategory.MISC, Items.WRITABLE_BOOK, 1)
@@ -960,16 +959,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .requires(ModItems.CHARCOAL_INK.item())
             .requires(Items.FEATHER)
             .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
-            .save(writer, CozyLiving.loc("book_and_quill_from_charcoal_ink"));
+            .save(output, CozyLiving.loc("book_and_quill_from_charcoal_ink"));
 
         ShapedRecipeBuilder
             .shaped(RecipeCategory.MISC, Items.BUNDLE, 1)
             .pattern("a")
             .pattern("b")
             .define('a', Items.STRING)
-            .define('b', Tags.Items.LEATHER)
-            .unlockedBy("has_any_leather", has(Tags.Items.LEATHER))
-            .save(writer);
+            .define('b', Tags.Items.LEATHERS)
+            .unlockedBy("has_any_leather", has(Tags.Items.LEATHERS))
+            .save(output);
 
 
         //MISC
@@ -980,17 +979,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .pattern("AAA")
             .define('A', ItemTags.SMALL_FLOWERS)
             .unlockedBy("has_flowers", has(ItemTags.SMALL_FLOWERS))
-            .save(writer);
+            .save(output);
 
     }
 
-    public void createDonutRecipe(
-        Consumer<FinishedRecipe> writer,
+    public void createDoughnutRecipe(
+        RecipeOutput output,
         ItemLike filling,
-        ItemLike output
+        ItemLike result
     ) {
         ShapedRecipeBuilder
-            .shaped(RecipeCategory.MISC, output, 1)
+            .shaped(RecipeCategory.MISC, result, 1)
             .pattern(" A ")
             .pattern("BCB")
             .pattern(" D ")
@@ -999,72 +998,70 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             .define('C', filling)
             .define('D', ModItems.Food.COCONUT_MILK.item())
             .unlockedBy("has_filling", has(filling))
-            .save(writer);
+            .save(output);
     }
 
 
     public void createCookingRecipe(
-        Consumer<FinishedRecipe> writer,
+        RecipeOutput output,
         ItemLike input,
-        ItemLike output,
+        ItemLike result,
         float experience
     ) {
         SimpleCookingRecipeBuilder
-            .generic(
+            .smelting(
                 Ingredient.of(input),
                 RecipeCategory.FOOD,
-                output,
+                result,
                 experience,
-                200,
-                RecipeSerializer.SMELTING_RECIPE
+                200
             )
             .unlockedBy(getHasName(input), has(input))
-            .save(writer, getSimpleRecipeName(input) + "_from_smelting");
+            .save(output, getSimpleRecipeName(input) + "_from_smelting");
         SimpleCookingRecipeBuilder
-            .smoking(Ingredient.of(input), RecipeCategory.FOOD, output, experience, 100)
+            .smoking(Ingredient.of(input), RecipeCategory.FOOD, result, experience, 100)
             .unlockedBy(getHasName(input), has(input))
-            .save(writer, getSimpleRecipeName(input) + "_from_smoking");
+            .save(output, getSimpleRecipeName(input) + "_from_smoking");
         SimpleCookingRecipeBuilder
             .campfireCooking(
                 Ingredient.of(input),
                 RecipeCategory.FOOD,
-                output,
+                result,
                 experience,
                 600
             )
             .unlockedBy(getHasName(input), has(input))
-            .save(writer, getSimpleRecipeName(input) + "_from_campfire_cooking");
+            .save(output, getSimpleRecipeName(input) + "_from_campfire_cooking");
 
     }
 
     public void createSmeltingRecipe(
-        Consumer<FinishedRecipe> writer,
+        RecipeOutput output,
         ItemLike input,
-        ItemLike output,
+        ItemLike result,
         float experience,
         String group
     ) {
         SimpleCookingRecipeBuilder
-            .generic(
+            .smelting(
                 Ingredient.of(input),
                 RecipeCategory.FOOD,
-                output,
+                result,
                 experience,
-                200,
-                RecipeSerializer.SMELTING_RECIPE
+                200
             )
             .unlockedBy(getHasName(input), has(input))
-            .save(writer, getSimpleRecipeName(input) + "_from_smelting");
+            .save(output, getSimpleRecipeName(input) + "_from_smelting");
         SimpleCookingRecipeBuilder
             .blasting(
                 Ingredient.of(input),
                 RecipeCategory.FOOD,
-                output,
+                result,
                 experience,
                 100
             )
             .unlockedBy(getHasName(input), has(input))
-            .save(writer, getSimpleRecipeName(input) + "_from_blasting");
+            .save(output, getSimpleRecipeName(input) + "_from_blasting");
     }
 
 }

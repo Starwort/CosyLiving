@@ -1,23 +1,22 @@
 package net.zoey.cozyliving.datagen;
 
-import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
-import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import net.minecraftforge.common.loot.LootTableIdCondition;
-import net.zoey.cozyliving.CozyLiving;
-import net.zoey.cozyliving.content.ModBlocks;
-import net.zoey.cozyliving.content.ModItems;
-import net.zoey.cozyliving.util.AddItemModifier;
+import net.minecraft.core.*;
+import net.minecraft.data.*;
+import net.minecraft.resources.*;
+import net.minecraft.util.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.storage.loot.predicates.*;
+import net.neoforged.neoforge.common.data.*;
+import net.neoforged.neoforge.common.loot.*;
+import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.util.*;
 
-import static org.joml.Math.sqrt;
+import java.util.concurrent.*;
 
 public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
-    public ModGlobalLootModifiersProvider(PackOutput output) {
-        super(output, CozyLiving.MODID);
+    public ModGlobalLootModifiersProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, CozyLiving.MODID);
     }
 
     @Override
@@ -30,8 +29,8 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 , ModItems.CINNAMON_STICK.item()));
 
         add("raspberry_from_grass", new AddItemModifier(new LootItemCondition[] {
-                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GRASS).build(),
-                LootItemRandomChanceCondition.randomChance(sqrt(0.008f)).build()} //Should drop one raspberry for roughly every sixteen seeds
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SHORT_GRASS).build(),
+                LootItemRandomChanceCondition.randomChance(Mth.sqrt(0.008f)).build()} //Should drop one raspberry for roughly every sixteen seeds
                 , ModBlocks.RASPBERRY_BUSH.asItem()));
 
         add("gilded_cinnamon_from_jungle_temple_chests", new AddItemModifier(new LootItemCondition[] {

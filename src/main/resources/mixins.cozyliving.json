@@ -1,8 +1,0 @@
-{
-  "required": true,
-  "package": "net.zoey.cozyliving.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "client": [
-    "DebilitatingNauseaMixin"
-  ]
-}

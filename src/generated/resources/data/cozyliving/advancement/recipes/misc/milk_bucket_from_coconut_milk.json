@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_coconut_milk": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyliving:coconut_milk"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cozyliving:milk_bucket_from_coconut_milk"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_coconut_milk"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cozyliving:milk_bucket_from_coconut_milk"
+    ]
+  }
+}

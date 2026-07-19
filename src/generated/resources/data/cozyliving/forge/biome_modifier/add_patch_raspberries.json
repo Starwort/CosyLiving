@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#cozyliving:has_raspberry_patches",
-  "features": "cozyliving:patch_raspberries_placed",
-  "step": "vegetal_decoration"
-}

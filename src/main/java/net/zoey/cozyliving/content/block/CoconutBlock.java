@@ -1,9 +1,9 @@
 package net.zoey.cozyliving.content.block;
 
+import com.mojang.serialization.*;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
-import net.minecraft.tags.*;
 import net.minecraft.util.*;
 import net.minecraft.world.damagesource.*;
 import net.minecraft.world.entity.*;
@@ -18,21 +18,30 @@ import net.zoey.cozyliving.content.*;
 import org.jetbrains.annotations.*;
 
 public class CoconutBlock extends FallingBlock implements Fallable {
+    MapCodec<? extends FallingBlock> CODEC = simpleCodec(CoconutBlock::new);
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
 
     public static final int COCONUT_FALL_MAX_DAMAGE = 6;
     public static final float COCONUT_FALL_DAMAGE = 1;
 
     public CoconutBlock() {
-        super(BlockBehaviour.Properties
+        this(BlockBehaviour.Properties
             .of()
             .mapColor(MapColor.COLOR_BROWN)
             .sound(ModSounds.COCONUT_SOUNDS)
             .instrument(NoteBlockInstrument.CUSTOM_HEAD)
             .noOcclusion()
             .destroyTime(.3f));
+    }
 
+    public CoconutBlock(Properties properties) {
+        super(properties);
         registerDefaultState(defaultBlockState().setValue(PERSISTENT, true));
+    }
+
+    @Override
+    protected @NotNull MapCodec<? extends FallingBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -85,7 +94,6 @@ public class CoconutBlock extends FallingBlock implements Fallable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public @NotNull VoxelShape getShape(
         @NotNull BlockState state,
         @NotNull BlockGetter level,
@@ -96,7 +104,6 @@ public class CoconutBlock extends FallingBlock implements Fallable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public boolean canSurvive(
         @NotNull BlockState state,
         @NotNull LevelReader level,
@@ -118,7 +125,6 @@ public class CoconutBlock extends FallingBlock implements Fallable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
     public void randomTick(
         @NotNull BlockState _state,
         @NotNull ServerLevel level,

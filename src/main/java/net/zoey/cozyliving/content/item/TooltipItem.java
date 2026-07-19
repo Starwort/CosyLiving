@@ -2,7 +2,6 @@ package net.zoey.cozyliving.content.item;
 
 import net.minecraft.network.chat.*;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.*;
 import net.zoey.cozyliving.common.*;
 import org.jetbrains.annotations.*;
 
@@ -20,12 +19,12 @@ public class TooltipItem extends Item {
     @Override
     public void appendHoverText(
         @NotNull ItemStack stack,
-        @Nullable Level level,
+        @NotNull TooltipContext context,
         @NotNull List<Component> tooltip,
         @NotNull TooltipFlag flag
     ) {
         tooltip.add(Component.translatable(
             "tooltip.cozyliving." + CLItemUtils.idOf(stack.getItem())));
-        super.appendHoverText(stack, level, tooltip, flag);
+        super.appendHoverText(stack, context, tooltip, flag);
     }
 }

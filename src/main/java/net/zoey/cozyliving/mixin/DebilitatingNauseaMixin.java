@@ -25,10 +25,10 @@ public abstract class DebilitatingNauseaMixin extends AbstractClientPlayer {
         super(level, profile);
     }
 
-    @Inject(method = "handleNetherPortalClient", at = @At("TAIL"))
+    @Inject(method = "handleConfusionTransitionEffect", at = @At("TAIL"))
     protected void injectNauseaFromSilly(CallbackInfo ci) {
         float dNausea;
-        var thirdEye = this.getEffect(ModEffects.THIRD_EYE_OPEN.effect());
+        var thirdEye = this.getEffect(ModEffects.THIRD_EYE_OPEN.holder());
         if (thirdEye != null && !thirdEye.endsWithin(600)) {
             dNausea = 0.0006666667F;
         } else {
@@ -38,12 +38,12 @@ public abstract class DebilitatingNauseaMixin extends AbstractClientPlayer {
         cosyLiving$bonusIntensity = Mth.clamp(
             cosyLiving$bonusIntensity + dNausea,
             0.0F,
-            (float) Config.debilitatingNauseaFactor
+            (float) Config.debilitatingNauseaFactor()
         );
         spinningEffectIntensity = Mth.clamp(
             cosyLiving$bonusIntensity + spinningEffectIntensity,
             0.0F,
-            (float) Config.debilitatingNauseaFactor
+            (float) Config.debilitatingNauseaFactor()
         );
     }
 

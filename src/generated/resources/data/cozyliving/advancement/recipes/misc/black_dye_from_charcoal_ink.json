@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_charcoal_ink": {
+      "conditions": {
+        "items": [
+          {
+            "items": "cozyliving:charcoal_ink"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "cozyliving:black_dye_from_charcoal_ink"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_charcoal_ink"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "cozyliving:black_dye_from_charcoal_ink"
+    ]
+  }
+}
