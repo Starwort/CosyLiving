@@ -35,5 +35,15 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
         add("gilded_cinnamon_from_jungle_temple_chests", new AddItemModifier(new LootItemCondition[] {
                 new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("chests/jungle_temple")).build() }, ModItems.GILDED_CINNAMON_STICK.item()));
+
+        add("red_sugar_from_redstone_ore", new AddItemModifier(new LootItemCondition[] {
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.REDSTONE_ORE).build(),
+                LootItemRandomChanceCondition.randomChance(0.182f).build()} //Roughly one in thirty ores
+                , ModItems.Food.RED_SUGAR.item()));
+
+        add("red_sugar_from_deepslate_redstone_ore", new AddItemModifier(new LootItemCondition[] {
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.DEEPSLATE_REDSTONE_ORE).build(),
+                LootItemRandomChanceCondition.randomChance(0.225f).build()} //Roughly one in twenty ores
+                , ModItems.Food.RED_SUGAR.item()));
     }
 }
