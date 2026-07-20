@@ -1,11 +1,13 @@
 {
   "parent": "cozyliving:root",
   "criteria": {
-    "got_cotton": {
+    "got_coconut": {
       "conditions": {
         "items": [
           {
-            "tag": "cozyliving:cotton_items"
+            "items": [
+              "cozyliving:coconut"
+            ]
           }
         ]
       },
@@ -15,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.get_cotton.description"
+      "translate": "advancements.cozyliving.get_coconut.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:cotton_boll"
+      "id": "cozyliving:coconut"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.get_cotton.title"
+      "translate": "advancements.cozyliving.get_coconut.title"
     }
   },
   "requirements": [
     [
-      "got_cotton"
+      "got_coconut"
     ]
   ],
   "sends_telemetry_event": true

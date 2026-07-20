@@ -1,12 +1,12 @@
 {
   "parent": "cozyliving:root",
   "criteria": {
-    "got_coconut": {
+    "got_raspberry": {
       "conditions": {
         "items": [
           {
             "items": [
-              "cozyliving:coconut"
+              "cozyliving:raspberry"
             ]
           }
         ]
@@ -17,21 +17,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.get_coconut.description"
+      "translate": "advancements.cozyliving.get_raspberry.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:coconut"
+      "id": "cozyliving:raspberry"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.get_coconut.title"
+      "translate": "advancements.cozyliving.get_raspberry.title"
     }
   },
   "requirements": [
     [
-      "got_coconut"
+      "got_raspberry"
     ]
   ],
   "sends_telemetry_event": true

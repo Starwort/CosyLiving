@@ -1,11 +1,11 @@
 {
-  "parent": "cozyliving:root",
+  "parent": "cozyliving:get_cinnamon",
   "criteria": {
-    "ate_goopy_chorus": {
+    "drank_hotter_chocolate": {
       "conditions": {
         "item": {
           "items": [
-            "cozyliving:goopy_chorus"
+            "cozyliving:hotter_chocolate"
           ]
         }
       },
@@ -15,25 +15,22 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.eat_goopy_chorus.description"
+      "translate": "advancements.cozyliving.drink_hotter_chocolate.description"
     },
     "frame": "challenge",
-    "hidden": true,
+    "hidden": false,
     "icon": {
-      "item": "cozyliving:goopy_chorus"
+      "id": "cozyliving:hotter_chocolate"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.eat_goopy_chorus.title"
+      "translate": "advancements.cozyliving.drink_hotter_chocolate.title"
     }
   },
   "requirements": [
     [
-      "ate_goopy_chorus"
+      "drank_hotter_chocolate"
     ]
   ],
-  "rewards": {
-    "experience": 500
-  },
   "sends_telemetry_event": true
 }

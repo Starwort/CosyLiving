@@ -1,11 +1,11 @@
 {
-  "parent": "cozyliving:eat_candy_apple",
+  "parent": "cozyliving:root",
   "criteria": {
-    "ate_golden_candy_apple": {
+    "ate_goopy_chorus": {
       "conditions": {
         "item": {
           "items": [
-            "cozyliving:golden_candy_apple"
+            "cozyliving:goopy_chorus"
           ]
         }
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.eat_golden_candy_apple.description"
+      "translate": "advancements.cozyliving.eat_goopy_chorus.description"
     },
-    "frame": "goal",
-    "hidden": false,
+    "frame": "challenge",
+    "hidden": true,
     "icon": {
-      "item": "cozyliving:golden_candy_apple"
+      "id": "cozyliving:goopy_chorus"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.eat_golden_candy_apple.title"
+      "translate": "advancements.cozyliving.eat_goopy_chorus.title"
     }
   },
   "requirements": [
     [
-      "ate_golden_candy_apple"
+      "ate_goopy_chorus"
     ]
   ],
   "rewards": {

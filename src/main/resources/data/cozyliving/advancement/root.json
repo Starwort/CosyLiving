@@ -20,7 +20,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:raspberry_jam"
+      "id": "cozyliving:raspberry_jam"
     },
     "show_toast": false,
     "title": {

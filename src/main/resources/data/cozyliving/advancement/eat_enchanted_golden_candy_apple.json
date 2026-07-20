@@ -1,11 +1,11 @@
 {
-  "parent": "cozyliving:get_cinnamon",
+  "parent": "cozyliving:eat_golden_candy_apple",
   "criteria": {
-    "drank_hotter_chocolate": {
+    "ate_enchanted_golden_candy_apple": {
       "conditions": {
         "item": {
           "items": [
-            "cozyliving:hotter_chocolate"
+            "cozyliving:enchanted_golden_candy_apple"
           ]
         }
       },
@@ -15,21 +15,21 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.drink_hotter_chocolate.description"
+      "translate": "advancements.cozyliving.eat_enchanted_golden_candy_apple.description"
     },
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:hotter_chocolate"
+      "id": "cozyliving:enchanted_golden_candy_apple"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.drink_hotter_chocolate.title"
+      "translate": "advancements.cozyliving.eat_enchanted_golden_candy_apple.title"
     }
   },
   "requirements": [
     [
-      "drank_hotter_chocolate"
+      "ate_enchanted_golden_candy_apple"
     ]
   ],
   "sends_telemetry_event": true

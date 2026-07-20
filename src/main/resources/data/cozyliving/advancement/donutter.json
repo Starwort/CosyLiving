@@ -70,7 +70,7 @@
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:raspberry_jam_doughnut"
+      "id": "cozyliving:raspberry_jam_doughnut"
     },
     "show_toast": true,
     "title": {

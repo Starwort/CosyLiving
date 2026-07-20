@@ -1,11 +1,11 @@
 {
-  "parent": "cozyliving:eat_golden_candy_apple",
+  "parent": "cozyliving:get_coconut",
   "criteria": {
-    "ate_enchanted_golden_candy_apple": {
+    "eaten_triple_ice_cream": {
       "conditions": {
         "item": {
           "items": [
-            "cozyliving:enchanted_golden_candy_apple"
+            "cozyliving:triple_ice_cream"
           ]
         }
       },
@@ -15,22 +15,25 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.cozyliving.eat_enchanted_golden_candy_apple.description"
+      "translate": "advancements.cozyliving.triple_baka.description"
     },
     "frame": "challenge",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:enchanted_golden_candy_apple"
+      "id": "cozyliving:triple_ice_cream"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.cozyliving.eat_enchanted_golden_candy_apple.title"
+      "translate": "advancements.cozyliving.triple_baka.title"
     }
   },
   "requirements": [
     [
-      "ate_enchanted_golden_candy_apple"
+      "eaten_triple_ice_cream"
     ]
   ],
+  "rewards": {
+    "experience": 500
+  },
   "sends_telemetry_event": true
 }

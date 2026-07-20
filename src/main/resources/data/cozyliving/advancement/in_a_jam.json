@@ -58,7 +58,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "cozyliving:glowberry_jam"
+      "id": "cozyliving:glowberry_jam"
     },
     "show_toast": true,
     "title": {
