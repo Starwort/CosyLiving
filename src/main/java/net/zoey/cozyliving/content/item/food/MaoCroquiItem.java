@@ -3,6 +3,7 @@ package net.zoey.cozyliving.content.item.food;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.*;
+import net.zoey.cozyliving.CozyLiving;
 import net.zoey.cozyliving.content.common.*;
 import org.jetbrains.annotations.*;
 
@@ -38,7 +39,7 @@ public class MaoCroquiItem extends Item {
             "tooltip.cozyliving.mao_croqui.4",
             chosenPlayer
         ));
-        if (flag.isAdvanced() && level != null) {
+        if (CozyLiving.DEBUG_MODE && level != null) {
             tooltip.add(Component.literal("Current GameTime: " + lastKnownGameTime));
             tooltip.add(Component.literal(
                 "Current scrambled GameTime: " + scramble(lastKnownGameTime / 40)));
