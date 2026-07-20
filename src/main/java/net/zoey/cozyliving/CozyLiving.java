@@ -32,6 +32,7 @@ import net.neoforged.neoforge.event.level.*;
 import net.neoforged.neoforge.event.server.*;
 import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.content.*;
+import net.zoey.cozyliving.content.common.ArmourMaterials;
 import net.zoey.cozyliving.content.entity.*;
 import net.zoey.cozyliving.content.entity.client.*;
 import net.zoey.cozyliving.level.gen.*;
@@ -74,6 +75,7 @@ public class CozyLiving {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModItems.register(modEventBus);
+        ArmourMaterials.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
         ModStatistics.register(modEventBus);
         ModCustomFeatures.RegisterFeatures(modEventBus);
