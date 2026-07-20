@@ -69,7 +69,8 @@ public class ModItemTagsProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.COTTON_ITEMS.get())
             .add(ModBlocks.COTTON_CROP.asItem())
-            .add(ModBlocks.COTTON_SHRUB.asItem());
+            .add(ModBlocks.COTTON_SHRUB.asItem())
+            .add(ModBlocks.COTTON_BALE.asItem());
 
         tag(ModTags.Items.ICE_CREAMS.get())
             .add(ModItems.Food.COCONUT_ICE_CREAM.item())
