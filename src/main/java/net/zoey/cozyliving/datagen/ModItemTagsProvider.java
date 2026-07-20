@@ -63,11 +63,14 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(ModBlocks.COTTON_SHRUB.asItem())
             .add(ModItems.CINNAMON_STICK.item())
             .add(ModItems.GILDED_CINNAMON_STICK.item())
-            .add(ModBlocks.COCONUT.asItem());
+            .add(ModBlocks.COCONUT.asItem())
+            .add(ModBlocks.PINK_PAMPAS_GRASS.asItem())
+            .add(ModBlocks.WHITE_PAMPAS_GRASS.asItem());
 
         tag(ModTags.Items.COTTON_ITEMS.get())
             .add(ModBlocks.COTTON_CROP.asItem())
             .add(ModBlocks.COTTON_SHRUB.asItem());
+
 
         tag(ModTags.Items.ICE_CREAMS.get())
             .add(ModItems.Food.COCONUT_ICE_CREAM.item())
