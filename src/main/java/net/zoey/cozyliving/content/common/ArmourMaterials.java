@@ -8,6 +8,7 @@ import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
 import org.jetbrains.annotations.*;
@@ -99,5 +100,13 @@ public enum ArmourMaterials {
 
     public ResourceLocation id() {
         return myValue.getId();
+    }
+
+    public static void register(IEventBus modEventBus) {
+        CozyLiving.LOGGER.info(
+                "Found {} armour materials",
+                CozyLiving.ARMOUR_MATERIALS.getEntries().size()
+        );
+        CozyLiving.ARMOUR_MATERIALS.register(modEventBus);
     }
 }
