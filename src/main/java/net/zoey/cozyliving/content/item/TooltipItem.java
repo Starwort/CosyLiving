@@ -12,8 +12,13 @@ public class TooltipItem extends Item {
         super(new Properties());
     }
 
+    int tooltipQuantity = 1;
     public TooltipItem(Properties properties) {
         super(properties);
+    }
+    public TooltipItem(Properties properties, int tooltipCount) {
+        super(properties);
+        tooltipQuantity = tooltipCount;
     }
 
     @Override
@@ -23,8 +28,16 @@ public class TooltipItem extends Item {
         @NotNull List<Component> tooltip,
         @NotNull TooltipFlag flag
     ) {
-        tooltip.add(Component.translatable(
-            "tooltip.cozyliving." + CLItemUtils.idOf(stack.getItem())));
+
+        if(tooltipQuantity == 2){
+            tooltip.add(Component.translatable(
+                    "tooltip.cozyliving." + CLItemUtils.idOf(stack.getItem()) + ".1"));
+            tooltip.add(Component.translatable(
+                    "tooltip.cozyliving." + CLItemUtils.idOf(stack.getItem()) + ".2"));
+        } else {
+            tooltip.add(Component.translatable(
+                    "tooltip.cozyliving." + CLItemUtils.idOf(stack.getItem())));
+        }
         super.appendHoverText(stack, context, tooltip, flag);
     }
 }
