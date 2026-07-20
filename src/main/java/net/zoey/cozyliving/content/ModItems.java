@@ -180,7 +180,7 @@ public enum ModItems {
 
         GOLDEN_CARROT_CAKE_SLICE(
             "golden_carrot_cake_slice",
-            () -> new TooltipItem(FoodValues.GOLDEN_CARROT_CAKE.intoProperties())
+            () -> new TooltipItem(FoodValues.GOLDEN_CARROT_CAKE.intoProperties(), 2)
         ),
 
         RED_VELVET_CAKE_SLICE(
