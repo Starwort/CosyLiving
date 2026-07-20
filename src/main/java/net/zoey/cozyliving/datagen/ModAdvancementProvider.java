@@ -219,7 +219,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
             );
             var doughnutter = make(
                 "doughnutter",
-                new ItemStack(ModItems.Food.GLOWBERRY_JAM.item()),
+                new ItemStack(ModItems.Food.RASPBERRY_JAM_DOUGHNUT.item()),
                 AdvancementType.CHALLENGE,
                 builder -> {
                     builder.parent(inAJam);
