@@ -4,7 +4,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "cozyliving:cozyliving_starter_items"
+            "tag": "cozyliving:trigger_root_advancement"
           }
         ]
       },

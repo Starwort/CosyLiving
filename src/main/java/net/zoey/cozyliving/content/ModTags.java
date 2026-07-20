@@ -35,7 +35,7 @@ public class ModTags {
 
         JAMS("jams"),
 
-        COZYLIVING_STARTER_ITEMS("cozyliving_starter_items"),
+        TRIGGER_ROOT_ADVANCEMENT("trigger_root_advancement"),
 
         COTTON_ITEMS("cotton_items"),
 

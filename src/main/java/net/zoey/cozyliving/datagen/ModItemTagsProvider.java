@@ -57,7 +57,7 @@ public class ModItemTagsProvider extends ItemTagsProvider {
             .add(ModItems.Food.APPLE_JAM.item())
             .add(ModItems.Food.GLOWBERRY_JAM.item());
 
-        tag(ModTags.Items.COZYLIVING_STARTER_ITEMS.get())
+        tag(ModTags.Items.TRIGGER_ROOT_ADVANCEMENT.get())
             .add(ModBlocks.RASPBERRY_BUSH.asItem())
             .add(ModBlocks.COTTON_CROP.asItem())
             .add(ModBlocks.COTTON_SHRUB.asItem())
@@ -70,7 +70,6 @@ public class ModItemTagsProvider extends ItemTagsProvider {
         tag(ModTags.Items.COTTON_ITEMS.get())
             .add(ModBlocks.COTTON_CROP.asItem())
             .add(ModBlocks.COTTON_SHRUB.asItem());
-
 
         tag(ModTags.Items.ICE_CREAMS.get())
             .add(ModItems.Food.COCONUT_ICE_CREAM.item())
