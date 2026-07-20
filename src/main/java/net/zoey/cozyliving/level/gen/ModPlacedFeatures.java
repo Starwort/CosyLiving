@@ -67,7 +67,7 @@ public class ModPlacedFeatures {
             PATCH_RASPBERRIES_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_RASPBERRIES_KEY),
             List.of(
-                RarityFilter.onAverageOnceEvery(15),
+                RarityFilter.onAverageOnceEvery(31),
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                 BiomeFilter.biome()
@@ -112,7 +112,7 @@ public class ModPlacedFeatures {
             COCONUT_TREE_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.COCONUT_TREE_KEY),
             List.of(
-                RarityFilter.onAverageOnceEvery(10),
+                RarityFilter.onAverageOnceEvery(15),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome()
@@ -123,7 +123,7 @@ public class ModPlacedFeatures {
         register(
             context, PATCH_PINK_PAMPAS_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_PINK_PAMPAS_KEY), List.of(
-                RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
+                RarityFilter.onAverageOnceEvery(127), //Halved as there's two types
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome()
@@ -132,7 +132,7 @@ public class ModPlacedFeatures {
         register(
             context, PATCH_WHITE_PAMPAS_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.PATCH_WHITE_PAMPAS_KEY), List.of(
-                RarityFilter.onAverageOnceEvery(63), //Halved as there's two types
+                RarityFilter.onAverageOnceEvery(127), //Halved as there's two types
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome()
