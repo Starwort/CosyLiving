@@ -1,28 +1,24 @@
 {
-  "parent": "cozyliving:get_cinnamon",
+  "parent": "cozyliving:root",
   "criteria": {
     "drank_hotter_chocolate": {
       "conditions": {
         "item": {
-          "items": [
-            "cozyliving:hotter_chocolate"
-          ]
+          "items": "cozyliving:hotter_chocolate"
         }
       },
       "trigger": "minecraft:consume_item"
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.drink_hotter_chocolate.description"
     },
     "frame": "challenge",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:hotter_chocolate"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.drink_hotter_chocolate.title"
     }

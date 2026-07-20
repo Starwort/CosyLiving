@@ -2,6 +2,7 @@ package net.zoey.cozyliving;
 
 import com.mojang.logging.*;
 import net.minecraft.*;
+import net.minecraft.advancements.*;
 import net.minecraft.client.*;
 import net.minecraft.client.model.*;
 import net.minecraft.client.renderer.*;
@@ -54,6 +55,7 @@ public class CozyLiving {
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, MODID);
     public static final DeferredRegister<ArmorMaterial> ARMOUR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, MODID);
     public static final DeferredRegister<ResourceLocation> STATISTICS = DeferredRegister.create(Registries.CUSTOM_STAT, MODID);
+    public static final DeferredRegister<CriterionTrigger<?>> TRIGGER_TYPES = DeferredRegister.create(Registries.TRIGGER_TYPE, MODID);
 
     public static final boolean DEBUG_MODE = false;
 
@@ -80,6 +82,7 @@ public class CozyLiving {
         ModStatistics.register(modEventBus);
         ModCustomFeatures.RegisterFeatures(modEventBus);
         ModLootTableModifiers.register(modEventBus);
+        ModAdvancementTriggers.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(this);

@@ -4,25 +4,20 @@
     "ate_candy_apple": {
       "conditions": {
         "item": {
-          "items": [
-            "cozyliving:candy_apple"
-          ]
+          "items": "cozyliving:candy_apple"
         }
       },
       "trigger": "minecraft:consume_item"
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.eat_candy_apple.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:candy_apple"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.eat_candy_apple.title"
     }

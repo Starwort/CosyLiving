@@ -1,13 +1,11 @@
 {
   "parent": "cozyliving:root",
   "criteria": {
-    "got_cinnamon_stick": {
+    "got_cinnamon": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:cinnamon_stick"
-            ]
+            "items": "cozyliving:cinnamon_stick"
           }
         ]
       },
@@ -15,23 +13,20 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.get_cinnamon.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:cinnamon_stick"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.get_cinnamon.title"
     }
   },
   "requirements": [
     [
-      "got_cinnamon_stick"
+      "got_cinnamon"
     ]
   ],
   "sends_telemetry_event": true

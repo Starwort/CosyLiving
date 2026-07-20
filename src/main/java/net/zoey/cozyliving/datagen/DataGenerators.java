@@ -80,5 +80,9 @@ public class DataGenerators {
             event.includeServer(),
             new ModDatapackBuiltinEntriesProvider(packOutput, lookupProvider)
         );
+        generator.addProvider(
+            event.includeServer(),
+            new ModAdvancementProvider(packOutput, lookupProvider, existingFileHelper)
+        );
     }
 }

@@ -3,6 +3,7 @@ package net.zoey.cozyliving.content;
 import net.minecraft.core.*;
 import net.minecraft.core.registries.*;
 import net.minecraft.resources.*;
+import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
 import net.minecraft.util.valueproviders.*;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.material.*;
 import net.neoforged.bus.api.*;
 import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
+import net.zoey.cozyliving.content.advancement.*;
 import net.zoey.cozyliving.content.block.*;
 import net.zoey.cozyliving.content.block.entity.*;
 import net.zoey.cozyliving.content.common.*;
@@ -26,7 +28,6 @@ import net.zoey.cozyliving.content.item.*;
 import net.zoey.cozyliving.level.gen.*;
 import org.jetbrains.annotations.*;
 
-import javax.annotation.Nullable;
 import java.util.*;
 import java.util.function.*;
 
@@ -274,8 +275,6 @@ public enum ModBlocks {
         },
         "cotton_boll",
         (block, props) -> new BurnableBlockItem(block, props, 67)
-
-
     ),
 
     COTTON_SHRUB(
@@ -348,6 +347,9 @@ public enum ModBlocks {
                     if (entity instanceof Player player) {
                         entitySource = player;
                         player.awardStat(ModStatistics.LAND_ON_COTTON_BALE.asStat());
+                        if (entity instanceof ServerPlayer serverPlayer) {
+                            ((NegateFallDamageOnCottonBaleTrigger) ModAdvancementTriggers.NEGATE_FALL_DAMAGE_FROM_COTTON_BALE.get()).trigger(serverPlayer);
+                        }
                     }
                     level.playSound(
                         entitySource,

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:apple_jam"
-            ]
+            "items": "cozyliving:apple_jam"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:glowberry_jam"
-            ]
+            "items": "cozyliving:glowberry_jam"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:raspberry_jam"
-            ]
+            "items": "cozyliving:raspberry_jam"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:sweetberry_jam"
-            ]
+            "items": "cozyliving:sweetberry_jam"
           }
         ]
       },
@@ -51,16 +43,14 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.in_a_jam.description"
     },
     "frame": "goal",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:glowberry_jam"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.in_a_jam.title"
     }
@@ -73,10 +63,10 @@
       "got_glowberry_jam"
     ],
     [
-      "got_sweetberry_jam"
+      "got_raspberry_jam"
     ],
     [
-      "got_raspberry_jam"
+      "got_sweetberry_jam"
     ]
   ],
   "sends_telemetry_event": true

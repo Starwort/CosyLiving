@@ -1,23 +1,26 @@
 {
   "parent": "cozyliving:get_cotton",
   "criteria": {
-    "trigger": "minecraft:impossible"
+    "negated_fall_damage": {
+      "trigger": "cozyliving:negate_damage_from_cotton_bale"
+    }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.negate_fall_damage_from_cotton_bale.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:cotton_bale"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.negate_fall_damage_from_cotton_bale.title"
     }
   },
-  "requirements": [],
+  "requirements": [
+    [
+      "negated_fall_damage"
+    ]
+  ],
   "sends_telemetry_event": true
 }

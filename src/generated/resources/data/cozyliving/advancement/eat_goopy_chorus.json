@@ -4,25 +4,21 @@
     "ate_goopy_chorus": {
       "conditions": {
         "item": {
-          "items": [
-            "cozyliving:goopy_chorus"
-          ]
+          "items": "cozyliving:goopy_chorus"
         }
       },
       "trigger": "minecraft:consume_item"
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.eat_goopy_chorus.description"
     },
     "frame": "challenge",
-    "hidden": true,
     "icon": {
+      "count": 1,
       "id": "cozyliving:goopy_chorus"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.eat_goopy_chorus.title"
     }

@@ -1,10 +1,10 @@
 {
   "criteria": {
-    "got_starter_item": {
+    "got_any_trigger": {
       "conditions": {
         "items": [
           {
-            "tag": "cozyliving:trigger_root_advancement"
+            "items": "#cozyliving:trigger_root_advancement"
           }
         ]
       },
@@ -17,9 +17,8 @@
     "description": {
       "translate": "advancements.cozyliving.root.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
+      "count": 1,
       "id": "cozyliving:raspberry_jam"
     },
     "show_toast": false,
@@ -29,7 +28,7 @@
   },
   "requirements": [
     [
-      "got_starter_item"
+      "got_any_trigger"
     ]
   ],
   "sends_telemetry_event": true

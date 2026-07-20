@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:apple_jam_doughnut"
-            ]
+            "items": "cozyliving:apple_jam_doughnut"
           }
         ]
       },
@@ -17,9 +15,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:cream_doughnut"
-            ]
+            "items": "cozyliving:cream_doughnut"
           }
         ]
       },
@@ -29,9 +25,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:glowberry_jam_doughnut"
-            ]
+            "items": "cozyliving:glowberry_jam_doughnut"
           }
         ]
       },
@@ -41,9 +35,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:raspberry_jam_doughnut"
-            ]
+            "items": "cozyliving:raspberry_jam_doughnut"
           }
         ]
       },
@@ -53,9 +45,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "cozyliving:sweetberry_jam_doughnut"
-            ]
+            "items": "cozyliving:sweetberry_jam_doughnut"
           }
         ]
       },
@@ -63,16 +53,14 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.cozyliving.doughnutter.description"
     },
     "frame": "challenge",
-    "hidden": false,
     "icon": {
-      "id": "cozyliving:raspberry_jam_doughnut"
+      "count": 1,
+      "id": "cozyliving:glowberry_jam"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.cozyliving.doughnutter.title"
     }
@@ -85,10 +73,10 @@
       "got_glowberry_jam_doughnut"
     ],
     [
-      "got_sweetberry_jam_doughnut"
+      "got_raspberry_jam_doughnut"
     ],
     [
-      "got_raspberry_jam_doughnut"
+      "got_sweetberry_jam_doughnut"
     ],
     [
       "got_cream_doughnut"
