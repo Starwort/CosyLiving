@@ -58,6 +58,7 @@ public class CozyLiving {
     public static final DeferredRegister<CriterionTrigger<?>> TRIGGER_TYPES = DeferredRegister.create(Registries.TRIGGER_TYPE, MODID);
 
     public static final boolean DEBUG_MODE = false;
+    public static final boolean ORE_GEN = false;
 
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
