@@ -58,6 +58,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .add(ModBlocks.RASPBERRY_RHODOLITE_ORE.block())
             .add(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
 
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.BENITOITE_BLOCK.block())
+                .add(ModBlocks.BENITOITE_ORE.block())
+                .add(ModBlocks.DEEPSLATE_BENITOITE_ORE.block())
+                .add(ModBlocks.RASPBERRY_RHODOLITE_BLOCK.block())
+                .add(ModBlocks.RASPBERRY_RHODOLITE_ORE.block())
+                .add(ModBlocks.DEEPSLATE_RASPBERRY_RHODOLITE_ORE.block());
+
         tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(ModBlocks.COTTON_BALE.block());
         tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.block());
         tag(BlockTags.SAPLINGS).add(ModBlocks.COCONUT_SAPLING.block());
