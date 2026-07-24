@@ -28,9 +28,9 @@ public class ThirdEyeOpenMobEffect extends MobEffect {
     public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
         int rollSize = 20 / (amplifier + 1);
         var level = entity.level();
-        if (level.isClientSide()) {
+        /*if (level.isClientSide()) {
             return false;
-        }
+        }*/
         int roll = level.getRandom().nextInt(rollSize + 5);
         switch (roll) {
             case 0:
@@ -153,4 +153,5 @@ public class ThirdEyeOpenMobEffect extends MobEffect {
     private String babble(Level level) {
         return babbles[level.getRandom().nextInt(babbles.length)].apply(level);
     }
+
 }
