@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-19T10:19:02.524156416	Recipes
+// 1.21.1	2026-07-24T16:31:09.8923869	Recipes
 85fae67463a9d1b0dab7bb945f1aa278f1223b2d data/cozyliving/advancement/recipes/building_blocks/benitoite_block.json
 e3a47c1b96b2c50d64e14452267021133847c874 data/cozyliving/advancement/recipes/building_blocks/coconut_button.json
 a35514babb494c55bb616fc97bda28d103a3344c data/cozyliving/advancement/recipes/building_blocks/coconut_crate.json
@@ -33,8 +33,8 @@ ad4d181b2718ace1daae826de618cbc23b4058b5 data/cozyliving/advancement/recipes/foo
 2dbe6c6b17187bea2ef5749440b474d43b9f4459 data/cozyliving/advancement/recipes/food/heavy_cream.json
 0c81ba37a2f8c87aaf5a5419aa7c700c201b0fdc data/cozyliving/advancement/recipes/food/herbal_tea.json
 a05cfd1e8da7dcd7089dee06f33067f05632363e data/cozyliving/advancement/recipes/food/honeycomb_ice_cream.json
-22a8d4cfaade767c1124eb21bdffc40d65dfa4bc data/cozyliving/advancement/recipes/food/hot_chocolate.json
 33575babf0cf48efb50392933507eb3dfcf52a79 data/cozyliving/advancement/recipes/food/hotter_chocolate.json
+22a8d4cfaade767c1124eb21bdffc40d65dfa4bc data/cozyliving/advancement/recipes/food/hot_chocolate.json
 5754b0e40d2786076afa0fad6cc5a84ea0783edb data/cozyliving/advancement/recipes/food/mao_croqui.json
 873ffde5ff1ac3c0eb4c9a61c724d97a9e29056d data/cozyliving/advancement/recipes/food/myco_medley.json
 fa8f2fb1ce1204d8806fb99c9e337e4464c7d65b data/cozyliving/advancement/recipes/food/pina_glowada.json
@@ -62,6 +62,8 @@ cab9f707b9de4928eb8f156e6ff1ab066f182198 data/cozyliving/advancement/recipes/mis
 2495cb5de8728fa025a7ff46a6966650ec963cbc data/cozyliving/advancement/recipes/misc/fortune_cookie.json
 f566c141eff26023867ae481ed5929127df56d17 data/cozyliving/advancement/recipes/misc/glowberry_jam_doughnut.json
 1685f48a15d9a2986aac31334aace1901ef88d54 data/cozyliving/advancement/recipes/misc/golden_carrot_cake.json
+e28b28abbfd5b9a0bb7878492c484b2061dd4e6f data/cozyliving/advancement/recipes/misc/gorb_cookie.json
+51d27c0c09647d50ce0c95411d8c30d888aae481 data/cozyliving/advancement/recipes/misc/icto_cookie.json
 9c85c9a6e0ceff46b82a215f85960eb19b1e9188 data/cozyliving/advancement/recipes/misc/milk_bucket_from_coconut_milk.json
 7cb92cc26cc2f25fed5052f032ee3ba25919ed67 data/cozyliving/advancement/recipes/misc/pink_dye_from_raspberry.json
 07969ca883ab5d154839997be59e90e77ab702f5 data/cozyliving/advancement/recipes/misc/raspberry.json
@@ -118,11 +120,13 @@ a2023fc2d79a655f989ce975ce9533c21d4b1882 data/cozyliving/recipe/glowberry_jam.js
 550613f31414eb44c094b5544d9af7b53c3c1689 data/cozyliving/recipe/glowberry_tart.json
 532b0c16d25daa2482aa29cdfa4b535de214ff3d data/cozyliving/recipe/golden_candy_apple.json
 0fed094a4284e9e95cd954b3b047d95184d70c79 data/cozyliving/recipe/golden_carrot_cake.json
+afdf1d13935b752c6576fe14358cb8ce36376c95 data/cozyliving/recipe/gorb_cookie.json
 1c811b7b586a8cdf3bf0b1652b3384920bae8a4d data/cozyliving/recipe/heavy_cream.json
 7a5a979564af0699acc800e66dd416320c808a4b data/cozyliving/recipe/herbal_tea.json
 960716de39f0166e115ddaee752e6f1a30e1efe6 data/cozyliving/recipe/honeycomb_ice_cream.json
-e54fcf10db795c7a844b61e9b83ad85e657a801a data/cozyliving/recipe/hot_chocolate.json
 604c301d725053ab40e81b34bb294e0f13dc3610 data/cozyliving/recipe/hotter_chocolate.json
+e54fcf10db795c7a844b61e9b83ad85e657a801a data/cozyliving/recipe/hot_chocolate.json
+c6cc2df45f45ea421c469c6654a402ffaf01ff2d data/cozyliving/recipe/icto_cookie.json
 0219f44f5428d7bc47b1cf7feaeaca2da4dc9331 data/cozyliving/recipe/mao_croqui.json
 da707d906fce5734fa64779f6b8b10b28b89887f data/cozyliving/recipe/milk_bucket_from_coconut_milk.json
 e93ee2c9aedf55c34a1648fc8cb9f7b5d7810906 data/cozyliving/recipe/myco_medley.json
