@@ -32,6 +32,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> COCONUT_TREE_KEY = registerKey(
             "coconut_tree");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> TRELLISED_COCONUT_TREE_KEY = registerKey(
+            "trellised_coconut_tree");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_PINK_PAMPAS_KEY = registerKey(
             "patch_pink_pampas");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PATCH_WHITE_PAMPAS_KEY = registerKey(
@@ -127,6 +130,14 @@ public class ModConfiguredFeatures {
                 COCONUT_TREE_KEY,
                 new ConfiguredFeature<>(
                         CoconutTreeFeature.COCONUT_TREE.get(),
+                        new NoneFeatureConfiguration()
+                )
+        );
+
+        context.register(
+                TRELLISED_COCONUT_TREE_KEY,
+                new ConfiguredFeature<>(
+                        TrellisedCoconutTreeFeature.TRELLISED_COCONUT_TREE.get(),
                         new NoneFeatureConfiguration()
                 )
         );
