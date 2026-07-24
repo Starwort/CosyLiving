@@ -132,7 +132,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             )
         );
         saplingBlock(ModBlocks.COCONUT_SAPLING);
-        saplingBlock(ModBlocks.TRELLISED_COCONUT_SAPLING);
+        simpleBlock(ModBlocks.TRELLISED_COCONUT_SAPLING.block(), modelFile(modLoc("block/trellised_coconut_sapling")));
 
         pressurePlateBlock(
             (PressurePlateBlock) ModBlocks.COCONUT_PRESSURE_PLATE.block(),
