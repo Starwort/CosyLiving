@@ -15,6 +15,8 @@ import net.zoey.cozyliving.*;
 import net.zoey.cozyliving.content.*;
 import net.zoey.cozyliving.content.block.*;
 
+import java.util.Random;
+
 public class CoconutTreeFeature extends Feature<NoneFeatureConfiguration> {
     BooleanProperty NATURAL = CoconutLogBlock.NATURAL;
 
@@ -31,27 +33,36 @@ public class CoconutTreeFeature extends Feature<NoneFeatureConfiguration> {
 
     @Override
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
-        WorldGenLevel structureWorldAccess = context.level(); //Get access to world
-        BlockPos blockPos = context.origin();                        //Get position to spawn feature
 
+        return generateTree(context, true);
+    }
+
+    public boolean generateTree(FeaturePlaceContext<NoneFeatureConfiguration> context, boolean bendy){
+
+        WorldGenLevel structureWorldAccess = context.level(); //Get access to world
+        BlockPos blockPos = context.origin();                 //Get position to spawn feature
+        RandomSource random = context.random();               //Get access to structure random
+
+        //DON'T GENERATE IF WRONG SOIL
         if (!(structureWorldAccess.getBlockState(blockPos.below()).is(BlockTags.DIRT)
-            || (structureWorldAccess.getBlockState(blockPos.below()).is(BlockTags.SAND)))) {
+                || (structureWorldAccess.getBlockState(blockPos.below()).is(BlockTags.SAND)))) {
             return false;
         }
 
-        RandomSource random = context.random();                            //Get random generator based on world seed
-        //BlockPos.Mutable mutable = blockPos.mutableCopy();              //?????
+
+        //MAP OUT TREE TRUNK
         int genHeight = random.nextInt(7, 11);
         int firstBend = genHeight / 2; //First bend occurs halfway through the trunk
         int secondBend = ((genHeight - firstBend) / 2) + firstBend; //Second bend occurs halfway between first bend and top
         int bendDirection = random.nextInt(0, 3);
 
-        //GENERATE THE LOG
+
+        //GENERATE LOG
         for (int i = 0; i < genHeight; i++) {
             if ((structureWorldAccess.getBlockState(blockPos).isAir() || structureWorldAccess.getBlockState(blockPos).is(BlockTags.LEAVES))) {
                 structureWorldAccess.setBlock(blockPos, ModBlocks.COCONUT_LOG.block().defaultBlockState().setValue(NATURAL, true), 2);
             }
-            if (i == firstBend || i == secondBend) {
+            if ((i == firstBend || i == secondBend) && bendy) {
                 blockPos = switch (bendDirection) {
                     case 0 -> blockPos.north();
                     case 1 -> blockPos.east();
@@ -63,8 +74,7 @@ public class CoconutTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
 
 
-        //GENERATE THE TOP
-        //gotta do it backwards so the coconuts don't break
+        //GENERATE TOP
         BlockPos printingPos;
         printingPos = blockPos.offset(-2, 2, -2);
         printLayer(canopyLayer3, structureWorldAccess, printingPos, 5);
@@ -72,7 +82,6 @@ public class CoconutTreeFeature extends Feature<NoneFeatureConfiguration> {
         printLayer(canopyLayer2, structureWorldAccess, printingPos, 7);
         printingPos = blockPos.offset(-4, 0, -4);
         printLayer(canopyLayer1, structureWorldAccess, printingPos, 9);
-
         return true;
     }
 
@@ -106,19 +115,6 @@ public class CoconutTreeFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-
-
-
-    /*private static <C extends FeatureConfig, F extends Feature<C>> F register(String name, F feature) {
-        return Registry.register(Registries.FEATURE, name, feature);
-    }
-
-    public static final Feature<DefaultFeatureConfig> COCONUT_TREE;
-    static{ COCONUT_TREE = register("coconut_tree", new CoconutTreeFeature(DefaultFeatureConfig.CODEC));}
-
-    public static void registerCoconutTreeFeature() {
-        CozyLiving.LOGGER.info("Registering Coconut Tree Feature for " + CozyLiving.MOD_ID);
-    }*/
 
 
     //a = air, l = leaves, c = coconut, t = trunk, x = x facing trunk, z = z facing trunk
