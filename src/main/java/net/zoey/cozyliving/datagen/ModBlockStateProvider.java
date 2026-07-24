@@ -1,5 +1,6 @@
 package net.zoey.cozyliving.datagen;
 
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.*;
 import net.minecraft.data.*;
 import net.minecraft.resources.*;
@@ -159,11 +160,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         itemModels().fenceInventory("coconut_fence", planks);
         fenceGateBlock((FenceGateBlock) ModBlocks.COCONUT_FENCE_GATE.block(), planks);
         itemModels().fenceGate("coconut_fence_gate", planks);
-        doorBlock(
+        doorBlockWithRenderType(
             (DoorBlock) ModBlocks.COCONUT_DOOR.block(),
             modLoc("block/coconut_door_bottom"),
-            modLoc("block/coconut_door_bottom")
-        );
+            modLoc("block/coconut_door_top"),
+            "cutout");
+
 
         blockWithItem(ModBlocks.RASPBERRY_RHODOLITE_BLOCK);
         blockWithItem(ModBlocks.RASPBERRY_RHODOLITE_ORE);
