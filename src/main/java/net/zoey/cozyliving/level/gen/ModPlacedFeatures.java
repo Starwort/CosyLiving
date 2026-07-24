@@ -41,7 +41,7 @@ public class ModPlacedFeatures {
             RASPBERRY_RHODOLITE_ORE_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.RASPBERRY_RHODOLITE_ORE_KEY),
             ModOrePlacement.modifiersWithCount(
-                7, //spawns roughly seven times per chunk, most common at y -63 and least common at y 127
+                3, //spawns roughly three times per chunk, most common at y -63 and least common at y 127
                 HeightRangePlacement.triangle(
                     VerticalAnchor.absolute(-63),
                     VerticalAnchor.absolute(127)
@@ -54,7 +54,7 @@ public class ModPlacedFeatures {
             BENITOITE_ORE_PLACED_KEY,
             configuredFeatures.getOrThrow(ModConfiguredFeatures.BENITOITE_ORE_KEY),
             ModOrePlacement.modifiersWithCount(
-                7, //spawns roughly seven times per chunk, most common at y -63 and least common at y 127
+                3, //spawns roughly three times per chunk, most common at y -63 and least common at y 127
                 HeightRangePlacement.triangle(
                     VerticalAnchor.absolute(-63),
                     VerticalAnchor.absolute(127)
