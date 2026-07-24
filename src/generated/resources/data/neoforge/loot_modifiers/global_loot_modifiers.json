@@ -2,7 +2,9 @@
   "entries": [
     "cozyliving:cinnamon_from_jungle_leaves",
     "cozyliving:raspberry_from_grass",
-    "cozyliving:gilded_cinnamon_from_jungle_temple_chests"
+    "cozyliving:gilded_cinnamon_from_jungle_temple_chests",
+    "cozyliving:red_sugar_from_redstone_ore",
+    "cozyliving:red_sugar_from_deepslate_redstone_ore"
   ],
   "replace": false
 }
