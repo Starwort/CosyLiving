@@ -139,6 +139,16 @@ public enum FoodValues {
             ),
             1f
         )
+            .effect(
+                    () -> new MobEffectInstance(
+                            MobEffects.CONFUSION,
+                            6000,
+                            0,
+                            true,
+                            false
+                    ),
+                    1f
+            )
         // DebilitatingNauseaMixin means we have no real need to set vanilla nausea also
         //        .effect(() -> new MobEffectInstance(MobEffects.CONFUSION, 6000), 1f)
         .build()),
