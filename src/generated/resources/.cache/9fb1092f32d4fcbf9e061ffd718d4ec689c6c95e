@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-24T16:31:09.8923869	Recipes
+// 1.21.1	2026-07-25T00:36:51.4859915	Recipes
 85fae67463a9d1b0dab7bb945f1aa278f1223b2d data/cozyliving/advancement/recipes/building_blocks/benitoite_block.json
 e3a47c1b96b2c50d64e14452267021133847c874 data/cozyliving/advancement/recipes/building_blocks/coconut_button.json
 a35514babb494c55bb616fc97bda28d103a3344c data/cozyliving/advancement/recipes/building_blocks/coconut_crate.json
@@ -56,6 +56,7 @@ ca5d845022bab58456b2cbae6ea0e8439fa580e1 data/cozyliving/advancement/recipes/foo
 d3fff24c14c8e0282c90aae3ca8d3f6be8862e86 data/cozyliving/advancement/recipes/misc/butterscotch_star.json
 b937b17f83286e3b3eb2f45f42970b39dd61e801 data/cozyliving/advancement/recipes/misc/charcoal_ink.json
 448400722f175d3ba3662f4f6becaef5dc95e041 data/cozyliving/advancement/recipes/misc/coconut.json
+05f0c6b11dde93d794256d616939d637bebe30d8 data/cozyliving/advancement/recipes/misc/coconut_sapling.json
 cab9f707b9de4928eb8f156e6ff1ab066f182198 data/cozyliving/advancement/recipes/misc/cotton_boll.json
 33389af2932210deee0ecb0f9872c5774ce9543b data/cozyliving/advancement/recipes/misc/cream_doughnut.json
 0975ae1ed4431958af77a492bcda2fe1f5de7dcd data/cozyliving/advancement/recipes/misc/flower_crown.json
@@ -103,6 +104,7 @@ cf208d1e3b5c476b6d9d8c276d4804f891c15472 data/cozyliving/recipe/coconut_fence_ga
 dee181b5570d6f7a8df41a0e21bb1765748c0386 data/cozyliving/recipe/coconut_milk.json
 91f2c4dc1c852cc52f4de8c4ef1ae950ffeae111 data/cozyliving/recipe/coconut_planks.json
 26c30d1f01d3dff078aafbd1aed433bc810b7c3c data/cozyliving/recipe/coconut_pressure_plate.json
+5ebedbed380f6f04a83e6148a223159499bc6b18 data/cozyliving/recipe/coconut_sapling.json
 5a4547beba7934e9060a829f3bfc23a2d662340f data/cozyliving/recipe/coconut_sign.json
 b4b90e72b319cb083f33ca9b3ad33565c3ed951a data/cozyliving/recipe/coconut_slab.json
 0b6bd398244dfb03d91b6b417a46ba3e0eb7dbbb data/cozyliving/recipe/coconut_stairs.json
