@@ -47,4 +47,6 @@ public abstract class DebilitatingNauseaMixin extends AbstractClientPlayer {
         );
     }
 
+    //TODO: STILL RELIES ON NAUSEA (CONFUSION) EFFECT TO SLOW DOWN THE EFFECT SPEED, FIND WORK AROUND
+
 }
