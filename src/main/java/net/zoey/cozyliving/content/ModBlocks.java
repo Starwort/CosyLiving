@@ -223,11 +223,22 @@ public enum ModBlocks {
                     var currentStage = level.getBlockState(pos).getValue(SaplingBlock.STAGE);
                     level.setBlock(pos, ModBlocks.TRELLISED_COCONUT_SAPLING.block().defaultBlockState().setValue(STAGE, currentStage), Block.UPDATE_ALL);
                     used.consume(1, player);
+                    level.playSound(
+                            player,
+                            pos.getX() + 0.5,
+                            pos.getY() + (0.5),
+                            pos.getZ() + 0.5,
+                            SoundEvents.WOOD_PLACE,
+                            SoundSource.BLOCKS,
+                            1f,
+                            0.8f + level.random.nextFloat() * 0.4f
+                    );
                     return ItemInteractionResult.SUCCESS;
                 }
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             }
-        }
+        },
+            ItemNameTooltipBlockItem::new
     ),
 
     TRELLISED_COCONUT_SAPLING(
