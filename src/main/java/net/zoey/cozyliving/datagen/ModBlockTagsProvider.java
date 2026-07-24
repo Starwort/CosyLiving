@@ -68,7 +68,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
 
         tag(BlockTags.OCCLUDES_VIBRATION_SIGNALS).add(ModBlocks.COTTON_BALE.block());
         tag(BlockTags.PLANKS).add(ModBlocks.COCONUT_PLANKS.block());
-        tag(BlockTags.SAPLINGS).add(ModBlocks.COCONUT_SAPLING.block());
+        tag(BlockTags.SAPLINGS).add(ModBlocks.COCONUT_SAPLING.block())
+                                .add(ModBlocks.TRELLISED_COCONUT_SAPLING.block());
         tag(BlockTags.STANDING_SIGNS).add(ModBlocks.COCONUT_SIGN.block());
         tag(BlockTags.WALL_HANGING_SIGNS).add(ModBlocks.COCONUT_WALL_HANGING_SIGN.block());
         tag(BlockTags.WALL_SIGNS).add(ModBlocks.COCONUT_WALL_SIGN.block());
@@ -84,6 +85,7 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
             .addTag(ModTags.Blocks.COCONUT_LOGS.get())
             .add(ModBlocks.COCONUT_PLANKS.block())
             .add(ModBlocks.COCONUT_SAPLING.block())
+            .add(ModBlocks.TRELLISED_COCONUT_SAPLING.block())
             .add(ModBlocks.COCONUT_HANGING_SIGN.block())
             .add(ModBlocks.COCONUT_SIGN.block())
             .add(ModBlocks.COCONUT_WALL_HANGING_SIGN.block())

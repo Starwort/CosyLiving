@@ -7,6 +7,8 @@ import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
 import net.minecraft.tags.*;
 import net.minecraft.util.valueproviders.*;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.*;
 import net.minecraft.world.item.*;
@@ -17,6 +19,7 @@ import net.minecraft.world.level.block.grower.*;
 import net.minecraft.world.level.block.state.*;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.*;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.bus.api.*;
 import net.neoforged.neoforge.registries.*;
 import net.zoey.cozyliving.*;
@@ -206,8 +209,47 @@ public enum ModBlocks {
                 return floor.is(BlockTags.SAND) || floor.is(BlockTags.DIRT) || floor.is(
                     Blocks.FARMLAND);
             }
+
+            public @NotNull ItemInteractionResult useItemOn(
+                    @NotNull ItemStack used,
+                    @NotNull BlockState state,
+                    @NotNull Level level,
+                    @NotNull BlockPos pos,
+                    @NotNull Player player,
+                    @NotNull InteractionHand hand,
+                    @NotNull BlockHitResult hit
+            ) {
+                if(used.is(Items.STICK)){
+                    var currentStage = level.getBlockState(pos).getValue(SaplingBlock.STAGE);
+                    level.setBlock(pos, ModBlocks.TRELLISED_COCONUT_SAPLING.block().defaultBlockState().setValue(STAGE, currentStage), Block.UPDATE_ALL);
+                    used.consume(1, player);
+                    return ItemInteractionResult.SUCCESS;
+                }
+                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            }
         }
     ),
+
+    TRELLISED_COCONUT_SAPLING(
+            "trellised_coconut_sapling",
+            () -> new SaplingBlock(
+                    new TreeGrower("trellised_coconut", Optional.empty(), Optional.of(ModConfiguredFeatures.TRELLISED_COCONUT_TREE_KEY), Optional.empty()),
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)
+
+            ) {
+                @Override
+                public boolean canSurvive(
+                        @NotNull BlockState state,
+                        @NotNull LevelReader level,
+                        @NotNull BlockPos pos
+                ) {
+                    pos = pos.below();
+                    var floor = level.getBlockState(pos);
+                    return floor.is(BlockTags.SAND) || floor.is(BlockTags.DIRT) || floor.is(
+                            Blocks.FARMLAND);
+                }
+            },
+            null),
 
     COCONUT("coconut", CoconutBlock::new, TooltipBlockItem::new),
 

@@ -77,6 +77,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         add(ModBlocks.COTTON_SHRUB.block(), cottonShrubDrops());
         add(ModBlocks.COTTON_CROP.block(), cottonCropDrops());
+        add(ModBlocks.TRELLISED_COCONUT_SAPLING.block(), trellisedCoconutSaplingDrops());
 
         add(
             ModBlocks.POTTED_COTTON.block(),
@@ -87,6 +88,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
             createPotFlowerItemTable(ModBlocks.COCONUT_SAPLING.asItem())
         );
         dropSelf(ModBlocks.COCONUT_SAPLING.block());
+
+
+
         dropSelf(ModBlocks.COTTON_BALE.block());
         dropSelf(ModBlocks.RASPBERRY_CRATE.block());
         dropSelf(ModBlocks.COCONUT_CRATE.block());
@@ -297,6 +301,27 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                             BlockPos.ZERO.above()
                         )))));
     }
+
+    private LootTable.Builder trellisedCoconutSaplingDrops() {
+        return LootTable
+                .lootTable()
+                .withPool(LootPool
+                        .lootPool()
+                        .add(LootItem
+                                .lootTableItem(ModBlocks.COCONUT_SAPLING.asItem())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                                )
+
+                        )
+                .withPool(LootPool
+                        .lootPool()
+                        .add(LootItem
+                                .lootTableItem(Items.STICK)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        ));
+    }
+
+
 
     public LootTable.Builder raspberryBushDrops() {
         return LootTable
