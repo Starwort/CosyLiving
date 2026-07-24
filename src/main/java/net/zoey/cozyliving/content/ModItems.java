@@ -410,9 +410,17 @@ public enum ModItems {
             () -> new TooltipItem(FoodValues.BUTTERSCOTCH_STAR.intoProperties())
         ),
 
-        FORTUNE_COOKIE("fortune_cookie", FortuneCookieItem::new),
+        GORB_COOKIE(
+                "gorb_cookie",
+                () -> new TooltipItem(FoodValues.ROBOT_COOKIE.intoProperties())
+        ),
 
-        ;
+        ICTO_COOKIE(
+                "icto_cookie",
+                () -> new TooltipItem(FoodValues.ROBOT_COOKIE.intoProperties())
+        ),
+
+        FORTUNE_COOKIE("fortune_cookie", FortuneCookieItem::new),;
 
         public static void register() {
             // no-op, just forces the class to load

@@ -95,6 +95,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModBlocks.COTTON_SHRUB);
         simpleItem(ModBlocks.COCONUT_SAPLING);
         simpleItem(ModItems.Food.BUTTERSCOTCH_STAR);
+        simpleItem(ModItems.Food.GORB_COOKIE);
+        simpleItem(ModItems.Food.ICTO_COOKIE);
         simpleItem(ModItems.Food.FORTUNE_COOKIE);
 
         simpleItem(ModBlocks.PINK_PAMPAS_GRASS);

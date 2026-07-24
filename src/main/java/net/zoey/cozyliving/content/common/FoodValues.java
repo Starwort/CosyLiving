@@ -225,6 +225,12 @@ public enum FoodValues {
         .saturationModifier(0.75f)
         .build()),
 
+    ROBOT_COOKIE(new FoodProperties.Builder()
+            .nutrition(2)
+            .saturationModifier(0.5f)
+            .fast()
+            .build()),
+
     FORTUNE_COOKIE(new FoodProperties.Builder()
         .nutrition(2)
         .saturationModifier(0.5f)
