@@ -1,5 +1,7 @@
-// 1.21.1	2026-07-19T10:19:02.524106144	Global Loot Modifiers : cozyliving
+// 1.21.1	2026-07-20T17:09:25.2728198	Global Loot Modifiers : cozyliving
 c3b1c4f19d1229bb2ab357e830ec4f192e56484f data/cozyliving/loot_modifiers/cinnamon_from_jungle_leaves.json
 2dbe43afb81f0b3df99fa401b08acc38a57bb7b4 data/cozyliving/loot_modifiers/gilded_cinnamon_from_jungle_temple_chests.json
 e4241d66323148908017ccf5898f0759d381b9a7 data/cozyliving/loot_modifiers/raspberry_from_grass.json
-a9e2b8f5d7e2efc7d1e59aca97972175b6c2c87f data/neoforge/loot_modifiers/global_loot_modifiers.json
+c8103d2a5b1e67c1310b7ad8c8cc8b902bfe48d5 data/cozyliving/loot_modifiers/red_sugar_from_deepslate_redstone_ore.json
+9500fa231df8f77796f076bad50f9ff5d2af5440 data/cozyliving/loot_modifiers/red_sugar_from_redstone_ore.json
+03d935524c57beeb429f97d80e8b07e03091f2dd data/neoforge/loot_modifiers/global_loot_modifiers.json
