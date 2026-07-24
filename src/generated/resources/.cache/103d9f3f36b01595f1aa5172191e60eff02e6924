@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-24T15:59:58.5207812	Registries
+// 1.21.1	2026-07-24T23:21:11.3733842	Registries
 7243c42b39c25649f88d62655727d235020d494e data/cozyliving/damage_type/coconut_bonk.json
 fc9f1cfac5fd725cc2757e4185dad307143c2527 data/cozyliving/neoforge/biome_modifier/add_benitoite_ore.json
 189e7ad6bb548837c8bf48f1a87254f02b5223ba data/cozyliving/neoforge/biome_modifier/add_coconut_tree.json
@@ -16,6 +16,7 @@ c5a4748e37e3a76ee8694e2bafcf9c89dcaf86c8 data/cozyliving/worldgen/configured_fea
 de2aea7d1454c0dece5add22e7ccaa24764de61d data/cozyliving/worldgen/configured_feature/patch_raspberries.json
 79509ed2d26aad5a2142da98a982b44544c6a6b8 data/cozyliving/worldgen/configured_feature/patch_white_pampas.json
 a0c2f6cfae2a9b708a90cdba9d12b1675a67d87b data/cozyliving/worldgen/configured_feature/raspberry_rhodolite_ore.json
+80541ef230b8f170c3688335d35d4bb796893ae0 data/cozyliving/worldgen/configured_feature/trellised_coconut_tree.json
 caaa940ff38f0270efa7f6c5445e78d48796e7db data/cozyliving/worldgen/placed_feature/benitoite_ore_placed.json
 9b59a27a41e725dd7f62981e9944031d6c5a43d8 data/cozyliving/worldgen/placed_feature/coconut_tree_placed.json
 d641ea3cdf79559de5e4a22c714de0bced0203d3 data/cozyliving/worldgen/placed_feature/patch_cotton_shrub_placed.json

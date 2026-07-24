@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-24T15:01:16.1830605	Tags for minecraft:block mod id cozyliving
+// 1.21.1	2026-07-24T21:37:45.0664998	Tags for minecraft:block mod id cozyliving
 cad96633a7bf6295364eb1f40fce17a1791c6531 data/cozyliving/tags/block/coconut_logs.json
 34cbbfe374c873e5b5155229cdf505a6ac2cfc0a data/cozyliving/tags/block/pampas_grasses.json
 7726b21a06f20f5e5db9b208f24dbc166bc9a4dc data/create/tags/block/tree_attachments.json
@@ -13,13 +13,13 @@ d4027e838dba1b8d98ee87cbc749adc5c817eb37 data/minecraft/tags/block/fence_gates.j
 8d9578482240fad58c2865a09d78af238b4e5787 data/minecraft/tags/block/flower_pots.json
 ec731a843a4b8b43b48a6067463b290dd75e3d22 data/minecraft/tags/block/leaves.json
 6524ce5d1c65061aae30d59497d33be38ad33510 data/minecraft/tags/block/logs_that_burn.json
-cad2b68b2546eb7db09a781a81bdef7afc403820 data/minecraft/tags/block/mineable/axe.json
+2ba22cbe94f161c5bcfbf23a1771f1055979c1df data/minecraft/tags/block/mineable/axe.json
 2a2d9194909e989c6d20f98bb1697024142fb512 data/minecraft/tags/block/mineable/hoe.json
 0106fb26833d5ebc37bd5d4769f3dd43451f13ba data/minecraft/tags/block/mineable/pickaxe.json
 0106fb26833d5ebc37bd5d4769f3dd43451f13ba data/minecraft/tags/block/needs_iron_tool.json
 bacf81f998e3e76e9f5a364a8d64c4f88924cc1c data/minecraft/tags/block/occludes_vibration_signals.json
 b15b1266095792a143e3e3e47071cb2cfd5d2e33 data/minecraft/tags/block/planks.json
-9d931f46e380dbd5ead9ac843d17b61bac4bf5cc data/minecraft/tags/block/saplings.json
+f56764b7d2e35f6a3268275dc44874306dc0b7ba data/minecraft/tags/block/saplings.json
 f6b5e2a09972adb492fae8ffc2bcfd19a5db50de data/minecraft/tags/block/standing_signs.json
 1d4931c3b4d5e7f7e5e6d359b93ccef510f0bb43 data/minecraft/tags/block/tall_flowers.json
 d547dd12138d65d2cb02783817b63ef9d4fbbb80 data/minecraft/tags/block/wall_hanging_signs.json
