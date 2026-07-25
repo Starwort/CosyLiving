@@ -1,0 +1,14 @@
+{
+  "type": "cozyliving:add_item",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/shipwreck_supply"
+    },
+    {
+      "chance": 0.33,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "cozyliving:coconut"
+}
