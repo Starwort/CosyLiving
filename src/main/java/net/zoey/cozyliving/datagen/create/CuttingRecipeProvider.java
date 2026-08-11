@@ -12,6 +12,7 @@ import net.zoey.cozyliving.content.block.*;
 
 import java.util.concurrent.*;
 
+@SuppressWarnings("unused")
 public class CuttingRecipeProvider extends CuttingRecipeGen {
     public GeneratedRecipe sliceSliceableFoodBlock(
         ModBlocks sliceable

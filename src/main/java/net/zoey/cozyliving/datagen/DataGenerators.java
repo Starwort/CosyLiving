@@ -15,6 +15,7 @@ import net.zoey.cozyliving.level.gen.*;
 
 import java.util.*;
 
+@SuppressWarnings("unused")
 @EventBusSubscriber(modid = CozyLiving.MODID)
 public class DataGenerators {
     @SubscribeEvent

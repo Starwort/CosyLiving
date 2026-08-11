@@ -13,6 +13,7 @@ import net.zoey.cozyliving.content.*;
 
 import java.util.concurrent.*;
 
+@SuppressWarnings("unused")
 public class HauntingRecipeProvider extends HauntingRecipeGen {
     public GeneratedRecipe convert(
         DeferredHolder<Item, Item> input,

@@ -618,6 +618,7 @@ public enum ModBlocks {
         }
     }
 
+    @SuppressWarnings("unused")
     ModBlocks(
         String name,
         Supplier<Block> supplier,
@@ -652,6 +653,7 @@ public enum ModBlocks {
         return myValue.getId();
     }
 
+    @SuppressWarnings("unused")
     @Nullable
     public ResourceLocation itemId() {
         if (myItem == null) {
