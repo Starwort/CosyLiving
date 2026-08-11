@@ -27,15 +27,23 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput, lookupProvider));
         generator.addProvider(
             event.includeServer(),
+            new CrushingRecipeProvider(packOutput, lookupProvider)
+        );
+        generator.addProvider(
+            event.includeServer(),
+            new CuttingRecipeProvider(packOutput, lookupProvider)
+        );
+        generator.addProvider(
+            event.includeServer(),
+            new DeployingRecipeProvider(packOutput, lookupProvider)
+        );
+        generator.addProvider(
+            event.includeServer(),
             new HauntingRecipeProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),
             new MillingRecipeProvider(packOutput, lookupProvider)
-        );
-        generator.addProvider(
-            event.includeServer(),
-            new CrushingRecipeProvider(packOutput, lookupProvider)
         );
         generator.addProvider(
             event.includeServer(),

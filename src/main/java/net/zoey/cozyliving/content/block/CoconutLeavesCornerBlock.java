@@ -4,6 +4,7 @@ package net.zoey.cozyliving.content.block;
 import net.minecraft.core.*;
 import net.minecraft.server.level.*;
 import net.minecraft.util.*;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.*;
 import net.zoey.cozyliving.content.*;
@@ -34,6 +35,36 @@ public class CoconutLeavesCornerBlock extends Block {
             || level.getBlockState(pos.above().south()).is(ModBlocks.COCONUT_LEAVES.block())
             || level.getBlockState(pos.above().west()).is(ModBlocks.COCONUT_LEAVES.block())
         );
+    }
+
+    @Override
+    public boolean isFlammable(
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
+    ) {
+        return true;
+    }
+
+    @Override
+    public int getFlammability(
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
+    ) {
+        return 60;
+    }
+
+    @Override
+    public int getFireSpreadSpeed(
+        @NotNull BlockState state,
+        @NotNull BlockGetter level,
+        @NotNull BlockPos pos,
+        @NotNull Direction direction
+    ) {
+        return 30;
     }
 
     //TODO: see if pick block functionality can return a regular leaf block ?

@@ -15,26 +15,31 @@ import java.util.concurrent.*;
 
 public class HauntingRecipeProvider extends HauntingRecipeGen {
     public GeneratedRecipe convert(
-        DeferredHolder<Item,Item> input,
-        DeferredHolder<Item,Item> result
+        DeferredHolder<Item, Item> input,
+        Item result
     ) {
         return create(
             input.getId().getPath(),
             p -> p
                 .withItemIngredients(Ingredient.of(input.get()))
-                .output(result.get())
+                .output(result)
                 .whenModLoaded("create")
         );
     }
 
     GeneratedRecipe PINK_PAMPAS = convert(
         ModBlocks.WHITE_PAMPAS_GRASS.itemHolder(),
-        ModBlocks.PINK_PAMPAS_GRASS.itemHolder()
+        ModBlocks.PINK_PAMPAS_GRASS.asItem()
     ),
 
     WHITE_PAMPAS = convert(
         ModBlocks.PINK_PAMPAS_GRASS.itemHolder(),
-        ModBlocks.WHITE_PAMPAS_GRASS.itemHolder()
+        ModBlocks.WHITE_PAMPAS_GRASS.asItem()
+    ),
+
+    LEATHER = convert(
+        ModItems.BUCKRAM.holder(),
+        Items.LEATHER
     );
 
     public HauntingRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {

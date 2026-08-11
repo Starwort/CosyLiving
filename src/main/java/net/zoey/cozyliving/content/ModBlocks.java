@@ -143,7 +143,7 @@ public enum ModBlocks {
             BlockBehaviour.Properties.ofFullCopy(ModBlocks.COCONUT_LEAVES.block())
         ),
         null
-    ), //TODO: does this need the flammability stuff the other coconut leaves have?
+    ),
 
     COCONUT_SIGN(
         "coconut_sign",
@@ -211,56 +211,56 @@ public enum ModBlocks {
             }
 
             public @NotNull ItemInteractionResult useItemOn(
-                    @NotNull ItemStack used,
-                    @NotNull BlockState state,
-                    @NotNull Level level,
-                    @NotNull BlockPos pos,
-                    @NotNull Player player,
-                    @NotNull InteractionHand hand,
-                    @NotNull BlockHitResult hit
+                @NotNull ItemStack used,
+                @NotNull BlockState state,
+                @NotNull Level level,
+                @NotNull BlockPos pos,
+                @NotNull Player player,
+                @NotNull InteractionHand hand,
+                @NotNull BlockHitResult hit
             ) {
-                if(used.is(Items.STICK)){
+                if (used.is(Items.STICK)) {
                     var currentStage = level.getBlockState(pos).getValue(SaplingBlock.STAGE);
                     level.setBlock(pos, ModBlocks.TRELLISED_COCONUT_SAPLING.block().defaultBlockState().setValue(STAGE, currentStage), Block.UPDATE_ALL);
                     used.consume(1, player);
                     level.playSound(
-                            player,
-                            pos.getX() + 0.5,
-                            pos.getY() + (0.5),
-                            pos.getZ() + 0.5,
-                            SoundEvents.WOOD_PLACE,
-                            SoundSource.BLOCKS,
-                            1f,
-                            0.8f + level.random.nextFloat() * 0.4f
+                        player,
+                        pos.getX() + 0.5,
+                        pos.getY() + (0.5),
+                        pos.getZ() + 0.5,
+                        SoundEvents.WOOD_PLACE,
+                        SoundSource.BLOCKS,
+                        1f,
+                        0.8f + level.random.nextFloat() * 0.4f
                     );
                     return ItemInteractionResult.SUCCESS;
                 }
                 return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             }
         },
-            ItemNameTooltipBlockItem::new
+        ItemNameTooltipBlockItem::new
     ),
 
     TRELLISED_COCONUT_SAPLING(
-            "trellised_coconut_sapling",
-            () -> new SaplingBlock(
-                    new TreeGrower("trellised_coconut", Optional.empty(), Optional.of(ModConfiguredFeatures.TRELLISED_COCONUT_TREE_KEY), Optional.empty()),
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)
+        "trellised_coconut_sapling",
+        () -> new SaplingBlock(
+            new TreeGrower("trellised_coconut", Optional.empty(), Optional.of(ModConfiguredFeatures.TRELLISED_COCONUT_TREE_KEY), Optional.empty()),
+            BlockBehaviour.Properties.ofFullCopy(Blocks.JUNGLE_SAPLING)
 
+        ) {
+            @Override
+            public boolean canSurvive(
+                @NotNull BlockState state,
+                @NotNull LevelReader level,
+                @NotNull BlockPos pos
             ) {
-                @Override
-                public boolean canSurvive(
-                        @NotNull BlockState state,
-                        @NotNull LevelReader level,
-                        @NotNull BlockPos pos
-                ) {
-                    pos = pos.below();
-                    var floor = level.getBlockState(pos);
-                    return floor.is(BlockTags.SAND) || floor.is(BlockTags.DIRT) || floor.is(
-                            Blocks.FARMLAND);
-                }
-            },
-            null),
+                pos = pos.below();
+                var floor = level.getBlockState(pos);
+                return floor.is(BlockTags.SAND) || floor.is(BlockTags.DIRT) || floor.is(
+                    Blocks.FARMLAND);
+            }
+        },
+        null),
 
     COCONUT("coconut", CoconutBlock::new, TooltipBlockItem::new),
 
@@ -663,7 +663,6 @@ public enum ModBlocks {
     public DeferredHolder<Block, Block> holder() {
         return myValue;
     }
-
     @Nullable
     public DeferredHolder<Item, Item> itemHolder() {
         return myItem;

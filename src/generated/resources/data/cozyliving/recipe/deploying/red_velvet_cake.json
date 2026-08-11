@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "cozyliving:red_velvet_cake"
+    },
+    {
+      "tag": "minecraft:swords"
+    }
+  ],
+  "keep_held_item": true,
+  "results": [
+    {
+      "count": 4,
+      "id": "cozyliving:red_velvet_cake_slice"
+    }
+  ]
+}

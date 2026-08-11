@@ -29,13 +29,26 @@ public class GenericSliceableFoodBlock extends Block {
         super(properties);
 
         this.sliceItem = sliceItem;
+        slice0 = slice0();
+        slice1 = slice1();
+        slice2 = slice2();
+        slice3 = slice3();
         registerDefaultState(defaultBlockState().setValue(BITES, 0));
     }
 
-    private static final VoxelShape slice0 = box(8, 0, 2, 14, 4, 8);
-    private static final VoxelShape slice1 = box(2, 0, 2, 8, 4, 8);
-    private static final VoxelShape slice2 = box(2, 0, 8, 8, 4, 14);
-    private static final VoxelShape slice3 = box(8, 0, 8, 14, 4, 14);
+    protected VoxelShape slice0() {
+        return box(8, 0, 2, 14, 4, 8);
+    }
+    protected VoxelShape slice1() {
+        return box(2, 0, 2, 8, 4, 8);
+    }
+    protected VoxelShape slice2() {
+        return box(2, 0, 8, 8, 4, 14);
+    }
+    protected VoxelShape slice3() {
+        return box(8, 0, 8, 14, 4, 14);
+    }
+    private final VoxelShape slice0, slice1, slice2, slice3;
 
     @Override
     public @NotNull VoxelShape getShape(
@@ -69,7 +82,7 @@ public class GenericSliceableFoodBlock extends Block {
                 default -> throw new IllegalStateException(
                     "Block with Horizontal Facing in invalid state");
             };
-            default -> box(2, 0, 2, 14, 4, 14);
+            default -> Shapes.or(slice0, slice1, slice2, slice3);
         };
     }
 

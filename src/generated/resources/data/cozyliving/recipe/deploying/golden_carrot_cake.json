@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "cozyliving:golden_carrot_cake"
+    },
+    {
+      "tag": "minecraft:swords"
+    }
+  ],
+  "keep_held_item": true,
+  "results": [
+    {
+      "count": 4,
+      "id": "cozyliving:golden_carrot_cake_slice"
+    }
+  ]
+}
